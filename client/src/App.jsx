@@ -17,8 +17,8 @@ import {
   Signup,
   Login,
 } from "./pages/index";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   // const [userName, setUserName] = useState("");
@@ -37,7 +37,7 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <Router>
         <Routes>
           <Route
