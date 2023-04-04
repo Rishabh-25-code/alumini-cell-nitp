@@ -2,7 +2,7 @@
 This is the official website of Alumni of NIT, Patna.
 
 
-# tesla-nitp
+# nitp-alumni
 Official website of Alumni NIT Patna
 
 ![plot]()

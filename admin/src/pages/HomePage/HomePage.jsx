@@ -72,6 +72,7 @@ const HomePage = () => {
             </p>
           </div>
         </div>
+        
 
         {/* <div className='h-[110vh] w-[100%] relative items-center flex'>
         <div className='w-[60%] flex justify-evenly h-fit items-center mt-[-10rem]'>
