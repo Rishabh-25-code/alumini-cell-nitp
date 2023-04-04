@@ -1,11 +1,11 @@
-<h1 align='center'> Tesla Club NIT, Patna 🤖 </h1>
-Tesla Club is the official club of electrical engineering department of NIT, Patna.
+<h1 align='center'> Alumni NIT, Patna 🤖 </h1>
+This is the official website of Alumni of NIT, Patna.
 
 
 # tesla-nitp
-Official website of Tesla Club NIT Patna
+Official website of Alumni NIT Patna
 
-![plot](teslaclublive.png)
+![plot]()
 
 Project has following functionalities
 
@@ -32,7 +32,7 @@ npm install -g vite
 ```
 ## Live WebSite URL
 
-The WebSite is deployed in https://tesla-nitp.vercel.app/
+The WebSite is deployed in ""
 
 Click on the link to see the website.
 
@@ -83,9 +83,6 @@ Thanks goes to these wonderful people ❤️:
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<a href = "https://github.com/SudhansuuRanjan/tesla-nitp-web/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo=SudhansuuRanjan/tesla-nitp-web"/>
-</a>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->

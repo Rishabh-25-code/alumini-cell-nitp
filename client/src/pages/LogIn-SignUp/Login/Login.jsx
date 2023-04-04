@@ -8,6 +8,8 @@ import { auth } from "../../../firebase";
 import styles from "./Login.module.css";
 import Heading from "../../../components/Headings/Heading";
 
+import {toast} from 'react-toastify'
+
 function Login() {
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -28,10 +30,11 @@ function Login() {
     signInWithEmailAndPassword(auth, values.email, values.pass)
       .then(async (res) => {
         setSubmitButtonDisabled(false);
-        
+        toast.success("Logged In Successfully!")
         navigate("/");
       })
       .catch((err) => {
+        toast.error("Something went wrong!")
         setSubmitButtonDisabled(false);
         setErrorMsg(err.message);
       });

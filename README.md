@@ -5,7 +5,7 @@ This is the official website of Alumni of NIT, Patna.
 # tesla-nitp
 Official website of Alumni NIT Patna
 
-![plot](teslaclublive.png)
+![plot]()
 
 Project has following functionalities
 
@@ -83,9 +83,6 @@ Thanks goes to these wonderful people ❤️:
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<!-- <a href = "https://github.com/SudhansuuRanjan/tesla-nitp-web/graphs/contributors">
-  <img src = "https://contrib.rocks/image?repo=SudhansuuRanjan/tesla-nitp-web"/>
-</a> -->
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
