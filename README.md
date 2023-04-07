@@ -53,7 +53,7 @@ In order to run the application Type the following command
 npm run dev
 ```
 
-The Application Runs on [http://127.0.0.1:5173/](http://127.0.0.1:5173/)
+The Application Runs on [https://alumini-nitp.vercel.app/)
 
 
 
@@ -77,6 +77,9 @@ Please refer to the project's style and contribution guidelines for submitting p
 
 
 ## Contributors ✨
+Rishabh Prakash
+Rajnish Kumar
+Rithvik Kumar
 
 Thanks goes to these wonderful people ❤️:
 
