@@ -16,6 +16,11 @@ import {
   Registration,
   Signup,
   Login,
+  AlumniCorner,
+  Donate,
+  Resources,
+  Interaction,
+  About,
 } from "./pages/index";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -120,6 +125,47 @@ function App() {
               </Layout>
             }
           />
+          <Route
+            path="/alumnicorner"
+            element={
+              <Layout>
+                <AlumniCorner />
+              </Layout>
+            }
+          />
+           <Route
+            path="/donate"
+            element={
+              <Layout>
+                <Donate />
+              </Layout>
+            }
+          />
+           <Route
+            path="/resources"
+            element={
+              <Layout>
+                <Resources />
+              </Layout>
+            }
+          />
+          <Route
+            path="/interaction"
+            element={
+              <Layout>
+                <Interaction />
+              </Layout>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <Layout>
+                <About />
+              </Layout>
+            }
+          />
+          
         </Routes>
       </Router>
     </>

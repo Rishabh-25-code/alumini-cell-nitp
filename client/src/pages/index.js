@@ -9,6 +9,10 @@ import Registration from "./Registration/registration"
 // import SignUp from "./LogIn-SignUp/SignUp";
 import Signup from "./LogIn-SignUp/Signup/Signup"
 import Login from "./LogIn-SignUp/Login/Login";
+import AlumniCorner from "./AlumniCorner/AlumniCorner";
+import Donate from "./Donate/Donate";
+import Resources from "./Resources/Resources";
+import Interaction from "./Interaction/Interaction";
+import About from "./About/About";
 
-
-export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login };
+export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner,Donate,Resources,Interaction,About };

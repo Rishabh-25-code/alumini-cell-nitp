@@ -42,7 +42,7 @@ const Newsletter = () => {
 
   return (
     <div className='pt-16'>
-      <Heading heading="NEWS" />
+      <Heading heading="NEWS & ANNOUNCEMENT" />
       <div className='news-grid lg:max-w-[85rem] m-auto'>
         {
           newsletters.map((news,index)=>(
