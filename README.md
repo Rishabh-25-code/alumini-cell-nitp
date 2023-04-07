@@ -79,6 +79,7 @@ Please refer to the project's style and contribution guidelines for submitting p
 ## Contributors ✨
 Rishabh Prakash
 Rajnish Kumar
+Rithvik Kumar
 
 Thanks goes to these wonderful people ❤️:
 
