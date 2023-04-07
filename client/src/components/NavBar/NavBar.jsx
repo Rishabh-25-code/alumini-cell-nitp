@@ -20,32 +20,41 @@ const NavBar = () => {
 
   const navLinks = [
     {
-      name: "Events",
-      link: "/events",
+      name: "Home",
+      link: "/",
     },
     {
-      name: "News",
-      link: "/news",
+      name: "About",
+      link: "/About",
     },
     {
       name: "Notable Alumni",
       link: "/notablealumni",
     },
     {
+      name: "Alumni-Corner",
+      link: "/Alumni-corner",
+    },
+    {
+      name: "Alumni-Student-Relations",
+      link: "/Relations",
+    },
+    {
+      name: "Donate",
+      link: "/Donate",
+    },
+    {
+      name: "Events",
+      link: "/Events",
+    },
+    {
+      name: "Resources",
+      link: "/Resources",
+    },
+    
+    {
       name: "Team",
-      link: "/team",
-    },
-    {
-      name: "Gallery",
-      link: "/gallery",
-    },
-    {
-      name: "Register",
-      link: "/register",
-    },
-    {
-      name: "SignUp",
-      link: "/signup",
+      link: "/Team",
     },
   ];
 
