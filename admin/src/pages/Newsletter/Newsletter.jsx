@@ -9,11 +9,6 @@ const Newsletter = () => {
       <Heading heading="NEWS" />
       <div className='news-grid lg:max-w-[85rem] m-auto'>
         <News />
-        <News />
-        <News />
-        <News />
-        <News />
-        <News />
       </div>
     </div>
   )

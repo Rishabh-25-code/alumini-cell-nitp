@@ -83,7 +83,9 @@ Thanks goes to these wonderful people ❤️:
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-
+<a href = "https://github.com/Rishabh-25-code/alumini-cell-nitp/graphs/contributors">
+<img src = "https://contrib.rocks/image?repo=Rishabh-25-code/alumini-cell-nitp"/>
+</a>
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
