@@ -19,33 +19,39 @@ const NavBar = () => {
   window.addEventListener("scroll", changeNavbarColor);
 
   const navLinks = [
+    
     {
-      name: "Events",
-      link: "/events",
+      name: "About",
+      link: "/About",
     },
     {
-      name: "News",
-      link: "/news",
-    },
-    {
-      name: "Notable Alumni",
+      name: "Notable-Alumni",
       link: "/notablealumni",
     },
     {
+      name: "Alumni-Corner",
+      link: "/alumnicorner",
+    },
+    {
+      name: "Interaction",
+      link: "/interaction",
+    },
+    {
+      name: "Donate",
+      link: "/donate",
+    },
+    {
+      name: "Events",
+      link: "/Events",
+    },
+    {
+      name: "Resources",
+      link: "/resources",
+    },
+    
+    {
       name: "Team",
-      link: "/team",
-    },
-    {
-      name: "Gallery",
-      link: "/gallery",
-    },
-    {
-      name: "Register",
-      link: "/register",
-    },
-    {
-      name: "SignUp",
-      link: "/signup",
+      link: "/Team",
     },
   ];
 
