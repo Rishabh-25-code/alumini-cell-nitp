@@ -7,37 +7,37 @@ import TeamCard2 from "./TeamCard2";
 const Team = () => {
   const team = [
     {
-      img1: "../../../public/images/PKJ_Desk Photo.jpg",
+      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
       name1: "Prof. P. K. Jain",
       detail1: "Director of NIT Patna ",
       detail11: "pkjain@nitp.ac.in",
     },
     {
-      img1: "../../../public/images/PKJ_Desk Photo.jpg",
+      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
       name1: "Prof. P. K. Jain",
       detail1: "Director of NIT Patna ",
       detail11: "pkjain@nitp.ac.in",
     },
     {
-      img1: "../../../public/images/PKJ_Desk Photo.jpg",
+      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
       name1: "Prof. P. K. Jain",
       detail1: "Director of NIT Patna",
       detail11: "pkjain@nitp.ac.in",
     },
     {
-      img1: "../../../public/images/PKJ_Desk Photo.jpg",
+      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
       name1: "Prof. P. K. Jain",
       detail1: "Director of NIT Patna",
       detail11: "pkjain@nitp.ac.in",
     },
     {
-      img1: "../../../public/images/PKJ_Desk Photo.jpg",
+      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
       name1: "Prof. P. K. Jain",
       detail1: "Director of NIT Patna",
       detail11: "pkjain@nitp.ac.in",
     },
     {
-      img1: "../../../public/images/PKJ_Desk Photo.jpg",
+      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
       name1: "Prof. P. K. Jain",
       detail1: "Director of NIT Patna",
       detail11: "pkjain@nitp.ac.in",
@@ -46,22 +46,22 @@ const Team = () => {
 
   const team2 = [
     {
-      img2: "../../../public/images/michael-gouch.png",
+      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
       name2: "Rishabh Prakash",
       detail2: "Team Lead ",
     },
     {
-      img2: "../../../public/images/michael-gouch.png",
+      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
       name2: "Rajnish Kumar",
       detail2: "Team Member ",
     },
     {
-      img2: "../../../public/images/michael-gouch.png",
+      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
       name2: "Rithvik Kumar",
       detail2: "Team Member",
     },
     {
-      img2: "../../../public/images/michael-gouch.png",
+      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
       name2: "Akash Kumar",
       detail2: "Team Member",
     },
