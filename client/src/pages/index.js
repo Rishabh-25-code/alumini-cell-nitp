@@ -14,5 +14,7 @@ import Donate from "./Donate/Donate";
 import Resources from "./Resources/Resources";
 import Interaction from "./Interaction/Interaction";
 import About from "./About/About";
+import TeamCard from "./Team/TeamCard";
+import TeamCard2 from "./Team/TeamCard2";
 
-export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner,Donate,Resources,Interaction,About };
+export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner,Donate,Resources,Interaction,About, TeamCard, TeamCard2 };
