@@ -3,7 +3,6 @@ import "./Team.scss";
 import Heading from "../../components/Headings/Heading";
 
 const Team = () => {
-<<<<<<< Updated upstream
   return (
     <div className="pt-16">
       <Heading heading="Team"></Heading>
@@ -132,7 +131,6 @@ const Team = () => {
                 </div>
               </li>
             </ul>
-=======
   const team = [
     {
       img1: "../../../public/images/PKJ_Desk Photo.jpg",
@@ -225,7 +223,6 @@ const Team = () => {
                 id={index}
               />
             ))}
->>>>>>> Stashed changes
           </div>
         </div>
       </div>
