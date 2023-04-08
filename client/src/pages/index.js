@@ -9,6 +9,8 @@ import Registration from "./Registration/registration"
 // import SignUp from "./LogIn-SignUp/SignUp";
 import Signup from "./LogIn-SignUp/Signup/Signup"
 import Login from "./LogIn-SignUp/Login/Login";
+import TeamCard from "./Team/TeamCard";
+import TeamCard2 from "./Team/TeamCard2";
 
 
-export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login };
+export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, TeamCard, TeamCard2 };

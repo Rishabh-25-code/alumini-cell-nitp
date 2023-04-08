@@ -7,6 +7,8 @@ import Layout from "./utils/Layout";
 import { auth } from "./firebase";
 import {
   Team,
+  TeamCard,
+  TeamCard2,
   HomePage,
   Newsletter,
   Gallery,
@@ -117,6 +119,22 @@ function App() {
             element={
               <Layout>
                 <News />
+              </Layout>
+            }
+          />
+          <Route
+            path="/team/:teamId"
+            element={
+              <Layout>
+                <TeamCard />
+              </Layout>
+            }
+          />
+          <Route
+            path="/team2/:teamId"
+            element={
+              <Layout>
+                <TeamCard2 />
               </Layout>
             }
           />
