@@ -32,7 +32,7 @@ npm install -g vite
 ```
 ## Live WebSite URL
 
-The WebSite is deployed in ""
+Checkout the website at "https://alumini-nitp.vercel.app/"
 
 Click on the link to see the website.
 
@@ -77,9 +77,6 @@ Please refer to the project's style and contribution guidelines for submitting p
 
 
 ## Contributors ✨
-Rishabh Prakash
-Rajnish Kumar
-Rithvik Kumar
 
 Thanks goes to these wonderful people ❤️:
 
