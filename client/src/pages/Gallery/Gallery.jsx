@@ -2,40 +2,23 @@ import { useState, useEffect } from "react"
 import './Gallery.scss'
 import { MdClose, MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import Heading from "../../components/Headings/Heading"
+import { db } from "../../firebase"
+import { collection, getDocs } from "firebase/firestore"
+
 
 
 const Gallery = () => {
-
     const [currentImg, setCurrentImg] = useState(0);
     const [modal, setModal] = useState(false);
+    const [gallery, setGallery] = useState([]);
 
 
-    const gallery = [
-        {
-            url: "../../../public/images/pic1.jpg"
-        },
-        {
-            url: "../../../public/images/pic2.jpg"
-        },
-        {
-            url: "../../../public/images/pic3.jpg"
-        },
-        {
-            url: "../../../public/images/pic4.jpg"
-        },
-        {
-            url: "../../../public/images/pic5.jpg"
-        },
-        {
-            url: "../../../public/images/pic6.jpg"
-        },
-        {
-            url: "../../../public/images/pic7.jpg"
-        },
-        {
-            url: "../../../public/images/pic1.jpg"
-        }
-    ]
+    const getGallery = async () => {
+        const galleryRef = collection(db, "gallery");
+        const gallerySnap = await getDocs(galleryRef);
+        const data = gallerySnap.docs.map((doc) => doc.data());
+        setGallery(data);
+    }
 
     useEffect(() => {
         if (modal) {
@@ -44,6 +27,10 @@ const Gallery = () => {
             document.body.style.overflow = 'unset';
         }
     }, [modal]);
+
+    useEffect(() => {
+        getGallery();
+    }, [gallery]);
 
 
     return (
@@ -56,7 +43,7 @@ const Gallery = () => {
                         {
                             gallery.map((img, index) => {
                                 return (
-                                        <img data-aos="fade-up" key={index} src={img.url} alt="gallery-photo" onClick={() => {
+                                        <img data-aos="fade-up" key={index} src={img.img} alt="gallery-photo" onClick={() => {
                                             setCurrentImg(index);
                                             setModal(true);
                                         }} />
@@ -73,7 +60,7 @@ const Gallery = () => {
                 modal && <div className="slideshow-container transition">
                     <div className="slide">
                         <div className="img-display">
-                            <img src={gallery[currentImg].url} alt="dhgjjhgd" />
+                            <img src={gallery[currentImg].img} alt="dhgjjhgd" />
                         </div>
 
                         <div className="controls">

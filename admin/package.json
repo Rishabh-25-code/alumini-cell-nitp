@@ -22,7 +22,9 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
     "react-slick": "^0.29.0",
+    "react-toastify": "^9.1.2",
     "sass": "^1.60.0",
+    "shortid": "^2.2.16",
     "three": "^0.151.2"
   },
   "devDependencies": {

@@ -9,6 +9,7 @@ import Registration from "./Registration/registration"
 // import SignUp from "./LogIn-SignUp/SignUp";
 import Signup from "./LogIn-SignUp/Signup/Signup"
 import Login from "./LogIn-SignUp/Login/Login";
+// import addNews from "./Newsletter/addNews";
 
 
 export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login };

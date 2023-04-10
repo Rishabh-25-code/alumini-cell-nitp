@@ -9,7 +9,7 @@ const News = ({ date, title, info, id }) => {
         <div className="card-img flex items-center justify-center">
           <img
             className="hover:scale-[102%] transition-all delay-75 ease-in"
-            src="../../../public/images/faculty.png"
+            src="images/faculty.png"
             alt="Event-image"
           />
         </div>
