@@ -37,7 +37,7 @@ const Newsletter = () => {
           newsletters.map((news, index) => (
             <News
               key={index}
-              date={"1-02-2023"}
+              date={news.date}
               title={news.title}
               info={news.details}
               id={index}

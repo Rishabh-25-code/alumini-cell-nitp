@@ -18,6 +18,8 @@ import {
   Signup,
   Login,
 } from "./pages/index";
+import CreateNews from "./pages/Newsletter/CreateNews";
+import EditNews from "./pages/Newsletter/EditNews";
 
 function App() {
   // const [userName, setUserName] = useState("");
@@ -68,6 +70,22 @@ function App() {
             element={
               <Layout>
                 <Events />
+              </Layout>
+            }
+          />
+          <Route
+            path="/createNews"
+            element={
+              <Layout>
+                <CreateNews />
+              </Layout>
+            }
+          />
+          <Route
+            path="/editNews/:newsId"
+            element={
+              <Layout>
+                <EditNews />
               </Layout>
             }
           />

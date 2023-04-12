@@ -23,6 +23,7 @@ import {
   Resources,
   Interaction,
   About,
+  NewsId
 } from "./pages/index";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -123,7 +124,7 @@ function App() {
             path="/news/:newsId"
             element={
               <Layout>
-                <News />
+                <NewsId />
               </Layout>
             }
           />
