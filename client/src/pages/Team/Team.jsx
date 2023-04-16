@@ -68,7 +68,7 @@ const Team = () => {
   ];
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 ">
       <Heading heading="Team"></Heading>
 
       <section className="bg-white dark:bg-gray-900">

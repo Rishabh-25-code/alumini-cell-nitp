@@ -8,6 +8,14 @@ import { gsap } from "gsap";
 import SmoothScroll from "./SmoothScroll";
 import homePageImg from "../../../public/images/homePageImg.jpg";
 
+// Initialization for ES Users
+import {
+  Carousel,
+  initTE,
+} from "tw-elements";
+
+initTE({ Carousel });
+
 // const Model = (props) => {
 //   // const gltf = useGLTF('drone2.glb');
 //   const gltf = useLoader(GLTFLoader, "solar.glb");
@@ -49,8 +57,8 @@ import homePageImg from "../../../public/images/homePageImg.jpg";
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
   return (
-    <div className="pt-16 bg-black">
-      {/* <div className='justify-center flex items-center my-[8rem] flex-col text-5xl font-bold'>
+    <div classNameName="pt-16 bg-black">
+      {/* <div classNameName='justify-center flex items-center my-[8rem] flex-col text-5xl font-bold'>
         <h1 className='font-extrabold text-transparent lg:text-8xl md:text-6xl text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600'>Official Website of</h1>
         <h1 className='font-extrabold text-transparent lg:text-7xl md:text-5xl text-4xl bg-clip-text bg-gradient-to-r from-blue-400 to-sky-600 mt-2'>Tesla NIT Patna</h1>
       </div> */}
@@ -62,7 +70,7 @@ const HomePage = () => {
               ALUMNI Cell NIT Patna
             </h1>
             <p className="max-w-[19rem] text-lg">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Doloribus magnam quia nihil nobis iusto veniam atque, non deserunt
               minus veritatis! Perspiciatis suscipit aut ipsum soluta dicta sed,
               quis illo voluptas. Eius dolores est suscipit quam in aspernatur
