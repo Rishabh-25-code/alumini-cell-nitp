@@ -8,14 +8,6 @@ import { gsap } from "gsap";
 import SmoothScroll from "./SmoothScroll";
 import homePageImg from "../../../public/images/homePageImg.jpg";
 
-// Initialization for ES Users
-import {
-  Carousel,
-  initTE,
-} from "tw-elements";
-
-initTE({ Carousel });
-
 // const Model = (props) => {
 //   // const gltf = useGLTF('drone2.glb');
 //   const gltf = useLoader(GLTFLoader, "solar.glb");
@@ -70,7 +62,7 @@ const HomePage = () => {
               ALUMNI Cell NIT Patna
             </h1>
             <p className="max-w-[19rem] text-lg">
-             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
               Doloribus magnam quia nihil nobis iusto veniam atque, non deserunt
               minus veritatis! Perspiciatis suscipit aut ipsum soluta dicta sed,
               quis illo voluptas. Eius dolores est suscipit quam in aspernatur
