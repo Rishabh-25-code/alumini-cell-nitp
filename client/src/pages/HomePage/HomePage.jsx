@@ -12,12 +12,12 @@ import pic6 from "../../../public/images/pic6.jpg";
 import pic7 from "../../../public/images/pic7.jpg";
 import pic8 from "../../../public/images/pic8.jpg";
 
-import { Carousel, initTE } from "tw-elements";
-initTE({ Carousel });
+// import { Carousel, initTE } from "tw-elements";
+// initTE({ Carousel });
 // Initialization for ES Users
-import { Ripple } from "tw-elements";
+// import { Ripple } from "tw-elements";
 
-initTE({ Ripple });
+// initTE({ Ripple });
 
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
@@ -54,224 +54,124 @@ const HomePage = () => {
 
       {/* Carousel starts here */}
 
-     <div className="container-sm px-1">
- <div id="carouselExampleIndicators"
-  className="relative "
-  data-te-carousel-init
-  data-te-carousel-slide>
-  {/* <!--Carousel indicators--> */}
+//      <div className="container-sm px-1">
+//  <div id="carouselExampleIndicators"
+//   className="relative "
+//   data-te-carousel-init
+//   data-te-carousel-slide>
+//   {/* <!--Carousel indicators--> */}
       
-  <div
-    className="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
-    data-te-carousel-indicators>
-    <button
-      type="button"
-      data-te-target="#carouselExampleIndicators"
-      data-te-slide-to="0"
-      data-te-carousel-active
-      className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-      aria-current="true"
-      aria-label="Slide 1"></button>
-    <button
-      type="button"
-      data-te-target="#carouselExampleIndicators"
-      data-te-slide-to="1"
-      className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-      aria-label="Slide 2"></button>
-    <button
-      type="button"
-      data-te-target="#carouselExampleIndicators"
-      data-te-slide-to="2"
-      className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-      aria-label="Slide 3"></button>
-  </div>
+//   <div
+//     className="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+//     data-te-carousel-indicators>
+//     <button
+//       type="button"
+//       data-te-target="#carouselExampleIndicators"
+//       data-te-slide-to="0"
+//       data-te-carousel-active
+//       className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+//       aria-current="true"
+//       aria-label="Slide 1"></button>
+//     <button
+//       type="button"
+//       data-te-target="#carouselExampleIndicators"
+//       data-te-slide-to="1"
+//       className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+//       aria-label="Slide 2"></button>
+//     <button
+//       type="button"
+//       data-te-target="#carouselExampleIndicators"
+//       data-te-slide-to="2"
+//       className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+//       aria-label="Slide 3"></button>
+//   </div>
 
-  {/* <!--Carousel items--> */}
-  <div
-    className="relative w-full  overflow-hidden after:clear-both after:block after:content-['']">
-    {/* <!--First item--> */}
-    <div
-      className="relative  float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item
-      data-te-carousel-active>
-      <img
-        src={pic2}
-        className="block w-full h-[80vh]"
-        alt="Wild Landscape" />
-    </div>
-    {/* <!--Second item--> */}
-    <div
-      className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item>
-      <img
-        src={pic5}
-        className="block w-full h-[80vh]"
-        alt="Camera" />
-    </div>
-    {/* <!--Third item--> */}
-    <div
-      className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-      data-te-carousel-item>
-      <img
-        src={pic4}
-        className="block w-full h-[80vh]"
-        alt="Exotic Fruits" />
-    </div>
-  </div>
+//   {/* <!--Carousel items--> */}
+//   <div
+//     className="relative w-full  overflow-hidden after:clear-both after:block after:content-['']">
+//     {/* <!--First item--> */}
+//     <div
+//       className="relative  float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+//       data-te-carousel-item
+//       data-te-carousel-active>
+//       <img
+//         src={pic2}
+//         className="block w-full h-[80vh]"
+//         alt="Wild Landscape" />
+//     </div>
+//     {/* <!--Second item--> */}
+//     <div
+//       className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+//       data-te-carousel-item>
+//       <img
+//         src={pic5}
+//         className="block w-full h-[80vh]"
+//         alt="Camera" />
+//     </div>
+//     {/* <!--Third item--> */}
+//     <div
+//       className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+//       data-te-carousel-item>
+//       <img
+//         src={pic4}
+//         className="block w-full h-[80vh]"
+//         alt="Exotic Fruits" />
+//     </div>
+//   </div>
 
-  {/* <!--Carousel controls - prev item--> */}
-  <button
-    className="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-    type="button"
-    data-te-target="#carouselExampleIndicators"
-    data-te-slide="prev">
-    <span className="inline-block h-8 w-8">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        className="h-6 w-6">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M15.75 19.5L8.25 12l7.5-7.5" />
-      </svg>
-    </span>
-    <span
-      className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-      >Previous</span>
-  </button>
-  {/* <!--Carousel controls - next item--> */}
-  <button
-    className="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
-    type="button"
-    data-te-target="#carouselExampleIndicators"
-    data-te-slide="next">
-    <span className="inline-block h-8 w-8">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        className="h-6 w-6">
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-      </svg>
-    </span>
-    <span
-      className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
-      >Next</span>
-  </button>
-</div>
-</div> 
-
-
+//   {/* <!--Carousel controls - prev item--> */}
+//   <button
+//     className="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+//     type="button"
+//     data-te-target="#carouselExampleIndicators"
+//     data-te-slide="prev">
+//     <span className="inline-block h-8 w-8">
+//       <svg
+//         xmlns="http://www.w3.org/2000/svg"
+//         fill="none"
+//         viewBox="0 0 24 24"
+//         stroke-width="1.5"
+//         stroke="currentColor"
+//         className="h-6 w-6">
+//         <path
+//           stroke-linecap="round"
+//           stroke-linejoin="round"
+//           d="M15.75 19.5L8.25 12l7.5-7.5" />
+//       </svg>
+//     </span>
+//     <span
+//       className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+//       >Previous</span>
+//   </button>
+//   {/* <!--Carousel controls - next item--> */}
+//   <button
+//     className="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+//     type="button"
+//     data-te-target="#carouselExampleIndicators"
+//     data-te-slide="next">
+//     <span className="inline-block h-8 w-8">
+//       <svg
+//         xmlns="http://www.w3.org/2000/svg"
+//         fill="none"
+//         viewBox="0 0 24 24"
+//         stroke-width="1.5"
+//         stroke="currentColor"
+//         className="h-6 w-6">
+//         <path
+//           stroke-linecap="round"
+//           stroke-linejoin="round"
+//           d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+//       </svg>
+//     </span>
+//     <span
+//       className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+//       >Next</span>
+//   </button>
+// </div>
+// </div> 
 
 
 
-
-
-
-
-
-      {/* gallery */}
-      {/* <div>
-        <h1>Gallery</h1>
-        <div class="columns-8 mx-3 mt-4 gap-5 bg-black ...">
-          <div className="columns-1">
-            <div className=" hover:scale-125">
-              <img class="max-w-full h-auto aspect-square ..." src={pic2} />
-            </div>
-            <div className="my-6 hover:scale-125 ">
-              <img class="w-full h-auto aspect-square p-2..." src={pic1} />
-            </div>
-            <div className="my-6 hover:scale-125">
-              <img class="w-full  aspect-square p-2..." src={pic3} />
-            </div>
-            <div className="my-6 hover:scale-125">
-              <img class="w-full aspect-square p-2..." src={pic8} />
-            </div>
-            <div className="my-6 hover:scale-125">
-              <img class="w-full aspect-square py-2..." src={pic5} />
-            </div>
-            <div className="my-6  hover:scale-125">
-              <img class="w-full aspect-square my-2..." src={pic7} />
-            </div>
-            <div className="my-6  hover:scale-125">
-              <img class="max-w-full aspect-square my-2..." src={pic4} />
-            </div>
-            <div className="my-6 max-w-full h-auto flex align-center aspect-square">
-              <button
-                type="button"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-                className="  bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-              >
-                <a
-                  className=" text-lg text-black hover:font-bold"
-                  href="/gallery"
-                >
-                  {" "}
-                  See More{" "}
-                </a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-
-
-{/* gallery demo */}
-{/* <div>
-        <h1 className="mx-3 text-lg">Gallery</h1>
-        <div class=" columns-4  sm:columns-8 mx-3 mt-4 gap-5 bg-black  ...">
-          <div className="columns-1">
-            <div className=" hover:scale-125">
-              <img class="max-w-full h-auto aspect-square ..." src={pic2} />
-            </div>
-            <div className="my-6 hover:scale-125 ">
-              <img class="w-full h-auto aspect-square p-2..." src={pic1} />
-            </div>
-            <div className="my-6 hover:scale-125">
-              <img class="w-full  aspect-square p-2..." src={pic3} />
-            </div>
-            <div className="my-6 hover:scale-125">
-              <img class="w-full aspect-square p-2..." src={pic8} />
-            </div>
-            <div className="my-6 hover:scale-125">
-              <img class="w-full aspect-square py-2..." src={pic5} />
-            </div>
-            <div className="my-6  hover:scale-125">
-              <img class="w-full aspect-square my-2..." src={pic7} />
-            </div>
-            <div className="my-6  hover:scale-125">
-              <img class="max-w-full aspect-square my-2..." src={pic4} />
-            </div>
-            <div className=" aspect-square sm:my-6 max-w-full h-auto flex align-center aspect-square">
-              <button
-                type="button"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-                className="  bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-              >
-                <a
-                  className=" text-xs sm:text-lg text-black hover:font-bold"
-                  href="/gallery"
-                >
-                  {" "}
-                  See More{" "}
-                </a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> */}
 
 
 
