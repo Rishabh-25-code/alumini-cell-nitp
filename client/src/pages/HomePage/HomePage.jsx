@@ -3,14 +3,14 @@ import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import homePageImg from "../../../public/images/homePageImg.jpg";
 import Heading from "../../components/Headings/Heading";
-import pic1 from "../../../public/images/pic1.jpg";
-import pic2 from "../../../public/images/pic2.jpg";
-import pic3 from "../../../public/images/pic3.jpg";
-import pic4 from "../../../public/images/pic4.jpg";
-import pic5 from "../../../public/images/pic5.jpg";
-import pic6 from "../../../public/images/pic6.jpg";
-import pic7 from "../../../public/images/pic7.jpg";
-import pic8 from "../../../public/images/pic8.jpg";
+// import pic1 from "../../../public/images/pic1.jpg";
+// import pic2 from "../../../public/images/pic2.jpg";
+// import pic3 from "../../../public/images/pic3.jpg";
+// import pic4 from "../../../public/images/pic4.jpg";
+// import pic5 from "../../../public/images/pic5.jpg";
+// import pic6 from "../../../public/images/pic6.jpg";
+// import pic7 from "../../../public/images/pic7.jpg";
+// import pic8 from "../../../public/images/pic8.jpg";
 
 // import { Carousel, initTE } from "tw-elements";
 // initTE({ Carousel });
@@ -177,50 +177,50 @@ const HomePage = () => {
 
 
 
-      <div>
-        <h1 className="mx-3 text-lg">Gallery</h1>
-        <div class="  columns-4  sm:columns-8 mx-3 mt-4 gap-5 bg-black  ...">
-          <div className="columns-1">
-            <div className="overflow-hidden ">
-              <img class="max-w-full h-auto aspect-square hover:scale-125 duration-1000 p-2  ..." src={pic2} />
-            </div>
-            <div className="my-6 overflow-hidden ">
-              <img class="w-full h-auto aspect-square hover:scale-125 duration-1000 p-2  ..." src={pic1} />
-            </div>
-            <div className="my-6 overflow-hidden">
-              <img class="w-full  aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic3} />
-            </div>
-            <div className="my-6 overflow-hidden">
-              <img class="w-full aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic8} />
-            </div>
-            <div className="my-6 overflow-hidden">
-              <img class="w-full aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic5} />
-            </div>
-            <div className="my-6  overflow-hidden">
-              <img class="w-full aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic7} />
-            </div>
-            <div className="my-6  overflow-hidden">
-              <img class="max-w-full aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic4} />
-            </div>
-            <div className=" aspect-square sm:my-6 p-2 max-w-full h-auto flex align-center  aspect-square">
-              <button
-                type="button"
-                data-te-ripple-init
-                data-te-ripple-color="light"
-                className="  bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-              >
-                <a
-                  className=" text-xs sm:text-lg text-black hover:font-bold"
-                  href="/gallery"
-                >
-                  {" "}
-                  See More{" "}
-                </a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+//        <div>
+//         <h1 className="mx-3 text-lg">Gallery</h1>
+//         <div class="  columns-4  sm:columns-8 mx-3 mt-4 gap-5 bg-black  ...">
+//           <div className="columns-1">
+//             <div className="overflow-hidden ">
+//               <img class="max-w-full h-auto aspect-square hover:scale-125 duration-1000 p-2  ..." src={pic2} />
+//             </div>
+//             <div className="my-6 overflow-hidden ">
+//               <img class="w-full h-auto aspect-square hover:scale-125 duration-1000 p-2  ..." src={pic1} />
+//             </div>
+//             <div className="my-6 overflow-hidden">
+//               <img class="w-full  aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic3} />
+//             </div>
+//             <div className="my-6 overflow-hidden">
+//               <img class="w-full aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic8} />
+//             </div>
+//             <div className="my-6 overflow-hidden">
+//               <img class="w-full aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic5} />
+//             </div>
+//             <div className="my-6  overflow-hidden">
+//               <img class="w-full aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic7} />
+//             </div>
+//             <div className="my-6  overflow-hidden">
+//               <img class="max-w-full aspect-square p-2 hover:scale-125 duration-1000 ..." src={pic4} />
+//             </div>
+//             <div className=" aspect-square sm:my-6 p-2 max-w-full h-auto flex align-center  aspect-square">
+//               <button
+//                 type="button"
+//                 data-te-ripple-init
+//                 data-te-ripple-color="light"
+//                 className="  bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+//               >
+//                 <a
+//                   className=" text-xs sm:text-lg text-black hover:font-bold"
+//                   href="/gallery"
+//                 >
+//                   {" "}
+//                   See More{" "}
+//                 </a>
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
 
 
 
