@@ -14,12 +14,12 @@ import pic8 from "../../../public/images/pic8.jpg";
 import director from "../../../public/images/PKJ_Desk Photo.jpg";
 import {CiPaperplane} from  "react-icons/ci";
 
-import { Carousel, initTE } from "tw-elements";
-initTE({ Carousel });
-// Initialization for ES Users
-import { Ripple } from "tw-elements";
+// import { Carousel, initTE } from "tw-elements";
+// initTE({ Carousel });
+// // Initialization for ES Users
+// import { Ripple } from "tw-elements";
 
-initTE({ Ripple });
+// initTE({ Ripple });
 
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
@@ -51,9 +51,14 @@ const HomePage = () => {
         </div>
       </div>
 
+
+
+
+
+
       {/* Carousel starts here */}
 
-      <div className="container-sm px-1">
+      {/* <div className="container-sm px-1">
         <div
           id="carouselExampleIndicators"
           className="relative "
@@ -62,7 +67,7 @@ const HomePage = () => {
         >
           {/* <!--Carousel indicators--> */}
 
-          <div
+          {/* <div
             className="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
             data-te-carousel-indicators
           >
@@ -89,12 +94,12 @@ const HomePage = () => {
               className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
               aria-label="Slide 3"
             ></button>
-          </div>
+          </div> */}
 
           {/* <!--Carousel items--> */}
-          <div className="relative w-full  overflow-hidden after:clear-both after:block after:content-['']">
+          {/* <div className="relative w-full  overflow-hidden after:clear-both after:block after:content-['']"> */}
             {/* <!--First item--> */}
-            <div
+            {/* <div
               className="relative  float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
               data-te-carousel-item
               data-te-carousel-active
@@ -104,16 +109,16 @@ const HomePage = () => {
                 className="block w-full h-[80vh]"
                 alt="Wild Landscape"
               />
-            </div>
+            </div> */}
             {/* <!--Second item--> */}
-            <div
+            {/* <div
               className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
               data-te-carousel-item
             >
               <img src={pic5} className="block w-full h-[80vh]" alt="Camera" />
-            </div>
+            </div> */}
             {/* <!--Third item--> */}
-            <div
+            {/* <div
               className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
               data-te-carousel-item
             >
@@ -123,10 +128,10 @@ const HomePage = () => {
                 alt="Exotic Fruits"
               />
             </div>
-          </div>
+          </div> */}
 
           {/* <!--Carousel controls - prev item--> */}
-          <button
+          {/* <button
             className="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
             type="button"
             data-te-target="#carouselExampleIndicators"
@@ -151,9 +156,9 @@ const HomePage = () => {
             <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
               Previous
             </span>
-          </button>
+          </button> */}
           {/* <!--Carousel controls - next item--> */}
-          <button
+          {/* <button
             className="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
             type="button"
             data-te-target="#carouselExampleIndicators"
@@ -180,7 +185,13 @@ const HomePage = () => {
             </span>
           </button>
         </div>
-      </div>
+      </div> */}
+
+
+
+
+
+
 
       {/* News and Announcement section starts here */}
       <div className=" p-4  ">
@@ -191,7 +202,7 @@ const HomePage = () => {
              <Link className="text-black no-underline hover:no-underline"> View All</Link>
             </div>
 
-            <div className="px-5 py-8 overflow-y-auto max-h-[170px] scrollbar-hidden ">
+            <div className="px-5 py-8 overflow-y-auto sm:max-h-[170px] scrollbar-hidden ">
             <div className="flex  ">
             <CiPaperplane className=""  />
                <p className="pl-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, fuga?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, nulla?  </p> 
@@ -259,6 +270,10 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
+
+
+
 
       {/* Gallery section starts here */}
       <div>
