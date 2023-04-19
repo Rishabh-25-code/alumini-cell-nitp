@@ -1,4 +1,6 @@
+import React, { Component } from "react";
 import { useState, useEffect } from "react";
+import { Datepicker, Input, initTE } from "tw-elements";
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -34,6 +36,7 @@ function App() {
   useEffect(() => {
     AOS.init();
     AOS.refresh();
+    initTE({ Datepicker, Input });
   }, []);
   // useEffect(() => {
   //   auth.onAuthStateChanged((user) => {

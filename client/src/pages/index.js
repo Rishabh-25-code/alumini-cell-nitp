@@ -17,12 +17,5 @@ import About from "./About/About";
 import TeamCard from "./Team/TeamCard";
 import TeamCard2 from "./Team/TeamCard2";
 import NewsId from "./Newsletter/NewsId";
-// Initialization for ES Users
-// import {
-//     Carousel,
-//     initTE,
-//   } from "tw-elements";
-  
-//   initTE({ Carousel });
 
 export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner,Donate,Resources,Interaction,About, TeamCard, TeamCard2, NewsId };
