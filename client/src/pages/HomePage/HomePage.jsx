@@ -1,6 +1,7 @@
 import "./HomePage.scss";
 import { useRef, useEffect } from "react";
 import homePageImg from "../../../public/images/homePageImg.jpg";
+import "tw-elements";
 import { Carousel, initTE, Ripple } from "tw-elements";
 
 const HomePage = () => {
