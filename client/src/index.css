@@ -20,6 +20,9 @@
 body{
   background-color: #000000;
 }
+a:link {
+  text-decoration: none;
+}
 
 /* <html class="h-full bg-gray-50">
 <body class="h-full"> */
