@@ -90,7 +90,7 @@ const HomePage = () => {
           >
             <a
               className="text-white decoration-none hover:text-white"
-              href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320"
+              href=""
             >
               READ MORE
             </a>
