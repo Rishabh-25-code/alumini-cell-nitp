@@ -219,22 +219,3 @@ function CreateNews() {
 }
 
 export default CreateNews;
-
-// import React from 'react'
-// import './Newsletter.scss'
-// import Heading from '../../components/Headings/Heading'
-// import News from './News'
-// import newsDashboard from './addNews'
-
-// const Newsletter = () => {
-//   return (
-//     <div className='pt-16'>
-//       <Heading heading="NEWS" />
-//       <div className='news-grid lg:max-w-[85rem] m-auto'>
-//         <newsDashboard />
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Newsletter

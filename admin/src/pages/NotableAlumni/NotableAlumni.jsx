@@ -47,4 +47,4 @@ const NotableAlumni = () => {
   )
 }
 
-export default NotableAlumni
+export default NotableAlumni;
