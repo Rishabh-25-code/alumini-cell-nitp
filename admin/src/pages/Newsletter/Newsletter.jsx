@@ -64,8 +64,8 @@ const Newsletter = () => {
           </div>
         ) : (
           newsletters.map((news, index) => (
-            <div key={index} className="">
-              <News date={"1-02-2023"} title={news.title} info={news.details} />
+            <div key={index} classNfame="">
+              <News date={"1-02-2023"} title={news.title} info={news.details} image={news.image} />
               <div className="justify-center flex space-x-10">
                 <button
                   onClick={() => deleteNews(news.uid)}
