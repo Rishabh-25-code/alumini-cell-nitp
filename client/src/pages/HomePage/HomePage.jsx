@@ -1,11 +1,11 @@
 import "./HomePage.scss";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import homePageImg from "../../../public/images/homePageImg.jpg";
-import "tw-elements";
-import { Carousel, initTE, Ripple } from "tw-elements";
-initTE({ Ripple });
-initTE({ Carousel });
+// import homePageImg from "../../../public/images/homePageImg.jpg";
+// import "tw-elements";
+// import { Carousel, initTE, Ripple } from "tw-elements";
+// initTE({ Ripple });
+// initTE({ Carousel });
 import { CiPaperplane } from "react-icons/ci";
 import pic1 from "../../../public/images/pic1.jpg";
 import pic2 from "../../../public/images/pic2.jpg";
@@ -15,7 +15,7 @@ import pic5 from "../../../public/images/pic5.jpg";
 import pic6 from "../../../public/images/pic6.jpg";
 import pic7 from "../../../public/images/pic7.jpg";
 import pic8 from "../../../public/images/pic8.jpg";
-import director from "../../../public/images/PKJ_Desk Photo.jpg";
+// import director from "../../../public/images/PKJ_Desk Photo.jpg";
 
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
@@ -23,7 +23,6 @@ const HomePage = () => {
   return (
     <>
       <div className="pt-16 bg-black h-1/5">
-        <div className=" bg-black h-1/5">
           <div className="relative flex items-center justify-center w-full h-[100vh] overflow-hidden bg-black after:clear-both after:block after:content-['']">
             <div className="flex items-center justify-center h-full">
               {/* <video className="h-[100vh] w-full" autoPlay={true} loop={true} muted={true}>
@@ -51,31 +50,6 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-
-          <div className="grid bg-black text-white p-20  gap-6 text-center md:grid-cols-3 lg:gap-12">
-            <div className="mb-12 md:mb-0">
-              <h1 className="mb-4 text-5xl font-semibold text-center md:text-left">
-                From Director's Desk
-              </h1>
-              <h5 className="mb-4 text-2xl font-semibold text-center md:text-left">
-                Prof. P. K. Jain
-              </h5>
-              <ul className="text-center md:text-left">
-                <h6 className="mb-4 font-semibold text-primary dark:text-primary-500">
-                  Director of NIT Patna
-                </h6>
-                <h6 className="mb-4 font-semibold text-primary dark:text-primary-500">
-                  Field/ Area of Specialization: Electronics and Communication
-                  Engineering
-                </h6>
-                <h6 className="mb-4 font-semibold text-primary dark:text-primary-500">
-                  Dean - Alumni and Corporate Relations
-                </h6>
-                {/* <h6 className="mb-4 font-semibold text-primary dark:text-primary-500">
-              
-            </h6> */}
-              </ul>
-            </div>
 
             {/* News and Announcement section starts here */}
             <div className=" p-4  ">
@@ -323,9 +297,7 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-          </div>
         </div>
-      </div>
     </>
   );
 };
