@@ -230,7 +230,7 @@ const HomePage = () => {
                 >
                   <a
                     className=" decoration-white"
-                    href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320"
+//                     href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320"
                   >
                     READ MORE
                   </a>
