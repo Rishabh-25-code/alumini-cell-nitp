@@ -1,0 +1,171 @@
+[class*="bg-shape-"] {
+    position: absolute;
+}
+
+.single {
+    margin: 30px 30px 30px 30px;
+    width: 337px;
+    box-shadow: 0px 10px 100px 2px rgba(46, 61, 98, 0.3);
+    text-align: center;
+    position: relative;
+    padding-bottom: 60px;
+    padding-top: 57px;
+    transform-origin: top;
+    transition: transform 500ms ease;
+    cursor: pointer;
+}
+
+.single:hover {
+    transform: scale(0.85) scaleY(1.2) scaleX(1) translateY(-0%);
+}
+
+.inner {
+    transform-origin: top;
+    transition: transform 500ms ease;
+    transform: scaleY(1);
+}
+
+.single:hover .inner {
+    transform: scaleY(0.8);
+}
+
+.image {
+    width: 165px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid white;
+    transition: all 500ms ease;
+    object-fit: cover;
+    height: 165px;
+}
+
+.social {
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 500ms ease;
+}
+
+.single:hover .social {
+    opacity: 1;
+    visibility: visible;
+}
+
+.social>#socialLinks {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    opacity: 1;
+    border: 2px solid transparent;
+    transition: all 500ms ease;
+}
+
+#socialLinks:hover {
+    text-decoration: none;
+    background-color: black;
+    border: 2px solid #f9224b;
+}
+
+#socialLinks:hover #socialLinks .socialIcons {
+    color: #f9224b;
+}
+
+.single:hover #memberDesignation,
+.single:hover #memberName {
+    color: white;
+}
+
+.social>#socialLinks .socialIcons {
+    color: #f9224b;
+    transition: all 500ms ease;
+}
+
+.social>#socialLinks:hover {
+    opacity: 1;
+}
+
+.social>#socialLinks:hover .socialIcons {
+    color: #f9224b;
+}
+
+.social #socialLinks+#socialLinks {
+    margin-left: 10px;
+}
+
+.circle::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 153px;
+    height: 117px;
+    content: "";
+    background-image: url(/src/Components/Teams/team-circle-1-1.png);
+    transform: perspective(200px) scaleX(0) scaleY(0);
+    transition: transform 500ms ease, opacity 500ms ease;
+    opacity: 0;
+    transform-origin: right top;
+}
+
+.circle::after {
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    width: 140px;
+    height: 156px;
+    content: "";
+    background-image: url(/src/Components/Teams/team-circle-1-2.png);
+    transform: perspective(150px) scaleX(0) scaleY(0);
+    transition: transform 500ms ease, opacity 500ms ease;
+    opacity: 0;
+    transform-origin: let bottom;
+}
+
+.single:hover .circle::before,
+.single:hover .circle::after {
+    opacity: 0.3;
+    transform: perspective(200px) scaleX(1) scaleY(0.8);
+}
+
+.single::before {
+    content: "";
+    border-radius: 5px;
+    background-image: linear-gradient(132deg, #f9224b 50%, #000 50%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(1, 0);
+    transform-origin: bottom;
+    transition: transform 500ms ease;
+}
+
+.single:hover::before {
+    transform: scale(1, 1);
+    transform-origin: top;
+}
+
+.shape {
+    top: 35px;
+    left: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .single {
+        margin: 30px 0px 30px 0px;
+    }
+}
