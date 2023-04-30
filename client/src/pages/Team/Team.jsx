@@ -52,6 +52,11 @@ const Team = () => {
     },
     {
       img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
+      name2: "Sudhanshu Ranjan",
+      detail2: "Team Member",
+    },
+    {
+      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
       name2: "Rajnish Kumar",
       detail2: "Team Member ",
     },
@@ -61,8 +66,18 @@ const Team = () => {
       detail2: "Team Member",
     },
     {
-      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
-      name2: "Akash Kumar",
+      img2: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png",
+      name2: "Vaishnavi Chaudhary",
+      detail2: "Team Member",
+    },
+    {
+      img2: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png",
+      name2: "Sakshi Shukla",
+      detail2: "Team Member",
+    },
+    {
+      img2: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png",
+      name2: "Firdaus Jawed",
       detail2: "Team Member",
     },
   ];
