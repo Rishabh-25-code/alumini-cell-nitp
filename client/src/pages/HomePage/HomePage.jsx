@@ -199,7 +199,7 @@ const HomePage = () => {
 
 
         <div className='flex flex-col items-center justify-center gap-20 bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto mb-24 z-[1999999]'>
-          <h3 data-aos="fade-up" className='text-center font-bold text-4xl pt-20 text-sky-500 decoration-gray-500 underline underline-offset[1px]'>Become a Member</h3>
+          <h3 data-aos="fade-up" className='text-center font-bold text-5xl pt-20 text-sky-500'>Become a Member</h3>
           <p className='text-lg font-medium text-center'>
             Register now and become a member of <br />Alumni Association of NIT Patna.
           </p>
