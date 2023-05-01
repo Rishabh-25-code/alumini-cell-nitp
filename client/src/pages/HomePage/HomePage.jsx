@@ -2,14 +2,6 @@ import "./HomePage.scss";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CiPaperplane } from "react-icons/ci";
-import pic1 from "../../../public/images/pic1.jpg";
-import pic2 from "../../../public/images/pic2.jpg";
-import pic3 from "../../../public/images/pic3.jpg";
-import pic4 from "../../../public/images/pic4.jpg";
-import pic5 from "../../../public/images/pic5.jpg";
-import pic6 from "../../../public/images/pic6.jpg";
-import pic7 from "../../../public/images/pic7.jpg";
-import pic8 from "../../../public/images/pic8.jpg";
 import Newsletter from "../Newsletter/Newsletter";
 
 
@@ -18,19 +10,19 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="pt-16 bg-black h-1/5">
+      <div className="bg-black h-1/5">
         <div className="relative flex items-center justify-center w-full h-[100vh] overflow-hidden bg-black after:clear-both after:block after:content-['']">
           <div className="flex items-center justify-center h-full">
-            <div className="video-container relative">
+            <div className="video-container">
               <video autoPlay={true} loop={true} muted={true}>
                 <source
                   src="https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/videos%2FNITP%20Video.mp4?alt=media&token=29071eb1-2639-4781-8231-59c64b71f319"
                   type="video/mp4"
                 />
               </video>
-              {/* <div className="h-[100vh] w-full bg-gray-700 absolute top-0"></div> */}
+              <div className="h-[100vh] w-full bg-black bg-opacity-50 absolute top-0"></div>
             </div>
-            <div className="absolute inset-x-[15%] flex flex-col gap-3 items-center justify-center py-20 text-center text-red-100">
+            <div className="absolute inset-x-[15%] flex flex-col gap-3 items-center justify-center py-20 text-center text-white">
               <h5 className="lg:text-4xl md:text-3xl text-2xl font-bold font-serif">
                 Connect. Give. Cherish.
               </h5>
@@ -224,43 +216,43 @@ const HomePage = () => {
               <div className="overflow-hidden  ">
                 <img
                   className="border-black rounded-3xl max-w-full h-auto aspect-square hover:scale-125 duration-500 p-2 "
-                  src={pic2}
+                  src="/images/pic2.jpg"
                 />
               </div>
               <div className="my-6 overflow-hidden  ">
                 <img
                   className="border-black rounded-3xl w-full h-auto aspect-square hover:scale-125 duration-500 p-2  "
-                  src={pic1}
+                  src="/images/pic1.jpg"
                 />
               </div>
               <div className="my-6 overflow-hidden ">
                 <img
                   className="border-black rounded-3xl w-full  aspect-square p-2 hover:scale-125 duration-500 "
-                  src={pic3}
+                  src="/images/pic3.jpg"
                 />
               </div>
               <div className="my-6 overflow-hidden ">
                 <img
                   className="border-black rounded-3xl w-full aspect-square p-2 hover:scale-125 duration-500 "
-                  src={pic8}
+                  src="/images/pic8.jpg"
                 />
               </div>
               <div className="my-6 overflow-hidden ">
                 <img
                   className="border-black rounded-3xl w-full aspect-square p-2 hover:scale-125 duration-500 "
-                  src={pic5}
+                  src="/images/pic6.jpg"
                 />
               </div>
               <div className="my-6  overflow-hidden">
                 <img
                   className="border-black rounded-3xl w-full aspect-square p-2 hover:scale-125 duration-500 "
-                  src={pic7}
+                  src="/images/pic5.jpg"
                 />
               </div>
               <div className="my-6  overflow-hidden ">
                 <img
                   className="border-black rounded-3xl max-w-full aspect-square p-2 hover:scale-125 duration-500 "
-                  src={pic4}
+                  src="/images/pic4.jpg"
                 />
               </div>
               <div className=" aspect-square sm:my-6 p-2 max-w-full h-auto flex align-center   ">

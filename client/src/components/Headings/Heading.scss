@@ -1,5 +1,6 @@
 .heading-banner {
-    background: url('https://alumini-nitp.vercel.app/images/donation.jpg');
+    background: url('/images/donation.jpg');
+
     height: 100vh;
     background-position: 0 75%;
     background-repeat: no-repeat;
@@ -7,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .heading-banner::before {
