@@ -1,11 +1,6 @@
 import "./HomePage.scss";
 import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import homePageImg from "../../../public/images/homePageImg.jpg";
-// import "tw-elements";
-// import { Carousel, initTE, Ripple } from "tw-elements";
-// initTE({ Ripple });
-// initTE({ Carousel });
 import { CiPaperplane } from "react-icons/ci";
 import pic1 from "../../../public/images/pic1.jpg";
 import pic2 from "../../../public/images/pic2.jpg";
@@ -16,7 +11,7 @@ import pic6 from "../../../public/images/pic6.jpg";
 import pic7 from "../../../public/images/pic7.jpg";
 import pic8 from "../../../public/images/pic8.jpg";
 import Newsletter from "../Newsletter/Newsletter";
-// import director from "../../../public/images/PKJ_Desk Photo.jpg";
+
 
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
@@ -26,22 +21,16 @@ const HomePage = () => {
       <div className="pt-16 bg-black h-1/5">
         <div className="relative flex items-center justify-center w-full h-[100vh] overflow-hidden bg-black after:clear-both after:block after:content-['']">
           <div className="flex items-center justify-center h-full">
-            {/* <video className="h-[100vh] w-full" autoPlay={true} loop={true} muted={true}>
-            <source
-              src="https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/videos%2Felectric.mp4?alt=media&token=3aeb8b8b-5090-4c40-9087-188875adfe3b"
-              type="video/mp4"
-              className="h-[100vh] w-full"
-            />
-          </video> */}
-            <div class="video-container">
+            <div className="video-container relative">
               <video autoPlay={true} loop={true} muted={true}>
                 <source
                   src="https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/videos%2FNITP%20Video.mp4?alt=media&token=29071eb1-2639-4781-8231-59c64b71f319"
                   type="video/mp4"
                 />
               </video>
+              {/* <div className="h-[100vh] w-full bg-gray-700 absolute top-0"></div> */}
             </div>
-            <div className="absolute inset-x-[15%] flex flex-col gap-3 items-center justify-center py-20 text-center text-white">
+            <div className="absolute inset-x-[15%] flex flex-col gap-3 items-center justify-center py-20 text-center text-red-100">
               <h5 className="lg:text-4xl md:text-3xl text-2xl font-bold font-serif">
                 Connect. Give. Cherish.
               </h5>
@@ -60,11 +49,11 @@ const HomePage = () => {
         </h1>
         <div className="flex justify-evenly my-4">
           {/* <div className="bg-white flex justify-start max-w-[1600px] my-4   sm:grid sm:grid-col-3 md:grid-cols-3 lg:grid-cols-4  mx-auto"> */}
-          <div className="px-5 sm:col-span-1 md:col-span-2 lg:col-span-3 bg-gray-700 rounded-[20px]">
-            <div className="flex justify-between pb-2">
+          <div className="px-5 sm:col-span-1 md:col-span-2 lg:col-span-3 bg-gray-700 rounded-[20px] relative py-10">
+            <div className="flex justify-between pb-2 absolute right-8 -mt-3">
               {/* <h1 className="text-black text-3xl underline">News & Announcement</h1> */}
               <Link
-                className="text-black text-3xl no-underline hover:no-underline"
+                className="text-sky-500 text-base font-medium no-underline hover:no-underline"
                 to="/news"
               >
                 {" "}
@@ -72,8 +61,9 @@ const HomePage = () => {
               </Link>
             </div>
 
-            <div className="py-8 overflow-y-auto max-h-[160px] sm:max-h-[150px] md:max-h-[290px] lg:max-h-[170px] overflow-hidden scrollbar-hidden">
-              <div className="flex  ">
+
+            <div className="overflow-y-auto overflow-hidden scrollbar-hidden max-h-[12rem] sm:max-h-[14rem] md:max-h-[15rem] lg:max-h-[15rem] mt-6">
+              <div className="flex">
                 <CiPaperplane />
                 <p className="pl-2">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -86,66 +76,44 @@ const HomePage = () => {
                 <p className="pl-2">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
-                  adipisicing elit. Dicta, odio?{" "}
+                  adipisicing elit. Autem, nulla?{" "}
                 </p>
               </div>
               <div className="flex">
                 <CiPaperplane />
                 <p className="pl-2">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Minus, consectetur?{" "}
+                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
+                  adipisicing elit. Autem, nulla?{" "}
                 </p>
               </div>
               <div className="flex">
                 <CiPaperplane />
                 <p className="pl-2">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum dolor, sit amet consectetur
-                  adipisicing elit. Saepe, optio!{" "}
+                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
+                  adipisicing elit. Autem, nulla?{" "}
                 </p>
               </div>
               <div className="flex">
                 <CiPaperplane />
                 <p className="pl-2">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Eum, at.{" "}
+                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
+                  adipisicing elit. Autem, nulla?{" "}
                 </p>
               </div>
               <div className="flex">
                 <CiPaperplane />
                 <p className="pl-2">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Porro, commodi!{" "}
-                </p>
-              </div>
-              <div className="flex">
-                <CiPaperplane />
-                <p className="pl-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Consectetur, facilis!{" "}
-                </p>
-              </div>
-              <div className="flex">
-                <CiPaperplane />
-                <p className="pl-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Et, doloremque.{" "}
-                </p>
-              </div>
-              <div className="flex">
-                <CiPaperplane />
-                <p className="pl-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Sed, dolorem.{" "}
+                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
+                  adipisicing elit. Autem, nulla?{" "}
                 </p>
               </div>
             </div>
+
+
           </div>
 
           <div className="bg-black rounded-[20px] sm:px-5 my-10 md:my-0  sm:col-span-2 md:col-span-1 lg:col-span-1   ">
@@ -230,7 +198,7 @@ const HomePage = () => {
               faculty.
             </p>
             <a
-              // href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320"
+            // href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320"
             >
               <button
                 type="button"
@@ -251,47 +219,47 @@ const HomePage = () => {
               </span>
             </h1>
           </div>
-          <div class="  columns-4  sm:columns-8 mx-3 mt-4 gap-5 bg-black  ">
+          <div className="  columns-4  sm:columns-8 mx-3 mt-4 gap-5 bg-black  ">
             <div className="columns-1 ">
               <div className="overflow-hidden  ">
                 <img
-                  class="border-black rounded-3xl max-w-full h-auto aspect-square hover:scale-125 duration-500 p-2 "
+                  className="border-black rounded-3xl max-w-full h-auto aspect-square hover:scale-125 duration-500 p-2 "
                   src={pic2}
                 />
               </div>
               <div className="my-6 overflow-hidden  ">
                 <img
-                  class="border-black rounded-3xl w-full h-auto aspect-square hover:scale-125 duration-500 p-2  "
+                  className="border-black rounded-3xl w-full h-auto aspect-square hover:scale-125 duration-500 p-2  "
                   src={pic1}
                 />
               </div>
               <div className="my-6 overflow-hidden ">
                 <img
-                  class="border-black rounded-3xl w-full  aspect-square p-2 hover:scale-125 duration-500 "
+                  className="border-black rounded-3xl w-full  aspect-square p-2 hover:scale-125 duration-500 "
                   src={pic3}
                 />
               </div>
               <div className="my-6 overflow-hidden ">
                 <img
-                  class="border-black rounded-3xl w-full aspect-square p-2 hover:scale-125 duration-500 "
+                  className="border-black rounded-3xl w-full aspect-square p-2 hover:scale-125 duration-500 "
                   src={pic8}
                 />
               </div>
               <div className="my-6 overflow-hidden ">
                 <img
-                  class="border-black rounded-3xl w-full aspect-square p-2 hover:scale-125 duration-500 "
+                  className="border-black rounded-3xl w-full aspect-square p-2 hover:scale-125 duration-500 "
                   src={pic5}
                 />
               </div>
               <div className="my-6  overflow-hidden">
                 <img
-                  class="border-black rounded-3xl w-full aspect-square p-2 hover:scale-125 duration-500 "
+                  className="border-black rounded-3xl w-full aspect-square p-2 hover:scale-125 duration-500 "
                   src={pic7}
                 />
               </div>
               <div className="my-6  overflow-hidden ">
                 <img
-                  class="border-black rounded-3xl max-w-full aspect-square p-2 hover:scale-125 duration-500 "
+                  className="border-black rounded-3xl max-w-full aspect-square p-2 hover:scale-125 duration-500 "
                   src={pic4}
                 />
               </div>
