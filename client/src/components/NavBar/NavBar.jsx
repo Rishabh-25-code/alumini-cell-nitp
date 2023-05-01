@@ -62,7 +62,7 @@ const NavBar = () => {
         "border-b bg-gray-700 transition-all delay-100  ease-in-out bg-opacity-20 backdrop-blur-md border-gray-700 shadow-md"
       }`}
     >
-      <div className="flex items-center justify-between lg:w-[75rem] md:w-[100%] px-4 md:px-3 py-5 m-auto text-lg">
+      <div className="flex items-center justify-between lg:w-[75rem] md:w-[100%] px-4 md:px-3 py-4 m-auto text-lg">
         <div className="flex items-center">
           <Link to="/">
             <img src="/images/logo.svg" alt="logo" className="h-12" />

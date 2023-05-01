@@ -56,7 +56,7 @@ const Footer = () => {
           © {year} NITP, All Rights Reserved.
         </p>
         <p>
-          {/* Designed & Developed by <a className="text-base font-medium text-blue-500" href="#">Rishabh Prakash</a>. */}
+          Designed & Developed by <a className="text-base font-medium text-blue-500" href="#">Electrical Enginneers</a>.
           
         </p>
       </div>

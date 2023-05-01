@@ -1,9 +1,12 @@
 import React from 'react'
 import './Heading.scss'
 
-const Heading = ({ heading }) => {
+const Heading = ({ heading,heading1 }) => {
     return (
-        <h1 className='font-extrabold text-transparent lg:text-7xl md:text-6xl text-4xl bg-clip-text bg-gradient-to-r from-blue-100  to-sky-600 m-10 large-heading'>{heading}</h1>
+        <div className='heading-banner flex flex-col'>
+            <h2 className='heading-head-text'>{heading}</h2>
+            <p className='heading-head-text text-6xl pt-4'>{heading1}</p>
+        </div>
     )
 }
 

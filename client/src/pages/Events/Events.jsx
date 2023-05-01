@@ -5,7 +5,7 @@ import Card from "../../components/Carousel/Card";
 
 const Events = () => {
   return (
-    <div className='pt-16'>
+    <div>
       <Heading heading="EVENTS"></Heading>
       <Card
         head="Important events that were held in our college."

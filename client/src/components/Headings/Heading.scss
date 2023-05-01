@@ -1,4 +1,111 @@
-.large-heading{
-   border-left: 5px solid rgb(255, 114, 138);
-   padding: 0 1rem;
+.heading-banner {
+    background: url('images/donation.jpg');
+    height: 100vh;
+    background-position: 0 75%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading-banner::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("https://ragam.co.in/noise_big.svg");
+    mix-blend-mode: screen;
+    opacity: 18%;
+    z-index: 5;
+    top: 0;
+}
+
+.heading-banner::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background: linear-gradient(180deg, transparent, #000);
+    background-size: 120% 100%;
+    z-index: 7;
+}
+
+
+.heading-head-text {
+    font-size: 7.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: #ebe6d0;
+    z-index: 8;
+    line-height: 6.5rem;
+}
+
+.heading-head-text::after {
+    content: "";
+    background: linear-gradient(#000, #435445);
+}
+
+
+@media screen and (max-width:760px) {
+    .heading-card-container {
+        width: 95%;
+        display: flex;
+        background-color: #111317;
+        min-height: 460px;
+        overflow: hidden;
+        flex-direction: column;
+    }
+
+    .heading_profile_details {
+        justify-content: space-around;
+        padding: 1.7rem;
+        display: flex;
+        flex-direction: column;
+        color: #ebe6d0;
+        width: 100%;
+    }
+
+    .heading-head-text {
+        font-size: 4.5rem;
+        font-weight: 600;
+        text-align: center;
+        color: #ebe6d0;
+        z-index: 8;
+        line-height: 4.5rem;
+    }
+
+    .heading-cards {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        gap: 3.5rem;
+        margin-bottom: 5rem;
+    }
+
+}
+
+
+@media screen and (max-width:480px) {
+    .heading-head-text {
+        font-size: 3.5rem;
+        font-weight: 600;
+        text-align: center;
+        color: #ebe6d0;
+        z-index: 8;
+        line-height: 3rem;
+    }
+
+    .heading-cards {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        gap: 3.5rem;
+        margin-bottom: 5rem;
+    }
 }

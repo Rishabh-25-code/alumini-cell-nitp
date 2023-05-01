@@ -6,11 +6,8 @@ import Donation from "../../../public/images/donation.jpg";
 
 const Donate = () => {
   return (
-    <div className="pt-16 bg-black">
-      <Heading heading="Donate"></Heading>
-      <div className="flex items-center justify-center h-full ">
-        <img className="object-cover h-100 w-full .. " src={Donation} />
-      </div>
+    <div className="bg-black">
+      <Heading heading="Donate" ></Heading>
 
       <div className="absolute inset-x-[5%] flex flex-col gap-3 items-center justify-center py-10 text-center text-white">
         <h5 className="lg:text-3xl md:text-2xl text-1xl font-bold font-serif">
@@ -23,7 +20,7 @@ const Donate = () => {
 
       <div className="w-[100%] grid bg-blue text-white relative items-center mt-36">
         <div className="mb-12 md:mb-0">
-          <p className="mb-4 text-xl md:text-left px-5 text-justify">
+          <p className="mb-4 text-lg md:text-left px-5 text-justify">
             As NITP campus and community grow, so must its financial resources.
             Support for the Campaign for NITP will ensure the success of the
             College's mission to offer an excellent education to promising and
@@ -51,7 +48,7 @@ const Donate = () => {
           </div>
         </div>
       </div>
-      <p className="ml-5">
+      {/* <p className="ml-5">
         <li>Here is the list of Top Donors of NIT Patna: Top Donors</li>
         <li>To donate, please visit : click here</li>
         <li>For any query, please contact-</li>
@@ -60,7 +57,7 @@ const Donate = () => {
         <li>NAtional Institute of Technology, Patna</li>
         <li> Ph. 0612 237 1715 </li>
         <li>E-mail: </li>
-      </p>
+      </p> */}
     </div>
   );
 };

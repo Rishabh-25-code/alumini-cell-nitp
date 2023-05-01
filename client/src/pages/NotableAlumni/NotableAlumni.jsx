@@ -34,8 +34,8 @@ const NotableAlumni = () => {
   ]
 
   return (
-    <div className='pt-16'>
-      <Heading heading="Notable Alumni of NIT Patna"></Heading>
+    <div>
+      <Heading heading="Notable Alumni" heading1="of NIT Patna"></Heading>
       <div className='project-container'>
         {
           data.map((project,i)=>(
