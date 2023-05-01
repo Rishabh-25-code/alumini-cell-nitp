@@ -11,11 +11,11 @@ const AlumniCorner = () => {
         head="Nobody is bothered about an instiution more than its Alumini."
         writer="~ K Narayan Murthy"
       />
-      {/* <Profile
+      <Profile
         name="Lorem Ipsum"
         designation="Lorem Ipsum"
         img="https://picsum.photos/200"
-      /> */}
+      />
     </div>
   )
 }
