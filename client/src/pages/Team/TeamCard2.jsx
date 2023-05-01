@@ -11,8 +11,7 @@ const TeamCard2 = ({ img2, name2, detail2 }) => {
         className="text-center text-gray-500 dark:text-gray-400"
       >
         <img
-          data-aos="zoom-in"
-          className="mx-auto mb-4 w-36 h-36 rounded-full"
+          className="mx-auto mb-4 w-36 h-36 rounded-full hover:scale-105 transition-all delay-75 ease-in"
           src={img2}
           alt="Bonnie Avatar"
         />
@@ -32,7 +31,7 @@ const TeamCard2 = ({ img2, name2, detail2 }) => {
           <li>
             <a
               href="https://instagram.com"
-              className="transition ease-in delay-50 text-white-500 hover:text-white-600 hover:scale-[110%]"
+              className="transition text-white ease-in delay-50 text-white-500 hover:text-white-600 hover:scale-[110%]"
             >
               <FaGithub size={22} />
             </a>
