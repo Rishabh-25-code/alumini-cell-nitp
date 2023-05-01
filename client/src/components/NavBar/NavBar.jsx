@@ -33,8 +33,8 @@ const NavBar = () => {
       link: "/alumnicorner",
     },
     {
-      name: "Interaction",
-      link: "/interaction",
+      name: "Gallery",
+      link: "/gallery",
     },
     {
       name: "Donate",

@@ -5,7 +5,6 @@ import { CiPaperplane } from "react-icons/ci";
 import Newsletter from "../Newsletter/Newsletter";
 import SliderNews from "../../components/SliderNews/SliderNews";
 
-
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
 
@@ -34,25 +33,33 @@ const HomePage = () => {
           </div>
         </div>
 
-
         <h1 className="mb-2.5 mt-10 text-5xl font-medium leading-tight">
           <span className="ml-5 text-center align-baseline lg:text-[0.95em] md:text-[0.75em] sm: text-[0.55em] font-bold leading-none text-primary-700 bg-black">
             News & Announcement
           </span>
         </h1>
         <div className="newsNotification">
-          <div className="newsContainer"
+          <div
+            className="newsContainer"
             data-aos="fade-right"
-            data-aos-offset="150">
-            <div className="newsSVG"><img className="imgSection" src="/images/Alumni1.jpg" alt="not found" /></div>
-            <div><SliderNews /></div>
+            data-aos-offset="150"
+          >
+            <div className="newsSVG">
+              <img
+                className="imgSection"
+                src="/images/Alumni1.jpg"
+                alt="not found"
+              />
+            </div>
+            <div>
+              <SliderNews />
+            </div>
           </div>
 
-          <div className="newsPhoneView"><SliderNews /></div>
+          <div className="newsPhoneView">
+            <SliderNews />
+          </div>
         </div>
-
-
-
 
         {/* Director section starts here */}
         <h1 className="mb-2.5 mt-10 text-5xl font-medium leading-tight">
@@ -121,8 +128,6 @@ const HomePage = () => {
             </a>
           </div>
         </div>
-
-        
 
         {/* Gallery section starts here */}
         <div>
@@ -196,17 +201,23 @@ const HomePage = () => {
           </div>
         </div>
 
-
-
-        <div className='flex flex-col items-center justify-center gap-20 bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto mb-24 z-[1999999]'>
-          <h3 data-aos="fade-up" className='text-center font-bold text-5xl pt-20 text-sky-500'>Become a Member</h3>
-          <p className='text-lg font-medium text-center'>
-            Register now and become a member of <br />Alumni Association of NIT Patna.
+        <div className="flex flex-col items-center justify-center gap-20 bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto mb-24 z-[1999999]">
+          <h3
+            data-aos="fade-up"
+            className="text-center font-bold text-5xl pt-20 text-sky-500"
+          >
+            Become a Member
+          </h3>
+          <p className="text-lg font-medium text-center">
+            Register now and become a member of <br />
+            Alumni Association of NIT Patna.
           </p>
           <div>
-            <Link to="/register"><button className='px-5 py-2.5 animate-bounce bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600'>
-              Register Now
-            </button></Link>
+            <Link to="/register">
+              <button className="px-5 py-2.5 animate-bounce bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600">
+                Register Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>
