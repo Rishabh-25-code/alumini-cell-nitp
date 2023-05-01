@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CiPaperplane } from "react-icons/ci";
 import Newsletter from "../Newsletter/Newsletter";
+import SliderNews from "../../components/SliderNews/SliderNews";
 
 
 const HomePage = () => {
@@ -33,106 +34,25 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* News and Announcement section starts here */}
+
         <h1 className="mb-2.5 mt-10 text-5xl font-medium leading-tight">
           <span className="ml-5 text-center align-baseline lg:text-[0.95em] md:text-[0.75em] sm: text-[0.55em] font-bold leading-none text-primary-700 bg-black">
             News & Announcement
           </span>
         </h1>
-        <div className="flex justify-evenly my-4">
-          {/* <div className="bg-white flex justify-start max-w-[1600px] my-4   sm:grid sm:grid-col-3 md:grid-cols-3 lg:grid-cols-4  mx-auto"> */}
-          <div className="px-5 sm:col-span-1 md:col-span-2 lg:col-span-3 bg-gray-700 rounded-[20px] relative py-10">
-            <div className="flex justify-between pb-2 absolute right-8 -mt-3">
-              {/* <h1 className="text-black text-3xl underline">News & Announcement</h1> */}
-              <Link
-                className="text-sky-500 text-base font-medium no-underline hover:no-underline"
-                to="/news"
-              >
-                {" "}
-                View All
-              </Link>
-            </div>
-
-
-            <div className="overflow-y-auto overflow-hidden scrollbar-hidden max-h-[12rem] sm:max-h-[14rem] md:max-h-[15rem] lg:max-h-[15rem] mt-6">
-              <div className="flex">
-                <CiPaperplane />
-                <p className="pl-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
-                  adipisicing elit. Autem, nulla?{" "}
-                </p>
-              </div>
-              <div className="flex">
-                <CiPaperplane />
-                <p className="pl-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
-                  adipisicing elit. Autem, nulla?{" "}
-                </p>
-              </div>
-              <div className="flex">
-                <CiPaperplane />
-                <p className="pl-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
-                  adipisicing elit. Autem, nulla?{" "}
-                </p>
-              </div>
-              <div className="flex">
-                <CiPaperplane />
-                <p className="pl-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
-                  adipisicing elit. Autem, nulla?{" "}
-                </p>
-              </div>
-              <div className="flex">
-                <CiPaperplane />
-                <p className="pl-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
-                  adipisicing elit. Autem, nulla?{" "}
-                </p>
-              </div>
-              <div className="flex">
-                <CiPaperplane />
-                <p className="pl-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, fuga?Lorem ipsum, dolor sit amet consectetur
-                  adipisicing elit. Autem, nulla?{" "}
-                </p>
-              </div>
-            </div>
-
-
+        <div className="newsNotification">
+          <div className="newsContainer"
+            data-aos="fade-right"
+            data-aos-offset="150">
+            <div className="newsSVG"><img className="imgSection" src="/images/Alumni1.jpg" alt="not found" /></div>
+            <div><SliderNews /></div>
           </div>
 
-          <div className="bg-black rounded-[20px] sm:px-5 my-10 md:my-0  sm:col-span-2 md:col-span-1 lg:col-span-1   ">
-            <div className="px-5">
-              <h1 className="text-white text-3xl">Become a Member</h1>
-              <hr className="max-w-[25%] " />
-            </div>
-
-            <div className="py-4 px-5">
-              <p>
-                Register now and become a member of Alumni Association of NIT
-                Patna.
-              </p>
-            </div>
-            <div className=" flex justify-center">
-              <button
-                className="bg-gray-700 px-4 py-2 mx-[5em] mb-7 text-white rounded-full hover:bg-gray-800 hover:scale-110 transition-all duration-300 "
-                type="button"
-              >
-                <Link to="/register" className="">
-                  Register now
-                </Link>
-              </button>
-            </div>
-          </div>
+          <div className="newsPhoneView"><SliderNews /></div>
         </div>
-        {/* </div> */}
+
+
+
 
         {/* Director section starts here */}
         <h1 className="mb-2.5 mt-10 text-5xl font-medium leading-tight">
@@ -140,7 +60,7 @@ const HomePage = () => {
             From Director's Desk
           </span>
         </h1>
-        <div className="grid bg-gray-700 text-white p-20  gap-6 text-center md:grid-cols-3 lg:gap-12">
+        <div className="grid bg-gray-900 text-white p-20  gap-6 text-center md:grid-cols-3 lg:gap-12">
           <div className="mb-12 md:mb-0">
             {/* <h1 className="mb-4 text-5xl font-semibold text-center md:text-left">
                   From Director's Desk
@@ -201,6 +121,8 @@ const HomePage = () => {
             </a>
           </div>
         </div>
+
+        
 
         {/* Gallery section starts here */}
         <div>
@@ -271,6 +193,20 @@ const HomePage = () => {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+
+
+
+        <div className='flex flex-col items-center justify-center gap-20 bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto mb-24 z-[1999999]'>
+          <h3 data-aos="fade-up" className='text-center font-bold text-4xl pt-20 text-sky-500 decoration-gray-500 underline underline-offset[1px]'>Become a Member</h3>
+          <p className='text-lg font-medium text-center'>
+            Register now and become a member of <br />Alumni Association of NIT Patna.
+          </p>
+          <div>
+            <Link to="/register"><button className='px-5 py-2.5 animate-bounce bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600'>
+              Register Now
+            </button></Link>
           </div>
         </div>
       </div>

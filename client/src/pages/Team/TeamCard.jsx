@@ -8,7 +8,7 @@ const TeamCard = ({ img1, name1, detail1, detail11, img2, name2, detail2 }) => {
       <div data-aos="fade-up" className="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
         <a href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320">
           <img 
-            className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg"
+            className="w-full rounded-lg sm:rounded-none sm:rounded-l-lg hover:scale-105"
             src={img1}
             alt="Bonnie Avatar"
           />

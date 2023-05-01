@@ -25,6 +25,8 @@ import {
   About,
   NewsId
 } from "./pages/index";
+import Blog from "./pages/AlumniCorner/Blog";
+import ScrollToTop from "./hooks/useScrollToTop";
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
@@ -47,6 +49,7 @@ function App() {
     <>
       {/* <ToastContainer /> */}
       <Router>
+        <ScrollToTop />
         <Routes>
           <Route
             path="/"
@@ -133,6 +136,14 @@ function App() {
             element={
               <Layout>
                 <AlumniCorner />
+              </Layout>
+            }
+          />
+          <Route
+            path="/blog/:blogId"
+            element={
+              <Layout>
+                <Blog/>
               </Layout>
             }
           />
