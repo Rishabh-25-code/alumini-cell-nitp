@@ -7,7 +7,6 @@ import Events from "./Events";
 import Blogs from "./Blogs";
 import Testimonials from "./Testimonials";
 
-
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
 
@@ -46,9 +45,6 @@ const HomePage = () => {
             <div className="lg:w-[35rem] md:w-[28rem] w-[95%]"><SliderNews /></div>
           </div>
         </div>
-
-
-
 
         {/* Director section starts here */}
 
@@ -188,9 +184,11 @@ const HomePage = () => {
             Register now and become a member of <br />Alumni Association of NIT Patna.
           </p>
           <div>
-            <Link to="/register"><button className='px-5 py-2.5 animate-bounce bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600'>
-              Register Now
-            </button></Link>
+            <Link to="/register">
+              <button className="px-5 py-2.5 animate-bounce bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600">
+                Register Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>
