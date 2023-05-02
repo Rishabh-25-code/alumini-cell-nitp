@@ -129,7 +129,6 @@ const SliderNews = () => {
 
     <div className="slider">
       <div className="slide-track">
-
         {newsdata.map((obj, i) => {
           var pclass = "news news" + (i + 1);
           return (
@@ -138,7 +137,6 @@ const SliderNews = () => {
             </div>
           )
         })}
-
       </div>
     </div>
 

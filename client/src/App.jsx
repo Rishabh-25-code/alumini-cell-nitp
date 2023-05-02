@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./utils/Layout";
-import { auth } from "./firebase";
 import {
   Team,
   TeamCard,
@@ -23,7 +22,8 @@ import {
   Resources,
   Interaction,
   About,
-  NewsId
+  NewsId,
+  Blogs,
 } from "./pages/index";
 import Blog from "./pages/AlumniCorner/Blog";
 import ScrollToTop from "./hooks/useScrollToTop";
@@ -31,19 +31,11 @@ import ScrollToTop from "./hooks/useScrollToTop";
 // import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  // const [userName, setUserName] = useState("");
 
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       setUserName(user.displayName);
-  //     } else setUserName("");
-  //   });
-  // }, []);
 
   return (
     <>
@@ -116,6 +108,14 @@ function App() {
             }
           />
           <Route
+            path="/blogs"
+            element={
+              <Layout>
+                <Blogs />
+              </Layout>
+            }
+          />
+          <Route
             path="/login"
             element={
               <Layout>
@@ -143,11 +143,11 @@ function App() {
             path="/blog/:blogId"
             element={
               <Layout>
-                <Blog/>
+                <Blog />
               </Layout>
             }
           />
-           <Route
+          <Route
             path="/donate"
             element={
               <Layout>
@@ -155,7 +155,7 @@ function App() {
               </Layout>
             }
           />
-           <Route
+          <Route
             path="/resources"
             element={
               <Layout>
@@ -195,7 +195,7 @@ function App() {
               </Layout>
             }
           />
-          
+
         </Routes>
       </Router>
     </>

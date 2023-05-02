@@ -44,8 +44,8 @@ const Footer = () => {
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-3 md:order-3 lg:order-3 text-base'>
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-blue-700 mr-3'>|</h1><h1 className='text-lg font-semibold'>Contact Us</h1></div>
           <p className='max-w-[16rem] pt-4 text'>NIT Patna, Ashok Rajpath, Patna, Bihar-800005, India</p>
-          <p className='pt-2'>Ph : <a href="tel:+918207372732" className='text-blue-700 ml-2 font-semibold'>+91-0612-237 1715 / 237 2715</a></p>
-          <p className='pt-2'>Mail : <a href="mailto:tesla@nitp.ac.in" className='text-blue-700 ml-2 font-semibold'>alumni@nitp.ac.in</a></p>
+          <p className='pt-2'>Ph : <a href="tel:06122371715" className='text-blue-700 ml-2 font-semibold'>+91-0612 237 1715 / 237 2715</a></p>
+          <p className='pt-2'>Mail : <a href="mailto:alumni@nitp.ac.in" className='text-blue-700 ml-2 font-semibold'>alumni@nitp.ac.in</a></p>
         </div>
 
       </div>

@@ -43,10 +43,10 @@ const Gallery = () => {
                         {
                             gallery.map((img, index) => {
                                 return (
-                                        <img data-aos="fade-up" key={index} src={img.img} alt="gallery-photo" onClick={() => {
-                                            setCurrentImg(index);
-                                            setModal(true);
-                                        }} />
+                                    <img data-aos="fade-up" key={index} src={img.img} alt="gallery-photo" onClick={() => {
+                                        setCurrentImg(index);
+                                        setModal(true);
+                                    }} />
                                 )
                             })
                         }
