@@ -10,6 +10,8 @@
     position: relative;
     padding-bottom: 60px;
     padding-top: 57px;
+    padding-left: 20px;
+    padding-right: 20px;
     transform-origin: top;
     transition: transform 500ms ease;
     cursor: pointer;
@@ -143,7 +145,7 @@
 .single::before {
     content: "";
     border-radius: 5px;
-    background-image: linear-gradient(132deg, #f9224b 50%, #000 50%);
+    background-image: linear-gradient(132deg, #2031b0 50%, #000 50%);
     position: absolute;
     top: 0;
     left: 0;
