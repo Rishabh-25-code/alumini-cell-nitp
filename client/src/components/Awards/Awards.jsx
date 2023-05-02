@@ -13,7 +13,7 @@ function Awards() {
                         <Profile
                             name="Lorem Ipsum"
                             designation="Lorem Ipsum"
-                            img="../../../public/images/faculty.png"
+                            img="/images/faculty.png"
                             info="Director's Excellence Award"
                         />
                     </td>
@@ -21,7 +21,7 @@ function Awards() {
                         <Profile
                             name="Lorem Ipsum"
                             designation="Lorem Ipsum"
-                            img="../../../public/images/faculty.png"
+                            img="/images/faculty.png"
                             info="Director's Excellence Award"
                         />
                     </td>
@@ -29,7 +29,7 @@ function Awards() {
                         <Profile
                             name="Lorem Ipsum"
                             designation="Lorem Ipsum"
-                            img="../../../public/images/faculty.png"
+                            img="/images/faculty.png"
                             info="Director's Excellence Award"
                         />
                     </td>
@@ -37,7 +37,7 @@ function Awards() {
                         <Profile
                             name="Lorem Ipsum"
                             designation="Lorem Ipsum"
-                            img="../../../public/images/faculty.png"
+                            img="/images/faculty.png"
                             info="Director's Excellence Award"
                         />
                     </td>
@@ -47,7 +47,7 @@ function Awards() {
                         <Profile
                             name="Lorem Ipsum"
                             designation="Lorem Ipsum"
-                            img="../../../public/images/faculty.png"
+                            img="/images/faculty.png"
                             info="Director's Excellence Award"
                         />
                     </td>
@@ -55,7 +55,7 @@ function Awards() {
                         <Profile
                             name="Lorem Ipsum"
                             designation="Lorem Ipsum"
-                            img="../../../public/images/faculty.png"
+                            img="/images/faculty.png"
                             info="Director's Excellence Award"
                         />
                     </td>
@@ -63,7 +63,7 @@ function Awards() {
                         <Profile
                             name="Lorem Ipsum"
                             designation="Lorem Ipsum"
-                            img="../../../public/images/faculty.png"
+                            img="/images/faculty.png"
                             info="Director's Excellence Award"
                         />
                     </td>
@@ -71,7 +71,7 @@ function Awards() {
                         <Profile
                             name="Lorem Ipsum"
                             designation="Lorem Ipsum"
-                            img="../../../public/images/faculty.png"
+                            img="/images/faculty.png"
                             info="Director's Excellence Award"
                         />
                     </td>

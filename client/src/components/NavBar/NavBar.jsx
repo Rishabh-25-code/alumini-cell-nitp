@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { FiX } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import './NavBar.scss'
 
 const NavBar = () => {
   const [menu, setMenu] = useState(false);
@@ -48,6 +47,10 @@ const NavBar = () => {
       link: "/Events",
     },
     {
+      name: "Blogs",
+      link: "/blogs",
+    },
+    {
       name: "Resources",
       link: "/resources",
     },
@@ -71,20 +74,6 @@ const NavBar = () => {
         </div>
         <div className="flex items-center">
           <ul className="md:flex gap-7 hidden items-center">
-            {/* {navLinks.map((link, index) => (
-              <li key={index}>
-                <Link style={{ textDecoration: "none" }} to={link.link}>
-                  <p
-                    onClick={() => setFocus(index)}
-                    className={`text-blue-300 hover:text-blue-400 ${index === focus && "text-white"
-                      }`}
-                  >
-                    {link.name}
-                  </p>
-                </Link>
-              </li>
-            ))} */}
-
             <li>
               <Link style={{ textDecoration: "none" }} to="/about">
                 <p
@@ -237,7 +226,7 @@ const NavBar = () => {
                 <Link style={{ textDecoration: "none" }} to={link.link}>
                   <button
                     className={`hover:underline hover:border-blue-300 dark:hover:border-blue-300  border-4 border-white dark:border-gray-900 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-gray-700  text-left`}
-                    onclick={() => {
+                    onClick={() => {
                       setMenu(false);
                     }}
                   >
