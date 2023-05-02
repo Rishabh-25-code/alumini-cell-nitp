@@ -1,7 +1,11 @@
 import React from 'react'
 import Heading from '../../components/Headings/Heading'
 import BlogCard from './BlogCard';
+import Card from "../../components/Carousel/Card";
+import Awards from "../../components/Awards/Awards"
+import Testimonials from '../../components/Testimonials/Testimonials';
 // import Blog from './Blog';
+
 
 const AlumniCorner = () => {
 
@@ -119,6 +123,21 @@ const AlumniCorner = () => {
   return (
     <div>
       <Heading heading="Alumni Corner"></Heading>
+      <Card
+        head="Nobody is bothered about an instiution more than its Alumini."
+        writer="~ K Narayan Murthy"
+      />
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
+      <h2 className='heading-head-text'>Awards</h2>
+      <Awards />
+      <h2 className='heading-head-text'>Testimonials</h2>
+      <Testimonials />
+      <h3 className='heading-head-text'>Blogs</h3>
       <div className='flex flex-wrap gap-6 m-auto px-5 items-center justify-center mb-32'>
         {blogs.map((project, id) => (
           <BlogCard data={project} key={id} />
