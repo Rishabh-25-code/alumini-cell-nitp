@@ -8,14 +8,14 @@ const TeamCard2 = ({ img2, name2, detail2 }) => {
     <>
       <div
         data-aos="fade-up"
-        className="text-center text-gray-500 dark:text-gray-400"
+        className="text-center text-gray-400"
       >
         <img
           className="mx-auto mb-4 w-36 h-36 rounded-full hover:scale-105 transition-all delay-75 ease-in"
           src={img2}
           alt="Bonnie Avatar"
         />
-        <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h3 className="mb-1 text-2xl font-bold tracking-tight text-white">
           <a href="#">{name2}</a>
         </h3>
         <p>{detail2}</p>
@@ -47,7 +47,7 @@ const TeamCard2 = ({ img2, name2, detail2 }) => {
           <li>
             <a
               href="https://instagram.com"
-              className="transition ease-in delay-50 text-pink-500 hover:text-pink-600 hover:scale-[110%]"
+              className="transition ease-in delay-75 text-pink-500 hover:text-pink-600 hover:scale-110"
             >
               <FaInstagram size={22} />
             </a>

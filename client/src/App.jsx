@@ -23,7 +23,8 @@ import {
   Resources,
   Interaction,
   About,
-  NewsId
+  NewsId,
+  Blogs,
 } from "./pages/index";
 import Blog from "./pages/AlumniCorner/Blog";
 import ScrollToTop from "./hooks/useScrollToTop";
@@ -112,6 +113,14 @@ function App() {
             element={
               <Layout>
                 <Signup />
+              </Layout>
+            }
+          />
+          <Route
+            path="/blogs"
+            element={
+              <Layout>
+                <Blogs />
               </Layout>
             }
           />

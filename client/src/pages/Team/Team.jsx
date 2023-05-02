@@ -94,7 +94,7 @@ const Team = () => {
             </h2>
           </div>
 
-          <div className="grid gap-8 mb-6 lg:mb-16 md:grid-cols-3">
+          <div className="grid gap-10 mb-6 place-items-center lg:mb-16 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
             {team.map((team, index) => (
               <TeamCard
                 key={index}
@@ -109,13 +109,13 @@ const Team = () => {
         </div>
       </section>
 
-      <section className="bg-white dark:bg-gray-900">
-        <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
+      <section className=" bg-gray-900">
+        <div className="py-16 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
           <div className="mx-auto mb-8 max-w-screen-sm lg:mb-16">
-            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">
               Alumni Web Team
             </h2>
-            <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+            <p className="font-light sm:text-xl text-gray-400">
               We're a team of designers and developers at NIT Patna. We're
               passionate about connecting alumni with our institution via the
               NITP Alumni platform, and building a community for lifelong
@@ -123,7 +123,7 @@ const Team = () => {
             </p>
           </div>
 
-          <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid gap-12 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {team2.map((team2, index) => (
               <TeamCard2
                 key={index}
