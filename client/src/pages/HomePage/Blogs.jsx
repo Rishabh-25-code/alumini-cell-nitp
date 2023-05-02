@@ -120,7 +120,7 @@ const Blogs = () => {
     ]
 
     return (
-        <div className='pb-10'>
+        <div className='pb-10 mb-20'>
             <h1 className="mb-2.5 mt-10 lg:ml-10 md:ml-10 p-5 lg:text-left md:text-left text-center text-sky-400 lg:text-5xl md:text-4xl text-4xl font-bold leading-tight">
                 Blogs
             </h1>
