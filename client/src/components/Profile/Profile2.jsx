@@ -4,14 +4,11 @@ import "./Profile.css";
 
 function Profile(props) {
     return (
-        <div className="single">
+        <div className="single" style={{ height: 400 }} >
             <div className="circle"></div>
             <div className="inner">
                 <h3 id="memberName">{props.name}</h3>
                 <br></br>
-                <div className="image">
-                    <img src={props.img} alt="profile" />
-                </div>
                 <br></br>
                 <p id="info">{props.info}</p>
                 <div className="social">

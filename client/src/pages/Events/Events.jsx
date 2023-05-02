@@ -80,16 +80,18 @@ const Events = () => {
   return (
     <div>
       <Heading heading="EVENTS"></Heading>
-      {/* <Card
-        head="Important events that were held in our college."
-        writer="like the alumini meet of the 19's batch"
-      /> */}
-
       <div className='flex flex-wrap gap-6 m-auto px-5 items-center justify-center mb-32'>
         {events.map((event, id) => (
           <EventCard data={event} key={id} />
         ))}
       </div>
+      <h1 className='heading-head-text'>Past Events</h1>
+      <br></br>
+      <br></br>
+      <Card
+        head="Important events that were held in our college."
+        writer="like the alumini meet of the 19's batch"
+      />
 
     </div>
   )
