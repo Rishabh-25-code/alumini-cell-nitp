@@ -28,7 +28,7 @@ const Newsletter = () => {
   }, []);
 
   return (
-    <div className="pt-16">
+    <div>
       <Heading heading="NEWS" />
       <div className="news-grid lg:max-w-[85rem] m-auto">
         {loading ? (

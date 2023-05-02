@@ -1,13 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { BsDot } from 'react-icons/bs'
-import Heading from '../../components/Headings/Heading'
 
 const Blog = () => {
 
-    const { blogId } = useParams();
+  const { blogId } = useParams();
 
-    const blogs = [
+  const blogs = [
     {
       id: 0,
       name: "How to use IPFS in your React App",
@@ -120,35 +119,34 @@ const Blog = () => {
     },
   ]
 
-    return (
-        <div className='pt-36'>
-            {/* <Heading heading="Blog"></Heading> */}
-            {
-                <div className='m-auto flex flex-col items-center justify-center'>
-                    <h1 className='lg:text-4xl md:text-3xl text-2xl font-bold text-sky-500 my-10 mt-6'>{blogs[blogId].name}</h1>
+  return (
+    <div className='pt-36'>
+      {
+        <div className='m-auto flex flex-col items-center justify-center'>
+          <h1 className='lg:text-4xl md:text-3xl text-2xl font-bold text-sky-500 my-10 mt-6'>{blogs[blogId].name}</h1>
 
-                    <div className='flex items-center h-56 overflow-hidden lg:w-[70%] md:w-[80%] w-[85%] rounded-lg border border-gray-900'>
-                        <img className='w-full' src={blogs[blogId].image} alt={blogs[blogId].title} />
-                    </div>
+          <div className='flex items-center h-56 overflow-hidden lg:w-[70%] md:w-[80%] w-[85%] rounded-lg border border-gray-900'>
+            <img className='w-full' src={blogs[blogId].image} alt={blogs[blogId].title} />
+          </div>
 
-                    <div className='flex items-center p-5'>
-                        <p className='text-gray-400'>{blogs[blogId].author}</p>
-                        <BsDot size={20} className='text-gray-300' />
-                        <p className='text-gray-400'>{new Intl.DateTimeFormat('en-AU').format(new Date(blogs[blogId].date))}</p>
-                        <BsDot size={20} className='text-gray-300' />
-                        <p className='text-gray-400'>3 min read</p>
-                    </div>
+          <div className='flex items-center p-5'>
+            <p className='text-gray-400'>{blogs[blogId].author}</p>
+            <BsDot size={20} className='text-gray-300' />
+            <p className='text-gray-400'>{new Intl.DateTimeFormat('en-AU').format(new Date(blogs[blogId].date))}</p>
+            <BsDot size={20} className='text-gray-300' />
+            <p className='text-gray-400'>3 min read</p>
+          </div>
 
-                    <div className='lg:w-[70%] md:w-[80%] w-[85%] text-lg mt-10'>
-                        <p className='text-gray-200'>{blogs[blogId].description}</p>
+          <div className='lg:w-[70%] md:w-[80%] w-[85%] text-lg mt-10'>
+            <p className='text-gray-200'>{blogs[blogId].description}</p>
 
 
-                        <p className='text-gray-400 text-base mt-4 mb-32'>Read the full blog <a className='text-blue-500' href={blogs[blogId].link} target="_blank" rel="noopener noreferrer">here</a>.</p>
-                    </div>
-                </div>
-            }
-        </div >
-    )
+            <p className='text-gray-400 text-base mt-4 mb-32'>Read the full blog <a className='text-blue-500' href={blogs[blogId].link} target="_blank" rel="noopener noreferrer">here</a>.</p>
+          </div>
+        </div>
+      }
+    </div >
+  )
 }
 
 export default Blog;
