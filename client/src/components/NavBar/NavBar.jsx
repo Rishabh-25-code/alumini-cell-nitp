@@ -174,7 +174,7 @@ const NavBar = () => {
               }} className={`bg-gray-900 bg-opacity-90 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${popup === 0 ? 'flex' : "hidden"}`}>
                 <ul className="dropdown flex flex-col">
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/news">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/events">
                       <p className="text-gray-400 hover:text-blue-400">
                         Events
                       </p>
@@ -184,6 +184,13 @@ const NavBar = () => {
                     <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/interaction">
                       <p className="text-gray-400 hover:text-blue-400">
                         Interaction
+                      </p>
+                    </Link>
+                  </li>
+                  <li className="dropdown-link mb-2">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/resources">
+                      <p className="text-gray-400 hover:text-blue-400">
+                        Resources
                       </p>
                     </Link>
                   </li>
