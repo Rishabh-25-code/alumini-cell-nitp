@@ -46,37 +46,37 @@ const Team = () => {
 
   const team2 = [
     {
-      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
+      img2: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
       name2: "Rishabh Prakash",
       detail2: "Team Lead ",
     },
     {
-      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
+      img2: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
       name2: "Sudhanshu Ranjan",
       detail2: "Team Member",
     },
     {
-      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
+      img2: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
       name2: "Rajnish Kumar",
       detail2: "Team Member ",
     },
     {
-      img2: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/michael-gouch.png",
+      img2: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
       name2: "Rithvik Kumar",
       detail2: "Team Member",
     },
     {
-      img2: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png",
+      img2: "https://static.vecteezy.com/system/resources/previews/002/002/257/large_2x/beautiful-woman-avatar-character-icon-free-vector.jpg",
       name2: "Vaishnavi Chaudhary",
       detail2: "Team Member",
     },
     {
-      img2: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png",
+      img2: "https://static.vecteezy.com/system/resources/previews/002/002/257/large_2x/beautiful-woman-avatar-character-icon-free-vector.jpg",
       name2: "Sakshi Shukla",
       detail2: "Team Member",
     },
     {
-      img2: "https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/helene-engels.png",
+      img2: "https://static.vecteezy.com/system/resources/previews/002/002/257/large_2x/beautiful-woman-avatar-character-icon-free-vector.jpg",
       name2: "Firdaus Jawed",
       detail2: "Team Member",
     },
