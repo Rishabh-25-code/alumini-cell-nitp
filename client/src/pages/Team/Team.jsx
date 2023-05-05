@@ -46,37 +46,42 @@ const Team = () => {
 
   const team2 = [
     {
-      img2: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
+      img2: "https://lh3.googleusercontent.com/d/1PlUDHg3gZ_-0vw7KGIUh6kEi9DLEQDm7=w320?authuser=0",
+      name2: "Amitesh Kumar",
+      detail2: "Mentor ",
+    },
+    {
+      img2: "https://avatars.githubusercontent.com/u/72189098?v=4",
       name2: "Rishabh Prakash",
       detail2: "Team Lead ",
     },
     {
-      img2: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
+      img2: "https://avatars.githubusercontent.com/u/77230416?v=4",
       name2: "Sudhanshu Ranjan",
       detail2: "Team Member",
     },
     {
-      img2: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
+      img2: "https://media.licdn.com/dms/image/C4D03AQFtUcGchWIzrA/profile-displayphoto-shrink_400_400/0/1651084575184?e=1688601600&v=beta&t=YpmL1QopvFD57VebVY1Uek4tSolnOua7rkXQOI6mYFI",
       name2: "Rajnish Kumar",
       detail2: "Team Member ",
     },
     {
-      img2: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
+      img2: "https://media.licdn.com/dms/image/D4D03AQHALp37YC_Feg/profile-displayphoto-shrink_400_400/0/1680381072744?e=1688601600&v=beta&t=-VJcxA0EIl1OPglX3u7MU-XDMwKtLyzju_lMglZBdnw",
       name2: "Rithvik Kumar",
       detail2: "Team Member",
     },
     {
-      img2: "https://static.vecteezy.com/system/resources/previews/002/002/257/large_2x/beautiful-woman-avatar-character-icon-free-vector.jpg",
+      img2: "https://raw.githubusercontent.com/Rishabh-25-code/alumini-cell-nitp/main/client/public/images/vc.jpeg",
       name2: "Vaishnavi Chaudhary",
       detail2: "Team Member",
     },
     {
-      img2: "https://static.vecteezy.com/system/resources/previews/002/002/257/large_2x/beautiful-woman-avatar-character-icon-free-vector.jpg",
+      img2: "https://raw.githubusercontent.com/Rishabh-25-code/alumini-cell-nitp/main/client/public/images/ss.jpeg",
       name2: "Sakshi Shukla",
       detail2: "Team Member",
     },
     {
-      img2: "https://static.vecteezy.com/system/resources/previews/002/002/257/large_2x/beautiful-woman-avatar-character-icon-free-vector.jpg",
+      img2: "https://media.licdn.com/dms/image/D4D35AQF2ozPzPWXh7Q/profile-framedphoto-shrink_400_400/0/1667546362533?e=1683903600&v=beta&t=iSny5PwLEVJtiMkZVhyjrOvweSNYsXU4uAGiYriPXvU",
       name2: "Firdaus Jawed",
       detail2: "Team Member",
     },
