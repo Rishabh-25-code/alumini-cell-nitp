@@ -46,6 +46,11 @@ const Team = () => {
 
   const team2 = [
     {
+      img2: "https://lh3.googleusercontent.com/d/1PlUDHg3gZ_-0vw7KGIUh6kEi9DLEQDm7=w320?authuser=0",
+      name2: "Amitesh Kumar",
+      detail2: "Mentor ",
+    },
+    {
       img2: "https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_960_720.png",
       name2: "Rishabh Prakash",
       detail2: "Team Lead ",
