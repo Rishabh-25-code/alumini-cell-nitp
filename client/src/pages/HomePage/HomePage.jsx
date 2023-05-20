@@ -41,7 +41,7 @@ const HomePage = () => {
         </h1>
         <div className="bg-black py-10">
           <div className="flex items-center justify-evenly">
-            <div className="lg:w-[30rem] md:w-[24rem] lg:flex md:flex hidden"><img className="" src="/images/Alumni1.jpg" alt="not found" /></div>
+            <div className="lg:w-[30rem] md:w-[24rem] lg:flex md:flex hidden"><img className="" src="https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4" alt="not found" /></div>
             <div className="lg:w-[35rem] md:w-[28rem] w-[95%]"><SliderNews /></div>
           </div>
         </div>

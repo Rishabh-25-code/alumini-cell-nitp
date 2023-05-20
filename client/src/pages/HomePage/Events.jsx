@@ -9,7 +9,7 @@ const Events = () => {
         {
             id: 0,
             name: "Event Name",
-            image: "images/Alumni3.jpg",
+            image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
             clubName: "Alumni Cell",
             description: "Details about the event.",
             date: "2023-05-25",
@@ -20,7 +20,7 @@ const Events = () => {
         {
             id: 1,
             name: "Event Name",
-            image: "images/Alumni3.jpg",
+            image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
             clubName: "Alumni Cell",
             description: "Details about the event.",
             date: "2023-05-25",
@@ -31,7 +31,7 @@ const Events = () => {
         {
             id: 2,
             name: "Event Name",
-            image: "images/Alumni3.jpg",
+            image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
             clubName: "Alumni Cell",
             description: "Details about the event.",
             date: "2023-05-25",
@@ -42,7 +42,7 @@ const Events = () => {
         {
             id: 3,
             name: "Event Name",
-            image: "images/Alumni3.jpg",
+            image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
             clubName: "Alumni Cell",
             description: "Details about the event.",
             date: "2023-05-25",
@@ -53,7 +53,7 @@ const Events = () => {
         {
             id: 4,
             name: "Event Name",
-            image: "images/Alumni3.jpg",
+            image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
             clubName: "Alumni Cell",
             description: "Details about the event.",
             date: "2023-05-25",
@@ -64,7 +64,7 @@ const Events = () => {
         {
             id: 5,
             name: "Event Name",
-            image: "images/Alumni3.jpg",
+            image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
             clubName: "Alumni Cell",
             description: "Details about the event.",
             date: "2023-05-25",
