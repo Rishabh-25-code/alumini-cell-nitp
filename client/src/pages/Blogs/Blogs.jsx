@@ -18,13 +18,13 @@ const Blogs = () => {
       date: "2022-10-15T00:00:00.000Z",
       comments: [
         {
-          id: 1,
+          id: 0,
           text: "A real-world utility project solving liquidity in the NFT market.",
         },
       ]
     },
     {
-      id: 0,
+      id: 1,
       name: "Blog Title",
       description: "The BCE-NITP Alumni Association cordially invites you to participate along with your family in the Annual Meet -2019 on 3rd February 2019.",
       image: "https://gateway.pinata.cloud/ipfs/QmP9MeLgTCSu2CwUW4wwEaFcv1VPbfZz2CtVpHNGSM6LYw",
@@ -42,7 +42,7 @@ const Blogs = () => {
       ]
     },
     {
-      id: 0,
+      id: 2,
       name: "Blog Title",
       description: "The BCE-NITP Alumni Association cordially invites you to participate along with your family in the Annual Meet -2019 on 3rd February 2019.",
       image: "https://gateway.pinata.cloud/ipfs/QmP9MeLgTCSu2CwUW4wwEaFcv1VPbfZz2CtVpHNGSM6LYw",
@@ -54,13 +54,13 @@ const Blogs = () => {
       date: "2022-10-15T00:00:00.000Z",
       comments: [
         {
-          id: 1,
+          id: 2,
           text: "A real-world utility project solving liquidity in the NFT market.",
         },
       ]
     },
     {
-      id: 0,
+      id: 3,
       name: "Blog Title",
       description: "The BCE-NITP Alumni Association cordially invites you to participate along with your family in the Annual Meet -2019 on 3rd February 2019.",
       image: "https://gateway.pinata.cloud/ipfs/QmP9MeLgTCSu2CwUW4wwEaFcv1VPbfZz2CtVpHNGSM6LYw",
@@ -72,13 +72,13 @@ const Blogs = () => {
       date: "2022-10-15T00:00:00.000Z",
       comments: [
         {
-          id: 1,
+          id: 3,
           text: "A real-world utility project solving liquidity in the NFT market.",
         },
       ]
     },
     {
-      id: 0,
+      id: 4,
       name: "Blog Title",
       description: "The BCE-NITP Alumni Association cordially invites you to participate along with your family in the Annual Meet -2019 on 3rd February 2019.",
       image: "https://gateway.pinata.cloud/ipfs/QmP9MeLgTCSu2CwUW4wwEaFcv1VPbfZz2CtVpHNGSM6LYw",
@@ -90,13 +90,13 @@ const Blogs = () => {
       date: "2022-10-15T00:00:00.000Z",
       comments: [
         {
-          id: 1,
+          id: 4,
           text: "A real-world utility project solving liquidity in the NFT market.",
         },
       ]
     },
     {
-      id: 0,
+      id: 5,
       name: "Blog Title",
       description: "The BCE-NITP Alumni Association cordially invites you to participate along with your family in the Annual Meet -2019 on 3rd February 2019.",
       image: "https://gateway.pinata.cloud/ipfs/QmP9MeLgTCSu2CwUW4wwEaFcv1VPbfZz2CtVpHNGSM6LYw",
@@ -108,7 +108,7 @@ const Blogs = () => {
       date: "2022-10-15T00:00:00.000Z",
       comments: [
         {
-          id: 1,
+          id: 5,
           text: "A real-world utility project solving liquidity in the NFT market.",
         },
       ]
