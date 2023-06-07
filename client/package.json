@@ -19,7 +19,7 @@
     "@types/three": "^0.150.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.2.3",
-    "firebase": "^9.19.1",
+    "firebase": "^9.22.1",
     "flowbite": "^1.6.5",
     "gsap": "^3.11.5",
     "gsap-trial": "^3.11.5",
