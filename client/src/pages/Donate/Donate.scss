@@ -1,0 +1,500 @@
+.donation-form{
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+
+}
+.grid{
+    display: flex;
+    justify-content: flex-start;
+
+}
+.donate-1{
+   color: #fff;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+
+
+}
+.donate-gift{
+    padding: 3rem;
+
+    background-color: rgb(17,24,39);
+    display: flex;
+    flex-direction: column;
+    width: 57rem;
+    gap: 1.5rem;
+    border-radius: 2rem;
+
+}
+.heading{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #449fff;
+
+
+}
+.heading{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.donation-amount{
+    display: flex;
+    gap: 1.5rem;
+  
+}
+.amount{
+    height: 2.5rem;
+    width: 8rem;
+    color:black;
+    border-radius: 0.5rem;
+    border:1px solid rgb(106, 91, 91);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:gray ;
+    font-weight: 500;
+    background-color:rgb(26, 34, 51);
+
+}
+.amount:hover{
+    background-color: #449fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:white ;
+    font-weight: 500;
+
+}
+
+#other-amount{
+    margin-top: -1.5rem;
+   
+}
+#other-amount input{
+    width: 8rem;
+    height: 2rem;
+    background-color: rgb(26, 34, 51);
+    box-shadow: 2px 2px rgb(74, 74, 79) inset;
+
+    border: none;
+}
+.f-bold{
+    font-size: small;
+    font-weight: 800;
+
+}
+.select-1{
+    width: 37rem;
+    background-color: rgb(26, 34, 51);
+
+    box-shadow: 2px 2px rgb(74, 74, 79) inset;
+    border: none;
+    color: gray;
+    border-radius: 0.5rem;
+
+}
+
+.partition{
+  height: 1px;
+  width: 52rem;
+  background-color: gray;
+}
+.name{
+    display: flex;
+    flex-wrap: wrap;
+    gap:2rem ;
+    display: flex;
+    justify-content: center;
+}
+.gift-type{
+display: flex;
+gap: 2rem;
+}
+.g-type{
+    height:2.5rem ;
+    width:8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    color: gray;
+    font-weight: 500;
+    cursor: pointer;
+
+}
+.g-type:hover{
+    background-color: #449fff;
+    border: 1px solid  gray;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 500;
+
+}
+
+#f1-footer{
+ font-size:1rem;
+}
+
+
+.name-input input{
+    background-color: rgb(28, 38, 62);
+    border: 1px solid gray;
+    width: 21rem;
+    border-radius: 0.4rem;
+    background-color: rgb(227, 228, 238);
+    border: 1px solid;
+    width: 21rem;
+
+}
+.select-2{
+    width: 21rem;
+    background-color: rgb(28, 38, 62);
+    box-shadow: 2px 2px rgb(106, 91, 91) inset;
+    color: gray;
+    border-radius: 0.4rem;
+
+}
+.checkbox input{
+    background-color: rgb(28, 38, 62);
+    color: #449fff;
+    cursor: pointer;
+    border: 1px solid rgb(106, 91, 91) ;
+}
+///////////////////////
+// .donate-2{
+//     background-color:rgb(17,24,39);
+//     box-shadow: 2px 2px rgb(195, 189, 189) inset;
+//     border: none;
+//     color: gray;
+// }
+///////////////////////
+.donate-2{
+    background-color: rgb(17,24,39);
+    display: flex;
+    flex-direction: column;
+    width: 57rem;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding: 3rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius:2rem ;
+}
+.donate-2 input{
+    background-color: rgb(26, 34, 51);
+    border-radius: 0.5rem;
+    width: 25rem;
+    border: 1px solid ;
+
+}
+
+.d-flex{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+#city{
+width: 15rem;
+}
+#state{
+width: 15rem;
+}
+#zip-code{
+    width: 15rem;
+}
+#class-year{
+    width: 15rem;
+}
+
+.donate-2 select{
+    background-color: rgb(26, 34, 51);
+    box-shadow: 2px 2px rgb(106, 91, 91) inset;
+    border: none;
+    color: gray;
+    width: 25rem;
+    border-radius: 0.5rem;
+}
+#sticky-note{
+    position: sticky;
+    height: 15rem;
+    width: 15rem;
+    background-color: rgb(26, 34, 51);
+    top: 8rem;
+    border-radius: 0.4rem;
+
+    top: 8rem;
+   
+}
+.sticky-div{
+  display: flex;
+  flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+.arrow{
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color:rgb(26, 34, 51);
+    position: absolute;
+    margin-top: -10.5rem;
+    margin-left: -0.75rem;
+    transform: rotate(45deg);
+    
+}
+.sticky-div h2{
+    font-size: large;
+    color: #449fff;
+    font-weight: 400;
+}
+.sticky-div h1{
+    font-size: xx-large;
+}
+.sticky-div h6{
+    font-size: small;
+}
+#btn-1{
+    background-color: rgb(31, 31, 107);
+    color:white;
+    width:11rem;
+    height: 2rem;
+    border-radius: 1rem;
+
+}
+#btn-1:hover{
+    background-color:rgb(40, 40, 138);
+}
+
+#btn-2{
+    background-color: rgb(117, 47, 47);
+    color:white;
+    width:11rem;
+    height: 2rem;
+    border-radius: 1rem;
+
+}
+#btn-2:hover{
+    background-color: rgb(155, 65, 65);
+}
+
+
+
+
+
+
+html{
+    font-size:100%;
+}
+
+
+@media(max-width:885px){
+    html{
+        font-size: 80%;
+    }
+   
+    .donation-form{
+        gap: 5rem;
+    }
+    .donate-1{
+        width: 40rem;
+        display: flex;
+        justify-content: center;
+        padding: 2rem;
+    }
+    .donate-gift{
+        display: flex;
+        flex-direction: column;
+        width: 38rem;
+        gap: 1.5rem;
+    
+    }
+    .heading{
+        font-size: 2rem;
+        font-weight: 500;
+    }
+    .donation-amount{
+        display: flex;
+        gap: 0.5rem;
+      
+    }
+    .amount{
+        height: 2.5rem;
+        width: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+    
+    }
+    .select-1{
+        width: 32rem;
+    }
+    .partition{
+        width: 32rem;
+    }
+    #sticky-note{
+        height: 20rem;
+    }
+    .donate-2{
+        display: flex;
+        flex-direction: column;
+        width: 38rem;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding: 2rem;
+    }
+    .donate-2 input{
+
+        width: 15rem;
+    }
+    .donate-2 select{
+        width: 15rem;
+    }
+   #zip-code, #city, #state{
+    width: 8rem;
+   }
+   
+.arrow{
+    margin-left: -2.8rem;
+}
+  
+}
+@media(max-width:1200px){
+   
+       .donation-form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+         }
+
+       .grid{
+        display: flex;
+        justify-content:last baseline;
+        
+        }
+        .partition{
+            width: 37rem;
+        }
+        .donate-1{
+            width: 40rem;
+            margin-left: -6rem;
+        }
+        .donate-gift{
+            width: 44rem;
+        }
+       .donate-2{
+       margin-left: 0rem;
+       width: 44rem;
+    }
+    .donate-2 select{
+        width: 18rem;
+    }
+    .donate-2 input{
+        width: 18rem;
+    }
+    #sticky-note{
+        width: 36rem;
+        height: 19rem;
+        margin-left: 2.5rem;
+       
+    }
+    #btn-1, #btn-2{
+        width: 34rem;
+        height: 3rem;
+
+
+    }
+    #class-year{
+        width: 18rem;
+    }
+    #city, #state, #zip-code{
+        width: 11.2rem;
+    }
+   
+}
+
+
+@media(max-width:670px){
+    html{
+        font-size: 65%;
+    }
+    .donation-form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        
+       }
+    .grid{
+        display: flex;
+        align-items: center;
+    }
+    
+    #sticky-note{
+       height: 25rem;
+    }
+    .donation-amount{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      
+    }
+    .amount{
+        height: 3.5rem;
+        width: 37rem;
+        
+        align-items: center;
+       
+        font-size: large;
+    
+    }
+    #other-amount{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+       
+    }
+    #other-amount input, .select-1{
+        width: 37rem;
+       height: 3rem;
+    }
+    .name-input input, .select-2{
+        height: 3rem;
+    }
+   .d-flex{
+    display: flex;
+    flex-direction: column;
+   }
+   .donate-2 input, .donate-2 select, #class-year, #zip-code, #city, #state{
+   
+    width: 38rem;
+    height: 3rem;
+}
+.arrow{
+   
+    margin-left: -2.8rem;
+}
+#btn-1, #btn-2{
+    height: 4rem;
+}
+}
+
+
+@media(max-width:450px){
+    html{
+        font-size:50%
+    }
+}
+
