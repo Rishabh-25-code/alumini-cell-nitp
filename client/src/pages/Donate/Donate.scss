@@ -460,4 +460,41 @@ width: 15rem;
 }
 }
 
+@media (max-width:380px){
+    .amount, #other-amount input, .select-1, .donate-1 input,
+    #class-year, #school, .donate-2 select, #city, #zip-code, #state
+    
+    {
+        width: 15rem;
+        height: 2rem;
+    }
+   .select-div{
+    gap: 0.5rem;
+   }
+    .donate-gift, .donate-2{
+        width: 18rem;
+    }
+    .partition{
+        width: 16rem;
+    }
+    .heading{
+        font-size: large;
+    }
+    .g-type{
+        font-size: small;
+        width: 6.5rem;
+    }
+    #sticky-note{
+        height: 15rem;
+        width: 15rem;
+    }
+    #btn-1, #btn-2{
+        height: 2rem;
+        width: 12rem;
+    }
+    .arrow{
+        margin-left: -15rem;
+    }
+    
+}
 
