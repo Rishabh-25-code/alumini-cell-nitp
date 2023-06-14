@@ -119,6 +119,7 @@ const handleGift=(e)=>{
 
                         </div> 
 
+                    <div className="select-div">
                         <div >
                               <h5 className="f-bold">Select a School/Affiliate*</h5> 
                              <select className="select-1">
@@ -129,17 +130,22 @@ const handleGift=(e)=>{
                              </select> 
                        </div> 
 
-                         <div >
-                             <h5 className="f-bold">Select a Fund</h5>
-                             <select className="select-1">
-                             <option ><h3 className="options">Select a fund</h3></option>
-                             </select>  
-                         </div> 
+                            <div >
+                               <h5 className="f-bold">Select a Fund</h5>
+                            
+                              
+                                 <select className="select-1">
+                                   <option ><h3 className="options">Select a fund</h3></option>
+                                 </select> 
+                            </div> 
+
+                      </div>
 
                          <div className="partition"></div>
-
-                         <div  className="checkbox">
-                          <input id="check" type="checkbox" onClick={()=>setShow(!show)}></input><label>	This is a joint gift from both my spouse / partner and me.</label>
+                         
+                          
+                           <div  className="checkbox">
+                           <input id="check" type="checkbox" onClick={()=>setShow(!show)}></input><label>	This is a joint gift from both my spouse / partner and me.</label></div>
                          
              { show?
                          <div className="name">
@@ -178,18 +184,18 @@ const handleGift=(e)=>{
                          </div> 
 
                          <div className="gift-type">
-                         <div className="g-type"  onClick={handleGift}>One-Time Gift</div>
-                         <div className="g-type"  onClick={handleGift}>Recurring Gift</div>
+                           <div className="g-type"  onClick={handleGift}>One-Time Gift</div>
+                           <div className="g-type"  onClick={handleGift}>Recurring Gift</div>
 
                          </div>
         
                         
         
-                         <div>
+                         
                             <h5>This is a <span className="f-bold" id="f1-footer">{print} </span></h5>
-                         </div>
+                         
 
-                      </div>
+                      
                      </div>
                   </form>   
           

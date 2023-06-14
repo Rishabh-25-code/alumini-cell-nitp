@@ -75,7 +75,7 @@
 }
 
 #other-amount{
-    margin-top: -1.5rem;
+    margin-top: -0.9rem;
    
 }
 #other-amount input{
@@ -150,8 +150,7 @@ gap: 2rem;
     border: 1px solid gray;
     width: 21rem;
     border-radius: 0.4rem;
-    background-color: rgb(227, 228, 238);
-    border: 1px solid;
+    border: 1px solid gray;
     width: 21rem;
 
 }
@@ -169,14 +168,7 @@ gap: 2rem;
     cursor: pointer;
     border: 1px solid rgb(106, 91, 91) ;
 }
-///////////////////////
-// .donate-2{
-//     background-color:rgb(17,24,39);
-//     box-shadow: 2px 2px rgb(195, 189, 189) inset;
-//     border: none;
-//     color: gray;
-// }
-///////////////////////
+
 .donate-2{
     background-color: rgb(17,24,39);
     display: flex;
@@ -192,7 +184,7 @@ gap: 2rem;
     background-color: rgb(26, 34, 51);
     border-radius: 0.5rem;
     width: 25rem;
-    border: 1px solid ;
+    border: 1px solid gray ;
 
 }
 
@@ -285,88 +277,6 @@ width: 15rem;
     background-color: rgb(155, 65, 65);
 }
 
-
-
-
-
-
-html{
-    font-size:100%;
-}
-
-
-@media(max-width:885px){
-    html{
-        font-size: 80%;
-    }
-   
-    .donation-form{
-        gap: 5rem;
-    }
-    .donate-1{
-        width: 40rem;
-        display: flex;
-        justify-content: center;
-        padding: 2rem;
-    }
-    .donate-gift{
-        display: flex;
-        flex-direction: column;
-        width: 38rem;
-        gap: 1.5rem;
-    
-    }
-    .heading{
-        font-size: 2rem;
-        font-weight: 500;
-    }
-    .donation-amount{
-        display: flex;
-        gap: 0.5rem;
-      
-    }
-    .amount{
-        height: 2.5rem;
-        width: 5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: 500;
-    
-    }
-    .select-1{
-        width: 32rem;
-    }
-    .partition{
-        width: 32rem;
-    }
-    #sticky-note{
-        height: 20rem;
-    }
-    .donate-2{
-        display: flex;
-        flex-direction: column;
-        width: 38rem;
-        gap: 1.5rem;
-        margin-top: 2rem;
-        padding: 2rem;
-    }
-    .donate-2 input{
-
-        width: 15rem;
-    }
-    .donate-2 select{
-        width: 15rem;
-    }
-   #zip-code, #city, #state{
-    width: 8rem;
-   }
-   
-.arrow{
-    margin-left: -2.8rem;
-}
-  
-}
 @media(max-width:1200px){
    
        .donation-form{
@@ -375,6 +285,7 @@ html{
         justify-content: center;
         align-items: center;
         gap: 2rem;
+        margin-left: 5rem;
          }
 
        .grid{
@@ -382,10 +293,18 @@ html{
         justify-content:last baseline;
         
         }
+       
+        #other-amount input {
+            width: 6rem;
+        }
+     
         .partition{
-            width: 37rem;
+            width: 38rem;
         }
         .donate-1{
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 40rem;
             margin-left: -6rem;
         }
@@ -405,7 +324,7 @@ html{
     #sticky-note{
         width: 36rem;
         height: 19rem;
-        margin-left: 2.5rem;
+        margin-left: -6rem;
        
     }
     #btn-1, #btn-2{
@@ -420,41 +339,66 @@ html{
     #city, #state, #zip-code{
         width: 11.2rem;
     }
-   
+   .arrow{
+    margin-left:-36rem ;
+   }
 }
 
 
-@media(max-width:670px){
-    html{
-        font-size: 65%;
-    }
+@media(max-width:780px){
+  
     .donation-form{
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         align-items: center;
         gap: 2rem;
-        
+        overflow: hidden;
+        margin-left: 0rem;
+
+      
        }
-    .grid{
+   
+    .donate-1{
         display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0rem;
+
+    }
+    .donate-gift{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 23.5rem;
+    }
+    .donate-gift span{
+        display: flex;
+        justify-content: center;
         align-items: center;
     }
+.heading{
+    font-size: x-large;
+}
+
     
     #sticky-note{
-       height: 25rem;
+    
+       height: 17rem;
+       width: 20rem;
+       margin-left: 0;
     }
     .donation-amount{
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 1.5rem;
       
     }
-    .amount{
+    .amount ,  #other-amount input {
         height: 3.5rem;
-        width: 37rem;
-        
+        width: 20rem;
         align-items: center;
-       
         font-size: large;
     
     }
@@ -466,35 +410,54 @@ html{
 
        
     }
-    #other-amount input, .select-1{
-        width: 37rem;
+   
+   .select-1{
+       width: 22rem;
        height: 3rem;
+    }
+    .select-div{
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        flex-direction: column;
+
     }
     .name-input input, .select-2{
         height: 3rem;
+        width: 19rem;
     }
+  
+   .checkbox-div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 4rem;
+   }
+   .partition{
+    width: 20rem;
+   }
    .d-flex{
     display: flex;
     flex-direction: column;
    }
+  .donate-2{
+    width: 23.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
    .donate-2 input, .donate-2 select, #class-year, #zip-code, #city, #state{
    
-    width: 38rem;
+    width: 19rem;
     height: 3rem;
 }
 .arrow{
-   
-    margin-left: -2.8rem;
+   margin-left: -20rem;
 }
 #btn-1, #btn-2{
-    height: 4rem;
+    height: 3rem;
+    width: 15rem;
 }
 }
 
-
-@media(max-width:450px){
-    html{
-        font-size:50%
-    }
-}
 
