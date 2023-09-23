@@ -30,7 +30,7 @@ const Gallery = () => {
 
     useEffect(() => {
         getGallery();
-    }, [gallery]);
+    }, []);
 
 
     return (
