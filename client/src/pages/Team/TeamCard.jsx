@@ -14,7 +14,7 @@ const TeamCard = ({ img1, name1, detail1, detail11, img2, name2, detail2 }) => {
           />
         </a>
         <div className="p-5">
-          <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h3 className="text-xl font-bold tracking-tight text-gray-100 ">
             <a href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320">
               {name1}
             </a>
