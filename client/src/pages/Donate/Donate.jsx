@@ -1,8 +1,7 @@
-import { useRef, useEffect } from "react";
+
 import Heading from "../../components/Headings/Heading";
 
 import "./Donate.scss";
-import Donation from "../../../public/images/donation.jpg";
 import React, {useState} from "react";
 
 
@@ -44,18 +43,15 @@ const handleGift=(e)=>{
     <div className="bg-black">
       <Heading heading="Donate" ></Heading>
 
-      <div className="absolute inset-x-[5%] flex flex-col gap-3 items-center justify-center py-10 text-center text-white">
-        <h5 className="lg:text-3xl md:text-2xl text-1xl font-bold font-serif">
+      <div className="inset-x-[5%] flex flex-col gap-3 items-center justify-center py-10 text-center text-white">
+        <h5 className="lg:text-3xl md:text-2xl text-1xl font-bold font-serif text-sky-500">
           Giving Back to NIT Patna
         </h5>
         <p className="lg:text-5xl md:text-4xl text-3xl font-bold font-serif">
           Make a Donation
         </p>
-      </div>
 
-      <div className="w-[100%] grid bg-blue text-white relative items-center mt-36">
-        <div className="mb-12 md:mb-0">
-          <p className="mb-4 text-lg md:text-left px-5 text-justify">
+        <p className="lg:text-lg md:text-base text-sm lg:px-32 md:px-24n px-8 text-justify pt-5">
             As NITP campus and community grow, so must its financial resources.
             Support for the Campaign for NITP will ensure the success of the
             College's mission to offer an excellent education to promising and
@@ -68,26 +64,7 @@ const handleGift=(e)=>{
             requests from students in the last year. You may make your gift
             online using the link below.
           </p>
-          <div className="flex justify-center text-2xl mt-5">
-            <a
-              className="text-white text-xl decoration-none hover:text-white"
-              href="#"
-            >
- 
-            </a>
-          </div>
-        </div>
       </div>
-      {/* <p className="ml-5">
-        <li>Here is the list of Top Donors of NIT Patna: Top Donors</li>
-        <li>To donate, please visit : click here</li>
-        <li>For any query, please contact-</li>
-        <li>Prof. </li>
-        <li>Dean of Resources and Alumni Affairs</li>
-        <li>NAtional Institute of Technology, Patna</li>
-        <li> Ph. 0612 237 1715 </li>
-        <li>E-mail: </li>
-      </p> */}
 
     <div className="donation-form">
       
@@ -114,14 +91,14 @@ const handleGift=(e)=>{
      
                             <div id="other-amount" onChange={getAmount}>
                                <h5 className="f-bold" >Other Amount</h5>
-                               <input id="other-A" type="text"></input>
+                               <input min={100} id="other-A" type="number"></input>
                             </div> 
 
                         </div> 
 
                     <div className="select-div">
-                        <div >
-                              <h5 className="f-bold">Select a School/Affiliate*</h5> 
+                        <div>
+                              <h5 className="f-bold ">Select a School/Affiliate*</h5> 
                              <select className="select-1">
                
                                <option ><h3 className="options">Select a School or Affiliate</h3> </option>
@@ -130,15 +107,7 @@ const handleGift=(e)=>{
                              </select> 
                        </div> 
 
-                            <div >
-                               <h5 className="f-bold">Select a Fund</h5>
-                            
-                              
-                                 <select className="select-1">
-                                   <option ><h3 className="options">Select a fund</h3></option>
-                                 </select> 
-                            </div> 
-
+                           
                       </div>
 
                          <div className="partition"></div>
@@ -232,7 +201,7 @@ const handleGift=(e)=>{
                  <div className="d-flex">
                      <div >
                          <h3 className="f-bold">Class Year</h3> 
-                          <input id="class-year" type="text"></input>
+                          <input id="class-year" type="date"></input>
                       </div>
                       <div>
                          <h3 className="f-bold">School</h3> 
@@ -266,14 +235,16 @@ const handleGift=(e)=>{
                       </div>
                       <div>
                          <h3 className="f-bold">Zip Code*</h3> 
-                          <input id="zip-code" type="text"></input>
+                          <input id="zip-code" type="number"></input>
                       </div>
                  </div>
                  <div>
                     <h3 className="f-bold">Email*</h3> 
-                    <input type="text"></input>
+                    <input type="email"></input>
                  </div>
-                 
+                 <button className="px-5 py-2.5  bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600">
+                DONATE
+              </button>
                  
              </div>
           
@@ -290,8 +261,9 @@ const handleGift=(e)=>{
                     <div><h2 className="f-bold">Your Donation</h2></div>
                     <div><h1 className="f-bold">Rs.{amount}</h1></div>
                     <div><h6>Please Select a Recipient</h6></div>
-                    <button id="btn-1">Add Another Gift</button>
-                    <button id="btn-2">Complete Your Gift</button>
+                    <button className=" bg-sky-500 py-1 px-6  rounded-xl">Add Another Gift</button>
+                    
+                    <button className="bg-red-600 py-1 px-4 rounded-xl" >Complete Your Gift</button>
               </div>
            </div>
     </div>
