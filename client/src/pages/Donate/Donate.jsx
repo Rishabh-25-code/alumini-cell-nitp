@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import Heading from "../../components/Headings/Heading";
 
 import "./Donate.scss";
-import Donation from "../../../public/images/donation.jpg";
+
 import React, {useState} from "react";
 
 
