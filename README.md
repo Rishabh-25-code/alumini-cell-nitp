@@ -2,10 +2,10 @@
 This is the official website of Alumni of NIT, Patna.
 
 
-# nitp-alumni
+# NITP-Alumni
 Official website of Alumni NIT Patna
 
-![plot]()
+![plot](/landing_page.png)
 
 Project has following functionalities
 
@@ -73,7 +73,7 @@ Please refer to the project's style and contribution guidelines for submitting p
 
 
 
-### 🚀 Please abide by  **Contributing Guidelines** and **Code of Conduct**.
+### 🚀 Please abide by  [**Contributing Guidelines**](/CONTRIBUTING.md) and [**Code of Conduct**](/CODE_OF_CONDUCT.md).
 
 
 ## Contributors ✨
