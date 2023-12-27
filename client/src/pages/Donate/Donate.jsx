@@ -38,14 +38,14 @@ const Donate = () => {
 
   return (
     <div className="bg-black">
-      <Heading heading="Donate" ></Heading>
+      <Heading heading="Contribute" ></Heading>
 
       <div className="inset-x-[5%] flex flex-col gap-3 items-center justify-center py-10 text-center text-white">
         <h5 className="lg:text-3xl md:text-2xl text-1xl font-bold font-serif text-sky-500">
           Giving Back to NIT Patna
         </h5>
         <p className="lg:text-5xl md:text-4xl text-3xl font-bold font-serif">
-          Make a Donation
+          Make a Contribution
         </p>
 
         <p className="lg:text-lg md:text-base text-sm lg:px-32 md:px-24n px-8 text-justify pt-5">
@@ -240,7 +240,7 @@ const Donate = () => {
                   <input type="email"></input>
                 </div>
                 <button className="px-5 py-2.5  bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600">
-                  DONATE
+                  Contribute
                 </button>
 
               </div>

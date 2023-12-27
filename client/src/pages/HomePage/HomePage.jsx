@@ -6,45 +6,34 @@ import { BsArrowUpRight } from "react-icons/bs";
 import Events from "./Events";
 import Blogs from "./Blogs";
 import Testimonials from "./Testimonials";
+import QuickLinks from "../../components/QuickLinks/QuickLinks";
 
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
 
   return (
     <>
-      <div className="bg-black h-1/5">
-        <div className="relative flex items-center justify-center w-full h-[100vh] overflow-hidden bg-black after:clear-both after:block after:content-['']">
-          <div className="flex items-center justify-center h-full">
-            <div className="video-container">
-              <video autoPlay={true} loop={true} muted={true}>
-                <source
-                  src="https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/videos%2FNITP%20Video.mp4?alt=media&token=29071eb1-2639-4781-8231-59c64b71f319"
-                  type="video/mp4"
-                />
-              </video>
-              <div className="h-[100vh] w-full bg-black bg-opacity-50 absolute top-0"></div>
-            </div>
-            <div className="absolute inset-x-[15%] flex flex-col gap-3 items-center justify-center py-20 text-center text-white">
-              <h5 className="lg:text-4xl md:text-3xl text-2xl font-bold font-serif">
-                Connect. Give. Cherish.
-              </h5>
-              <p className="lg:text-7xl md:text-6xl text-5xl font-bold font-serif">
-                WELCOME BACK
-              </p>
-            </div>
+      <div className="h-1/5">
+        <div className="flex relative bg-[url(https://img.jagranjosh.com/images/2022/April/1142022/Screenshot%202022-03-14%20155423.jpg)] bg-no-repeat bg-cover w-full flex-col gap-3 items-center justify-center py-20 text-center text-white h-[65vh]">
+          <div className="absolute w-full inset-0 text-left pt-32 lg:pl-24 md:pl-16 pl-8 bg-gradient-to-r  from-[rgba(0,0,0,0.7)] via-[rgba(0,0,0,0.5)] to-transparent">
+            <h5 className="lg:text-4xl md:text-3xl text-2xl font-bold pb-2">
+              <span className="text-sky-500">Connect.</span> Give. Cherish.
+            </h5>
+            <p className="lg:text-7xl md:text-6xl text-5xl font-bold">
+              WELCOME BACK
+            </p>
+            <p className='lg:text-xl text-lg pb-5 pt-2 text-gray-300'>
+              Register now and become a member of <br /> Alumni Association of NIT Patna.
+            </p>
+            <Link to="/register">
+              <button className="px-5 py-2.5 bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600">
+                Register Now
+              </button>
+            </Link>
           </div>
         </div>
 
-
-        <h1 className="mb-2.5 mt-10 lg:ml-10 md:ml-10 p-5 lg:text-left md:text-left text-center text-sky-400 lg:text-5xl md:text-4xl text-4xl font-bold leading-tight">
-          News & Announcement
-        </h1>
-        <div className="bg-black py-10">
-          <div className="flex items-center justify-evenly">
-            <div className="lg:w-[30rem] md:w-[24rem] lg:flex md:flex hidden"><img className="" src="https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4" alt="not found" /></div>
-            <div className="lg:w-[35rem] md:w-[28rem] w-[95%]"><SliderNews /></div>
-          </div>
-        </div>
+        <QuickLinks />
 
         {/* Director section starts here */}
 
@@ -178,19 +167,10 @@ const HomePage = () => {
 
 
 
-        <div className='flex flex-col items-center justify-center gap-20 bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto mb-24 z-[1999999]'>
+        {/* <div className='flex flex-col items-center justify-center gap-20 bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto mb-24 z-[1999999]'>
           <h3 data-aos="fade-up" className='text-center font-bold lg:text-5xl md:text-4xl text-3xl pt-20 text-sky-500 '>Become a Member</h3>
-          <p className='lg:text-xl text-lg  font-medium text-center'>
-            Register now and become a member of <br />Alumni Association of NIT Patna.
-          </p>
-          <div>
-            <Link to="/register">
-              <button className="px-5 py-2.5 animate-bounce bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600">
-                Register Now
-              </button>
-            </Link>
-          </div>
-        </div>
+          
+        </div> */}
       </div>
     </>
   );

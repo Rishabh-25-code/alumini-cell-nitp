@@ -24,6 +24,7 @@ import {
   About,
   NewsId,
   Blogs,
+  Error
 } from "./pages/index";
 import Blog from "./pages/AlumniCorner/Blog";
 import ScrollToTop from "./hooks/useScrollToTop";
@@ -148,7 +149,7 @@ function App() {
             }
           />
           <Route
-            path="/donate"
+            path="/contribute"
             element={
               <Layout>
                 <Donate />
@@ -192,6 +193,15 @@ function App() {
             element={
               <Layout>
                 <TeamCard2 />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="*"
+            element={
+              <Layout>
+                <Error/>
               </Layout>
             }
           />
