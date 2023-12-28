@@ -76,6 +76,16 @@ function App() {
                 </Layout>
               }
             />
+
+            <Route
+              path="/history"
+              element={
+                <Layout>
+                  <History />
+                </Layout>
+              }
+            />
+
             <Route
               path="/events"
               element={
