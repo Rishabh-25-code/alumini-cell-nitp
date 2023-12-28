@@ -3,42 +3,42 @@ import { Link } from 'react-router-dom'
 const QuickLinks = () => {
     const links = [
         {
-            name: "Student Cell",
+            name: "UG Alumni Database",
             icon: "./images/quicklink/blockchain.png",
             link: "/student-cell"
         },
         {
-            name: "Academics",
+            name: "PG Alumni Database",
             icon: "./images/quicklink/electrical.png",
             link: "/academics"
         },
         {
-            name: "Publications",
+            name: "PhD Alumni Database",
             icon: "./images/quicklink/web.png",
             link: "/publications"
         },
         {
-            name: "Gallery",
-            icon: "./images/quicklink/design.png",
+            name: "Alumni Meetings",
+            icon: "./images/quicklink/social.png",
             link: "/gallery"
         },
         {
-            name: "Blogs",
+            name: "Blogs from Alumni" ,
             icon: "./images/quicklink/content.png",
             link: "/blogs"
         },
         {
-            name: "Events",
+            name: "Alumni News",
             icon: "./images/quicklink/marketing.png",
             link: "/events"
         },
         {
-            name: "Commities",
-            icon: "./images/quicklink/social.png",
+            name: "Internship Offers from Alumni",
+            icon: "./images/quicklink/design.png",
             link: "/commities"
         },
         {
-            name: "KAIZEN",
+            name: "Openings Via Alumni",
             icon: "./images/quicklink/event.png",
             link: "/kaizen"
         }

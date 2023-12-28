@@ -25,8 +25,8 @@ const HomePage = () => {
             <p className='lg:text-xl text-lg pb-5 pt-2 text-gray-300'>
               Register now and become a member of <br /> Alumni Association of NIT Patna.
             </p>
-            <Link to="/register">
-              <button className="px-5 py-2.5 bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600">
+            <Link to="https://forms.gle/cFkqtE3wx2T7Wr5CA " target="_blank">
+              <button className="px-5 py-2.5 bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600" >
                 Register Now
               </button>
             </Link>
