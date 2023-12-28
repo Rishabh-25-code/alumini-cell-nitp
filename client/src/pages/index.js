@@ -18,7 +18,8 @@ import TeamCard from "./Team/TeamCard";
 import TeamCard2 from "./Team/TeamCard2";
 import NewsId from "./Newsletter/NewsId";
 import Blogs from "./Blogs/Blogs";
+import BihtaCampus from "./Bihta-Campus/BihtaCampus";
 import Error from "./Error/Error";
 import History from "./History/History";
 
-export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, NewsId, Blogs,History, Error };
+export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, NewsId, Blogs, BihtaCampus,History, Error };

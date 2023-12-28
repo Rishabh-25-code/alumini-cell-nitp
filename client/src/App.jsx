@@ -25,6 +25,7 @@ import {
   NewsId,
   Blogs,
   History,
+  BihtaCampus,
   Error
 } from "./pages/index";
 import Blog from "./pages/AlumniCorner/Blog";
@@ -210,7 +211,16 @@ function App() {
             path="*"
             element={
               <Layout>
-                <Error/>
+                <Error />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/bihtacampus"
+            element={
+              <Layout>
+                <BihtaCampus />
               </Layout>
             }
           />

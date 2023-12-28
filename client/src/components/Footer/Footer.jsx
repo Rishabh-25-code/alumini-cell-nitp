@@ -34,22 +34,22 @@ const Footer = () => {
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-blue-700 mr-3'>|</h1><h1 className='text-lg font-semibold text-sky-500'>Useful Links</h1></div>
           <ul className='mt-4 flex flex-col gap-3 text-base'>
-            <li className='hover:text-blue-600'><Link to="">History</Link></li>
-            <li className='hover:text-blue-600'><Link to="">Jobs</Link></li>
-            <li className='hover:text-blue-600'><Link to="">Internships</Link></li>
-            <li className=' hover:text-blue-600'><Link to="">Newsletters</Link></li>
-            <li className=' hover:text-blue-600'><Link to="">Web Team</Link></li>
+            <li className='hover:text-blue-600'><Link to="/history">History</Link></li>
+            <li className='hover:text-blue-600'><Link to="/jobs">Jobs</Link></li>
+            <li className='hover:text-blue-600'><Link to="/internships">Internships</Link></li>
+            <li className=' hover:text-blue-600'><Link to="/news">Newsletters</Link></li>
+            <li className=' hover:text-blue-600'><Link to="/team">Web Team</Link></li>
           </ul>
         </div>
 
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-blue-700 mr-3'>|</h1><h1 className='text-lg font-semibold text-sky-500'>Must Check</h1></div>
           <ul className='mt-4 flex flex-col gap-3 text-base'>
-            <li className='hover:text-blue-600'><Link to="">Event Gallery</Link></li>
-            <li className='hover:text-blue-600'><Link to="">Notable Alumni</Link></li>
-            <li className=' hover:text-blue-600'><Link to="">Upcoming Events</Link></li>
+            <li className='hover:text-blue-600'><Link to="/events">Event Gallery</Link></li>
+            <li className='hover:text-blue-600'><Link to="/notableAlumni">Notable Alumni</Link></li>
+            <li className=' hover:text-blue-600'><Link to="/events">Upcoming Events</Link></li>
             <li className=' hover:text-blue-600'><Link to="">Success Stories</Link></li>
-            <li className=' hover:text-blue-600'><Link to="">Contribute</Link></li>
+            <li className=' hover:text-blue-600'><Link to="/contribute">Contribute</Link></li>
           </ul>
         </div>
 
