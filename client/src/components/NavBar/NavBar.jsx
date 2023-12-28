@@ -39,8 +39,8 @@ const NavBar = () => {
       link: "/gallery",
     },
     {
-      name: "Donate",
-      link: "/donate",
+      name: "Contribute",
+      link: "/contribute",
     },
     {
       name: "Events",
@@ -53,27 +53,34 @@ const NavBar = () => {
     {
       name: "Resources",
       link: "/resources",
-    },
-    {
-      name: "Team",
-      link: "/Team",
-    },
+    }
   ];
 
   return (
     <div
       className={`fixed z-10 w-[100%] items-center justify-center ${colorChange &&
-        "border-b bg-gray-900 transition-all delay-100  ease-in-out bg-opacity-20 backdrop-blur-md border-gray-700 shadow-md"
+        "border-b bg-black transition-all delay-100  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md"
         }`}
     >
-      <div className="flex items-center justify-between lg:w-[65rem] md:w-[95%] px-4 md:px-3 py-4 m-auto text-lg">
+      <div className="flex items-center justify-between lg:w-[65rem] md:w-[95%] px-4 md:px-3 py-3 m-auto text-lg">
         <div className="flex items-center">
           <Link to="/">
-            <img src="/images/logo.svg" alt="logo" className="h-12" />
+            <img src="logo.jfif" height={120} width={120} alt="logo" className="h-[3.4rem] w-[3.4rem] rounded-full" />
           </Link>
         </div>
         <div className="flex items-center">
-          <ul className="md:flex gap-7 hidden items-center">
+          <ul className="md:flex gap-7 hidden items-center text-[0.92rem]">
+            <li>
+              <Link style={{ textDecoration: "none" }} to="/">
+                <p
+                  onClick={() => setFocus(0)}
+                  className="text-white hover:text-blue-400"
+                >
+                  Home
+                </p>
+              </Link>
+            </li>
+
             <li>
               <Link style={{ textDecoration: "none" }} to="/about">
                 <p
@@ -81,17 +88,6 @@ const NavBar = () => {
                   className="text-white hover:text-blue-400"
                 >
                   About
-                </p>
-              </Link>
-            </li>
-
-            <li>
-              <Link style={{ textDecoration: "none" }} to="/team">
-                <p
-                  onClick={() => setFocus(0)}
-                  className="text-white hover:text-blue-400"
-                >
-                  Team
                 </p>
               </Link>
             </li>
@@ -113,7 +109,7 @@ const NavBar = () => {
 
               <div onMouseLeave={() => {
                 setPopup(-1);
-              }} className={`bg-gray-900 shadow-lg bg-opacity-90 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 1 ? 'flex' : "hidden"}`}>
+              }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 1 ? 'flex' : "hidden"}`}>
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
                     <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/alumnicorner">
@@ -171,7 +167,7 @@ const NavBar = () => {
 
               <div onMouseLeave={() => {
                 setPopup(-1);
-              }} className={`bg-gray-900 bg-opacity-90 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${popup === 0 ? 'flex' : "hidden"}`}>
+              }} className={`bg-gray-950 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${popup === 0 ? 'flex' : "hidden"}`}>
                 <ul className="dropdown flex flex-col">
                   <li className="dropdown-link mb-2">
                     <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/events">
@@ -199,10 +195,10 @@ const NavBar = () => {
             </li>
 
             <li>
-              <Link style={{ textDecoration: "none" }} to="/donate">
+              <Link style={{ textDecoration: "none" }} to="/contribute">
                 <p
                   className="text-white hover:text-blue-400" >
-                  Donate
+                  Contribute
                 </p>
               </Link>
             </li>
