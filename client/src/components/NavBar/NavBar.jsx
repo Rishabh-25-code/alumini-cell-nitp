@@ -53,6 +53,10 @@ const NavBar = () => {
     {
       name: "Resources",
       link: "/resources",
+    },
+    {
+      name: "Bihta-Campus",
+      link: "/bihtacampus",
     }
   ];
 
@@ -193,7 +197,7 @@ const NavBar = () => {
                   <li className="dropdown-link mb-2">
                     <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Internship Offers 
+                        Internship Offers
                       </p>
                     </Link>
                   </li>
@@ -216,10 +220,10 @@ const NavBar = () => {
                 <MdKeyboardArrowDown className={`${popup === 3 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
               </button>
 
-              <div 
-              onMouseLeave={() => {
-                setPopup(-1);
-              }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 3 ? 'flex' : "hidden"}`}
+              <div
+                onMouseLeave={() => {
+                  setPopup(-1);
+                }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 3 ? 'flex' : "hidden"}`}
               >
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
@@ -236,20 +240,20 @@ const NavBar = () => {
                       </p>
                     </Link>
                   </li>
-                  
+
                 </ul>
               </div>
             </li>
 
             <li>
-              <Link style={{ textDecoration: "none" }} to="/contribute">
+              <Link style={{ textDecoration: "none" }} to="/bihtacampus">
                 <p
                   className="text-white hover:text-blue-400" >
                   NIT Patna Bihta Campus
                 </p>
               </Link>
             </li>
-            
+
 
             <li>
               <Link style={{ textDecoration: "none" }} to="/contribute">

@@ -24,6 +24,8 @@ import {
   About,
   NewsId,
   Blogs,
+  History,
+  BihtaCampus,
   Error
 } from "./pages/index";
 import UGDatabase from "./pages/Databases/UGDatabase";
@@ -200,6 +202,14 @@ function App() {
             }
           />
           <Route
+            path="/history"
+            element={
+              <Layout>
+                <History />
+              </Layout>
+            }
+          />
+          <Route
             path="/ugdatabase"
             element={
               <Layout>
@@ -228,7 +238,16 @@ function App() {
             path="*"
             element={
               <Layout>
-                <Error/>
+                <Error />
+              </Layout>
+            }
+          />
+
+          <Route
+            path="/bihtacampus"
+            element={
+              <Layout>
+                <BihtaCampus />
               </Layout>
             }
           />

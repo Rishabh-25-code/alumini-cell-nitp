@@ -7,6 +7,7 @@ import Events from "./Events";
 import Blogs from "./Blogs";
 import Testimonials from "./Testimonials";
 import QuickLinks from "../../components/QuickLinks/QuickLinks";
+import ImageSlider from "./ImageSlider";
 
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
@@ -14,24 +15,8 @@ const HomePage = () => {
   return (
     <>
       <div className="h-1/5">
-        <div className="flex relative bg-[url(https://img.jagranjosh.com/images/2022/April/1142022/Screenshot%202022-03-14%20155423.jpg)] bg-no-repeat bg-cover w-full flex-col gap-3 items-center justify-center py-20 text-center text-white h-[65vh]">
-          <div className="absolute w-full inset-0 text-left pt-32 lg:pl-24 md:pl-16 pl-8 bg-gradient-to-r  from-[rgba(0,0,0,0.7)] via-[rgba(0,0,0,0.5)] to-transparent">
-            <h5 className="lg:text-4xl md:text-3xl text-2xl font-bold pb-2">
-              <span className="text-sky-500">Connect.</span> Give. Cherish.
-            </h5>
-            <p className="lg:text-7xl md:text-6xl text-5xl font-bold">
-              WELCOME BACK
-            </p>
-            <p className='lg:text-xl text-lg pb-5 pt-2 text-gray-300'>
-              Register now and become a member of <br /> Alumni Association of NIT Patna.
-            </p>
-            <Link to="https://forms.gle/cFkqtE3wx2T7Wr5CA " target="_blank">
-              <button className="px-5 py-2.5 bg-sky-500 text-white text-lg font-medium hover:scale-105 transition-all delay-75 rounded-xl ease-in hover:bg-sky-600" >
-                Register Now
-              </button>
-            </Link>
-          </div>
-        </div>
+        
+        <ImageSlider />
 
         <QuickLinks />
 
