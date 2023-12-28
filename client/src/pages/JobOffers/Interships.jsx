@@ -1,12 +1,12 @@
 import React from 'react'
 import Heading from '../../components/Headings/Heading'
 
-const JobOffers = () => {
+const Interships = () => {
   return (
     <div><div>
-    <Heading heading="Job Openings via Alumni"></Heading>
+    <Heading heading="Internship via Alumni"></Heading>
 </div></div>
   )
 }
 
-export default JobOffers
+export default Interships
