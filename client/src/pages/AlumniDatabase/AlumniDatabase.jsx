@@ -45,7 +45,6 @@ const departments = [
 
 const getAlumnidata = async (course, department, page) => {
     try {
-        console.log(course, department);
         const url = new URL("https://alumini-cell-nitp-two.vercel.app/members");
         if (department === "Architecture") course = "B.Arch";
         if (course) url.searchParams.append("degree", course);
@@ -53,7 +52,6 @@ const getAlumnidata = async (course, department, page) => {
         url.searchParams.append("page", page);
         const res = await axios.get(url.href);
         const data = await res.data;
-        console.log(data);
         return data;
     } catch (error) {
         throw new Error(error.message);
@@ -182,7 +180,11 @@ const AlumniDatabase = () => {
                                 })}
                             </div>
 
-                            <div className="flex items-center justify-center pt-16 gap-10 px-6">
+                            <div className="text-center px-3 pt-16">
+                                Showing <span className="text-sky-500">{data.dataPerPage}</span> results of page <span className="text-sky-500">{page}</span>.
+                            </div>
+
+                            <div className="flex items-center justify-center pt-5 gap-10 px-6">
                                 <button onClick={() => {
                                     window.scrollTo(0, 0);
                                     setPage(prev => --prev);
