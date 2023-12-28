@@ -20,12 +20,13 @@ async function readGSheet(SHEET_ID) {
                 d1[header[i]] = row._rawData[i];
             }
             await addYear({ year: d1['admission_year'] });
-            // let member = await addMember(d1);
-            // result.push(d1);
+            let member = await addMember(d1);
+            result.push(member);
         }
 
         return {
             success: true,
+            data: result,
         };
     };
 
@@ -33,9 +34,3 @@ async function readGSheet(SHEET_ID) {
 }
 
 module.exports = readGSheet;
-
-// name
-// current position
-// nitp postion - course
-// year - batch
-// placeHolder

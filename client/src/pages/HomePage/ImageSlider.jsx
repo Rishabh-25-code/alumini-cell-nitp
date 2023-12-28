@@ -26,13 +26,13 @@ const divstyle = {
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '450px',
+    height: '440px',
     bakgroundSize: 'cover'
 }
 const spanStyle = {
     fontSize: "20px",
     background: "#efefef",
-    color: "#000000"
+    color: "#fff"
 }
 
 function ImageSlider() {
@@ -43,7 +43,6 @@ function ImageSlider() {
                     <div key={index}>
                         <div style={{ ...divstyle, backgroundImage: `url(${image.url})` }}>
                             <span style={{ spanStyle }}>
-
                                 <div className="absolute w-full inset-0 text-left pt-32 lg:pl-24 md:pl-16 pl-8 bg-gradient-to-r  from-[rgba(0,0,0,0.7)] via-[rgba(0,0,0,0.5)] to-transparent">
                                     <h5 className="lg:text-4xl md:text-3xl text-2xl font-bold pb-2">
                                         <span className="text-sky-500">Connect.</span> Give. Cherish.
@@ -60,7 +59,7 @@ function ImageSlider() {
                                         </button>
                                     </Link>
                                 </div>
-                                </span>
+                            </span>
                         </div>
                     </div>
                 ))}
