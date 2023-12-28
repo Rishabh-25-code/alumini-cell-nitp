@@ -24,6 +24,7 @@ import {
   About,
   NewsId,
   Blogs,
+  History,
   Error
 } from "./pages/index";
 import Blog from "./pages/AlumniCorner/Blog";
@@ -193,6 +194,14 @@ function App() {
             element={
               <Layout>
                 <TeamCard2 />
+              </Layout>
+            }
+          />
+          <Route
+            path="/history"
+            element={
+              <Layout>
+                <History />
               </Layout>
             }
           />
