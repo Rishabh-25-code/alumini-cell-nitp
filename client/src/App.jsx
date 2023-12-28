@@ -26,6 +26,7 @@ import {
   Blogs,
   History,
   BihtaCampus,
+  JobOffers,
   Error
 } from "./pages/index";
 import UGDatabase from "./pages/Databases/UGDatabase";
@@ -206,6 +207,14 @@ function App() {
             element={
               <Layout>
                 <History />
+              </Layout>
+            }
+          />
+          <Route
+            path="/joboffers"
+            element={
+              <Layout>
+                <JobOffers />
               </Layout>
             }
           />
