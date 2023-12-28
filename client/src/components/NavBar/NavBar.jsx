@@ -8,14 +8,14 @@ const NavBar = () => {
   const [menu, setMenu] = useState(false);
   const [focus, setFocus] = useState(-1);
   const [popup, setPopup] = useState(-1);
-  const [colorChange, setColorchange] = useState(false);
+  const [colorChange, setColorchange] = useState(true);
 
   const changeNavbarColor = () => {
-    if (window.scrollY >= 0) {
-      setColorchange(true);
-    } else {
-      setColorchange(false);
-    }
+    // if (window.scrollY >= 0) {
+    //   setColorchange(true);
+    // } else {
+    //   setColorchange(false);
+    // }
   };
 
   window.addEventListener("scroll", changeNavbarColor);
@@ -151,11 +151,11 @@ const NavBar = () => {
             </li>
 
             <li className="nav-link">
-              <button onClick={() => setPopup(0)} onMouseOver={() => {
+              <button onClick={() => setPopup(2)} onMouseOver={() => {
                 if (popup > -1) {
                   setPopup(-1);
                 } else {
-                  setPopup(0);
+                  setPopup(2);
                 }
               }} style={{ textDecoration: "none" }} className="flex items-center gap-1">
                 <p
@@ -167,7 +167,7 @@ const NavBar = () => {
 
               <div onMouseLeave={() => {
                 setPopup(-1);
-              }} className={`bg-gray-950 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${popup === 0 ? 'flex' : "hidden"}`}>
+              }} className={`bg-gray-950 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${popup === 2 ? 'flex' : "hidden"}`}>
                 <ul className="dropdown flex flex-col">
                   <li className="dropdown-link mb-2">
                     <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
@@ -202,11 +202,11 @@ const NavBar = () => {
             </li>
 
             <li className="nav-link">
-              <button onClick={() => setPopup(1)} onMouseOver={() => {
+              <button onClick={() => setPopup(3)} onMouseOver={() => {
                 if (popup > -1) {
                   setPopup(-1);
                 } else {
-                  setPopup(1);
+                  setPopup(3);
                 }
               }} style={{ textDecoration: "none" }} className="flex items-center gap-1">
                 <p
@@ -219,7 +219,7 @@ const NavBar = () => {
               <div 
               onMouseLeave={() => {
                 setPopup(-1);
-              }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 1 ? 'flex' : "hidden"}`}
+              }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 3 ? 'flex' : "hidden"}`}
               >
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
