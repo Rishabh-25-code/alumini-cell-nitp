@@ -85,15 +85,42 @@ const NavBar = () => {
               </Link>
             </li>
 
-            <li>
-              <Link style={{ textDecoration: "none" }} to="/about">
+            <li className="nav-link">
+              <button onClick={() => setPopup(4)} onMouseOver={() => {
+                if (popup > -1) {
+                  setPopup(-1);
+                } else {
+                  setPopup(4);
+                }
+              }} style={{ textDecoration: "none" }} className="flex items-center gap-1">
                 <p
-                  onClick={() => setFocus(0)}
-                  className="text-white hover:text-blue-400"
-                >
+                  className="text-white hover:text-blue-400">
                   About NITP
                 </p>
-              </Link>
+                <MdKeyboardArrowDown className={`${popup === 0 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
+              </button>
+
+              <div onMouseLeave={() => {
+                setPopup(-1);
+              }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 1 ? 'flex' : "hidden"}`}>
+                <ul className="dropdown flex flex-col gap-2">
+                  <li className="dropdown-link mb-2">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/about">
+                      <p className="text-gray-400 hover:text-blue-400">
+                        About NITP
+                      </p>
+                    </Link>
+                  </li>
+                  <li className="dropdown-link mb-2">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/history">
+                      <p className="text-gray-400 hover:text-blue-400">
+                        History of NITP
+                      </p>
+                    </Link>
+                  </li>
+                  
+                  </ul>
+              </div>
             </li>
 
             <li className="nav-link">
@@ -116,21 +143,21 @@ const NavBar = () => {
               }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 1 ? 'flex' : "hidden"}`}>
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/phddatabase">
                       <p className="text-gray-400 hover:text-blue-400">
                         Ph.D
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/pgdatabase">
                       <p className="text-gray-400 hover:text-blue-400">
                         PG
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ugdatabase">
                       <p className="text-gray-400 hover:text-blue-400">
                         UG
                       </p>
