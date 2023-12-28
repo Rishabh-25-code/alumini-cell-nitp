@@ -162,7 +162,7 @@ const NavBar = () => {
                   className="text-white hover:text-blue-400">
                   Alumni Speaks
                 </p>
-                <MdKeyboardArrowDown className={`${popup === 0 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
+                <MdKeyboardArrowDown className={`${popup === 2 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
               </button>
 
               <div onMouseLeave={() => {
@@ -213,7 +213,7 @@ const NavBar = () => {
                   className="text-white hover:text-blue-400">
                   Alumni Meets
                 </p>
-                <MdKeyboardArrowDown className={`${popup === 1 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
+                <MdKeyboardArrowDown className={`${popup === 3 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
               </button>
 
               <div 

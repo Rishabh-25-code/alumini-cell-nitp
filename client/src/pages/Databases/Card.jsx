@@ -19,11 +19,24 @@ const Card = ({ member }) => {
             <div className='text-gray-400 my-3 text-sm'>
                 {member.degree}
             </div>
-            <div className='py-3'>
+            <div className='text-gray-400 my-3 text-sm'>
+                {member.academic_session}
+            </div>
+            <div className='text-gray-400 my-3 text-sm'>
+            {member.currently_employed }
+
+            </div>
+            <div className='text-gray-400 my-3 text-sm'>
+                {member.current_company}
+            </div>
+            <div className='text-gray-400 my-3 text-sm'>
+                {member.designation}
+            </div>
+            {/* <div className='py-3'>
                 <a href={`mailto:${member.email}`} >
                     <span className='text-sky-400 px-4 py-1.5 rounded-xl bg-sky-900'>{member.email}</span>
                 </a>
-            </div>
+            </div> */}
 
             
         </div>

@@ -27,6 +27,8 @@ import {
   Error
 } from "./pages/index";
 import UGDatabase from "./pages/Databases/UGDatabase";
+import PhDdatabase from "./pages/Databases/PhDdatabase";
+import PGDatabase from "./pages/Databases/PGDatabase";
 import Blog from "./pages/AlumniCorner/Blog";
 import ScrollToTop from "./hooks/useScrollToTop";
 // import { ToastContainer } from "react-toastify";
@@ -202,6 +204,22 @@ function App() {
             element={
               <Layout>
                 <UGDatabase />
+              </Layout>
+            }
+          />
+          <Route
+            path="/pgdatabase"
+            element={
+              <Layout>
+                <PGDatabase />
+              </Layout>
+            }
+          />
+          <Route
+            path="/phddatabase"
+            element={
+              <Layout>
+                <PhDdatabase />
               </Layout>
             }
           />

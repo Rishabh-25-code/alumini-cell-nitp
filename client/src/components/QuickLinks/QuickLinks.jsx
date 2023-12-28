@@ -10,12 +10,12 @@ const QuickLinks = () => {
         {
             name: "PG Alumni Database",
             icon: "./images/quicklink/electrical.png",
-            link: "/academics"
+            link: "/pgdatabase"
         },
         {
             name: "PhD Alumni Database",
             icon: "./images/quicklink/web.png",
-            link: "/publications"
+            link: "/phddatabase"
         },
         {
             name: "Alumni Meetings",

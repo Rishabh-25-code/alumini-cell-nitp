@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 const url = "https://alumini-cell-nitp-two.vercel.app/members";
 
-const UGDatabase = () => {
+const PhDdatabase = () => {
   const [data, setData] = useState({
     data: [],
     dataPerPage: 25,
@@ -16,12 +16,12 @@ const UGDatabase = () => {
 
   const fetchInfo = async (page) => {
     try {
-      const res = await fetch(`${url}?page=${page}`);
+      const res = await fetch(`${url}?degree=${"Ph.D."}`);
       const apiData = await res.json();
 
-      // Filter data based on the "degree" property
+      //   Filter data based on the "degree" property
       const filteredData = apiData.data.filter((member) =>
-        ["B.Tech", "B.Arch"].includes(member.degree)
+        ["Ph.D."].includes(member.degree)
       );
 
       console.log(filteredData);
@@ -68,7 +68,7 @@ const UGDatabase = () => {
           data-aos="fade-right"
           className="font-extrabold text-transparent lg:text-8xl md:text-7xl text-6xl bg-clip-text bg-gradient-to-r from-blue-400  to-sky-600 m-10 large-heading "
         >
-          UG-Database
+          Ph.D. -Database
         </h1>
         <div>
           <div className="my-20 mx-5 flex flex-wrap gap-10 items-center justify-center">
@@ -105,4 +105,4 @@ const UGDatabase = () => {
   );
 };
 
-export default UGDatabase;
+export default PhDdatabase;
