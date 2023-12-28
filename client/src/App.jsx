@@ -24,6 +24,7 @@ import {
   About,
   NewsId,
   Blogs,
+  History,
   BihtaCampus,
   Error
 } from "./pages/index";
@@ -194,6 +195,14 @@ function App() {
             element={
               <Layout>
                 <TeamCard2 />
+              </Layout>
+            }
+          />
+          <Route
+            path="/history"
+            element={
+              <Layout>
+                <History />
               </Layout>
             }
           />
