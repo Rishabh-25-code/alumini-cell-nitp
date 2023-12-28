@@ -26,6 +26,7 @@ import {
   Blogs,
   Error
 } from "./pages/index";
+import UGDatabase from "./pages/Databases/UGDatabase";
 import Blog from "./pages/AlumniCorner/Blog";
 import ScrollToTop from "./hooks/useScrollToTop";
 // import { ToastContainer } from "react-toastify";
@@ -193,6 +194,14 @@ function App() {
             element={
               <Layout>
                 <TeamCard2 />
+              </Layout>
+            }
+          />
+          <Route
+            path="/ugdatabase"
+            element={
+              <Layout>
+                <UGDatabase />
               </Layout>
             }
           />

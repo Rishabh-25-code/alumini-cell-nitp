@@ -5,7 +5,7 @@ const QuickLinks = () => {
         {
             name: "UG Alumni Database",
             icon: "./images/quicklink/blockchain.png",
-            link: "/student-cell"
+            link: "/ugdatabase"
         },
         {
             name: "PG Alumni Database",
