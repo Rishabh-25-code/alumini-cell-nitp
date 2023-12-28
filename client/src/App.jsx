@@ -25,12 +25,17 @@ import {
   NewsId,
   Blogs,
   BihtaCampus,
+  AlumniDatabase,
   Error
 } from "./pages/index";
 import Blog from "./pages/AlumniCorner/Blog";
 import ScrollToTop from "./hooks/useScrollToTop";
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 function App() {
 
@@ -41,183 +46,194 @@ function App() {
 
   return (
     <>
-      {/* <ToastContainer /> */}
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Layout>
-                <HomePage />
-              </Layout>
-            }
-          />
-          <Route
-            path="/gallery"
-            element={
-              <Layout>
-                <Gallery />
-              </Layout>
-            }
-          />
-          <Route
-            path="/team"
-            element={
-              <Layout>
-                <Team />
-              </Layout>
-            }
-          />
-          <Route
-            path="/events"
-            element={
-              <Layout>
-                <Events />
-              </Layout>
-            }
-          />
-          <Route
-            path="/notablealumni"
-            element={
-              <Layout>
-                <NotableAlumni />
-              </Layout>
-            }
-          />
-          <Route
-            path="/news"
-            element={
-              <Layout>
-                <Newsletter />
-              </Layout>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <Layout>
-                <Registration />
-              </Layout>
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <Layout>
-                <Signup />
-              </Layout>
-            }
-          />
-          <Route
-            path="/blogs"
-            element={
-              <Layout>
-                <Blogs />
-              </Layout>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <Layout>
-                <Login />
-              </Layout>
-            }
-          />
-          <Route
-            path="/news/:newsId"
-            element={
-              <Layout>
-                <NewsId />
-              </Layout>
-            }
-          />
-          <Route
-            path="/alumnicorner"
-            element={
-              <Layout>
-                <AlumniCorner />
-              </Layout>
-            }
-          />
-          <Route
-            path="/blog/:blogId"
-            element={
-              <Layout>
-                <Blog />
-              </Layout>
-            }
-          />
-          <Route
-            path="/contribute"
-            element={
-              <Layout>
-                <Donate />
-              </Layout>
-            }
-          />
-          <Route
-            path="/resources"
-            element={
-              <Layout>
-                <Resources />
-              </Layout>
-            }
-          />
-          <Route
-            path="/interaction"
-            element={
-              <Layout>
-                <Interaction />
-              </Layout>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <Layout>
-                <About />
-              </Layout>
-            }
-          />
-          <Route
-            path="/teamcard"
-            element={
-              <Layout>
-                <TeamCard />
-              </Layout>
-            }
-          />
-          <Route
-            path="/teamcard2"
-            element={
-              <Layout>
-                <TeamCard2 />
-              </Layout>
-            }
-          />
+      <QueryClientProvider client={queryClient}>
+        {/* <ToastContainer /> */}
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Layout>
+                  <HomePage />
+                </Layout>
+              }
+            />
+            <Route
+              path="/gallery"
+              element={
+                <Layout>
+                  <Gallery />
+                </Layout>
+              }
+            />
+            <Route
+              path="/team"
+              element={
+                <Layout>
+                  <Team />
+                </Layout>
+              }
+            />
+            <Route
+              path="/events"
+              element={
+                <Layout>
+                  <Events />
+                </Layout>
+              }
+            />
+            <Route
+              path="/notablealumni"
+              element={
+                <Layout>
+                  <NotableAlumni />
+                </Layout>
+              }
+            />
+            <Route
+              path="/news"
+              element={
+                <Layout>
+                  <Newsletter />
+                </Layout>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <Layout>
+                  <Registration />
+                </Layout>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <Layout>
+                  <Signup />
+                </Layout>
+              }
+            />
+            <Route
+              path="/blogs"
+              element={
+                <Layout>
+                  <Blogs />
+                </Layout>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <Layout>
+                  <Login />
+                </Layout>
+              }
+            />
+            <Route
+              path="/news/:newsId"
+              element={
+                <Layout>
+                  <NewsId />
+                </Layout>
+              }
+            />
+            <Route
+              path="/alumnicorner"
+              element={
+                <Layout>
+                  <AlumniCorner />
+                </Layout>
+              }
+            />
+            <Route
+              path="/blog/:blogId"
+              element={
+                <Layout>
+                  <Blog />
+                </Layout>
+              }
+            />
+            <Route
+              path="/contribute"
+              element={
+                <Layout>
+                  <Donate />
+                </Layout>
+              }
+            />
+            <Route
+              path="/resources"
+              element={
+                <Layout>
+                  <Resources />
+                </Layout>
+              }
+            />
+            <Route
+              path="/interaction"
+              element={
+                <Layout>
+                  <Interaction />
+                </Layout>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <Layout>
+                  <About />
+                </Layout>
+              }
+            />
+            <Route
+              path="/teamcard"
+              element={
+                <Layout>
+                  <TeamCard />
+                </Layout>
+              }
+            />
+            <Route
+              path="/teamcard2"
+              element={
+                <Layout>
+                  <TeamCard2 />
+                </Layout>
+              }
+            />
 
-          <Route
-            path="*"
-            element={
-              <Layout>
-                <Error />
-              </Layout>
-            }
-          />
+            <Route
+              path="*"
+              element={
+                <Layout>
+                  <Error />
+                </Layout>
+              }
+            />
 
-          <Route
-            path="/bihtacampus"
-            element={
-              <Layout>
-                <BihtaCampus />
-              </Layout>
-            }
-          />
+            <Route
+              path="/bihtacampus"
+              element={
+                <Layout>
+                  <BihtaCampus />
+                </Layout>
+              }
+            />
 
-        </Routes>
-      </Router>
+            <Route
+              path="/alumni-database"
+              element={
+                <Layout>
+                  <AlumniDatabase/>
+                </Layout>
+              }
+            />
+
+          </Routes>
+        </Router>
+      </QueryClientProvider>
     </>
   );
 }

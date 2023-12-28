@@ -20,5 +20,6 @@ import NewsId from "./Newsletter/NewsId";
 import Blogs from "./Blogs/Blogs";
 import BihtaCampus from "./Bihta-Campus/BihtaCampus";
 import Error from "./Error/Error";
+import AlumniDatabase from "./AlumniDatabase/AlumniDatabase";
 
-export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, NewsId, Blogs, BihtaCampus, Error };
+export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, NewsId, Blogs, BihtaCampus, Error, AlumniDatabase };

@@ -18,10 +18,10 @@ app.use(cors());
 connectDB();
 
 // app.use('/user', userRouter);
-app.post('/readGSheet', async (req, res) => {
-    const { SHEET_ID } = req.body;
+app.post('/readGSheet/:sheetID', async (req, res) => {
+    const { sheetID } = req.params;
     try {
-        let result = await readGSheet(SHEET_ID);
+        let result = await readGSheet(sheetID);
         res.json(result);
     } catch (error) {
         console.log(error);
@@ -77,7 +77,7 @@ app.get('/members', async (req, res) => {
         }
     }
 
-    const ITEMS_PER_PAGE = itemsPerPage || 25;
+    const ITEMS_PER_PAGE = parseInt(itemsPerPage) || 25;
 
     console.log(filter);
 
