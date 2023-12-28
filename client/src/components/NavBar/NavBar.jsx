@@ -53,6 +53,10 @@ const NavBar = () => {
     {
       name: "Resources",
       link: "/resources",
+    },
+    {
+      name: "Bihta-Campus",
+      link: "/bihtacampus",
     }
   ];
 
@@ -242,7 +246,7 @@ const NavBar = () => {
             </li>
 
             <li>
-              <Link style={{ textDecoration: "none" }} to="/contribute">
+              <Link style={{ textDecoration: "none" }} to="/bihtacampus">
                 <p
                   className="text-white hover:text-blue-400" >
                   NIT Patna Bihta Campus
