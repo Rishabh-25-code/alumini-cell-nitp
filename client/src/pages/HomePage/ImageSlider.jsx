@@ -23,9 +23,10 @@ const slideImages = [
 
 const divstyle = {
     display: 'flex',
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '400px',
+    height: '450px',
     bakgroundSize: 'cover'
 }
 const spanStyle = {
