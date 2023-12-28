@@ -87,7 +87,7 @@ const NavBar = () => {
                   onClick={() => setFocus(0)}
                   className="text-white hover:text-blue-400"
                 >
-                  About
+                  About NITP
                 </p>
               </Link>
             </li>
@@ -102,7 +102,7 @@ const NavBar = () => {
               }} style={{ textDecoration: "none" }} className="flex items-center gap-1">
                 <p
                   className="text-white hover:text-blue-400">
-                  Alumni Corner
+                  Alumni Database
                 </p>
                 <MdKeyboardArrowDown className={`${popup === 1 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
               </button>
@@ -112,40 +112,40 @@ const NavBar = () => {
               }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 1 ? 'flex' : "hidden"}`}>
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/alumnicorner">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Overview
+                        Ph.D
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/blogs">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Blogs
+                        PG
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/news">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        News
+                        UG
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/gallery">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Gallery
+                        Faculty/Staff
                       </p>
                     </Link>
                   </li>
-                  <li className="dropdown-link mb-2">
+                  {/* <li className="dropdown-link mb-2">
                     <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/notablealumni">
                       <p className="text-gray-400 hover:text-blue-400">
                         Notable Alumni
                       </p>
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
             </li>
@@ -160,7 +160,7 @@ const NavBar = () => {
               }} style={{ textDecoration: "none" }} className="flex items-center gap-1">
                 <p
                   className="text-white hover:text-blue-400">
-                  Activities
+                  Alumni Speaks
                 </p>
                 <MdKeyboardArrowDown className={`${popup === 0 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
               </button>
@@ -170,29 +170,86 @@ const NavBar = () => {
               }} className={`bg-gray-950 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${popup === 0 ? 'flex' : "hidden"}`}>
                 <ul className="dropdown flex flex-col">
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/events">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Events
+                        Blogs
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/interaction">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Interaction
+                        Alumni News
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/resources">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Resources
+                        Job Offers from Alumni
+                      </p>
+                    </Link>
+                  </li>
+                  <li className="dropdown-link mb-2">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                      <p className="text-gray-400 hover:text-blue-400">
+                        Internship Offers 
                       </p>
                     </Link>
                   </li>
                 </ul>
               </div>
             </li>
+
+            <li className="nav-link">
+              <button onClick={() => setPopup(1)} onMouseOver={() => {
+                if (popup > -1) {
+                  setPopup(-1);
+                } else {
+                  setPopup(1);
+                }
+              }} style={{ textDecoration: "none" }} className="flex items-center gap-1">
+                <p
+                  className="text-white hover:text-blue-400">
+                  Alumni Meets
+                </p>
+                <MdKeyboardArrowDown className={`${popup === 1 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
+              </button>
+
+              <div 
+              onMouseLeave={() => {
+                setPopup(-1);
+              }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 1 ? 'flex' : "hidden"}`}
+              >
+                <ul className="dropdown flex flex-col gap-2">
+                  <li className="dropdown-link mb-2">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                      <p className="text-gray-400 hover:text-blue-400">
+                        Next Alumni Meet
+                      </p>
+                    </Link>
+                  </li>
+                  <li className="dropdown-link mb-2">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                      <p className="text-gray-400 hover:text-blue-400">
+                        Previous Meets
+                      </p>
+                    </Link>
+                  </li>
+                  
+                </ul>
+              </div>
+            </li>
+
+            <li>
+              <Link style={{ textDecoration: "none" }} to="/contribute">
+                <p
+                  className="text-white hover:text-blue-400" >
+                  NIT Patna Bihta Campus
+                </p>
+              </Link>
+            </li>
+            
 
             <li>
               <Link style={{ textDecoration: "none" }} to="/contribute">
