@@ -216,6 +216,22 @@ const NavBar = () => {
                 </p>
               </Link>
             </li>
+            <li>
+              <Link style={{ textDecoration: "none" }} to="/404">
+                <p
+                  className="text-white hover:text-blue-400" >
+                  History
+                </p>
+              </Link>
+            </li>
+            <li>
+              <Link style={{ textDecoration: "none" }} to="/404">
+                <p
+                  className="text-white hover:text-blue-400" >
+                  Alumni Database
+                </p>
+              </Link>
+            </li>
 
           </ul>
 
