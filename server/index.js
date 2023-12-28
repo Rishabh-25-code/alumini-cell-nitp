@@ -29,7 +29,7 @@ app.post('/readGSheet', async (req, res) => {
     }
 });
 
-const ITEMS_PER_PAGE = 25;
+
 
 app.get('/years', async (req, res) => {
     try {
@@ -54,6 +54,7 @@ app.get('/members', async (req, res) => {
         currently_employed,
         gender,
         academic_session,
+        itemsPerPage,
         page = 1  // Default to page 1 if not provided
     } = req.query;
 
@@ -66,7 +67,7 @@ app.get('/members', async (req, res) => {
         isPWD,
         currently_employed,
         gender,
-        academic_session
+        academic_session,
     };
 
     // Remove undefined or null values from the filter object
@@ -75,6 +76,8 @@ app.get('/members', async (req, res) => {
             delete filter[key];
         }
     }
+
+    const ITEMS_PER_PAGE = itemsPerPage || 25;
 
     console.log(filter);
 
