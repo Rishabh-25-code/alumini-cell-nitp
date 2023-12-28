@@ -188,7 +188,7 @@ const NavBar = () => {
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/joboffers">
                       <p className="text-gray-400 hover:text-blue-400">
                         Job Offers from Alumni
                       </p>

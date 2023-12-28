@@ -24,6 +24,7 @@ import {
   About,
   NewsId,
   Blogs,
+  History,
   BihtaCampus,
   AlumniDatabase,
   Error
