@@ -150,6 +150,13 @@ const NavBar = () => {
                       </p>
                     </Link>
                   </li>
+                  <li className="dropdown-link mb-2">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/notablealumni">
+                      <p className="text-gray-400 hover:text-blue-400">
+                        Job/Internship by Alumni
+                      </p>
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </li>
@@ -191,6 +198,13 @@ const NavBar = () => {
                     <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/resources">
                       <p className="text-gray-400 hover:text-blue-400">
                         Resources
+                      </p>
+                    </Link>
+                  </li>
+                  <li className="dropdown-link mb-2">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/resources">
+                      <p className="text-gray-400 hover:text-blue-400">
+                        Alumni Meets & Awardees
                       </p>
                     </Link>
                   </li>
