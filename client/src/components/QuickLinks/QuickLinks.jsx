@@ -5,22 +5,22 @@ const QuickLinks = () => {
         {
             name: "UG Alumni Database",
             icon: "./images/quicklink/blockchain.png",
-            link: "/student-cell"
+            link: "/alumni-database?type=ug"
         },
         {
             name: "PG Alumni Database",
             icon: "./images/quicklink/electrical.png",
-            link: "/academics"
+            link: "/alumni-database?type=pg"
         },
         {
             name: "PhD Alumni Database",
             icon: "./images/quicklink/web.png",
-            link: "/publications"
+            link: "/alumni-database?type=phd"
         },
         {
             name: "Alumni Meetings",
             icon: "./images/quicklink/social.png",
-            link: "/gallery"
+            link: "/alumni-meet"
         },
         {
             name: "Blogs from Alumni" ,
@@ -30,17 +30,17 @@ const QuickLinks = () => {
         {
             name: "Alumni News",
             icon: "./images/quicklink/marketing.png",
-            link: "/events"
+            link: "/news"
         },
         {
-            name: "Internship Offers from Alumni",
+            name: "Internship via Alumni",
             icon: "./images/quicklink/design.png",
-            link: "/commities"
+            link: "/internships"
         },
         {
-            name: "Openings Via Alumni",
+            name: "Job Openings Via Alumni",
             icon: "./images/quicklink/event.png",
-            link: "/kaizen"
+            link: "/jobs"
         }
     ]
 

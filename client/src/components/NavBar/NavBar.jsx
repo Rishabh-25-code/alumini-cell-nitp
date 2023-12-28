@@ -174,30 +174,30 @@ const NavBar = () => {
               }} className={`bg-gray-950 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${popup === 2 ? 'flex' : "hidden"}`}>
                 <ul className="dropdown flex flex-col">
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/news">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/blogs">
                       <p className="text-gray-400 hover:text-blue-400">
                         Blogs
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/news">
                       <p className="text-gray-400 hover:text-blue-400">
                         Alumni News
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/joboffers">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/jobs">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Job Offers from Alumni
+                        Job Openings from Alumni
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/internships ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Internship Offers
+                        Internship via Alumni
                       </p>
                     </Link>
                   </li>
@@ -227,14 +227,14 @@ const NavBar = () => {
               >
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/alumni-meet ">
                       <p className="text-gray-400 hover:text-blue-400">
                         Next Alumni Meet
                       </p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
+                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/alumni-meet ">
                       <p className="text-gray-400 hover:text-blue-400">
                         Previous Meets
                       </p>
