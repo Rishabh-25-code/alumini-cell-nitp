@@ -162,7 +162,7 @@ const NavBar = () => {
                   className="text-white hover:text-blue-400">
                   Alumni Speaks
                 </p>
-                <MdKeyboardArrowDown className={`${popup === 0 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
+                <MdKeyboardArrowDown className={`${popup === 2 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
               </button>
 
               <div onMouseLeave={() => {
@@ -193,7 +193,7 @@ const NavBar = () => {
                   <li className="dropdown-link mb-2">
                     <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/ ">
                       <p className="text-gray-400 hover:text-blue-400">
-                        Internship Offers 
+                        Internship Offers
                       </p>
                     </Link>
                   </li>
@@ -213,13 +213,13 @@ const NavBar = () => {
                   className="text-white hover:text-blue-400">
                   Alumni Meets
                 </p>
-                <MdKeyboardArrowDown className={`${popup === 1 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
+                <MdKeyboardArrowDown className={`${popup === 3 && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
               </button>
 
-              <div 
-              onMouseLeave={() => {
-                setPopup(-1);
-              }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 3 ? 'flex' : "hidden"}`}
+              <div
+                onMouseLeave={() => {
+                  setPopup(-1);
+                }} className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 3 ? 'flex' : "hidden"}`}
               >
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
@@ -236,7 +236,7 @@ const NavBar = () => {
                       </p>
                     </Link>
                   </li>
-                  
+
                 </ul>
               </div>
             </li>
@@ -249,7 +249,7 @@ const NavBar = () => {
                 </p>
               </Link>
             </li>
-            
+
 
             <li>
               <Link style={{ textDecoration: "none" }} to="/contribute">
