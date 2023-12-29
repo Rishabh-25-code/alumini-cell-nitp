@@ -103,7 +103,7 @@ const NavBar = () => {
                 style={{ textDecoration: "none" }}
                 className="flex items-center gap-1"
               >
-                  <p className="text-white hover:text-blue-400">About NITP</p>
+                <p className="text-white hover:text-blue-400">About NITP</p>
 
                 <MdKeyboardArrowDown
                   className={`${popup === 0 &&
@@ -181,9 +181,9 @@ const NavBar = () => {
                     <Link
                       onClick={() => setPopup(-1)}
                       style={{ textDecoration: "none" }}
-                      to="/alumni-database?type=phd"
+                      to="/alumni-database?type=ug"
                     >
-                      <p className="text-gray-400 hover:text-blue-400">Ph.D</p>
+                      <p className="text-gray-400 hover:text-blue-400">UG</p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">
@@ -199,9 +199,9 @@ const NavBar = () => {
                     <Link
                       onClick={() => setPopup(-1)}
                       style={{ textDecoration: "none" }}
-                      to="/alumni-database?type=ug"
+                      to="/alumni-database?type=phd"
                     >
-                      <p className="text-gray-400 hover:text-blue-400">UG</p>
+                      <p className="text-gray-400 hover:text-blue-400">Ph.D</p>
                     </Link>
                   </li>
                   <li className="dropdown-link mb-2">

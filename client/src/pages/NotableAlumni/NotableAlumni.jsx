@@ -24,7 +24,7 @@ const NotableAlumni = () => {
       name: "Dr. Ratan Kumar Sinha",
       designation: "Former Chairman, Atomic Energy Commission",
       about: "Dr. Ratan Kumar Sinha is an Indian nuclear scientist who served as the chairman of the Atomic Energy Commission of India and the Secretary to the Government of India, Department of Atomic Energy from 2012 to 2015.",
-      image: "./notable-alumni/ratan-kumar-sinha.jfif.crdownload",
+      image: "./notable-alumni/Ratan_Kumar_Sinha.jpg",
       id: 3
     },
     {
