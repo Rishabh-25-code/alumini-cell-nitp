@@ -1,7 +1,7 @@
 import React from 'react'
 import Heading from '../../components/Headings/Heading'
 import { IoSearch } from "react-icons/io5";
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa";
 
 const JobOffers = () => {
     return (
