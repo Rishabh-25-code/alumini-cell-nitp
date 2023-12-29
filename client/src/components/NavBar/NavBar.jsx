@@ -61,10 +61,9 @@ const NavBar = () => {
 
   return (
     <div
-      className={`fixed z-10 w-[100%] items-center justify-center ${
-        colorChange &&
+      className={`fixed z-10 w-[100%] items-center justify-center ${colorChange &&
         "border-b bg-black transition-all delay-100  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md"
-      }`}
+        }`}
     >
       <div className="flex items-center justify-between lg:w-[65rem] md:w-[95%] px-4 md:px-3 py-3 m-auto text-lg">
         <div className="flex items-center">
@@ -103,19 +102,13 @@ const NavBar = () => {
                 }}
                 style={{ textDecoration: "none" }}
                 className="flex items-center gap-1"
-              ><Link
-              onClick={() => setPopup(-1)}
-              style={{ textDecoration: "none" }}
-              to="/about"
-            >
-              <p className="text-white hover:text-blue-400">About NITP</p>
-            </Link>
-                
+              >
+                  <p className="text-white hover:text-blue-400">About NITP</p>
+
                 <MdKeyboardArrowDown
-                  className={`${
-                    popup === 0 &&
+                  className={`${popup === 0 &&
                     "rotate-180 transition-all delay-75 ease-in text-blue-400"
-                  }`}
+                    }`}
                   size={24}
                 />
               </button>
@@ -124,9 +117,8 @@ const NavBar = () => {
                 onMouseLeave={() => {
                   setPopup(-1);
                 }}
-                className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${
-                  popup === 0 ? "flex" : "hidden"
-                }`}
+                className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 0 ? "flex" : "hidden"
+                  }`}
               >
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
@@ -168,18 +160,11 @@ const NavBar = () => {
                 style={{ textDecoration: "none" }}
                 className="flex items-center gap-1"
               >
-                <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/alumni-database?type=ug"
-                    >
-                      <p className="text-white hover:text-blue-400">Alumni Database</p>
-                    </Link>
+                <p className="text-white hover:text-blue-400">Alumni Database</p>
                 <MdKeyboardArrowDown
-                  className={`${
-                    popup === 1 &&
+                  className={`${popup === 1 &&
                     "rotate-180 transition-all delay-75 ease-in text-blue-400"
-                  }`}
+                    }`}
                   size={24}
                 />
               </button>
@@ -188,9 +173,8 @@ const NavBar = () => {
                 onMouseLeave={() => {
                   setPopup(-1);
                 }}
-                className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${
-                  popup === 1 ? "flex" : "hidden"
-                }`}
+                className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 1 ? "flex" : "hidden"
+                  }`}
               >
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
@@ -255,18 +239,11 @@ const NavBar = () => {
                 style={{ textDecoration: "none" }}
                 className="flex items-center gap-1"
               >
-                <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/blogs"
-                    >
-                    <p className="text-white hover:text-blue-400">Alumni Speaks</p>
-                    </Link>
+                <p className="text-white hover:text-blue-400">Alumni Speaks</p>
                 <MdKeyboardArrowDown
-                  className={`${
-                    popup === 2 &&
+                  className={`${popup === 2 &&
                     "rotate-180 transition-all delay-75 ease-in text-blue-400"
-                  }`}
+                    }`}
                   size={24}
                 />
               </button>
@@ -275,9 +252,8 @@ const NavBar = () => {
                 onMouseLeave={() => {
                   setPopup(-1);
                 }}
-                className={`bg-gray-950 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${
-                  popup === 2 ? "flex" : "hidden"
-                }`}
+                className={`bg-gray-950 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${popup === 2 ? "flex" : "hidden"
+                  }`}
               >
                 <ul className="dropdown flex flex-col">
                   <li className="dropdown-link mb-2">
@@ -339,19 +315,12 @@ const NavBar = () => {
                 style={{ textDecoration: "none" }}
                 className="flex items-center gap-1"
               >
-                <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/alumni-meet"
-                    >
-                      <p className="text-white hover:text-blue-400">Alumni Meets</p>
-                    </Link>
-                
+                <p className="text-white hover:text-blue-400">Alumni Meets</p>
+
                 <MdKeyboardArrowDown
-                  className={`${
-                    popup === 3 &&
+                  className={`${popup === 3 &&
                     "rotate-180 transition-all delay-75 ease-in text-blue-400"
-                  }`}
+                    }`}
                   size={24}
                 />
               </button>
@@ -360,9 +329,8 @@ const NavBar = () => {
                 onMouseLeave={() => {
                   setPopup(-1);
                 }}
-                className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${
-                  popup === 3 ? "flex" : "hidden"
-                }`}
+                className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 3 ? "flex" : "hidden"
+                  }`}
               >
                 <ul className="dropdown flex flex-col gap-2">
                   <li className="dropdown-link mb-2">
@@ -380,7 +348,7 @@ const NavBar = () => {
                     <Link
                       onClick={() => setPopup(-1)}
                       style={{ textDecoration: "none" }}
-                      to="/alumni-meet "
+                      to="/prev-alumni-meets"
                     >
                       <p className="text-gray-400 hover:text-blue-400">
                         Previous Meets

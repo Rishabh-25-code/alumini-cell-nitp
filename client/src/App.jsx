@@ -28,6 +28,8 @@ import {
   BihtaCampus,
   AlumniDatabase,
   Error,
+  SuccessStories,
+  PreviousMeets,
 } from "./pages/index";
 import JobOffers from "./pages/JobOffers/JobOffers";
 import Interships from "./pages/JobOffers/Interships";
@@ -48,6 +50,144 @@ function App() {
     AOS.refresh();
   }, []);
 
+  const links = [
+    {
+      path: "/",
+      element: <HomePage />,
+      id: 1,
+    },
+    {
+      path: "/gallery",
+      element: <Gallery />,
+      id: 2,
+    },
+    {
+      path: "/team",
+      element: <Team />,
+      id: 3,
+    },
+    {
+      path: "/history",
+      element: <History />,
+      id: 4,
+    },
+    {
+      path: "/events",
+      element: <Events />,
+      id: 5,
+    },
+    {
+      path: "/notablealumni",
+      element: <NotableAlumni />,
+      id: 6,
+    },
+    {
+      path: "/news",
+      element: <Newsletter />,
+      id: 7,
+    },
+    {
+      path: "/register",
+      element: <Registration />,
+      id: 8,
+    },
+    {
+      path: "/signup",
+      element: <Signup />,
+      id: 9,
+    },
+    {
+      path: "/blogs",
+      element: <Blogs />,
+      id: 10,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+      id: 11,
+    },
+    {
+      path: "/news/:newsId",
+      element: <NewsId />,
+      id: 12,
+    },
+    {
+      path: "/alumnicorner",
+      element: <AlumniCorner />,
+      id: 13,
+    },
+    {
+      path: "/blog/:blogId",
+      element: <Blog />,
+      id: 14,
+    },
+    {
+      path: "/contribute",
+      element: <Donate />,
+      id: 15,
+    },
+    {
+      path: "/resources",
+      element: <Resources />,
+      id: 16,
+    },
+    {
+      path: "/interaction",
+      element: <Interaction />,
+      id: 17,
+    },
+    {
+      path: "/about",
+      element: <About />,
+      id: 18,
+    },
+    {
+      path: "/teamcard",
+      element: <TeamCard />,
+      id: 19,
+    },
+    {
+      path: "/teamcard2",
+      element: <TeamCard2 />,
+      id: 20,
+    },
+    {
+      path: "/bihtacampus",
+      element: <BihtaCampus />,
+      id: 21,
+    },
+    {
+      path: "/alumni-database",
+      element: <AlumniDatabase />,
+      id: 22,
+    },
+    {
+      path: "/alumni-meet",
+      element: <Meet />,
+      id: 23,
+    },
+    {
+      path: "/jobs",
+      element: <JobOffers />,
+      id: 24,
+    },
+    {
+      path: "/internships",
+      element: <Interships />,
+      id: 25,
+    },
+    {
+      path: "/success-stories",
+      element: <SuccessStories />,
+      id: 26,
+    },
+    {
+      path: "/prev-alumni-meets",
+      element: <PreviousMeets />,
+      id: 27,
+    },
+  ]
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
@@ -55,229 +195,19 @@ function App() {
         <Router>
           <ScrollToTop />
           <Routes>
-            <Route
-              path="/"
-              element={
-                <Layout>
-                  <HomePage />
-                </Layout>
-              }
-            />
-            <Route
-              path="/gallery"
-              element={
-                <Layout>
-                  <Gallery />
-                </Layout>
-              }
-            />
-            <Route
-              path="/team"
-              element={
-                <Layout>
-                  <Team />
-                </Layout>
-              }
-            />
-
-            <Route
-              path="/history"
-              element={
-                <Layout>
-                  <History />
-                </Layout>
-              }
-            />
-
-            <Route
-              path="/events"
-              element={
-                <Layout>
-                  <Events />
-                </Layout>
-              }
-            />
-            <Route
-              path="/notablealumni"
-              element={
-                <Layout>
-                  <NotableAlumni />
-                </Layout>
-              }
-            />
-            <Route
-              path="/news"
-              element={
-                <Layout>
-                  <Newsletter />
-                </Layout>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <Layout>
-                  <Registration />
-                </Layout>
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <Layout>
-                  <Signup />
-                </Layout>
-              }
-            />
-            <Route
-              path="/blogs"
-              element={
-                <Layout>
-                  <Blogs />
-                </Layout>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <Layout>
-                  <Login />
-                </Layout>
-              }
-            />
-            <Route
-              path="/news/:newsId"
-              element={
-                <Layout>
-                  <NewsId />
-                </Layout>
-              }
-            />
-            <Route
-              path="/alumnicorner"
-              element={
-                <Layout>
-                  <AlumniCorner />
-                </Layout>
-              }
-            />
-            <Route
-              path="/blog/:blogId"
-              element={
-                <Layout>
-                  <Blog />
-                </Layout>
-              }
-            />
-            <Route
-              path="/contribute"
-              element={
-                <Layout>
-                  <Donate />
-                </Layout>
-              }
-            />
-            <Route
-              path="/resources"
-              element={
-                <Layout>
-                  <Resources />
-                </Layout>
-              }
-            />
-            <Route
-              path="/interaction"
-              element={
-                <Layout>
-                  <Interaction />
-                </Layout>
-              }
-            />
-            <Route
-              path="/about"
-              element={
-                <Layout>
-                  <About />
-                </Layout>
-              }
-            />
-            <Route
-              path="/teamcard"
-              element={
-                <Layout>
-                  <TeamCard />
-                </Layout>
-              }
-            />
-            <Route
-              path="/teamcard2"
-              element={
-                <Layout>
-                  <TeamCard2 />
-                </Layout>
-              }
-            />
-
-            <Route
-              path="*"
-              element={
-                <Layout>
-                  <Error />
-                </Layout>
-              }
-            />
-
-            <Route
-              path="/bihtacampus"
-              element={
-                <Layout>
-                  <BihtaCampus />
-                </Layout>
-              }
-            />
-
-            <Route
-              path="/alumni-database"
-              element={
-                <Layout>
-                  <AlumniDatabase/>
-                </Layout>
-              }
-            />
-
-            <Route
-              path="/alumni-meet"
-              element={
-                <Layout>
-                  <Meet/>
-                </Layout>
-              }
-            />
-            <Route
-              path="/jobs"
-              element={
-                <Layout>
-                  <JobOffers/>
-                </Layout>
-              }
-            />
-            <Route
-              path="/internships"
-              element={
-                <Layout>
-                  <Interships/>
-                </Layout>
-              }
-            />
-             <Route
-              path="/joboffers"
-              element={
-                <Layout>
-                  <JobOffers />
-                </Layout>
-              }
-            />
-
+            {
+              links.map(({ path, element, id }) => (
+                <Route
+                  key={id}
+                  path={path}
+                  element={
+                    <Layout>
+                      {element}
+                    </Layout>
+                  }
+                />
+              ))
+            }
           </Routes>
         </Router>
       </QueryClientProvider>

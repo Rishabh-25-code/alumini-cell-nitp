@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <>
       <div className="h-1/5">
-        
+
         <ImageSlider />
 
         <QuickLinks />
@@ -149,13 +149,6 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-
-
-
-        {/* <div className='flex flex-col items-center justify-center gap-20 bg-opacity-20 backdrop-blur-0 rounded-[2rem] lg:w-[70%] w-[90%] m-auto mb-24 z-[1999999]'>
-          <h3 data-aos="fade-up" className='text-center font-bold lg:text-5xl md:text-4xl text-3xl pt-20 text-sky-500 '>Become a Member</h3>
-          
-        </div> */}
       </div>
     </>
   );
