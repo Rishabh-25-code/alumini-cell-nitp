@@ -29,6 +29,9 @@ import {
   AlumniDatabase,
   Error
 } from "./pages/index";
+import JobOffers from "./pages/JobOffers/JobOffers";
+import Interships from "./pages/JobOffers/Interships";
+import Meet from "./pages/AlumniMeet/Meet";
 import Blog from "./pages/AlumniCorner/Blog";
 import ScrollToTop from "./hooks/useScrollToTop";
 import {
@@ -238,6 +241,31 @@ function App() {
               element={
                 <Layout>
                   <AlumniDatabase/>
+                </Layout>
+              }
+            />
+
+            <Route
+              path="/alumni-meet"
+              element={
+                <Layout>
+                  <Meet/>
+                </Layout>
+              }
+            />
+            <Route
+              path="/jobs"
+              element={
+                <Layout>
+                  <JobOffers/>
+                </Layout>
+              }
+            />
+            <Route
+              path="/internships"
+              element={
+                <Layout>
+                  <Interships/>
                 </Layout>
               }
             />
