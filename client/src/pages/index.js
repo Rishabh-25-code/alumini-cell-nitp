@@ -23,5 +23,5 @@ import BihtaCampus from "./Bihta-Campus/BihtaCampus";
 import Error from "./Error/Error";
 import AlumniDatabase from "./AlumniDatabase/AlumniDatabase";
 import History from "./History/History"
-
-export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, NewsId, Blogs, BihtaCampus, Error, AlumniDatabase, History };
+import JobOffers from "./JobOffers/JobOffers";
+export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, NewsId, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers };
