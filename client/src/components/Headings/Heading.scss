@@ -35,12 +35,13 @@
 
 
 .heading-head-text {
+    padding-top: 2rem;
     font-size: 5.6rem;
     font-weight: 600;
     text-align: center;
     color: #ebe6d0;
     z-index: 8;
-    line-height: 6.5rem;
+    line-height: 6rem;
 }
 
 .heading-head-text::after {
@@ -69,6 +70,7 @@
     }
 
     .heading-head-text {
+        padding-top: 1.5rem;
         font-size: 4rem;
         font-weight: 600;
         text-align: center;
@@ -93,6 +95,7 @@
 @media screen and (max-width:480px) {
     .heading-head-text {
         font-size: 3rem;
+        padding-top: 1rem;
         font-weight: 600;
         text-align: center;
         color: #ebe6d0;

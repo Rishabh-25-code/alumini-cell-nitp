@@ -1,6 +1,4 @@
 import React from "react";
-import "./Team.scss";
-import { Link } from "react-router-dom";
 
 const TeamCard = ({ img1, name1, detail1, detail11, img2, name2, detail2 }) => {
   return (
@@ -8,7 +6,7 @@ const TeamCard = ({ img1, name1, detail1, detail11, img2, name2, detail2 }) => {
       <div data-aos="fade-up" className="items-center rounded-xl shadow sm:flex bg-gray-800 border-gray-700 lg:w-full md:w-full w-[90%]">
         <a href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320">
           <img 
-            className="w-full rounded-lg sm:rounded-none sm:rounded-l-xl"
+            className="w-[10rem] rounded-lg sm:rounded-none sm:rounded-l-xl"
             src={img1}
             alt="Bonnie Avatar"
           />
@@ -24,7 +22,7 @@ const TeamCard = ({ img1, name1, detail1, detail11, img2, name2, detail2 }) => {
           <p className="mt-3 mb-4 font-light text-blue-500">
             <a href={`mailto:${detail11}`}>{detail11}</a>
           </p>
-          <ul className="flex space-x-4 sm:mt-0">
+          {/* <ul className="flex space-x-4 sm:mt-0">
             <li>
               <a
                 href="#"
@@ -97,7 +95,7 @@ const TeamCard = ({ img1, name1, detail1, detail11, img2, name2, detail2 }) => {
                 </svg>
               </a>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </>
