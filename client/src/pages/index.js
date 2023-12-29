@@ -17,6 +17,7 @@ import About from "./About/About";
 import TeamCard from "./Team/TeamCard";
 import TeamCard2 from "./Team/TeamCard2";
 import NewsId from "./Newsletter/NewsId";
+// import Blog from "./AlumniCorner/Blog";
 import Blogs from "./Blogs/Blogs";
 import BihtaCampus from "./Bihta-Campus/BihtaCampus";
 import Error from "./Error/Error";

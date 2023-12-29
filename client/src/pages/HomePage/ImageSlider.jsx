@@ -23,6 +23,7 @@ const slideImages = [
 
 const divstyle = {
     display: 'flex',
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     height: '440px',
