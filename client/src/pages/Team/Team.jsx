@@ -1,8 +1,8 @@
 import React from "react";
-import "./Team.scss";
 import Heading from "../../components/Headings/Heading";
 import TeamCard from "./TeamCard";
 import TeamCard2 from "./TeamCard2";
+
 
 const Team = () => {
   const team = [
@@ -13,34 +13,16 @@ const Team = () => {
       detail11: "pkjain@nitp.ac.in",
     },
     {
-      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
-      name1: "Prof. P. K. Jain",
-      detail1: "Director of NIT Patna ",
-      detail11: "pkjain@nitp.ac.in",
+      img1: "https://tesla-nitp.vercel.app/images/PI.jpg",
+      name1: "Prof. Amitesh Kumar",
+      detail1: "Mentor",
+      detail11: "amitesh@nitp.ac.in",
     },
     {
-      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
-      name1: "Prof. P. K. Jain",
-      detail1: "Director of NIT Patna",
-      detail11: "pkjain@nitp.ac.in",
-    },
-    {
-      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
-      name1: "Prof. P. K. Jain",
-      detail1: "Director of NIT Patna",
-      detail11: "pkjain@nitp.ac.in",
-    },
-    {
-      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
-      name1: "Prof. P. K. Jain",
-      detail1: "Director of NIT Patna",
-      detail11: "pkjain@nitp.ac.in",
-    },
-    {
-      img1: "https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg",
-      name1: "Prof. P. K. Jain",
-      detail1: "Director of NIT Patna",
-      detail11: "pkjain@nitp.ac.in",
+      img1: "https://media.licdn.com/dms/image/D4D03AQHIPauhU-T-3g/profile-displayphoto-shrink_400_400/0/1698578175845?e=1709164800&v=beta&t=eNvVL7vze_P7XrOvYjwWCzpZFYPwRrVMcQOx2s2sx6Y",
+      name1: "Prof. Amitesh Kumar",
+      detail1: "Mentor",
+      detail11: "gagan@nitp.ac.in",
     },
   ];
 
@@ -53,7 +35,7 @@ const Team = () => {
     {
       img2: "https://avatars.githubusercontent.com/u/72189098?v=4",
       name2: "Rishabh Prakash",
-      detail2: "Team Lead ",
+      detail2: "Team Lead",
     },
     {
       img2: "https://avatars.githubusercontent.com/u/77230416?v=4",
@@ -63,35 +45,15 @@ const Team = () => {
     {
       img2: "https://raw.githubusercontent.com/Rajnishk4310/Portfolio/main/assets/img/profile-img1.jpg",
       name2: "Rajnish Kumar",
-      detail2: "Team Member ",
-    },
-    {
-      img2: "https://media.licdn.com/dms/image/D4D03AQHALp37YC_Feg/profile-displayphoto-shrink_400_400/0/1680381072744?e=1688601600&v=beta&t=-VJcxA0EIl1OPglX3u7MU-XDMwKtLyzju_lMglZBdnw",
-      name2: "Rithvik Kumar",
       detail2: "Team Member",
     },
     {
-      img2: "https://raw.githubusercontent.com/Rishabh-25-code/alumini-cell-nitp/main/client/public/images/v.jpeg",
-      name2: "Vaishnavi Chaudhary",
-      detail2: "Team Member",
-    },
-    {
-      img2: "https://raw.githubusercontent.com/Rishabh-25-code/alumini-cell-nitp/main/client/public/images/s.jpeg",
-      name2: "Sakshi Shukla",
-      detail2: "Team Member",
-    },
-    {
-      img2: "https://media.licdn.com/dms/image/D4D35AQF2ozPzPWXh7Q/profile-framedphoto-shrink_400_400/0/1667546362533?e=1683903600&v=beta&t=iSny5PwLEVJtiMkZVhyjrOvweSNYsXU4uAGiYriPXvU",
-      name2: "Firdaus Jawed",
-      detail2: "Team Member",
-    },
-    {
-      img2: "",
+      img2: "https://cloud.appwrite.io/v1/storage/buckets/photos/files/6511acf5b7d542b7f9a8/view?project=tesla-official-web&mode=admin",
       name2: "Suraj Kumar",
       detail2: "Team Member",
     },
     {
-      img2: "",
+      img2: "https://cloud.appwrite.io/v1/storage/buckets/photos/files/6511dd92b3788d8e6199/view?project=tesla-official-web&mode=admin",
       name2: "Lipi Aditi",
       detail2: "Team Member",
     },

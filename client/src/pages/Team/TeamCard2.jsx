@@ -1,7 +1,5 @@
-import React from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
-import "./Team.scss";
-import { Link } from "react-router-dom";
+import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
+
 
 const TeamCard2 = ({ img2, name2, detail2 }) => {
   return (
