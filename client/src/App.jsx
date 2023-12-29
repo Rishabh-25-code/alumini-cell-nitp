@@ -27,7 +27,7 @@ import {
   History,
   BihtaCampus,
   AlumniDatabase,
-  Error
+  Error,
 } from "./pages/index";
 import JobOffers from "./pages/JobOffers/JobOffers";
 import Interships from "./pages/JobOffers/Interships";
@@ -266,6 +266,14 @@ function App() {
               element={
                 <Layout>
                   <Interships/>
+                </Layout>
+              }
+            />
+             <Route
+              path="/joboffers"
+              element={
+                <Layout>
+                  <JobOffers />
                 </Layout>
               }
             />
