@@ -186,6 +186,11 @@ function App() {
       element: <PreviousMeets />,
       id: 27,
     },
+    {
+      path: "*",
+      element: <Error />,
+      id: 28,
+    }
   ]
 
   return (

@@ -46,7 +46,9 @@ const departments = [
 const getAlumnidata = async (course, department, page) => {
     try {
         const url = new URL("https://alumini-cell-nitp-two.vercel.app/members");
-        if (department === "Architecture") course = "B.Arch";
+        if (department === "Architecture" && course === "B.Tech") course = "B.Arch";
+        if (department === "Architecture" && course === "M.Tech") course = "MURP";
+        if(department === "Architecture" && course === "Ph.D.") course = "Ph.D.";
         if (course) url.searchParams.append("degree", course);
         if (department) url.searchParams.append("department", department);
         url.searchParams.append("page", page);
