@@ -34,10 +34,10 @@ const Footer = () => {
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-blue-700 mr-3'>|</h1><h1 className='text-lg font-semibold text-sky-500'>Useful Links</h1></div>
           <ul className='mt-4 flex flex-col gap-3 text-base'>
+          <li className=' hover:text-blue-600'><Link to="https://www.nitp.ac.in/" target="_blank">NIT Patna</Link></li>
             <li className='hover:text-blue-600'><Link to="/history">History</Link></li>
             <li className='hover:text-blue-600'><Link to="/jobs">Jobs</Link></li>
             <li className='hover:text-blue-600'><Link to="/internships">Internships</Link></li>
-            <li className=' hover:text-blue-600'><Link to="/news">Newsletters</Link></li>
             <li className=' hover:text-blue-600'><Link to="/team">Web Team</Link></li>
           </ul>
         </div>

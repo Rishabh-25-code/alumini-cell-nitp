@@ -68,7 +68,7 @@ const Testimonials = () => {
     return (
         <div className='pb-10 bg-gray-900 py-10'>
             <h1 className="mt-10 lg:ml-10 md:ml-10 p-5 text-center text-sky-400 lg:text-5xl md:text-4xl text-4xl font-bold leading-tight mb-10">
-                What our Alumni say about us
+                Testimonials from our Alumni 
             </h1>
 
             <div className='relative w-full overflow-y-auto overflow-x-hidden py-10'>

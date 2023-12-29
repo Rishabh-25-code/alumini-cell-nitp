@@ -81,4 +81,5 @@ const JobOffers = () => {
         </>
     )
 }
+
 export default JobOffers;
