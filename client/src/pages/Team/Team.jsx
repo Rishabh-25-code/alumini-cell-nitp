@@ -85,6 +85,16 @@ const Team = () => {
       name2: "Firdaus Jawed",
       detail2: "Team Member",
     },
+    {
+      img2: "",
+      name2: "Suraj Kumar",
+      detail2: "Team Member",
+    },
+    {
+      img2: "",
+      name2: "Lipi Aditi",
+      detail2: "Team Member",
+    },
   ];
 
   return (
