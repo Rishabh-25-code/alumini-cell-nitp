@@ -103,8 +103,14 @@ const NavBar = () => {
                 }}
                 style={{ textDecoration: "none" }}
                 className="flex items-center gap-1"
-              >
-                <p className="text-white hover:text-blue-400">About NITP</p>
+              ><Link
+              onClick={() => setPopup(-1)}
+              style={{ textDecoration: "none" }}
+              to="/about"
+            >
+              <p className="text-white hover:text-blue-400">About NITP</p>
+            </Link>
+                
                 <MdKeyboardArrowDown
                   className={`${
                     popup === 0 &&
@@ -162,9 +168,13 @@ const NavBar = () => {
                 style={{ textDecoration: "none" }}
                 className="flex items-center gap-1"
               >
-                <p className="text-white hover:text-blue-400">
-                  Alumni Database
-                </p>
+                <Link
+                      onClick={() => setPopup(-1)}
+                      style={{ textDecoration: "none" }}
+                      to="/alumni-database?type=ug"
+                    >
+                      <p className="text-white hover:text-blue-400">Alumni Database</p>
+                    </Link>
                 <MdKeyboardArrowDown
                   className={`${
                     popup === 1 &&
@@ -245,7 +255,13 @@ const NavBar = () => {
                 style={{ textDecoration: "none" }}
                 className="flex items-center gap-1"
               >
-                <p className="text-white hover:text-blue-400">Alumni Speaks</p>
+                <Link
+                      onClick={() => setPopup(-1)}
+                      style={{ textDecoration: "none" }}
+                      to="/blogs"
+                    >
+                    <p className="text-white hover:text-blue-400">Alumni Speaks</p>
+                    </Link>
                 <MdKeyboardArrowDown
                   className={`${
                     popup === 2 &&
@@ -323,7 +339,14 @@ const NavBar = () => {
                 style={{ textDecoration: "none" }}
                 className="flex items-center gap-1"
               >
-                <p className="text-white hover:text-blue-400">Alumni Meets</p>
+                <Link
+                      onClick={() => setPopup(-1)}
+                      style={{ textDecoration: "none" }}
+                      to="/alumni-meet"
+                    >
+                      <p className="text-white hover:text-blue-400">Alumni Meets</p>
+                    </Link>
+                
                 <MdKeyboardArrowDown
                   className={`${
                     popup === 3 &&
