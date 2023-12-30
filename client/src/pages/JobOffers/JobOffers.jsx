@@ -2,13 +2,15 @@ import React from 'react'
 import Heading from '../../components/Headings/Heading'
 import { IoSearch } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
+import Meta from '../../components/Meta/Meta';
 
 const JobOffers = () => {
      return (
           <>
-               <div><div>
+          <Meta name="Job Openings" />
+               <div>
                     <Heading heading="Job Openings" heading1="via our Alumni"></Heading>
-               </div></div>
+               </div>
 
                <div className="text-center text-lg font-medium py-32">
                 <span className="text-xl">To be updated... 🚀 Brace yourself! <br />Our website is in the lab, cooking up awesomeness.</span><br />

@@ -64,7 +64,7 @@ const NotableAlumniMarquee = () => {
                 <Marquee speed={70} autoFill={true} className="lg:mb-12 md:mb-10 mb-6" pauseOnHover={true}>
                     {
                         notableAlums.map((alum, i) => (
-                            <div className="lg:max-w-lg max-w-md px-5">
+                            <div key={i} className="lg:max-w-lg max-w-md px-5">
                                 <AlumniCard key={i} alum={alum} />
                             </div>
                         ))

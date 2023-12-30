@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { BsDot } from 'react-icons/bs'
+import Meta from '../../components/Meta/Meta';
 
 const Blog = () => {
 
@@ -68,6 +69,7 @@ const Blog = () => {
 
   return (
     <div className='pt-36'>
+      <Meta name="Blog - NIT Patna" />
       {
         <div className='m-auto flex flex-col items-center justify-center'>
           <h1 className='lg:text-4xl md:text-3xl text-2xl font-bold lg:max-w-3xl md:max-w-2xl px-6 text-center m-auto text-sky-500 my-10 mt-6'>{blogs[blogId].name}</h1>

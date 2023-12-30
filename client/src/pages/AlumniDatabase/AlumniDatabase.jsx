@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import MalePlaceholder from "../../assets/man-placeholder.jpg";
 import FemalePlaceHolder from "../../assets/woman-placeholder.jfif";
 import useSerchQuery from "../../hooks/useSearchQuery";
+import Meta from "../../components/Meta/Meta";
 
 const courseCode = {
     phd: "Ph.D.",
@@ -89,6 +90,7 @@ const AlumniDatabase = () => {
 
     return (
         <div className="min-h-screen">
+            <Meta name="Alumni Database" />
             <div className="flex relative bg-[url(https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/static-images%2F007d2522-8220-4d3d-b506-8fef870eb1df.jpg?alt=media&token=46a7d8e5-aa90-4461-bd2e-15df0204e7d5)] bg-no-repeat  w-full flex-col gap-3 items-center bg-cover justify-center py-20 text-center text-white h-[55vh]">
                 <div className="absolute w-full inset-0 text-left pt-32 lg:pl-24 md:pl-16 pl-8 bg-gradient-to-t  from-[rgba(0,0,0,1)] via-[rgba(0,0,0,0.5)] to-transparent">
                     <p className="lg:text-5xl md:text-4xl text-3xl font-bold pb-1">

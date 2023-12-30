@@ -1,6 +1,7 @@
 import React from 'react'
 import BlogCard from '../AlumniCorner/BlogCard'
 import Heading from '../../components/Headings/Heading'
+import Meta from '../../components/Meta/Meta'
 
 const Blogs = () => {
 
@@ -68,6 +69,7 @@ const Blogs = () => {
 
   return (
     <div>
+      <Meta name="Blogs" />
         <Heading heading="Blogs by our Alumni"></Heading>
          <div className='flex flex-wrap gap-6 m-auto px-5 items-center justify-center mb-32'>
         {blogs.map((project, id) => (

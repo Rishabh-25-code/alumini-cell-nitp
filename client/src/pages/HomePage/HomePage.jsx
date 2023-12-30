@@ -1,6 +1,5 @@
 import "./HomePage.scss";
 import { Link } from "react-router-dom";
-import SliderNews from "../../components/SliderNews/SliderNews";
 import { FaQuoteLeft } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";
 import Events from "./Events";
@@ -9,18 +8,16 @@ import Testimonials from "./Testimonials";
 import QuickLinks from "../../components/QuickLinks/QuickLinks";
 import ImageSlider from "./ImageSlider";
 import NotableAlumniMarquee from "../../components/NotableAlumni/NotableAlumniMarquee";
+import Meta from "../../components/Meta/Meta";
 
 const HomePage = () => {
-  document.title = "ALUMNI Cell NIT Patna | Home";
 
   return (
     <>
+    <Meta name="Home - Alumni NITP" />
       <div className="h-1/5">
-
         <ImageSlider />
-
         <QuickLinks />
-
         {/* Director section starts here */}
 
         <div className="grid bg-gray-900 text-white p-20 px-10 pt-10  gap-6 text-center md:grid-cols-3 lg:gap-12">
@@ -60,9 +57,9 @@ const HomePage = () => {
             <p className="mb-10 lg:text-left md:text-left text-justify">
               We are celebrating the 100 years of the glorious history of
               Engineering Education in Bihar, which started with the establishment
-              of Bihar College of Engineering (BCE), Patna in 1900. <br/><br/>
+              of Bihar College of Engineering (BCE), Patna in 1900. <br /><br />
               Since then, the Engineering Education has undergone a sea change
-              and has been instrumental in the development of the Bihar region. <br/>
+              and has been instrumental in the development of the Bihar region. <br />
             </p>
 
             <Link to="/history"><button
@@ -78,7 +75,7 @@ const HomePage = () => {
 
         <Events />
 
-        <NotableAlumniMarquee/>
+        <NotableAlumniMarquee />
 
         {/* Blogs section starts here */}
         <Blogs />
