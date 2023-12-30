@@ -126,7 +126,7 @@ const NavBar = () => {
                 height={120}
                 width={120}
                 alt="logo"
-                className="h-[3.4rem] w-[3.4rem] rounded-full"
+                className="lg:h-14 h-12 lg:w-14 w-12 rounded-full"
               />
             </Link>
           </div>
@@ -211,13 +211,7 @@ const NavBar = () => {
         <div className="md:hidden lg:hidden xl:hidden fixed flex flex-col items-start text-base px-7 py-2 justify-center gap-2 inset-0 w-full h-full z-[100] shadow-md text-white bg-gray-950">
           <button
             type="button"
-            onClick={() => {
-              if (menu == false) {
-                setMenu(true);
-              } else {
-                setMenu(false);
-              }
-            }}
+            onClick={() => setMenu(!menu)}
             className="animate-pulse md:hidden bg-blue-50 top-3 right-6 border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 mt-2 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 absolute"
           >
             {!menu ? <HiMenuAlt3 /> : <FiX />}
@@ -236,6 +230,7 @@ const NavBar = () => {
                         to={child.link}
                         className="dropdown-link mb-2 text-base"
                         key={i}
+                        onClick={() => setMenu(!menu)}
                       >
                         <p className="text-gray-400 hover:text-blue-400">
                           {child.name}
@@ -252,6 +247,7 @@ const NavBar = () => {
                   to={link.link}
                   className="dropdown-link mb-2"
                   key={index}
+                  onClick={() => setMenu(!menu)}
                 >
                   <p className="text-sky-500 hover:text-blue-400">
                     {link.name}
