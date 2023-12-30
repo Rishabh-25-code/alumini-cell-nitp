@@ -38,7 +38,7 @@ const spanStyle = {
 function ImageSlider() {
     return (
         <div className="slide-container">
-            <Fade>
+            <Fade duration={1000}>
                 {slideImages.map((image, index) => (
                     <div key={index}>
                         <div style={{ ...divstyle, backgroundImage: `url(${image.url})` }}>
