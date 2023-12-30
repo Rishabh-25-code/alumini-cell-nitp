@@ -287,7 +287,7 @@ const NavBar = () => {
                       <p className="text-gray-400 hover:text-blue-400">Blogs</p>
                     </Link>
                   </li>
-                  <li className="dropdown-link mb-2">
+                  {/* <li className="dropdown-link mb-2">
                     <Link
                       onClick={() => setPopup(-1)}
                       style={{ textDecoration: "none" }}
@@ -297,7 +297,7 @@ const NavBar = () => {
                         Alumni News
                       </p>
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="dropdown-link mb-2">
                     <Link
                       onClick={() => setPopup(-1)}
