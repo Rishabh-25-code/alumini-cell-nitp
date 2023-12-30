@@ -8,6 +8,7 @@ import Blogs from "./Blogs";
 import Testimonials from "./Testimonials";
 import QuickLinks from "../../components/QuickLinks/QuickLinks";
 import ImageSlider from "./ImageSlider";
+import NotableAlumniMarquee from "../../components/NotableAlumni/NotableAlumniMarquee";
 
 const HomePage = () => {
   document.title = "ALUMNI Cell NIT Patna | Home";
@@ -55,28 +56,29 @@ const HomePage = () => {
           </div>
           <div className="mb-12 md:mb-0">
             <FaQuoteLeft size={38} className="text-sky-400 mb-6" />
-            <p className="mb-10 text-lg lg:text-left md:text-left text-justify">
-              Alumni, corporates and philanthropists have been generously
-              contributing towards the development of NIT Patna. The Institute,
-              through the DEAN ACR's office, inspires and invites these varied
-              groups to continue supporting the aspirations of NIT Patna - an
-              “Institute of Eminence.” We commit to using our donors' endowments
-              with integrity towards enhancing the welfare of our students and
-              faculty.
+            <h4 className="lg:text-2xl text-xl lg:text-left md:text-left text-justify font-semibold text-sky-500 pb-4">Celebrating <span className="text-pink-500">100 Years</span> of NIT, Patna</h4>
+            <p className="mb-10 lg:text-left md:text-left text-justify">
+              We are celebrating the 100 years of the glorious history of
+              Engineering Education in Bihar, which started with the establishment
+              of Bihar College of Engineering (BCE), Patna in 1900. <br/><br/>
+              Since then, the Engineering Education has undergone a sea change
+              and has been instrumental in the development of the Bihar region. <br/>
             </p>
 
-            <button
+            <Link to="/history"><button
               type="button"
               className="flex items-center text-lg text-sky-400 hover:text-sky-600"
             >
               READ MORE <BsArrowUpRight size={23} className="ml-1" />
-            </button>
+            </button></Link>
           </div>
         </div>
 
         {/* Events Section */}
 
         <Events />
+
+        <NotableAlumniMarquee/>
 
         {/* Blogs section starts here */}
         <Blogs />

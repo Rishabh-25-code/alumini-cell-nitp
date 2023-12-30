@@ -37,7 +37,7 @@ const NotableAlumni = () => {
     {
       name: "Bhubaneswar Behera",
       designation: "Engineer, writer and scholar",
-      about: "Bhubaneswar Behera was an engineer, writer and scholar from the Kalahandi district of Odisha.",
+      about: "Bhubaneswar Behera was an engineer, writer and scholar from the Kalahandi district of Odisha. He was born in a village called Kusurla in Kalahandi district. He was the first person from Kalahandi to become an engineer.",
       image: "./notable-alumni/bubneshwar-behere.jpg",
       id: 5
     },
