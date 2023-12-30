@@ -9,70 +9,39 @@ const Events = () => {
   const events = [
     {
       id: 0,
-      name: "Event Name",
-      image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
+      name: "Alumni Meet 2023",
+      image: "images/Meet5300/DSC_0202-min.jpg",
       clubName: "Alumni Cell",
-      description: "Details about the event.",
-      date: "2023-05-25",
+      description: "Details to be updated...",
+      date: "2023-12-24",
       time: "10:00 AM",
-      venue: "LT-1",
+      venue: "OAT, NIT Patna",
       link: "https://www.google.com"
     },
     {
       id: 1,
-      name: "Event Name",
-      image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
+      name: "Alumni Meet 2022",
+      image: "images/Meet5300/DSC_0197-min.jpg",
       clubName: "Alumni Cell",
-      description: "Details about the event.",
-      date: "2023-05-25",
-      time: "10:00 AM",
-      venue: "LT-1",
+      description: "Details to be updated...",
+      date: "to be updated",
+      time: "to be updated",
+      venue: "to be updated",
       link: "https://www.google.com"
     },
     {
       id: 2,
-      name: "Event Name",
-      image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
+      name: "Alumni Meet 2021",
+      image: "images/Meet5300/DSC_0191-min.jpg",
       clubName: "Alumni Cell",
-      description: "Details about the event.",
-      date: "2023-05-25",
-      time: "10:00 AM",
-      venue: "LT-1",
+      description: "Details to be updated...",
+      date: "to be updated",
+      time: "to be updated",
+      venue: "to be updated",
       link: "https://www.google.com"
     },
-    {
-      id: 3,
-      name: "Event Name",
-      image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
-      clubName: "Alumni Cell",
-      description: "Details about the event.",
-      date: "2023-05-25",
-      time: "10:00 AM",
-      venue: "LT-1",
-      link: "https://www.google.com"
-    },
-    {
-      id: 4,
-      name: "Event Name",
-      image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
-      clubName: "Alumni Cell",
-      description: "Details about the event.",
-      date: "2023-05-25",
-      time: "10:00 AM",
-      venue: "LT-1",
-      link: "https://www.google.com"
-    },
-    {
-      id: 5,
-      name: "Event Name",
-      image: "https://firebasestorage.googleapis.com/v0/b/nitp-alumni-cell.appspot.com/o/images%2FnHvpVQyjC-PKJ_Desk%20Photo.jpg?alt=media&token=95c792d4-bace-4b56-b5fc-f6aff77cc0e4",
-      clubName: "Alumni Cell",
-      description: "Details about the event.",
-      date: "2023-05-25",
-      time: "10:00 AM",
-      venue: "LT-1",
-      link: "https://www.google.com"
-    },
+
+
   ]
 
 
@@ -80,18 +49,24 @@ const Events = () => {
   return (
     <div>
       <Heading heading="EVENTS"></Heading>
+
+
+      <Card
+        head=""
+        writer=""
+      />
+      <br></br>
+      <br></br>
+
+      <h1 className='heading-head-text'>Past Events</h1>
+
       <div className='flex flex-wrap gap-6 m-auto px-5 items-center justify-center mb-32'>
         {events.map((event, id) => (
           <EventCard data={event} key={id} />
         ))}
       </div>
-      <h1 className='heading-head-text'>Past Events</h1>
-      <br></br>
-      <br></br>
-      <Card
-        head="Important events that were held in our college."
-        writer="like the alumini meet of the 19's batch"
-      />
+
+
 
     </div>
   )
