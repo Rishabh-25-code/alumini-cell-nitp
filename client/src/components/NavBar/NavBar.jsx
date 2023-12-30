@@ -6,395 +6,175 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 const NavBar = () => {
   const [menu, setMenu] = useState(false);
-  const [focus, setFocus] = useState(-1);
   const [popup, setPopup] = useState(-1);
-  const [colorChange, setColorchange] = useState(true);
-
-  const changeNavbarColor = () => {
-    // if (window.scrollY >= 0) {
-    //   setColorchange(true);
-    // } else {
-    //   setColorchange(false);
-    // }
-  };
-
-  window.addEventListener("scroll", changeNavbarColor);
 
   const navLinks = [
     {
-      name: "About",
-      link: "/About",
+      name: "Home",
+      link: "/",
     },
     {
-      name: "Notable-Alumni",
-      link: "/notablealumni",
+      name: "About NITP",
+      children: [
+        {
+          name: "About NITP",
+          link: "/about",
+        },
+        {
+          name: "History of NITP",
+          link: "/history",
+        },
+        {
+          name: "Notable Alumni",
+          link: "/notableAlumni",
+        },
+        {
+          name: "Gallery",
+          link: "/gallery",
+        }
+      ]
     },
     {
-      name: "Alumni-Corner",
-      link: "/alumnicorner",
+      name: "Alumni Database",
+      children: [
+        {
+          name: "UG",
+          link: "/alumni-database?type=ug",
+        },
+        {
+          name: "PG",
+          link: "/alumni-database?type=pg",
+        },
+        {
+          name: "Ph.D",
+          link: "/alumni-database?type=phd",
+        },
+        {
+          name: "Faculty/Staff",
+          link: "/alumni-database?type=faculty-staff",
+        },
+      ]
     },
     {
-      name: "Gallery",
-      link: "/gallery",
+      name: "Alumni Speaks",
+      children: [
+        {
+          name: "Blogs",
+          link: "/blogs",
+        },
+        // {
+        //   name: "Alumni News",
+        //   link: "/news",
+        // },
+        {
+          name: "Job Openings from Alumni",
+          link: "/jobs",
+        },
+        {
+          name: "Internship via Alumni",
+          link: "/internships",
+        },
+      ]
+    },
+    {
+      name: "Alumni Meets",
+      children: [
+        {
+          name: "Next Alumni Meet",
+          link: "/alumni-meet",
+        },
+        {
+          name: "Previous Meets",
+          link: "/prev-alumni-meets",
+        },
+      ]
+    },
+    {
+      name: "NIT Patna Bihta Campus",
+      link: "/bihtacampus",
     },
     {
       name: "Contribute",
       link: "/contribute",
-    },
-    {
-      name: "Events",
-      link: "/Events",
-    },
-    {
-      name: "Blogs",
-      link: "/blogs",
-    },
-    {
-      name: "Resources",
-      link: "/resources",
-    },
-    {
-      name: "Bihta-Campus",
-      link: "/bihtacampus",
-    },
+    }
   ];
 
   return (
-    <div
-      className={`fixed z-10 w-[100%] items-center justify-center ${colorChange &&
-        "border-b bg-black transition-all delay-100  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md"
-        }`}
-    >
-      <div className="flex items-center justify-between lg:w-[65rem] md:w-[95%] px-4 md:px-3 py-3 m-auto text-lg">
-        <div className="flex items-center">
-          <Link to="/">
-            <img
-              src="logo.jfif"
-              height={120}
-              width={120}
-              alt="logo"
-              className="h-[3.4rem] w-[3.4rem] rounded-full"
-            />
-          </Link>
-        </div>
-        <div className="flex items-center">
-          <ul className="md:flex gap-7 hidden items-center text-[0.92rem]">
-            <li>
-              <Link style={{ textDecoration: "none" }} to="/">
-                <p
-                  onClick={() => setFocus(0)}
-                  className="text-white hover:text-blue-400"
-                >
-                  Home
-                </p>
-              </Link>
-            </li>
+    <>
+      <nav
+        className={`fixed w-[100%] items-center justify-center border-b bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md`}
+      >
+        <div className="flex items-center justify-between lg:w-[65rem] md:w-[95%] px-4 md:px-3 py-3 m-auto text-lg">
+          <div className="flex items-center">
+            <Link to="/">
+              <img
+                src="logo.jfif"
+                height={120}
+                width={120}
+                alt="logo"
+                className="lg:h-14 h-12 lg:w-14 w-12 rounded-full"
+              />
+            </Link>
+          </div>
 
-            <li className="nav-link">
-              <button
-                onClick={() => setPopup(0)}
-                onMouseOver={() => {
-                  if (popup > -1) {
-                    setPopup(-1);
-                  } else {
-                    setPopup(0);
-                  }
-                }}
-                style={{ textDecoration: "none" }}
-                className="flex items-center gap-1"
-              >
-                <p className="text-white hover:text-blue-400">About NITP</p>
+          <div className="lg:flex gap-7 hidden items-center text-[0.92rem]">
+            {navLinks.map((link, index) => {
+              if (link.children) {
+                return (
+                  <div key={index} className="nav-link">
+                    <button
+                      onClick={() => setPopup(index)}
+                      onMouseOver={() => {
+                        if (popup > -1) {
+                          setPopup(-1);
+                        } else {
+                          setPopup(index);
+                        }
+                      }}
+                      style={{ textDecoration: "none" }}
+                      className="flex items-center gap-1"
+                    >
+                      <p className="text-white hover:text-blue-400">{link.name}</p>
+                      <MdKeyboardArrowDown className={`${popup === index && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
+                    </button>
 
-                <MdKeyboardArrowDown
-                  className={`${popup === 0 &&
-                    "rotate-180 transition-all delay-75 ease-in text-blue-400"
-                    }`}
-                  size={24}
-                />
-              </button>
-
-              <div
-                onMouseLeave={() => {
-                  setPopup(-1);
-                }}
-                className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 0 ? "flex" : "hidden"
-                  }`}
-              >
-                <ul className="dropdown flex flex-col gap-2">
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/about"
+                    <div onMouseLeave={() => setPopup(-1)}
+                      className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === index ? "flex" : "hidden"}`}>
+                      <ul className="dropdown flex flex-col gap-2">
+                        {
+                          link.children.map((child, i) => (
+                            <Link
+                              onClick={() => setPopup(-1)}
+                              style={{ textDecoration: "none" }}
+                              to={child.link}
+                              className="dropdown-link mb-2"
+                              key={i}
+                            >
+                              <p className="text-gray-400 hover:text-blue-400">
+                                {child.name}
+                              </p>
+                            </Link>
+                          ))
+                        }
+                      </ul>
+                    </div>
+                  </div>
+                )
+              }
+              else {
+                return (
+                  <Link key={index} style={{ textDecoration: "none" }} to={link.link}>
+                    <p
+                      className="text-white hover:text-blue-400"
                     >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        About NITP
-                      </p>
-                    </Link>
-                  </li>
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/history"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        History of NITP
-                      </p>
-                    </Link>
-                  </li>
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/notableAlumni"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        Notable Alumni
-                      </p>
-                    </Link>
-                  </li>
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/gallery"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        Gallery
-                      </p>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li className="nav-link">
-              <button
-                onClick={() => setPopup(1)}
-                onMouseOver={() => {
-                  if (popup > -1) {
-                    setPopup(-1);
-                  } else {
-                    setPopup(1);
-                  }
-                }}
-                style={{ textDecoration: "none" }}
-                className="flex items-center gap-1"
-              >
-                <p className="text-white hover:text-blue-400">Alumni Database</p>
-                <MdKeyboardArrowDown
-                  className={`${popup === 1 &&
-                    "rotate-180 transition-all delay-75 ease-in text-blue-400"
-                    }`}
-                  size={24}
-                />
-              </button>
-
-              <div
-                onMouseLeave={() => {
-                  setPopup(-1);
-                }}
-                className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 1 ? "flex" : "hidden"
-                  }`}
-              >
-                <ul className="dropdown flex flex-col gap-2">
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/alumni-database?type=ug"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">UG</p>
-                    </Link>
-                  </li>
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/alumni-database?type=pg"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">PG</p>
-                    </Link>
-                  </li>
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/alumni-database?type=phd"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">Ph.D</p>
-                    </Link>
-                  </li>
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/alumni-database?type=faculty-staff"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        Faculty/Staff
-                      </p>
-                    </Link>
-                  </li>
-                  {/* <li className="dropdown-link mb-2">
-                    <Link onClick={() => setPopup(-1)} style={{ textDecoration: "none" }} to="/notablealumni">
-                      <p className="text-gray-400 hover:text-blue-400">
-                        Notable Alumni
-                      </p>
-                    </Link>
-                  </li> */}
-                </ul>
-              </div>
-            </li>
-
-            <li className="nav-link">
-              <button
-                onClick={() => setPopup(2)}
-                onMouseOver={() => {
-                  if (popup > -1) {
-                    setPopup(-1);
-                  } else {
-                    setPopup(2);
-                  }
-                }}
-                style={{ textDecoration: "none" }}
-                className="flex items-center gap-1"
-              >
-                <p className="text-white hover:text-blue-400">Alumni Speaks</p>
-                <MdKeyboardArrowDown
-                  className={`${popup === 2 &&
-                    "rotate-180 transition-all delay-75 ease-in text-blue-400"
-                    }`}
-                  size={24}
-                />
-              </button>
-
-              <div
-                onMouseLeave={() => {
-                  setPopup(-1);
-                }}
-                className={`bg-gray-950 -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col ${popup === 2 ? "flex" : "hidden"
-                  }`}
-              >
-                <ul className="dropdown flex flex-col">
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/blogs"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">Blogs</p>
-                    </Link>
-                  </li>
-                  {/* <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/news"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        Alumni News
-                      </p>
-                    </Link>
-                  </li> */}
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/jobs"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        Job Openings from Alumni
-                      </p>
-                    </Link>
-                  </li>
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/internships "
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        Internship via Alumni
-                      </p>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li className="nav-link">
-              <button
-                onClick={() => setPopup(3)}
-                onMouseOver={() => {
-                  if (popup > -1) {
-                    setPopup(-1);
-                  } else {
-                    setPopup(3);
-                  }
-                }}
-                style={{ textDecoration: "none" }}
-                className="flex items-center gap-1"
-              >
-                <p className="text-white hover:text-blue-400">Alumni Meets</p>
-
-                <MdKeyboardArrowDown
-                  className={`${popup === 3 &&
-                    "rotate-180 transition-all delay-75 ease-in text-blue-400"
-                    }`}
-                  size={24}
-                />
-              </button>
-
-              <div
-                onMouseLeave={() => {
-                  setPopup(-1);
-                }}
-                className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === 3 ? "flex" : "hidden"
-                  }`}
-              >
-                <ul className="dropdown flex flex-col gap-2">
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/alumni-meet "
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        Next Alumni Meet
-                      </p>
-                    </Link>
-                  </li>
-                  <li className="dropdown-link mb-2">
-                    <Link
-                      onClick={() => setPopup(-1)}
-                      style={{ textDecoration: "none" }}
-                      to="/prev-alumni-meets"
-                    >
-                      <p className="text-gray-400 hover:text-blue-400">
-                        Previous Meets
-                      </p>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <Link style={{ textDecoration: "none" }} to="/bihtacampus">
-                <p className="text-white hover:text-blue-400">
-                  NIT Patna Bihta Campus
-                </p>
-              </Link>
-            </li>
-
-            <li>
-              <Link style={{ textDecoration: "none" }} to="/contribute">
-                <p className="text-white hover:text-blue-400">Contribute</p>
-              </Link>
-            </li>
-          </ul>
+                      {link.name}
+                    </p>
+                  </Link>
+                )
+              }
+            })
+            }
+          </div>
 
           <button
             type="button"
@@ -405,33 +185,65 @@ const NavBar = () => {
                 setMenu(false);
               }
             }}
-            className="animate-pulse md:hidden bg-blue-50 border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 mr-2"
+            className="animate-pulse lg:hidden bg-blue-50 z-[100000] border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 mr-2"
           >
             {!menu ? <HiMenuAlt3 /> : <FiX />}
           </button>
         </div>
-      </div>
+      </nav>
+
       {menu && (
-        <div className="md:hidden fixed top-[4rem] right-0  rounded-xl w-[12rem] py-2 mr-5 shadow-md text-white bg-gray-900 border-gray-700 border">
-          <ul>
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <Link style={{ textDecoration: "none" }} to={link.link}>
-                  <button
-                    className={`hover:underline hover:border-blue-300 dark:hover:border-blue-300  border-4 border-white dark:border-gray-900 py-1.5 w-[100%] pl-4 cursor-pointer hover:bg-gray-700  text-left`}
-                    onClick={() => {
-                      setMenu(false);
-                    }}
-                  >
+        <div className="lg:hidden xl:hidden fixed flex flex-col items-start text-base px-7 py-2 justify-center gap-2 inset-0 w-full h-full z-[100] shadow-md text-white bg-gray-950">
+          <button
+            type="button"
+            onClick={() => setMenu(!menu)}
+            className="animate-pulse lg:hidden bg-blue-50 top-3 right-6 border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 mt-2 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 absolute"
+          >
+            {!menu ? <HiMenuAlt3 /> : <FiX />}
+          </button>
+          {navLinks.map((link, index) => {
+            if (link.children) {
+              return (
+                <div className="flex flex-col gap-1">
+                  <div className="text-sky-500">
                     {link.name}
-                  </button>
+                  </div>
+                  <div>
+                    {link.children.map((child, i) => (
+                      <Link
+                        style={{ textDecoration: "none" }}
+                        to={child.link}
+                        className="dropdown-link mb-2 text-base"
+                        key={i}
+                        onClick={() => setMenu(!menu)}
+                      >
+                        <p className="text-gray-400 hover:text-blue-400">
+                          {child.name}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )
+            } else {
+              return (
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={link.link}
+                  className="dropdown-link mb-2"
+                  key={index}
+                  onClick={() => setMenu(!menu)}
+                >
+                  <p className="text-sky-500 hover:text-blue-400">
+                    {link.name}
+                  </p>
                 </Link>
-              </li>
-            ))}
-          </ul>
+              )
+            }
+          })}
         </div>
       )}
-    </div>
+    </>
   );
 };
 
