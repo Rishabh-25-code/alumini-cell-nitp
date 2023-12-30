@@ -4,6 +4,7 @@ import Heading from "../../components/Headings/Heading";
 import News from "./News";
 import { db } from "../../firebase";
 import { collection, query, orderBy, getDocs } from "firebase/firestore";
+import Meta from "../../components/Meta/Meta";
 
 const Newsletter = () => {
   const [newsletters, setNewsletters] = useState();
@@ -29,6 +30,7 @@ const Newsletter = () => {
 
   return (
     <div>
+      <Meta name="Newsletters" />
       <Heading heading="NEWS" />
       <div className="news-grid lg:max-w-[85rem] m-auto">
         {loading ? (

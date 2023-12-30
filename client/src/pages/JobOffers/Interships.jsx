@@ -1,9 +1,11 @@
 import React from "react";
 import Heading from "../../components/Headings/Heading";
+import Meta from "../../components/Meta/Meta";
 
 const Interships = () => {
   return (
     <div>
+      <Meta name="Internship Opportunities" />
       <div>
         <Heading heading="Internship" heading1="opportunities via Alumni"></Heading>
       </div>

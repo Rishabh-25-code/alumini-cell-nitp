@@ -1,8 +1,10 @@
 import Heading from "../../components/Headings/Heading"
+import Meta from "../../components/Meta/Meta"
 
 const SuccessStories = () => {
     return (
         <div>
+            <Meta name="Success Stories - NIT Patna" />
             <Heading heading="Success Stories" heading1="of NIT Patna"></Heading>
 
             <div className="text-center text-lg font-medium py-32">

@@ -1,4 +1,5 @@
 import Heading from "../../components/Headings/Heading";
+import Meta from "../../components/Meta/Meta";
 import "./Donate.scss";
 import React, { useState } from "react";
 
@@ -38,6 +39,7 @@ const Donate = () => {
 
   return (
     <div className="bg-black">
+      <Meta name="Contribute" />
       <Heading heading="Contribute" ></Heading>
 
       <div className="inset-x-[5%] flex flex-col gap-3 items-center justify-center py-10 text-center text-white">

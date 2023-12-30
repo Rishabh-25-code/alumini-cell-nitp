@@ -1,0 +1,14 @@
+{
+    "name": "Alumni - NITP",
+    "short_name": "Alumni - NITP",
+    "icons": [
+        {
+            "src": "/android-icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#0ea5e9",
+    "background_color": "#000000",
+    "display": "standalone"
+}

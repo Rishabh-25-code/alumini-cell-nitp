@@ -2,10 +2,12 @@ import React from "react";
 import Heading from "../../components/Headings/Heading";
 import pic7 from "/images/pic7.jpg";
 import pic3 from "/images/pic3.jpg";
+import Meta from "../../components/Meta/Meta";
 
 const About = () => {
   return (
     <>
+    <Meta name="About - NIT Patna" />
       <div>
         <Heading heading="About Us"></Heading>
       </div>

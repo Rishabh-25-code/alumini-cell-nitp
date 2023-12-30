@@ -1,10 +1,12 @@
 import React from 'react'
 import Heading from '../../components/Headings/Heading'
 import { MdDateRange, MdLocationPin } from "react-icons/md";
+import Meta from '../../components/Meta/Meta';
 
 const Meet = () => {
   return (
     <div>
+      <Meta name="Alumni Meet" />
       <Heading heading="Alumni Meet"></Heading>
 
       <div className='bg-gray-900 lg:w-[50rem] md:w-[90%] w-[95%] m-auto shadow mt-10 my-32 rounded-2xl p-6'>

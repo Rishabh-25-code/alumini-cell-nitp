@@ -3,6 +3,7 @@ import './Events.scss'
 import Heading from '../../components/Headings/Heading'
 import Card from "../../components/Carousel/Card";
 import EventCard from './EventCard'
+import Meta from '../../components/Meta/Meta';
 
 const Events = () => {
 
@@ -81,9 +82,8 @@ const Events = () => {
 
   return (
     <div>
+      <Meta name="Events" />
       <Heading heading="EVENTS"></Heading>
-
-
       <Card
         head=""
         writer=""
@@ -98,9 +98,6 @@ const Events = () => {
           <EventCard data={event} key={id} />
         ))}
       </div>
-
-
-
     </div>
   )
 }

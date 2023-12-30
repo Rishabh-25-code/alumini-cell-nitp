@@ -2,6 +2,7 @@ import React from "react";
 import Heading from "../../components/Headings/Heading";
 import TeamCard from "./TeamCard";
 import TeamCard2 from "./TeamCard2";
+import Meta from "../../components/Meta/Meta";
 
 
 const Team = () => {
@@ -61,6 +62,7 @@ const Team = () => {
 
   return (
     <div>
+      <Meta name="Web Team" />
       <Heading heading="Team"></Heading>
 
       <section className="bg-black">
