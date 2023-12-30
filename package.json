@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-fast-marquee": "^1.6.2",
+    "swiper": "^11.0.5"
+  }
+}
