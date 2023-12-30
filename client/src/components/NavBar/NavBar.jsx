@@ -6,19 +6,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 const NavBar = () => {
   const [menu, setMenu] = useState(false);
-  const [focus, setFocus] = useState(-1);
   const [popup, setPopup] = useState(-1);
-  const [colorChange, setColorchange] = useState(true);
-
-  const changeNavbarColor = () => {
-    // if (window.scrollY >= 0) {
-    //   setColorchange(true);
-    // } else {
-    //   setColorchange(false);
-    // }
-  };
-
-  window.addEventListener("scroll", changeNavbarColor);
 
   const navLinks = [
     {
@@ -114,9 +102,7 @@ const NavBar = () => {
   return (
     <>
       <nav
-        className={`fixed w-[100%] items-center justify-center ${colorChange &&
-          "border-b bg-black transition-all delay-100 z-10  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md"
-          }`}
+        className={`fixed w-[100%] items-center justify-center border-b bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md`}
       >
         <div className="flex items-center justify-between lg:w-[65rem] md:w-[95%] px-4 md:px-3 py-3 m-auto text-lg">
           <div className="flex items-center">
@@ -131,7 +117,7 @@ const NavBar = () => {
             </Link>
           </div>
 
-          <div className="md:flex gap-7 hidden items-center text-[0.92rem]">
+          <div className="lg:flex gap-7 hidden items-center text-[0.92rem]">
             {navLinks.map((link, index) => {
               if (link.children) {
                 return (
@@ -179,7 +165,6 @@ const NavBar = () => {
                 return (
                   <Link key={index} style={{ textDecoration: "none" }} to={link.link}>
                     <p
-                      onClick={() => setFocus(index)}
                       className="text-white hover:text-blue-400"
                     >
                       {link.name}
@@ -200,7 +185,7 @@ const NavBar = () => {
                 setMenu(false);
               }
             }}
-            className="animate-pulse md:hidden bg-blue-50 z-[100000] border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 mr-2"
+            className="animate-pulse lg:hidden bg-blue-50 z-[100000] border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 mr-2"
           >
             {!menu ? <HiMenuAlt3 /> : <FiX />}
           </button>
@@ -208,11 +193,11 @@ const NavBar = () => {
       </nav>
 
       {menu && (
-        <div className="md:hidden lg:hidden xl:hidden fixed flex flex-col items-start text-base px-7 py-2 justify-center gap-2 inset-0 w-full h-full z-[100] shadow-md text-white bg-gray-950">
+        <div className="lg:hidden xl:hidden fixed flex flex-col items-start text-base px-7 py-2 justify-center gap-2 inset-0 w-full h-full z-[100] shadow-md text-white bg-gray-950">
           <button
             type="button"
             onClick={() => setMenu(!menu)}
-            className="animate-pulse md:hidden bg-blue-50 top-3 right-6 border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 mt-2 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 absolute"
+            className="animate-pulse lg:hidden bg-blue-50 top-3 right-6 border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 mt-2 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 absolute"
           >
             {!menu ? <HiMenuAlt3 /> : <FiX />}
           </button>
