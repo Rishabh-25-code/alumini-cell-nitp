@@ -255,7 +255,7 @@ const Donate = () => {
         <div className="donate-1" id="sticky-note">
           <div className="arrow"></div>
           <div className="sticky-div">
-            <div><h2 className="f-bold">Your Donation</h2></div>
+            <div><h2 className="f-bold">Your Contribution</h2></div>
             <div><h1 className="f-bold">Rs.{amount}</h1></div>
             <div><h6>Please Select a Recipient</h6></div>
             <button className=" bg-sky-500 py-1 px-6  rounded-xl">Add Another Gift</button>

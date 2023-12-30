@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FaQuoteLeft } from "react-icons/fa";
-import { MdOutlineKeyboardArrowRight, MdOutlineKeyboardArrowLeft } from "react-icons/md"
+import { Navigation, Pagination, Parallax, A11y } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import "./AlumniTestimonial.scss";
 
 const Testimonials = () => {
-
-    const [activeIndex, setActiveIndex] = useState(0);
 
     const testimonials = [
         {
@@ -20,7 +24,7 @@ const Testimonials = () => {
             name: "Sudhanshu Ranjan",
             image: "https://avatars.githubusercontent.com/u/77230416?v=4",
             batch: "2024",
-            designation: "Frontend Engineer @ Netflix",
+            designation: "Software Engineer @Oracle",
             message: "The institute has been ranked 63 among engineering colleges by the National Institutional Ranking Framework (NIRF) in 2022."
         },
         {
@@ -66,33 +70,61 @@ const Testimonials = () => {
     ]
 
     return (
-        <div className='pb-10 bg-gray-900 py-10'>
-            <h1 className="mt-10 lg:ml-10 md:ml-10 p-5 text-center text-sky-400 lg:text-5xl md:text-4xl text-4xl font-bold leading-tight mb-10">
-                Testimonials from our Alumni 
+        <div className=' bg-gray-900 py-16'>
+            <h1
+                data-aos="fade-in"
+                className="font-semibold lg:text-5xl md:text-4xl text-3xl text-center  items-center  "
+            >
+                Testimonials from our <span className="text-sky-500">Alumni</span>
             </h1>
 
-            <div className='relative w-full overflow-y-auto overflow-x-hidden py-10'>
-                <div className='flex m-auto px-5 items-center justify-evenly mb-10 gap-10'>
-                    <TestimonialCard data={activeIndex <= 0 ? testimonials.at(-1) : testimonials[activeIndex - 1]} />
-                    <TestimonialCard data={testimonials[activeIndex]} />
-                    <TestimonialCard data={activeIndex == testimonials.length - 1 ? testimonials[0] : testimonials[activeIndex + 1]} />
-                </div>
-                <div className='flex lg:justify-between md:justify-between justify-center lg:gap-0 md:gap-0 gap-10 items-center lg:px-10 md:px-10 px-5 bg-gray-400 absolute lg:top-44 md:top-44 w-full h-0'>
-                    <button onClick={() => {
-                        if (activeIndex === 0) {
-                            setActiveIndex(testimonials.length - 1);
-                        } else {
-                            setActiveIndex(activeIndex - 1);
-                        }
-                    }} className='text-white rounded-full lg:p-4 md:p-4 p-3 bg-sky-600 bg-opacity-80 hover:bg-sky-800 shadow-lg'><MdOutlineKeyboardArrowLeft size={32} /></button>
-                    <button onClick={() => {
-                        if (activeIndex === testimonials.length - 1) {
-                            setActiveIndex(0);
-                        } else {
-                            setActiveIndex(activeIndex + 1);
-                        }
-                    }} className='text-white rounded-full lg:p-4 md:p-4 p-3 bg-sky-600 hover:bg-sky-800 bg-opacity-80 shadow-lg'><MdOutlineKeyboardArrowRight size={32} /></button>
-                </div>
+            <div className="mt-20 lg:px-16 md:px-10 px-5 relative">
+                <Swiper
+                    data-aos="zoom-in"
+                    modules={[Navigation, Pagination, Parallax, A11y]}
+
+                    // parallax={true}
+                    pagination={{
+                        clickable: true,
+                        // dynamicBullets: true,
+                    }}
+                    navigation={{
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                        clickable: true,
+                    }}
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 1,
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 50,
+                        },
+                        1280: {
+                            slidesPerView: 3,
+                            spaceBetween: 70,
+                        },
+                    }}
+                >
+
+
+                    <div className=" flex   items-center ">
+                        {testimonials.map((data) => (
+                            <SwiperSlide key={data.id}>
+                                <div className="mb-10">
+                                    <TestimonialCard
+                                        key={data.id}
+                                        data={data}
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </div>
+                </Swiper>
+
+                <div className="swiper-button-prev bg-black hover:bg-black bg-opacity-50 hover:bg-opacity-40 text-white p-6 rounded-full"></div>
+                <div className="swiper-button-next bg-black hover:bg-black bg-opacity-50 hover:bg-opacity-40 text-white p-6 rounded-full"></div>
             </div>
         </div>
     )
@@ -100,23 +132,25 @@ const Testimonials = () => {
 
 const TestimonialCard = ({ data }) => {
     return (
-        <div className='lg:w-[24rem] md:w-[24rem] w-[100%]'>
-            <div className='flex items-center overflow-hidden lg:w-[24rem] md:w-[24rem] w-[85vw] rounded-xl border border-gray-700  border-b-8 border-b-sky-600 hover:border-b-sky-500 p-7 hover:border-gray-600 hover:scale-105 transition-all delay-75 ease-in hover:bg-gray-800'>
-                <div className='flex flex-col'>
-                    <FaQuoteLeft className='text-sky-400' size={41} />
-                    <p className='text-white font-medium mt-3'>{data.message}</p>
-
-                    <div className='mt-6 flex gap-2 items-center'>
-                        <div>
-                            <div className='rounded-full w-14 h-14 overflow-hidden'>
-                                <img src={data.image} alt={data.name} className='w-full h-full object-cover' />
-                            </div>
-                        </div>
-                        <div>
-                            <h1 className='text-white font-bold text-base'>{data.name} <span>
-                                (1998)</span></h1>
-                            <p className='text-gray-400 text-sm'>{data.designation}</p>
-                        </div>
+        <div data-aos="zoom-in" className='flex ' >
+            <div className='border-[1px] border-gray-500 border-b-cyan-500 hover:border-b-cyan-600 border-b-8 rounded-2xl w-full  p-5 pb-7 hover:scale-[101%] z-0 hover:z-10 bg-[#090c14] transition-all delay-[30ms] ease-in-out m-1'>
+                <div className='h-[10rem] rounded overflow-hidden '>
+                    <p>
+                        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" className="text-sky-400 mb-6" height="38" width="38" xmlns="http://www.w3.org/2000/svg"><path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z">
+                        </path>
+                        </svg>
+                    </p>
+                    <p className='text-justify m-5'>{data.message}</p>
+                </div>
+                <div className='flex items-center lg:gap-5 md:gap-3 gap-2 mt-6'>
+                    <div>
+                        <img loading='lazy' className='w-12 h-12 bg-cover bg-center rounded-full ' src={data.image} alt={data.name} />
+                    </div>
+                    <div>
+                        <h2 className='text-base font-semibold'>{data.name}</h2>
+                        <p className='text-gray-500 text-sm font-medium leading-5 mt-1'>
+                            {data.designation}
+                        </p>
                     </div>
                 </div>
             </div>
