@@ -2,6 +2,7 @@ import React from 'react'
 import './Projects.scss'
 import Heading from '../../components/Headings/Heading'
 import AlumniCard from './AlumniCard'
+import Meta from '../../components/Meta/Meta'
 
 const NotableAlumni = () => {
 
@@ -60,6 +61,7 @@ const NotableAlumni = () => {
 
   return (
     <div>
+      <Meta name="Notable Alumni" />
       <Heading heading="Notable Alumni" heading1="of NIT Patna"></Heading>
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 justify-start items-start lg:px-5 px-6 lg:gap-6 gap-8 py-16'>
         {

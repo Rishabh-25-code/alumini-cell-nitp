@@ -1,10 +1,12 @@
 import React from "react";
 import "./Newsletter.scss";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import Meta from "../../components/Meta/Meta";
 
 const News = ({ date, title, info, id }) => {
   return (
     <>
+    <Meta name={title} />
       <div data-aos="fade-up" className="newsletter-card shadow-md">
         <div className="card-img flex items-center justify-center">
           <img
@@ -17,7 +19,7 @@ const News = ({ date, title, info, id }) => {
           <p className="text-base text-gray-400 font-medium">{date}</p>
           <h1 className="text-2xl font-semibold py-1">{title}</h1>
           <p className="text-base text-gray-400 font-medium">
-            {info.slice(0,100)}
+            {info.slice(0, 100)}
           </p>
           <Link to={`/news/${id}`}>
             <button>Read →</button>

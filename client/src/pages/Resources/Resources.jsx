@@ -1,9 +1,11 @@
 import React from "react";
 import Heading from "../../components/Headings/Heading";
+import Meta from "../../components/Meta/Meta";
 
 const Resources = () => {
   return (
     <div>
+      <Meta name="Resources" />
       <Heading heading="Resources"></Heading>
 
       <div className="flex lg:flex-row md:flex-row flex-col lg:justify-evenly md::justify-evenly justify-center lg:items-start md:items-start items-center gap-10">

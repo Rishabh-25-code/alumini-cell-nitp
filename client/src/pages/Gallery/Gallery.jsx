@@ -4,6 +4,7 @@ import { MdClose, MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/
 import Heading from "../../components/Headings/Heading"
 import { db } from "../../firebase"
 import { collection, getDocs } from "firebase/firestore"
+import Meta from "../../components/Meta/Meta"
 
 
 
@@ -35,6 +36,7 @@ const Gallery = () => {
 
     return (
         <div className="gallery_container">
+            <Meta name="Gallery" />
             <Heading heading="PHOTOS" desc="— Our Photo Gallery" />
             <div className="photo-gallery-cont">
                 <div className="photo-gallery">

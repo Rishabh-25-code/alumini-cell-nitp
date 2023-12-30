@@ -1,10 +1,12 @@
 import React from "react";
 import Heading from "../../components/Headings/Heading";
 import { IoIosArrowForward } from "react-icons/io";
+import Meta from "../../components/Meta/Meta";
 
 const History = () => {
     return (
         <>
+        <Meta name="History" />
             <div>
                 <Heading heading="History of NITP"></Heading>
             </div>

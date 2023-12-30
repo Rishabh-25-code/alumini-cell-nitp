@@ -1,5 +1,6 @@
 import Heading from "../../components/Headings/Heading"
 import { FaShare } from "react-icons/fa";
+import Meta from "../../components/Meta/Meta";
 
 const PreviousMeets = () => {
 
@@ -27,6 +28,7 @@ const PreviousMeets = () => {
 
     return (
         <div>
+            <Meta name="Previous Alumni Meets" />
             <Heading heading="Previous Alumni" heading1="Meets of NIT Patna"></Heading>
 
             <div className="flex flex-col gap-10 pt-12 pb-32">

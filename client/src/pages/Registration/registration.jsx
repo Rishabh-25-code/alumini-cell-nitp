@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import Heading from '../../components/Headings/Heading'
 import "./registration.css";
+import Meta from '../../components/Meta/Meta';
 function Registration() {
   return (
     <div>
+      <Meta name="Registration" />
       <Heading heading="Registration"></Heading>
 
       <div className="outerDiv">

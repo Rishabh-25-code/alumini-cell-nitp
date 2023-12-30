@@ -2,6 +2,7 @@ import React from "react";
 import Heading from "../../components/Headings/Heading";
 import pic from "/images/bihtacampusnews.png";
 import Timeline from "../../components/Timeline/Timeline";
+import Meta from "../../components/Meta/Meta";
 
 
 
@@ -110,6 +111,7 @@ const timelineData = [
 const BihtaCampus = () => {
     return (
         <>
+        <Meta name="Bihta Campus" />
             <div>
                 <Heading heading="Bihta Campus - NITP"></Heading>
 
