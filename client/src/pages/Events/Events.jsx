@@ -20,26 +20,59 @@ const Events = () => {
     },
     {
       id: 1,
-      name: "Alumni Meet 2022",
-      image: "images/Meet5300/DSC_0197-min.jpg",
-      clubName: "Alumni Cell",
-      description: "Details to be updated...",
-      date: "to be updated",
-      time: "to be updated",
-      venue: "to be updated",
+      name: "Vimantriki",
+      image: "/images/events/vimantriki-min.jpg",
+      clubName: "Tesla",
+      description: "Details to be updated",
+      date: "2023-11-04",
+      time: "10:00 AM",
+      venue: "Visvesvaraya Hall",
       link: "https://www.google.com"
-    },
-    {
+  },
+  {
       id: 2,
-      name: "Alumni Meet 2021",
-      image: "images/Meet5300/DSC_0191-min.jpg",
-      clubName: "Alumni Cell",
-      description: "Details to be updated...",
-      date: "to be updated",
-      time: "to be updated",
-      venue: "to be updated",
+      name: "One Mic Stand",
+      image: "/images/events/standup-min.jpg",
+      clubName: "Natvansh",
+      description: "Details to be updated",
+      date: "2023-11-07",
+      time: "10:00 AM",
+      venue: "",
       link: "https://www.google.com"
-    },
+  },
+  {
+      id: 3,
+      name: "Doodle Art",
+      image: "/images/events/doodle-min.jpg",
+      clubName: "Expresso",
+      description: "Details to be updated",
+      date: "2023-11-10",
+      time: "10:00 AM",
+      venue: "SAC Building",
+      link: "https://www.google.com"
+  },
+  {
+      id: 4,
+      name: "Eccentrica 5.0",
+      image: "/images/events/eccentrica-min.jpg",
+      clubName: "",
+      description: "Details to be updated",
+      date: "2023-11-22",
+      time: "10:00 AM",
+      venue: "OAT",
+      link: "https://www.google.com"
+  },
+  {
+      id: 5,
+      name: "Physics Workshop",
+      image: "/images/events/physicsworkshop-min.jpg",
+      clubName: "",
+      description: "Details to be updated",
+      date: "2023-05-25",
+      time: "10:00 AM",
+      venue: "",
+      link: "https://www.google.com"
+  },
 
 
   ]
