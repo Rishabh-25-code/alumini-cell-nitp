@@ -21,7 +21,7 @@ const Team = () => {
     },
     {
       img1: "https://media.licdn.com/dms/image/D4D03AQHIPauhU-T-3g/profile-displayphoto-shrink_400_400/0/1698578175845?e=1709164800&v=beta&t=eNvVL7vze_P7XrOvYjwWCzpZFYPwRrVMcQOx2s2sx6Y",
-      name1: "Prof. Amitesh Kumar",
+      name1: "Prof. Gagandeep Meena",
       detail1: "Mentor",
       detail11: "gagan@nitp.ac.in",
     },
