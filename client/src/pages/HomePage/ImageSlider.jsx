@@ -7,6 +7,7 @@ import img2 from '../../../public/images/carouselphotos/IMG-20231230-WA0012.jpg'
 import img3 from '../../../public/images/carouselphotos/IMG-20231230-WA0013.jpg'
 import img4 from '../../../public/images/carouselphotos/IMG-20231230-WA0014.jpg'
 import img5 from '../../../public/images/carouselphotos/IMG-20231230-WA0015.jpg'
+import img6 from '../../../public/images/carouselphotos/DSC_0841.jpg'
 
 
 const slideImages = [
@@ -28,22 +29,14 @@ const slideImages = [
     {
         url: img4,
     },
-    
     {
         url: img5,
     },
     {
-        url: 'https://web.nitp.ac.in/alumni/html/images/DSC_1334.jpg',
+        url: img6,
     },
-    {
-        url: 'https://web.nitp.ac.in/alumni/html/images/DSC_0841.jpg',
-    },
-    {
-        url: 'https://web.nitp.ac.in/alumni/html/images/DSC_1074.jpg',
-    },
-    {
-        url: 'https://web.nitp.ac.in/alumni/html/images/DSC_1197.jpg',
-    }
+   
+    
     
 
 ];
