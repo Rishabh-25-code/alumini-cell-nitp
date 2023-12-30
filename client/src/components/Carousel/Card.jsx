@@ -5,36 +5,36 @@ import { Carousel } from 'react-carousel-minimal';
 function Card(props) {
     const data = [
         {
-            image: "https://picsum.photos/id/15/1920/1080",
-            caption: "Event"
+            image: "/images/Meet5300/DSC_0093-min.jpg",
+            caption: "Alumni Meet 2023"
         },
         {
-            image: "https://picsum.photos/id/16/1920/1080",
-            caption: "Event"
+            image: "/images/Meet5300/DSC_0100-min.jpg",
+            caption: "Alumni Meet 2023"
         },
         {
-            image: "https://picsum.photos/id/17/1920/1080",
-            caption: "Event"
+            image: "/images/Meet5300/DSC_0139-min.jpg",
+            caption: "Alumni Meet 2023"
         },
         {
-            image: "https://picsum.photos/id/18/1920/1080",
-            caption: "Event"
+            image: "/images/Meet5300/DSC_0154-min.jpg",
+            caption: "Alumni Meet 2023"
         },
         {
-            image: "https://picsum.photos/id/19/1920/1080",
-            caption: "Event"
+            image: "/images/Meet5300/DSC_0158-min.jpg",
+            caption: "Alumni Meet 2023"
         },
         {
-            image: "https://picsum.photos/id/20/1920/1080",
-            caption: "Event"
+            image: "/images/Meet5300/DSC_0191-min.jpg",
+            caption: "Alumni Meet 2023"
         },
         {
-            image: "https://picsum.photos/id/21/1920/1080",
-            caption: "Event"
+            image: "/images/Meet5300/DSC_0197-min.jpg",
+            caption: "Alumni Meet 2023"
         },
         {
-            image: "https://picsum.photos/id/22/1920/1080",
-            caption: "Event"
+            image: "/images/Meet5300/DSC_0202-min.jpg",
+            caption: "Alumni Meet 2023"
         },
 
     ];
