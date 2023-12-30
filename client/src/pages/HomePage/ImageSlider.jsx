@@ -5,20 +5,20 @@ import { Link } from 'react-router-dom'
 
 const slideImages = [
     {
-        url: 'https://img.jagranjosh.com/images/2022/April/1142022/Screenshot%202022-03-14%20155423.jpg',
+        url: '/images/sliderimg1.png',
     },
     {
-        url: 'https://web.nitp.ac.in/alumni/html/images/DSC_1334.jpg',
+        url: '/images/sliderimg2.png',
     },
     {
-        url: 'https://web.nitp.ac.in/alumni/html/images/DSC_0841.jpg',
+        url: '/images/sliderimg3.png',
     },
     {
-        url: 'https://web.nitp.ac.in/alumni/html/images/DSC_1074.jpg',
+        url: '/images/sliderimg4.png',
     },
     {
-        url: 'https://web.nitp.ac.in/alumni/html/images/DSC_1197.jpg',
-    }
+        url: '/images/sliderimg5.png',
+    },
 ];
 
 const divstyle = {
@@ -27,7 +27,7 @@ const divstyle = {
     alignItems: 'center',
     justifyContent: 'center',
     height: '440px',
-    bakgroundSize: 'cover'
+    backgroundSize: 'cover'
 }
 const spanStyle = {
     fontSize: "20px",
