@@ -13,9 +13,9 @@ const slideImages = [
     {
         url: '/images/sliderimages/sliderimg3.png',
     },
-    {
-        url: '/images/sliderimages/sliderimg4.png',
-    },
+    // {
+    //     url: '/images/sliderimages/sliderimg4.png',
+    // },
     {
         url: '/images/sliderimages/sliderimg5.png',
     },
