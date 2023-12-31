@@ -3,16 +3,19 @@ import React from "react";
 const TeamCard = ({ img1, name1, detail1, detail11, img2, name2, detail2 }) => {
   return (
     <>
-      <div data-aos="fade-up" className="items-center rounded-xl shadow sm:flex bg-gray-800 border-gray-700 lg:w-full md:w-full w-[90%]">
+      <div data-aos="fade-up" className="flex p-2 sm:p-0  flex-col justify-center items-center  rounded-xl shadow sm:flex-row sm:justify-normal bg-gray-800 border-gray-700 lg:w-full md:w-full w-[80%]  md:h-36">
+        <div className="flex justify-center items-center overflow-hidden rounded-l-xl h-full w-40 ">
         <a href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320">
           <img 
-            className="w-[10rem] rounded-lg sm:rounded-none sm:rounded-l-xl"
+            className="flex lg:h-full  object-cover lg:object-contain  rounded-lg sm:rounded-none sm:rounded-l-xl lg:h-38"
             src={img1}
             alt="Bonnie Avatar"
           />
         </a>
-        <div className="p-5">
-          <h3 className="text-xl font-bold tracking-tight text-gray-100 ">
+        </div>
+        <div className="flex justify-center">
+        <div className="p-5 w-fit flex-col justify-center">
+           <h3 className="text-xl font-bold tracking-tight text-gray-100 ">
             <a href="https://drive.google.com/file/d/1Z4t3povLq2PqdWXaGeJ2g55ge9PbG_Jy/view?sz=w320">
               {name1}
             </a>
@@ -96,6 +99,7 @@ const TeamCard = ({ img1, name1, detail1, detail11, img2, name2, detail2 }) => {
               </a>
             </li>
           </ul> */}
+        </div>
         </div>
       </div>
     </>

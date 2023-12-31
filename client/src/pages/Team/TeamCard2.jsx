@@ -6,7 +6,7 @@ const TeamCard2 = ({ img2, name2, detail2 }) => {
     <>
       <div
         data-aos="fade-up"
-        className="text-center text-gray-400"
+        className="text-center text-gray-400 "
       >
         <img
           className="mx-auto mb-4 w-36 h-36 rounded-full hover:scale-105 transition-all delay-75 ease-in"
@@ -17,7 +17,7 @@ const TeamCard2 = ({ img2, name2, detail2 }) => {
           <a href="#">{name2}</a>
         </h3>
         <p>{detail2}</p>
-        <ul className="flex justify-center mt-4 space-x-4">
+        <ul className="flex justify-center mt-4 space-x-4 ">
           <li>
             <a
               href="www.linkedin.com"

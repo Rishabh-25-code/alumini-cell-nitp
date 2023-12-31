@@ -25,9 +25,13 @@ const History = () => {
                 <div className=" sm:w-8/12 flex-col">
                     <div className="rounded-3xl bg-gray-900 p-6 mb-10">
                         <div className="flex text-3xl text-sky-500">
-                            <h2>History of NITP</h2>
+                            <div>
+                            <h2>Glorious years of NITP</h2>
+                            <div className=" w-full mb-5 mt-1 h-1 bg-pink-500 flex justify-center items-center"></div>
+                            </div>
+                            
+
                         </div>
-                        <div className=" w-52 mb-5 mt-1 h-1 bg-pink-500 flex justify-center items-center"></div>
 
                         <p>
                             NIT Patna marked its humble beginning in 1886 with the establishment of pleaders survey training school which was subsequently promoted of Bihar College of Engineering Patna in 1924.

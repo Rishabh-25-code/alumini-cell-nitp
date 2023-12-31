@@ -73,7 +73,7 @@ const Team = () => {
             </h2>
           </div>
 
-          <div className="grid gap-10 mb-6 place-items-center lg:mb-16 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+          <div className="grid  gap-10 mb-6 justify-center place-items-center lg:mb-16 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
             {team.map((team, index) => (
               <TeamCard
                 key={index}
@@ -102,7 +102,7 @@ const Team = () => {
             </p>
           </div>
 
-          <div className="grid gap-12 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid justify-center gap-12 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {team2.map((team2, index) => (
               <TeamCard2
                 key={index}
