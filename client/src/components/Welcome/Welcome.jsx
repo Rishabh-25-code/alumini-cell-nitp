@@ -14,7 +14,7 @@ const Welcome = () => {
                 </p>
 
                 <p>
-                   The National Institute of Technology (NIT) Patna Alumni Association is a non-profit organization founded by the alumni of NIT Patna to connect, engage and support the institute's alumni community. The association was established in 2014 and is registered under the Societies Registration Act, 1860. 
+                   The National Institute of Technology (NIT) Patna Alumni Association is a non-profit organization founded by NIT Patna to connect, engage and support the institute's alumni community. The association was established in 2014 and is registered under the Societies Registration Act, 1860. 
                 </p>
 
                 <p>
