@@ -97,7 +97,7 @@ const AlumniDatabase = () => {
                         Alumni Database
                     </p>
                     <h5 className="lg:text-2xl md:text-xl text-lg font-medium pb-2">
-                        <span className="text-sky-500">Searching</span> for NITP Alums?
+                        <span className="text-sky-500">Searching</span> for NITP Alumnus?
                     </h5>
                     <h5 className="lg:text-2xl md:text-xl text-lg font-bold pb-2">
                         Type: <span className="text-rose-500">{course}</span>
