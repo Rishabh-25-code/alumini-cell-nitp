@@ -83,12 +83,6 @@ const History = () => {
                     <Timeline2/>
                 </div>
             </div>
-
-
-
-
-
-
         </>
     );
 };

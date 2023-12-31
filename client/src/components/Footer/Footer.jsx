@@ -68,8 +68,9 @@ const Footer = () => {
         <p>
           © {year} NITP, All Rights Reserved.
         </p>
-        <p>
-          Designed & Developed by <Link style={{color:"#009bd6"}} className="font-medium" to="/team">Electrical Engineers of NIT Patna</Link>.
+        <p className='flex items-center gap-1'>
+          <span className='md:block hidden'>Designed & Developed</span> <span className='md:hidden block'>Designed</span>
+          <span>by <Link style={{color:"#009bd6"}} className="font-medium" to="/team">Electrical Engineers of NIT Patna</Link>.</span>
         </p>
       </div>
 
