@@ -47,7 +47,7 @@ function ImageSlider() {
                                     <h5 className="lg:text-4xl md:text-3xl text-2xl font-bold pb-2">
                                         <span className="text-sky-500">Connect.</span> Give. Cherish.
                                     </h5>
-                                    <p className="lg:text-7xl md:text-6xl text-5xl font-bold">
+                                    <p className="lg:text-7xl md:text-6xl text-4xl font-bold">
                                         WELCOME BACK
                                     </p>
                                     <p className='lg:text-xl text-lg pb-5 pt-2 text-gray-300'>

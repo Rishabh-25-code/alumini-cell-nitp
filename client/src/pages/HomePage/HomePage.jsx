@@ -9,14 +9,18 @@ import QuickLinks from "../../components/QuickLinks/QuickLinks";
 import ImageSlider from "./ImageSlider";
 import NotableAlumniMarquee from "../../components/NotableAlumni/NotableAlumniMarquee";
 import Meta from "../../components/Meta/Meta";
+import Welcome from "../../components/Welcome/Welcome";
 
 const HomePage = () => {
 
   return (
     <>
-    <Meta name="Home - Alumni NITP" />
+      <Meta name="Home - Alumni NITP" />
       <div className="h-1/5">
         <ImageSlider />
+
+        <Welcome/>
+
         <QuickLinks />
         {/* Director section starts here */}
 
