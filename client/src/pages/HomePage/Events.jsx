@@ -11,7 +11,7 @@ const Events = () => {
             name: "Alumni Meet 2023",
             image: "/images/Meet5300/DSC_0139-min.jpg",
             clubName: "Alumni Cell",
-            description: "Details to be updated",
+            description: " ",
             date: "2023-12-24",
             time: "10:00 AM",
             venue: "OAT",
@@ -19,21 +19,22 @@ const Events = () => {
         },
         {
             id: 1,
-            name: "Vimantriki",
-            image: "/images/events/vimantriki-min.jpg",
-            clubName: "Tesla",
-            description: "Details to be updated",
-            date: "2023-11-04",
+            name: "ICEFEET",
+            image: "/images/icefeet/icefeet12.jpeg",
+            clubName: "IEEE",
+            description: " ",
+            date: "2023-12-23",
             time: "10:00 AM",
             venue: "Visvesvaraya Hall",
             link: "https://www.google.com"
         },
+        
         {
             id: 2,
             name: "One Mic Stand",
             image: "/images/events/standup-min.jpg",
             clubName: "Natvansh",
-            description: "Details to be updated",
+            description: " ",
             date: "2023-11-07",
             time: "10:00 AM",
             venue: "LT-1",
@@ -41,21 +42,22 @@ const Events = () => {
         },
         {
             id: 3,
-            name: "Doodle Art",
-            image: "/images/events/doodle-min.jpg",
-            clubName: "Expresso",
-            description: "Details to be updated",
-            date: "2023-11-10",
+            name: "Vimantriki",
+            image: "/images/events/vimantriki-min.jpg",
+            clubName: "Tesla",
+            description: " ",
+            date: "2023-11-04",
             time: "10:00 AM",
-            venue: "SAC Building",
+            venue: "Visvesvaraya Hall",
             link: "https://www.google.com"
         },
+        
         {
             id: 4,
             name: "Eccentrica 5.0",
             image: "/images/events/eccentrica-min.jpg",
             clubName: "",
-            description: "Details to be updated",
+            description: " ",
             date: "2023-11-22",
             time: "10:00 AM",
             venue: "OAT",
@@ -66,10 +68,21 @@ const Events = () => {
             name: "Physics Workshop",
             image: "/images/events/physicsworkshop-min.jpg",
             clubName: "",
-            description: "Details to be updated",
+            description: " ",
             date: "2023-05-25",
             time: "10:00 AM",
             venue: "LT-1",
+            link: "https://www.google.com"
+        },
+        {
+            id: 6,
+            name: "Doodle Art",
+            image: "/images/events/doodle-min.jpg",
+            clubName: "Expresso",
+            description: " ",
+            date: "2023-11-10",
+            time: "10:00 AM",
+            venue: "SAC Building",
             link: "https://www.google.com"
         },
     ]
@@ -77,7 +90,7 @@ const Events = () => {
     return (
         <div className='pb-10'>
             <h1 className="mb-2.5 mt-10 lg:ml-10 md:ml-10 p-5 lg:text-left md:text-left text-center text-sky-400 lg:text-5xl md:text-4xl text-4xl font-bold leading-tight">
-                Life at NIT Patna
+                Eventful Life at NIT Patna
             </h1>
 
             <div className='flex flex-wrap m-auto px-5 items-center justify-evenly mb-10'>

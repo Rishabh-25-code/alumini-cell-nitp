@@ -8,8 +8,14 @@ const Meet = () => {
     <div>
       <Meta name="Alumni Meet" />
       <Heading heading="Alumni Meet"></Heading>
+      <div className='flex justify-center'>
+      <h1 className='text-4xl'>
+        Details of Alumni Meet 2024 will be updated soon...
+      </h1>
+      </div>
+      
 
-      <div className='bg-gray-900 lg:w-[50rem] md:w-[90%] w-[95%] m-auto shadow mt-10 my-32 rounded-2xl p-6'>
+      {/* <div className='bg-gray-900 lg:w-[50rem] md:w-[90%] w-[95%] m-auto shadow mt-10 my-32 rounded-2xl p-6'>
         <div className='border-b border-b-gray-700 text-2xl px-2 py-2 pt-0 text-sky-500 font-bold'>
           3<sup>rd</sup> ALUMNI MEET 2023
         </div>
@@ -64,7 +70,7 @@ const Meet = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

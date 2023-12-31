@@ -129,12 +129,12 @@ const BihtaCampus = () => {
 
                     </div>
 
-                    <div className="lg:max-w-[80%] md:w-[85%] w-[94%] bg-gray-900 rounded-3xl p-5 py-10 mx-auto flex flex-col justify-center md:py-[80] sm:flex-row">
-                        <div className="flex flex-col">
+                    {/* <div className="lg:max-w-[80%] md:w-[85%] w-[94%] bg-gray-900 rounded-3xl p-5 py-10 mx-auto flex flex-col justify-center md:py-[80] sm:flex-row"> */}
+                        <div className="">
                             <h1 className="lg:text-3xl text-2xl px-4 font-bold text-center mb-8 text-sky-500">Architectural Plans of Bihta Campus</h1>
                             <Timeline data={timelineData} />
                         </div>
-                    </div>
+                    {/* </div> */}
 
                 </div>
             </div>
