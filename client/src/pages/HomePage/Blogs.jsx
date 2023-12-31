@@ -77,7 +77,7 @@ const Blogs = () => {
                 ))}
             </div>
 
-            <Link to="/blogs" className='bg-sky-400 absolute right-20 hover:bg-sky-500 text-white font-semi-bold py-2 px-4 rounded-full flex items-center'>
+            <Link to="/blogs" className='bg-sky-400 absolute lg:right-20 md:right-16 right-12 hover:bg-sky-500 text-white font-semi-bold py-2 px-4 rounded-full flex items-center'>
                 <button className="mr-2">
                     View All
                 </button>

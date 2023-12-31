@@ -213,11 +213,11 @@ const NavBar = () => {
                       <Link
                         style={{ textDecoration: "none" }}
                         to={child.link}
-                        className="dropdown-link mb-2 text-base"
+                        className="dropdown-link text-base"
                         key={i}
                         onClick={() => setMenu(!menu)}
                       >
-                        <p className="text-gray-400 hover:text-blue-400">
+                        <p className="text-gray-400 sm:py-0 py-0.5 hover:text-blue-400">
                           {child.name}
                         </p>
                       </Link>
