@@ -27,7 +27,7 @@ const divstyle = {
     alignItems: 'center',
     justifyContent: 'center',
     height: '440px',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
 }
 const spanStyle = {
     fontSize: "20px",

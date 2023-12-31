@@ -89,7 +89,6 @@ const Events = () => {
 ]
 
 
-
   return (
     <div>
       <Meta name="Events" />

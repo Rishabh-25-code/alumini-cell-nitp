@@ -1,6 +1,7 @@
 import Heading from "../../components/Headings/Heading"
 import { FaShare } from "react-icons/fa";
 import Meta from "../../components/Meta/Meta";
+import CustomCarousel from "../../components/Carousel/CustomCarousel";
 
 const PreviousMeets = () => {
 
@@ -25,16 +26,89 @@ const PreviousMeets = () => {
         }
     ]
 
+    const data = [
+        {
+            image: "/images/Meet5600/DSC_0645-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0665-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0672-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0685-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0690-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0704-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0701-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0708-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0711-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0713-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0719-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0722-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+        {
+            image: "/images/Meet5600/DSC_0724-min.jpg",
+            caption: "Alumni Meet 2023"
+        },
+
+    ];
+
+    const captionStyle = {
+        fontSize: '2em',
+        fontWeight: 'bold',
+    }
+    const slideNumberStyle = {
+        fontSize: '20px',
+        fontWeight: 'bold',
+    }
+
 
     return (
         <div>
             <Meta name="Previous Alumni Meets" />
             <Heading heading="Previous Alumni" heading1="Meets of NIT Patna"></Heading>
 
+            <CustomCarousel
+                data={data}
+                captionStyle={captionStyle}
+                slideNumberStyle={slideNumberStyle}
+            />
+            <br />
+            <br />
+
             <div className="flex flex-col gap-10 pt-12 pb-32">
                 {
                     meets.map((meet, index) => (
-                        <div className='bg-gray-900 lg:w-[50rem] md:w-[90%] w-[95%] m-auto shadow rounded-2xl p-6'>
+                        <div key={index} className='bg-gray-900 lg:w-[50rem] md:w-[90%] w-[95%] m-auto shadow rounded-2xl p-6'>
                             <div className='border-b border-b-gray-700 text-2xl px-2 py-2 pt-0 text-sky-500 font-bold'>
                                 {meet.name}
                             </div>
