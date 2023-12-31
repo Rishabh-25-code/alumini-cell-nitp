@@ -12,7 +12,7 @@ function Timeline2() {
 
   return (
     <div className="timeline-container">
-      <h5 className="timeline-title">Glorious Past of NIT Patna</h5>
+      <h5 className="lg:text-4xl md:text-3xl text-2xl text-center text-sky-500 pb-10 font-semibold">Glorious Past of <span className="text-white">NIT Patna</span></h5>
       <VerticalTimeline>
         {timelineElements.map((element, index) => {
           let isWorkIcon = element.icon === "work";
