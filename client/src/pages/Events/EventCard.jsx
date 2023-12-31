@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
 const EventCard = ({ data }) => {
     return (
@@ -8,7 +8,7 @@ const EventCard = ({ data }) => {
             </div>
             <p className='text-gray-400 pt-2 pl-2'>{data.clubName}</p>
             <h3 className='text-xl font-semibold pl-2'>{data.name}</h3>
-            <p className='text-gray-400 pt-1 pl-2'>{data.description.substring(0, 90) + "..."}</p>
+            <p className='text-gray-400 pt-1 pl-2'>{data.description.length !== 0 ? data.description.substring(0, 90) + "..." : null}</p>
             <div className='bg-gray-800 rounded-lg p-3 flex justify-between mt-2 flex-col'>
                 <div className='flex justify-between'>
                     <div>
@@ -29,8 +29,8 @@ const EventCard = ({ data }) => {
                     </div>
 
                     <div className='text-right'>
-                        <p className='text-gray-400 text-sm'>Reg. Link</p>
-                        <a target='_blank' href={data.link} className='text-medium text-blue-500'>Click</a>
+                        <p className='text-gray-400 text-sm'>See Photos</p>
+                        <Link style={{ textDecoration: "none", color: "skyblue" }} to="/events" className='text-medium text-blue-500'>Click</Link>
                     </div>
                 </div>
             </div>
