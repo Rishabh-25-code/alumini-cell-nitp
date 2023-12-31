@@ -62,7 +62,7 @@ const HomePage = () => {
             <p className="mb-10 lg:text-left md:text-left text-justify">
               We are celebrating the 100 years of the glorious history of
               Engineering Education in Bihar, which started with the establishment
-              of Bihar College of Engineering (BCE), Patna in 1900. <br /><br />
+              of Bihar College of Engineering (BCE), Patna in 1924. <br /><br />
               Since then, the Engineering Education has undergone a sea change
               and has been instrumental in the development of the Bihar region. <br />
             </p>

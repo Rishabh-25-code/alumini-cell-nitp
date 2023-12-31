@@ -113,7 +113,7 @@ const BihtaCampus = () => {
         <>
         <Meta name="Bihta Campus" />
             <div>
-                <Heading heading="Bihta Campus - NITP"></Heading>
+                <Heading heading="NIT Patna Bihta Campus"></Heading>
 
                 <div className="flex items-center flex-col justify-center gap-10">
                     <div className="lg:max-w-[80%] md:w-[85%] w-[94%] bg-gray-900 rounded-3xl p-5 py-10 mx-auto flex flex-col md:py-[80] sm:flex-row">

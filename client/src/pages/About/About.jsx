@@ -15,11 +15,13 @@ const About = () => {
       <div className="flex items-center flex-col justify-center gap-10">
         <div className="lg:max-w-[80%] md:w-[85%] w-[94%] bg-gray-900 rounded-3xl p-5 py-10 mx-auto flex flex-col md:py-[80] sm:flex-row">
           <div className="basis-[60%] px-2  duration-1000 ">
-            <h1 className="text-4xl  font-semibold text-sky-500">Background</h1>
+            <h1 className="text-4xl  font-semibold text-sky-500">About Us</h1>
             <div className="max-w-[30%] mb-5 mt-1 h-1 bg-pink-500 " />
-            <p>The National Institute of Technology (NIT) Patna Alumni Association is a non-profit organization founded by the alumni of NIT Patna to connect, engage and support the institute's alumni community. The association was established in 2014 and is registered under the Societies Registration Act, 1860.
+            <p>National Institute of Technology Patna has been declared as an Institute of National Importance and has been granted a fully Autonomous Status by MHRD, Government of India. The Institute has also been declared as a Centre of Excellence of impart high level education training , research and development in science, engineering technology and humanities. It is imparting high quality education & values at UG (B.Tech), PG (M.Tech) & Ph.D. programmes through its experienced faculty well versed in their respective field of engineering an technology with well equipped laboratories . At present the Institute has seven disciplines viz. Architecture, Civil Engineering, Compute Science & Engg., Electrical Engg., Electronics & Communication Engg., Information Technology and Mechanical Engg., and well established departments of physics, Mathematics and Humanities and Social Science.
 
-              The primary objective of the NIT Patna Alumni Association is to foster a sense of belonging among the alumni and to promote interaction between them and the institute. The association also works towards providing a platform for the alumni to connect with each other and to share their experiences and knowledge with the current students.</p>
+National Institute of Technology Patna aims at setting out very high education standards and holds long record of academic excellence. The pedagogical aspects have been formulated to suit not only the needs of the contemporary industrial requirements but also to develop human potential to its fullest extent in a range of professions. Extra curricular activities are planed through games and sports, cultural programmes and NSS activities. Cultural activities provide a platform to know about the culture of various states and regions of the country and opportunity for national integration.
+
+Ever since its rechristening, NIT Patna has been on the fast track of development and has undergone numerous facelifts because of which placement records have witnessed unprecedented growth and is touching new heights as the graph of placement is increasing remarkably.</p>
           </div>
           <div className="basis-[40%] sm:px-5  py-2 px-2 overflow-hidden rounded-xl lg:mt-0 md:mt-0 mt-5">
             <img src={pic3} className="rounded-xl w-full   shadow-xl hue-rotate-30 " alt="" />
