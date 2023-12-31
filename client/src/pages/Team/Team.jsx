@@ -28,11 +28,7 @@ const Team = () => {
   ];
 
   const team2 = [
-    {
-      img2: "https://lh3.googleusercontent.com/d/1PlUDHg3gZ_-0vw7KGIUh6kEi9DLEQDm7=w320?authuser=0",
-      name2: "Amitesh Kumar",
-      detail2: "Mentor ",
-    },
+
     {
       img2: "https://avatars.githubusercontent.com/u/72189098?v=4",
       name2: "Rishabh Prakash",
@@ -65,7 +61,7 @@ const Team = () => {
       <Meta name="Web Team" />
       <Heading heading="Team"></Heading>
 
-      <section className="bg-black">
+      {/* <section className="bg-black">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
           <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
             <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">
@@ -86,7 +82,9 @@ const Team = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+      <br />
+      <br />
 
       <section className=" bg-gray-900">
         <div className="py-16 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
@@ -102,7 +100,7 @@ const Team = () => {
             </p>
           </div>
 
-          <div className="grid gap-12 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid gap-12 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center">
             {team2.map((team2, index) => (
               <TeamCard2
                 key={index}
