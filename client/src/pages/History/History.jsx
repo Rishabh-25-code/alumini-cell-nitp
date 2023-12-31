@@ -1,7 +1,8 @@
 import React from "react";
 import Heading from "../../components/Headings/Heading";
-import { IoIosArrowForward } from "react-icons/io";
+// import { IoIosArrowForward } from "react-icons/io";
 import Meta from "../../components/Meta/Meta";
+import Timeline2 from "../../components/Timeline/Timeline2";
 
 const History = () => {
     return (
@@ -12,7 +13,7 @@ const History = () => {
             </div>
 
             <div className="flex sm:flex-row flex-col sm:w-full justify-center  gap-10 p-6">
-                <div className="h-48 sm:w-72 bg-gray-900 flex-col justify-center items-center rounded-2xl p-6">
+                {/* <div className="h-48 sm:w-72 bg-gray-900 flex-col justify-center items-center rounded-2xl p-6">
                     <div className="flex text-3xl text-sky-500">
                         <h2>History</h2>
                     </div>
@@ -21,7 +22,7 @@ const History = () => {
                         <div className="flex items-center hover:text-blue-600 hover:cursor-pointer"><IoIosArrowForward />Motto, Mission, Vision</div>
                         <div className="flex items-center hover:text-blue-600 hover:cursor-pointer"> <IoIosArrowForward />History</div>
                     </div>
-                </div>
+                </div> */}
                 <div className=" sm:w-8/12 flex-col">
                     <div className="rounded-3xl bg-gray-900 p-6 mb-10">
                          <div className="flex text-3xl text-sky-500">
@@ -79,6 +80,7 @@ const History = () => {
                            management courses on the present campus at Ashok Rajpath.
                         </p>
                     </div>
+                    <Timeline2/>
                 </div>
             </div>
 

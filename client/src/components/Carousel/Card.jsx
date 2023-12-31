@@ -5,36 +5,36 @@ import { Carousel } from 'react-carousel-minimal';
 function Card(props) {
     const data = [
         {
-            image: "/images/Meet5300/DSC_0093-min.jpg",
-            caption: "Alumni Meet 2023"
-        },
-        {
-            image: "/images/Meet5300/DSC_0100-min.jpg",
-            caption: "Alumni Meet 2023"
-        },
-        {
             image: "/images/Meet5300/DSC_0139-min.jpg",
-            caption: "Alumni Meet 2023"
+            caption: ""
         },
         {
-            image: "/images/Meet5300/DSC_0154-min.jpg",
-            caption: "Alumni Meet 2023"
+            image: "/images/events/DSC_0082-min.jpg",
+            caption: ""
         },
         {
-            image: "/images/Meet5300/DSC_0158-min.jpg",
-            caption: "Alumni Meet 2023"
+            image: "/images/events/DSC_0602-min.jpg",
+            caption: ""
         },
         {
-            image: "/images/Meet5300/DSC_0191-min.jpg",
-            caption: "Alumni Meet 2023"
+            image: "/images/events/vimantriki-min.jpg",
+            caption: ""
         },
         {
-            image: "/images/Meet5300/DSC_0197-min.jpg",
-            caption: "Alumni Meet 2023"
+            image: "/images/icefeet/icefeet12.jpeg",
+            caption: ""
         },
         {
-            image: "/images/Meet5300/DSC_0202-min.jpg",
-            caption: "Alumni Meet 2023"
+            image: "/images/icefeet/icefeet1.jpeg",
+            caption: ""
+        },
+        {
+            image: "/images/icefeet/icefeet4.jpeg",
+            caption: ""
+        },
+        {
+            image: "/images/events/eccentrica-min.jpg",
+            caption: ""
         },
 
     ];
