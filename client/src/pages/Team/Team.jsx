@@ -17,13 +17,13 @@ const Team = () => {
       img1: "https://tesla-nitp.vercel.app/images/PI.jpg",
       name1: "Prof. Amitesh Kumar",
       detail1: "Mentor",
-      detail11: "amitesh@nitp.ac.in",
+      detail11: "amitesh.ee@nitp.ac.in",
     },
     {
       img1: "https://media.licdn.com/dms/image/D4D03AQHIPauhU-T-3g/profile-displayphoto-shrink_400_400/0/1698578175845?e=1709164800&v=beta&t=eNvVL7vze_P7XrOvYjwWCzpZFYPwRrVMcQOx2s2sx6Y",
-      name1: "Prof. Amitesh Kumar",
+      name1: "Prof. Gagan Deep Meena",
       detail1: "Mentor",
-      detail11: "gagan@nitp.ac.in",
+      detail11: "gagandeep.ee@nitp.ac.in",
     },
   ];
 

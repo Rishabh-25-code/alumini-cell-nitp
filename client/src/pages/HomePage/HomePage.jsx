@@ -49,7 +49,8 @@ const HomePage = () => {
           <div className="mb-12 md:mb-0">
             <div className="mb-12 flex justify-center ">
               <img
-                src="https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg"
+                src="https://drive.google.com/thumbnail?authuser=0&sz=w320&id=1uHLAWL2-T5vA-QeUJyISAqSlRp7kyOeW"
+                // src="https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg"
                 // src={director}
                 className="w-96 rounded-full shadow-lg dark:shadow-black/30"
               />
@@ -100,43 +101,43 @@ const HomePage = () => {
               <div className="overflow-hidden  rounded-2xl">
                 <img
                   className="border-black max-w-full h-auto aspect-square hover:scale-125 duration-500 "
-                  src="/images/pic2.jpg"
+                  src="/images/Meet5300/DSC_0197-min.jpg"
                 />
               </div>
               <div className="my-6 overflow-hidden  rounded-2xl  ">
                 <img
                   className="border-black w-full h-auto aspect-square hover:scale-125 duration-500  "
-                  src="/images/pic1.jpg"
+                  src="/images/events/eccentrica-min.jpg"
                 />
               </div>
               <div className="my-6 overflow-hidden  rounded-2xl ">
                 <img
                   className="border-black w-full  aspect-square  hover:scale-125 duration-500 "
-                  src="/images/pic3.jpg"
+                  src="/images/icefeet/icefeet12.jpeg"
                 />
               </div>
               <div className="my-6 overflow-hidden  rounded-2xl ">
                 <img
                   className="border-black w-full aspect-square hover:scale-125 duration-500 "
-                  src="/images/pic8.jpg"
+                  src="/images/icefeet/icefeet9.jpeg"
                 />
               </div>
               <div className="my-6 overflow-hidden  rounded-2xl ">
                 <img
                   className="border-black w-full aspect-square  hover:scale-125 duration-500 "
-                  src="/images/pic6.jpg"
+                  src="/images/events/DSC_0082-min.jpg"
                 />
               </div>
               <div className="my-6 overflow-hidden  rounded-2xl">
                 <img
                   className="border-black w-full aspect-square  hover:scale-125 duration-500 "
-                  src="/images/pic5.jpg"
+                  src="/images/events/DSC_0602-min.jpg"
                 />
               </div>
               <div className="my-6 overflow-hidden  rounded-2xl ">
                 <img
                   className="border-black max-w-full aspect-square  hover:scale-125 duration-500 "
-                  src="/images/pic4.jpg"
+                  src="/images/Meet5300/DSC_0154-min.jpg"
                 />
               </div>
 
@@ -152,6 +153,8 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+
+
       </div>
     </>
   );
