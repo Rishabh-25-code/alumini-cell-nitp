@@ -33,6 +33,22 @@ const Testimonials = () => {
             designation: "Head of IT, Carl Zeiss group India, Bangalore",
             message: "We hand many fond memories of the college but still the best thing was the profs , I wonder if any other institute had that quality to teach mechanical engineering those days.Just to name a few of our Gurus Dr PK sinha, Dr KN singh , Dr ID prasad , Dr SK Sinha Dr SK Mitra 🙏🙏"
         },
+        {
+            id: 3,
+            name: "Gyanendra Verma",
+            image: "https://avatars.githubusercontent.com/u/77230416?v=4",
+            batch: "2015-19 ME",
+            designation: "",
+            message: "It is an awesome feeling to be an alum of NIT Patna. NITP gave me various opportunities to shape myself. I found ISIE and captained the team for first-ever EV competition. Special mention-Sankalp. Huge respect for whole college staff."
+        },
+        {
+            id: 4,
+            name: "Abhilash Rudra",
+            image: "https://media.licdn.com/dms/image/C4D03AQES81oiokFAgA/profile-displayphoto-shrink_200_200/0/1620661841061?e=1709769600&v=beta&t=BCknRn2iStYAH71wGkRiO2Gd13T5D4ReNO_pQSLf708",
+            batch: "2012-2016 CSE",
+            designation: "Ex-Assistant Vice President at Quant Research dept., JPMorgan Chase(Mumbai), Equity Market, Credit Quant, Aspiring Monk",
+            message: "One day, this college will be in top 10 engineering institute of the country because of talent and hard work of students and professors. I am eternally grateful to Prabhat sir and Kumar Abhishek sir for my enlightening education of 4 crucial years at NIT PATNA where I learnt character, discipline and skills. May GOD bless you all."
+        },
     ]
 
     return (
