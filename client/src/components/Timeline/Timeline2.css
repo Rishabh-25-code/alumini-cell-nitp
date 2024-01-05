@@ -3,12 +3,15 @@
   font-family: "Montserrat", sans-serif;
   font-size: 2rem;
   font-weight: 600;
-  color: rgb(53, 53, 53);
+  color: #fff;
 }
 
 .vertical-timeline-element-content {
   padding: 0;
-  background-color: #000000;
+  background-color: #111827 !important;
+}
+.vertical-timeline-element-content-arrow {
+   color: aqua;
 }
 
 .date {
