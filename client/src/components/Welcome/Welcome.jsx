@@ -9,6 +9,7 @@ const Welcome = () => {
             </h3>
 
             <div className='flex justify-center items-center flex-col gap-5 px-4 lg:text-lg md:text-lg pt-10'>
+            <h2 className="text-xl text-sky-400"> This Website is still in the lab we are updating it as we are getting inflow of information.</h2>
                 <p>
                     The National Institute of Technology (NIT) Patna takes pride in its accomplished alumni who have made significant contributions in various fields. The institute recognizes the invaluable role played by its alumni in its progress, development, and future direction.
                 </p>

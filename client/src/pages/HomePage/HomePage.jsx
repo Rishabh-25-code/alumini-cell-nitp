@@ -11,6 +11,37 @@ import NotableAlumniMarquee from "../../components/NotableAlumni/NotableAlumniMa
 import Meta from "../../components/Meta/Meta";
 import Welcome from "../../components/Welcome/Welcome";
 
+const GalleryImages = [
+  {
+    id: 0,
+    link: "/images/Meet5300/DSC_0197-min.jpg"
+  },
+  {
+    id: 1,
+    link: "/images/events/eccentrica-min.jpg"
+  },
+  {
+    id: 2,
+    link: "/images/icefeet/icefeet12.jpeg"
+  },
+  {
+    id: 3,
+    link: "/images/icefeet/icefeet9.jpeg"
+  },
+  {
+    id: 4,
+    link: "/images/events/DSC_0082-min.jpg"
+  },
+  {
+    id: 5,
+    link: "/images/events/DSC_0602-min.jpg"
+  },
+  {
+    id: 6,
+    link: "/images/Meet5300/DSC_0154-min.jpg"
+  }
+]
+
 const HomePage = () => {
 
   return (
@@ -19,7 +50,7 @@ const HomePage = () => {
       <div className="h-1/5">
         <ImageSlider />
 
-        <Welcome/>
+        <Welcome />
 
         <QuickLinks />
         {/* Director section starts here */}
@@ -50,8 +81,6 @@ const HomePage = () => {
             <div className="mb-12 flex justify-center ">
               <img
                 src="https://drive.google.com/thumbnail?authuser=0&sz=w320&id=1uHLAWL2-T5vA-QeUJyISAqSlRp7kyOeW"
-                // src="https://raw.githubusercontent.com/Rajnishk4310/HealthXoxo/main/images/PKJ_Desk%20Photo.jpg"
-                // src={director}
                 className="w-96 rounded-full shadow-lg dark:shadow-black/30"
               />
             </div>
@@ -98,48 +127,11 @@ const HomePage = () => {
 
           <div className="columns-4  sm:columns-8 mx-3 mt-4 gap-5 bg-black  ">
             <div className="columns-1">
-              <div className="overflow-hidden  rounded-2xl">
-                <img
-                  className="border-black max-w-full h-auto aspect-square hover:scale-125 duration-500 "
-                  src="/images/Meet5300/DSC_0197-min.jpg"
-                />
-              </div>
-              <div className="my-6 overflow-hidden  rounded-2xl  ">
-                <img
-                  className="border-black w-full h-auto aspect-square hover:scale-125 duration-500  "
-                  src="/images/events/eccentrica-min.jpg"
-                />
-              </div>
-              <div className="my-6 overflow-hidden  rounded-2xl ">
-                <img
-                  className="border-black w-full  aspect-square  hover:scale-125 duration-500 "
-                  src="/images/icefeet/icefeet12.jpeg"
-                />
-              </div>
-              <div className="my-6 overflow-hidden  rounded-2xl ">
-                <img
-                  className="border-black w-full aspect-square hover:scale-125 duration-500 "
-                  src="/images/icefeet/icefeet9.jpeg"
-                />
-              </div>
-              <div className="my-6 overflow-hidden  rounded-2xl ">
-                <img
-                  className="border-black w-full aspect-square  hover:scale-125 duration-500 "
-                  src="/images/events/DSC_0082-min.jpg"
-                />
-              </div>
-              <div className="my-6 overflow-hidden  rounded-2xl">
-                <img
-                  className="border-black w-full aspect-square  hover:scale-125 duration-500 "
-                  src="/images/events/DSC_0602-min.jpg"
-                />
-              </div>
-              <div className="my-6 overflow-hidden  rounded-2xl ">
-                <img
-                  className="border-black max-w-full aspect-square  hover:scale-125 duration-500 "
-                  src="/images/Meet5300/DSC_0154-min.jpg"
-                />
-              </div>
+              {GalleryImages.map((image, id) => (
+                <div className="overflow-hidden rounded-2xl" key={id}>
+                  <img className="border-black max-w-full h-auto aspect-square hover:scale-125 duration-500" src={image.link} alt="" />
+                </div>
+              ))}
 
               <Link to="/gallery" className="aspect-square p-2 max-w-full h-auto align-center border-2 border-dashed rounded-2xl border-sky-500 flex items-center justify-center bg-sky-950">
                 <button

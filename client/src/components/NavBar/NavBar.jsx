@@ -93,10 +93,10 @@ const NavBar = () => {
       name: "NIT Patna Bihta Campus",
       link: "/bihtacampus",
     },
-    {
-      name: "Contribute",
-      link: "/contribute",
-    }
+    // {
+    //   name: "Contribute",
+    //   link: "/contribute",
+    // }
   ];
 
   return (
