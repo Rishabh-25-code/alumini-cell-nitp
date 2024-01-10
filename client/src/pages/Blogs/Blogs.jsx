@@ -8,7 +8,7 @@ const Blogs = () => {
   const blogs = [
 
     {
-      id: 0,
+      id: 2,
       name: "EXPERT's TALK - How to Start Career in VLSI without Masters",
       description: "On high Demand of VLSI Aspirants, Experts and Companies. We at VLSI FOR ALL organise World's Biggest VLSI Mega Recruitment Fair to Connect VLSI aspirants to top VLSI companies. We have collaborated with 200+ top VLSI Companies in more than 120+ Countries to meet demand of VLSI Skilled Engineers in Top VLSI Companies.",
       image: "https://images.unsplash.com/photo-1562408590-e32931084e23?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -46,7 +46,7 @@ const Blogs = () => {
   },
 
 {
-  id: 2,
+  id: 0,
   name: "An Open Letter To Pre-final Year Students",
   description: "I am a final year student when I am writing this blog and its 25th of march 2021. I have passed 3rd year around 8 months back and hence the memories of the pleasures as well as adversities faced by student during their pre final year are still alive.",
   image: "https://miro.medium.com/v2/resize:fit:402/format:webp/0*HiD-gV3g-qO7Vjds",

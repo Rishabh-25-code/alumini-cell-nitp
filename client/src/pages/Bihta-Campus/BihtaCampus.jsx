@@ -116,7 +116,8 @@ const BihtaCampus = () => {
                 <Heading heading="NIT Patna Bihta Campus"></Heading>
 
                 <div className="flex items-center flex-col justify-center gap-10">
-                    <div className="lg:max-w-[80%] md:w-[85%] w-[94%] bg-gray-900 rounded-3xl p-5 py-10 mx-auto flex flex-col md:py-[80] sm:flex-row">
+                    {/* <div className="lg:max-w-[80%] md:w-[85%] w-[94%] bg-gray-900 rounded-3xl p-5 py-10 mx-auto flex flex-col md:py-[80] sm:flex-row"> */}
+                    <div className="lg:max-w-[80%] md:w-[85%] w-[94%] bg-gray-900 rounded-3xl p-5 py-10 mx-auto flex flex-col md:flex-row items-center">
                         <div className="basis-[60%] px-2  duration-1000 ">
                             <h1 className="text-4xl  font-semibold text-sky-500">Bihta Campus will be operational soon </h1>
                             <div className="max-w-[30%] mb-5 mt-1 h-1 bg-pink-500 " />
