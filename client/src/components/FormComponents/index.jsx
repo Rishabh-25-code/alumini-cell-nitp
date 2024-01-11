@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 export const Input = ({ id, label, type, placeholder, title, reactHookForm, className, errors, ...rest }) => {
     return (
         <div className='flex-1'>
@@ -35,7 +37,7 @@ export const Select = ({ label, id, options, placeholder, reactHookForm, classNa
     )
 }
 
-export const TextArea = ({ id, label, placeholder, title, reactHookForm, className, errors,...rest }) => {
+export const TextArea = ({ id, label, placeholder, title, reactHookForm, className, errors, ...rest }) => {
     return (
         <div className='flex-1'>
             <label htmlFor={title} className='text-gray-300'>{label}</label>

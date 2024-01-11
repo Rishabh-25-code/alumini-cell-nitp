@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
             await account.createEmailSession(user.email, user.password);
             let res = await checkUser();
         } catch (error) {
-            console.log(error.message);
+            throw new Error(error.message);
         }
     }
 
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
             return res;
         } catch (error) {
-            console.log(error.message);
+            // console.log(error.message);
             setUser(null);
             setLoading(false);
         }
@@ -44,13 +44,13 @@ const AuthProvider = ({ children }) => {
     const signUp = async (user) => {
         try {
             await account.create(ID.unique(), user.email, user.password, user.name);
+            let session = await account.createEmailSession(user.email, user.password);
             let pref = await account.updatePrefs({
                 type: "user"
             })
-            let session = await account.createEmailSession(user.email, user.password);
-            let link = await account.createVerification("http://localhost:5173/verify");
+            let link = await account.createVerification(`${import.meta.env.VITE_APPWRITE_URL}verify`);
         } catch (error) {
-            console.log(error.message);
+            throw new Error(error.message);
         }
     }
 

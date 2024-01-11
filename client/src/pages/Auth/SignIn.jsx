@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify"
@@ -26,24 +26,29 @@ const Login = () => {
         });
     }
 
-    const Login = (e) => {
+    const Login = async (e) => {
         e.preventDefault();
         if (formData.email && formData.password) {
             try {
-                handleLogin({
+                await handleLogin({
                     email: formData.email,
                     password: formData.password,
                 });
                 toast.success("Logged in successfully");
-                navigate("/");
+                navigate("/dashboard");
             } catch (error) {
-                toast.error("Invalid credentials");
-                console.log(error.message);
+                toast.error(error.message);
             }
         } else {
             alert("Please fill the form");
         }
     }
+
+    useEffect(() => {
+        if (user) {
+            navigate("/dashboard")
+        }
+    }, [])
 
     return (
         <div className="flex items-center justify-center h-screen w-full">
@@ -118,7 +123,9 @@ const Login = () => {
                     <p className="text-center">
                         Don't have an account?{" "}
                         <Link to="/signup" className="text-sky-500">
-                            SignUp
+                            <button className="text-sky-500">
+                                SignUp
+                            </button>
                         </Link>
                     </p>
 

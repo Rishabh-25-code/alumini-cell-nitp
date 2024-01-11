@@ -33,8 +33,7 @@ const Register = () => {
             setIsAccountCreated(true);
             toast.success("Registered successfully");
         } catch (error) {
-            console.log(error.message);
-            toast.error("Error registering");
+            toast.error(error.message);
         }
         finally {
             setLoading(false);
