@@ -31,9 +31,10 @@ const Experiences = ({ user }) => {
                 {
                     testimonials && testimonials.map((testimonial, index) => (
                         <div key={index} className="border border-gray-800 w-full rounded-2xl p-5">
-                            <h1 className='md:text-3xl text-2xl text-sky-500 text-center font-bold py-5'>{testimonial.title}</h1>
-
-                            {testimonial.imgUrl && <img className="w-full pb-10" src={getImageURL(testimonial.imgUrl, 720)} alt="hero" />}
+                            <div className="flex flex-col w-full justify-center items-center">
+                                <h1 className='lg:text-4xl md:text-3xl max-w-xl text-2xl px-6 text-sky-500 text-center font-bold py-5'>{testimonial.title}</h1>
+                                {testimonial.imgUrl && <img className="h-[28rem] my-5" src={getImageURL(testimonial.imgUrl, 720)} alt="hero" />}
+                            </div>
 
                             <MarkDown content={testimonial.message} />
 
