@@ -6,9 +6,6 @@ import Events from "./Events/Events";
 import NotableAlumni from "./NotableAlumni/NotableAlumni";
 // import News from "./Newsletter/News";
 import Registration from "./Registration/registration"
-// import SignUp from "./LogIn-SignUp/SignUp";
-import Signup from "./LogIn-SignUp/Signup/Signup"
-import Login from "./LogIn-SignUp/Login/Login";
 import AlumniCorner from "./AlumniCorner/AlumniCorner";
 import Donate from "./Donate/Donate";
 import Resources from "./Resources/Resources";
@@ -26,4 +23,22 @@ import History from "./History/History"
 import JobOffers from "./JobOffers/JobOffers";
 import SuccessStories from "./SuccessStories/SuccessStories";
 import PreviousMeets from "./AlumniMeet/PreviousMeets";
-export { Team, HomePage, Gallery, Events, NotableAlumni, Registration, Signup, Login, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers, SuccessStories, PreviousMeets };
+import Experiences from "./Experiences/Experiences";
+import Experience from "./Experiences/Experience";
+
+import SignIn from "./Auth/SignIn";
+import SignUp from "./Auth/SignUp";
+import Verify from "./Auth/Verify";
+import ForgotPassword from "./Auth/ForgotPassword";
+import ResetPassword from "./Auth/ResetPassword";
+import Dashboard from "./ProtectedPages/Dashboard";
+import Profile from "./ProtectedPages/Profile/Profile";
+import AlumniProfile from "./ProtectedPages/AlumniProfile/AlumniProfile";
+import GiveTestimonial from "./ProtectedPages/GiveTestimonial/GiveTestimonial";
+import PostInernship from "./ProtectedPages/PostInternship/PostInternship";
+import PostJob from "./ProtectedPages/PostJob/PostJob";
+import ShareExperience from "./ProtectedPages/ShareExperience/ShareExperience";
+import WriteBlog from "./ProtectedPages/WriteBlog/WriteBlog";
+import ReportBug from "./ProtectedPages/ReportBug/ReportBug";
+
+export { Team, HomePage, Gallery, Events, NotableAlumni, Registration, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers, SuccessStories, PreviousMeets, SignIn, SignUp, Verify, ForgotPassword, ResetPassword, Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard, ReportBug, Experiences, Experience };
