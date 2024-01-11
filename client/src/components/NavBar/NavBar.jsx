@@ -104,7 +104,7 @@ const NavBar = () => {
   return (
     <>
       <nav
-        className={`fixed w-[100%] items-center justify-center  bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm  shadow-md`}
+        className={`fixed w-[100%] items-center justify-center border-b bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md`}
       >
         <div className="flex items-center justify-between lg:w-[70rem] md:w-[96%] px-4 md:px-3 py-3 m-auto text-lg">
           <div className="flex items-center">
