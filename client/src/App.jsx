@@ -3,26 +3,21 @@ import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./utils/Layout";
+import { Layout1, Layout2, Layout3 } from "./utils/Layout";
 import {
   Team,
   TeamCard,
   TeamCard2,
   HomePage,
-  // Newsletter,
   Gallery,
   Events,
   NotableAlumni,
-  // News,
   Registration,
-  Signup,
-  Login,
   AlumniCorner,
   Donate,
   Resources,
   Interaction,
   About,
-  // NewsId,
   Blogs,
   History,
   BihtaCampus,
@@ -30,6 +25,22 @@ import {
   Error,
   SuccessStories,
   PreviousMeets,
+  SignIn,
+  SignUp,
+  Verify,
+  ForgotPassword,
+  ResetPassword,
+  Profile, 
+  AlumniProfile, 
+  GiveTestimonial, 
+  PostInernship, 
+  PostJob, 
+  ShareExperience, 
+  WriteBlog, 
+  Dashboard,
+  ReportBug,
+  Experiences,
+  Experience
 } from "./pages/index";
 import JobOffers from "./pages/JobOffers/JobOffers";
 import Interships from "./pages/JobOffers/Interships";
@@ -40,6 +51,11 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { AuthProvider } from "./context/AuthContext";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import PrivateComponent from "./components/PrivateComponent/PrivateComponent"
 
 const queryClient = new QueryClient()
 
@@ -81,20 +97,10 @@ function App() {
       element: <NotableAlumni />,
       id: 6,
     },
-    // {
-    //   path: "/news",
-    //   element: <Newsletter />,
-    //   id: 7,
-    // },
     {
       path: "/register",
       element: <Registration />,
       id: 8,
-    },
-    {
-      path: "/signup",
-      element: <Signup />,
-      id: 9,
     },
     {
       path: "/blogs",
@@ -102,15 +108,15 @@ function App() {
       id: 10,
     },
     {
-      path: "/login",
-      element: <Login />,
+      path: "/experiences",
+      element: <Experiences/>,
       id: 11,
     },
-    // {
-    //   path: "/news/:newsId",
-    //   element: <NewsId />,
-    //   id: 12,
-    // },
+    {
+      path: "/experience/:experienceId",
+      element: <Experience />,
+      id: 12,
+    },
     {
       path: "/alumnicorner",
       element: <AlumniCorner />,
@@ -193,27 +199,100 @@ function App() {
     }
   ]
 
+ // Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard
+  const adminProtectedRoutes = [
+    {
+      path: "/profile",
+      component: <Profile />,
+      id: 1
+    },
+    {
+      path: "/alumni-profile",
+      component: <AlumniProfile />,
+      id: 2
+    },
+    {
+      path: "/give-testimonial",
+      component: <GiveTestimonial />,
+      id: 3
+    },
+    {
+      path: "/post-an-internship",
+      component: <PostInernship />,
+      id: 4
+    },
+    {
+      path: "/post-a-job",
+      component: <PostJob />,
+      id: 5
+    },
+    {
+      path: "/share-experience",
+      component: <ShareExperience />,
+      id: 6
+    },
+    {
+      path: "/write-a-blog",
+      component: <WriteBlog />,
+      id: 7
+    },
+    {
+      path: "/dashboard",
+      component: <Dashboard />,
+      id: 8
+    },
+    {
+      path: "/report-bug",
+      component: <ReportBug />,
+      id: 9
+    }
+  ];
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        {/* <ToastContainer /> */}
+        <ToastContainer />
         <Router>
           <ScrollToTop />
-          <Routes>
-            {
-              links.map(({ path, element, id }) => (
-                <Route
-                  key={id}
-                  path={path}
-                  element={
-                    <Layout>
-                      {element}
-                    </Layout>
+          <ErrorBoundary>
+            <AuthProvider>
+              <Routes>
+                <Route path='/' element={<Layout1></Layout1>}>
+                  {
+                    links.map(({ path, element, id }) => (
+                      <Route
+                        key={id}
+                        path={path}
+                        element={
+                          element
+                        }
+                      />
+                    ))
                   }
-                />
-              ))
-            }
-          </Routes>
+                </Route>
+
+                <Route path='/' element={<Layout3></Layout3>}>
+                  <Route path="/signin" element={<SignIn />} />
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/verify" element={<Verify />} />
+                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
+                </Route>
+
+                <Route path='/' element={<Layout2></Layout2>}>
+                  {
+                    adminProtectedRoutes.map((route) => (
+                      <Route key={route.id} path={route.path} element={<PrivateComponent />} >
+                        <Route path={route.path} element={
+                          route.component ? route.component : <Error />
+                        } />
+                      </Route>
+                    ))
+                  }
+                </Route>
+              </Routes>
+            </AuthProvider>
+          </ErrorBoundary>
         </Router>
       </QueryClientProvider>
     </>
