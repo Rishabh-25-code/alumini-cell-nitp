@@ -23,7 +23,6 @@ const Experiences = ({ user }) => {
         )
     }
 
-
     return (
         <div className="py-5">
             <div className="flex gap-10 flex-col w-full">

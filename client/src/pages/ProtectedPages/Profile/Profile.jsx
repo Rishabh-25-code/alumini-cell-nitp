@@ -2,7 +2,7 @@ import useAuth from "../../../hooks/useAuth"
 import Meta from "../../../components/Meta/Meta";
 
 const Profile = () => {
-    const { user } = useAuth();
+    const { user, handleLogout } = useAuth();
     if (!user) return null;
 
     return (
@@ -16,7 +16,7 @@ const Profile = () => {
                     <div>
                         <img className="h-20 w-20 rounded-full" src={`https://cloud.appwrite.io/v1/avatars/initials?name=${user.name.split(" ").join("+")}&width=80&height=80`} alt={user.name} />
                     </div>
-                    <button className="bg-rose-500 hover:bg-rose-600 hover:scale-105 transition-all focus:bg-pink-500 text-white py-2 px-6 rounded-full">
+                    <button onClick={handleLogout} className="bg-rose-500 hover:bg-rose-600 hover:scale-105 transition-all focus:bg-pink-500 text-white py-2 px-6 rounded-full">
                         LogOut
                     </button>
                 </div>
