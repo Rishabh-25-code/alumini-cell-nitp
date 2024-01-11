@@ -59,8 +59,8 @@ const SideNav = () => {
 
 
   return (
-    <div className={`border-r z-20 lg:sticky md:relative transition-all top-0 fixed bg-gray-900 border-b border-gray-800 px-3 py-5 lg:flex md:flex flex-col gap-2 items-start w-[16rem] h-screen pt-24 ${show ? null : "lg:left-0 md:left-0 lg:translate-x-0 md:translate-x-0 translate-x-[-100%]"}`}>
-      <button onClick={() => setShow(!show)} className="bg-gray-900 absolute lg:hidden md:hidden top-[9rem] animate-pulse -right-9 px-2 pl-4 py-2.5 rounded-xl border border-gray-700">
+    <div className={`border-r z-20 lg:sticky md:relative transition-all top-0 fixed bg-black border-b border-gray-800 px-3 py-5 lg:flex md:flex flex-col gap-2 items-start w-[16rem] h-screen pt-24 ${show ? null : "lg:left-0 md:left-0 lg:translate-x-0 md:translate-x-0 translate-x-[-100%]"}`}>
+      <button onClick={() => setShow(!show)} className="bg-gray-800 absolute lg:hidden md:hidden top-[9rem] animate-pulse -right-9 px-2 pl-4 py-2.5 rounded-xl border border-gray-700">
         {
           show ?
             <IoIosArrowBack className="text-gray-300 text-2xl" />
