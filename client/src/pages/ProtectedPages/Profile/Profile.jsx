@@ -12,7 +12,7 @@ const Profile = () => {
                 </h2>
                 <div className="flex justify-between lg:flex-row md:flex-row flex-col gap-4 items-start">
                     <div>
-                        <img className="h-20 w-20 rounded-full" src="https://cloud.appwrite.io/v1/avatars/initials?name=Sudhanshu+Ranjan&width=80&height=80" alt="profilepic" />
+                        <img className="h-20 w-20 rounded-full" src={`https://cloud.appwrite.io/v1/avatars/initials?name=${user.name.split(" ").join("+")}&width=80&height=80`} alt={user.name} />
                     </div>
                     <button className="bg-rose-500 hover:bg-rose-600 hover:scale-105 transition-all focus:bg-pink-500 text-white py-2 px-6 rounded-full">
                         LogOut
@@ -33,7 +33,7 @@ const Profile = () => {
                         <span className="text-gray-400"> Role: </span> <span> {user.prefs.type} </span>
                     </p>
                     <p className="flex gap-2 text-lg font-medium">
-                        <span className="text-gray-400"> Joined: </span> <span> {new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short'}).format(new Date(user.$createdAt))} </span>
+                        <span className="text-gray-400"> Joined: </span> <span> {new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(user.$createdAt))} </span>
                     </p>
                 </div>
             </div>
