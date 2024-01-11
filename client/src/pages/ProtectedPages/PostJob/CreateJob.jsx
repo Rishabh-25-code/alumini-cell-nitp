@@ -390,7 +390,8 @@ const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add 
                     {items.map((item, idx) => (
                         <div key={idx} className="flex text-lg gap-5">
                             <li className="text-sky-500">{item}</li>
-                            <button onClick={() => {
+                            <button onClick={(e) => {
+                                e.preventDefault();
                                 setItems((prevItems) => prevItems.filter((prevItem) => prevItem !== item));
                                 let newItems = allItems.filter((prevItem) => prevItem !== item);
                                 setAllItems(newItems);
