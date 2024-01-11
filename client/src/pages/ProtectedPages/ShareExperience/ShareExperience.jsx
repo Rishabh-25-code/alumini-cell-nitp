@@ -5,6 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 const CreateExperience = lazy(() => import('./CreateExperience'));
 const Experiences = lazy(() => import('./Experiences'));
 import { Loading } from '../../../components/Loader';
+import Meta from '../../../components/Meta/Meta';
 
 const ShareExperience = () => {
   const { user } = useAuth();
@@ -12,6 +13,7 @@ const ShareExperience = () => {
 
   return (
     <div className='lg:px-9 px-4'>
+      <Meta title="Share Experience | Alumni NITP" />
       <PageHeading heading='Share' heading1='Experience' />
 
       <div className='border-b border-gray-800 w-fit flex gap-5 text-base'>

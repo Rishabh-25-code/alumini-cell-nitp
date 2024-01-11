@@ -5,6 +5,7 @@ import Loader, { Loading } from "../../../components/Loader/index";
 import { toast } from "react-toastify";
 import { createDocument, getUserTestimonials } from "../../../services/documents";
 import { useQuery } from '@tanstack/react-query';
+import Meta from "../../../components/Meta/Meta";
 
 
 const branches = [
@@ -102,6 +103,7 @@ const GiveTestimonial = () => {
 
   return (
     <div className='lg:px-9 px-4'>
+      <Meta title="Give Testimonial | Alumni NITP" />
       <PageHeading heading='Give' heading1='Testimonial' />
 
       {

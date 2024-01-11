@@ -2,6 +2,7 @@ import { account } from "../../config/appwrite"
 import { toast } from "react-toastify"
 import { useState } from "react"
 import { formatDateTime } from "../../utils"
+import Meta from "../../components/Meta/Meta"
 
 const VerifyEmail = () => {
     const [mailsent, setMailsent] = useState({
@@ -26,6 +27,7 @@ const VerifyEmail = () => {
 
     return (
         <div className="pt-28 min-h-screen">
+            <Meta title="Verify Email | Alumni NITP" />
             <div className="flex items-center justify-center flex-col h-[60vh] gap-10">
                 <h2 className="text-3xl font-bold text-sky-500 text-center">
                     Verify Email

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Meta from "../../components/Meta/Meta";
 
 
 const ResetPassword = () => {
@@ -40,6 +41,7 @@ const ResetPassword = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen">
+            <Meta title="Reset Password | Alumni NITP" />
             <div className="lg:w-[28rem] md:w-[28rem] w-[90%] border-gray-700 border p-8 rounded-3xl bg-[#0c0c0c]">
                 <div className="flex items-center justify-center">
                     <img src="/images/logo.svg" alt="logo" className="h-14 mt-1 w-auto" height={40} width={150} />

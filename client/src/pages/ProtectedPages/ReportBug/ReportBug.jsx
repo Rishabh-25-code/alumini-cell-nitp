@@ -5,6 +5,7 @@ import useAuth from '../../../hooks/useAuth';
 import { createDocument } from '../../../services/documents';
 import { toast } from 'react-toastify';
 import { Input, TextArea } from '../../../components/FormComponents';
+import Meta from '../../../components/Meta/Meta';
 
 const ReportBug = () => {
   const { user } = useAuth();
@@ -27,6 +28,7 @@ const ReportBug = () => {
 
   return (
     <div className='bg-gray-900 relative lg:p-5 m-5 rounded-2xl'>
+      <Meta title="Report Bug | Alumni NITP" />
       {loading && <Loading message={"Reporting Bugs.."} />}
       <div>
         <h2 className="text-sky-500 lg:text-3xl text-2xl font-bold">

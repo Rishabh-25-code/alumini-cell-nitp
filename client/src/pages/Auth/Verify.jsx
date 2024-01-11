@@ -2,6 +2,7 @@ import { account } from "../../config/appwrite";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Meta from "../../components/Meta/Meta";
 
 const Verify = () => {
     const { refresh } = useAuth();
@@ -36,6 +37,7 @@ const Verify = () => {
 
     return (
         <div className="pt-5 text-center m-auto">
+            <Meta title="Verify | Alumni NITP" />
             {isLoading ? (
                 <p>Loading...</p>
             ) : isAuthenticated ? (

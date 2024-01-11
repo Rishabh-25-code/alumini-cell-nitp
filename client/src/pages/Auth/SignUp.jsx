@@ -3,6 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Meta from "../../components/Meta/Meta";
 
 const Register = () => {
     const { handleSignUp, user } = useAuth();
@@ -56,6 +57,7 @@ const Register = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen">
+            <Meta title="Sign Up | Alumni NITP" />
             {
                 accAlreadyExist &&
                 <div className="flex items-center justify-center flex-col max-w-lg text-center">

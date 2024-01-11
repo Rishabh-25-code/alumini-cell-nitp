@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import { PageHeading } from '../../../components/Headings/Heading';
 import { useSearchParams } from 'react-router-dom';
 import { Loading } from '../../../components/Loader';
+import Meta from '../../../components/Meta/Meta';
 
 // Lazy load the CreateJob and PreviousPosts components
 const CreateJob = lazy(() => import('./CreateJob'));
@@ -12,6 +13,7 @@ const PostJob = () => {
 
   return (
     <div className='lg:px-9 px-4'>
+      <Meta title='Post Job | Alumni NITP' />
       <PageHeading heading='Post' heading1='a Job' />
 
       <div className='border-b border-gray-800 w-fit flex gap-5 text-base'>

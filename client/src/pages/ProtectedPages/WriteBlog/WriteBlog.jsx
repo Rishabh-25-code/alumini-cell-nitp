@@ -5,6 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 const ComposeBlog = lazy(() => import('./ComposeBlog'));
 const YourBlogs = lazy(() => import('./YourBlogs'));
 import { Loading } from '../../../components/Loader';
+import Meta from '../../../components/Meta/Meta';
 
 const WriteBlog = () => {
   const { user } = useAuth();
@@ -13,6 +14,7 @@ const WriteBlog = () => {
   return (
     <div className='lg:px-9 px-4'>
       <PageHeading heading='Your' heading1='Blogs' />
+      <Meta title="Write Blog | Alumni NITP" />
 
       <div className='border-b border-gray-800 w-fit flex gap-5 text-base'>
         <button

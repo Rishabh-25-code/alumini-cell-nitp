@@ -1,4 +1,5 @@
 import useAuth from "../../../hooks/useAuth"
+import Meta from "../../../components/Meta/Meta";
 
 const Profile = () => {
     const { user } = useAuth();
@@ -6,6 +7,7 @@ const Profile = () => {
 
     return (
         <div className="pt-5">
+            <Meta title="Profile | Alumni NITP" />
             <div className="lg:max-w-3xl md:max-w-2xl px-5 flex flex-col gap-3 m-auto">
                 <h2 className="text-3xl font-bold text-sky-500 py-5">
                     Profile
