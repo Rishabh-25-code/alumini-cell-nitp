@@ -49,7 +49,7 @@ const getAlumnidata = async (course, department, page) => {
         const url = new URL("https://alumini-cell-nitp-two.vercel.app/members");
         if (department === "Architecture" && course === "B.Tech") course = "B.Arch";
         if (department === "Architecture" && course === "M.Tech") course = "MURP";
-        if(department === "Architecture" && course === "Ph.D.") course = "Ph.D.";
+        if (department === "Architecture" && course === "Ph.D.") course = "Ph.D.";
         if (course) url.searchParams.append("degree", course);
         if (department) url.searchParams.append("department", department);
         url.searchParams.append("page", page);
@@ -97,7 +97,7 @@ const AlumniDatabase = () => {
                         Alumni Database
                     </p>
                     <h5 className="lg:text-2xl md:text-xl text-lg font-medium pb-2">
-                        <span className="text-sky-500">Searching</span> for NITP Alums?
+                        <span className="text-sky-500">Searching</span> for NITP Alumnus?
                     </h5>
                     <h5 className="lg:text-2xl md:text-xl text-lg font-bold pb-2">
                         Type: <span className="text-rose-500">{course}</span>

@@ -1,19 +1,39 @@
-import React from 'react'
+import { Outlet } from "react-router-dom";
 import Footer from '../components/Footer/Footer'
 import NavBar from '../components/NavBar/NavBar'
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
+import SideNav from "../components/NavBar/SideNav";
 
-const Layout = ({ children }) => {
+const Layout1 = () => {
   return (
     <div>
       <NavBar />
-      <ErrorBoundary>
-      {/* <Header2 /> */}
-      {children}
-      </ErrorBoundary>
+      <Outlet />
       <Footer />
     </div>
   )
 }
 
-export default Layout
+const Layout2 = () => {
+  return (
+    <>
+      <NavBar />
+      <div className="flex relative">
+        <SideNav />
+        <div className="w-full pt-20">
+          <Outlet />
+        </div>
+      </div>
+      <Footer />
+    </>
+  )
+}
+
+const Layout3 = () => {
+  return (
+    <div>
+      <Outlet />
+    </div>
+  )
+}
+
+export { Layout1, Layout2, Layout3 }

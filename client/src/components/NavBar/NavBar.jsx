@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { FiX } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
+  const { user, handleLogout } = useAuth();
   const [menu, setMenu] = useState(false);
   const [popup, setPopup] = useState(-1);
 
@@ -62,10 +64,10 @@ const NavBar = () => {
           name: "Blogs",
           link: "/blogs",
         },
-        // {
-        //   name: "Alumni News",
-        //   link: "/news",
-        // },
+        {
+          name: "Experiences",
+          link: "/experiences",
+        },
         {
           name: "Job Openings from Alumni",
           link: "/jobs",
@@ -93,10 +95,10 @@ const NavBar = () => {
       name: "NIT Patna Bihta Campus",
       link: "/bihtacampus",
     },
-    // {
-    //   name: "Contribute",
-    //   link: "/contribute",
-    // }
+    {
+      name: "Dashboard",
+      link: "/dashboard",
+    }
   ];
 
   return (
@@ -104,7 +106,7 @@ const NavBar = () => {
       <nav
         className={`fixed w-[100%] items-center justify-center border-b bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md`}
       >
-        <div className="flex items-center justify-between lg:w-[65rem] md:w-[95%] px-4 md:px-3 py-3 m-auto text-lg">
+        <div className="flex items-center justify-between lg:w-[70rem] md:w-[96%] px-4 md:px-3 py-3 m-auto text-lg">
           <div className="flex items-center">
             <Link to="/">
               <img
@@ -117,7 +119,7 @@ const NavBar = () => {
             </Link>
           </div>
 
-          <div className="lg:flex gap-7 hidden items-center text-[0.92rem]">
+          <div className="lg:flex gap-5 hidden items-center text-[0.92rem]">
             {navLinks.map((link, index) => {
               if (link.children) {
                 return (
@@ -148,7 +150,7 @@ const NavBar = () => {
                               style={{ textDecoration: "none" }}
                               to={child.link}
                               className="dropdown-link mb-2"
-                              key={i}
+                              key={i + "child"}
                             >
                               <p className="text-gray-400 hover:text-blue-400">
                                 {child.name}
@@ -176,19 +178,33 @@ const NavBar = () => {
             }
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              if (menu == false) {
-                setMenu(true);
-              } else {
-                setMenu(false);
-              }
-            }}
-            className="animate-pulse lg:hidden bg-blue-50 z-[100000] border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 mr-2"
-          >
-            {!menu ? <HiMenuAlt3 /> : <FiX />}
-          </button>
+          <div className="flex items-center gap-3">
+            {
+              user ?
+                <button onClick={() => handleLogout()} className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-xl">
+                  Log Out
+                </button> :
+                <Link to="/signin">
+                  <button className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-xl">
+                    SignIn
+                  </button>
+                </Link>
+            }
+
+            <button
+              type="button"
+              onClick={() => {
+                if (menu == false) {
+                  setMenu(true);
+                } else {
+                  setMenu(false);
+                }
+              }}
+              className="animate-pulse lg:hidden bg-blue-50 z-[100000] border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 mr-2"
+            >
+              {!menu ? <HiMenuAlt3 /> : <FiX />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -204,7 +220,7 @@ const NavBar = () => {
           {navLinks.map((link, index) => {
             if (link.children) {
               return (
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col sm:gap-0 gap-1">
                   <div className="text-sky-500">
                     {link.name}
                   </div>
