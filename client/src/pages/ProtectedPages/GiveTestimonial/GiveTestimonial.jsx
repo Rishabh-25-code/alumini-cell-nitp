@@ -55,7 +55,7 @@ const GiveTestimonial = () => {
     branch: 'EE',
   });
 
-  const { data: testimonials, isLoading, isError } = useQuery({
+  const { data: testimonials, isLoading, isError, refetch } = useQuery({
     queryKey: ['testimonials', user.$id],
     queryFn: () => getUserTestimonials('testimonials', user.$id),
   });
@@ -80,6 +80,7 @@ const GiveTestimonial = () => {
       console.log(res);
       toast.success("Testimonial created successfully!");
       resetForm();
+      refetch();
     } catch (err) {
       toast.error(err.message);
     } finally {
