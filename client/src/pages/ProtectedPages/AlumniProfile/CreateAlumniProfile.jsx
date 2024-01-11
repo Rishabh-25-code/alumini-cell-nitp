@@ -35,7 +35,7 @@ const CreateAlumniProfile = () => {
             }
 
             let res = await createDocument('alumni', data);
-            console.log(data);
+            resetForm();
         } catch (error) {
             toast.error(error.message);
         } finally {
