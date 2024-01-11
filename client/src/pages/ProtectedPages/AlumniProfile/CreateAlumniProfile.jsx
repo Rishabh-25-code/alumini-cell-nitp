@@ -226,7 +226,9 @@ const CreateAlumniProfile = () => {
 
                             <Input
                                 label='Batch/Tenure Start'
-                                type='text'
+                                type='number'
+                                min={1800}
+                                max={new Date().getFullYear()}
                                 placeholder='2016'
                                 title='batchStart'
                                 reactHookForm={register('batchStart', {
@@ -242,7 +244,9 @@ const CreateAlumniProfile = () => {
 
                             <Input
                                 label='Batch/Tenure End'
-                                type='text'
+                                type='number'
+                                min={1800}
+                                max={new Date().getFullYear()}
                                 placeholder='2020'
                                 title='batchEnd'
                                 reactHookForm={register('batchEnd')}
@@ -537,7 +541,8 @@ const CreateAlumniProfile = () => {
                                 <span className='text-white'>{alumni[0].title}. {alumni[0].fname + " " + alumni[0].lname}</span>
                             </p>
                             <p className='text-sky-500 font-medium'>
-                                {alumni[0].designation && alumni[0].designation} at {alumni[0].company && alumni[0].company}, {alumni[0].location && alumni[0].location}
+                                {alumni[0].designation.trim() && <span>{alumni[0].designation && alumni[0].designation} {alumni[0].company && " at " + alumni[0].company}{alumni[0].location && ", " + alumni[0].location}</span>
+                                }
                             </p>
                             <p className='py-3'>
                                 <span className='text-gray-300 font-normal text-base'>{alumni[0].bio}</span>
