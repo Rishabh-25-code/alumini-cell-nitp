@@ -34,9 +34,10 @@ const YourBlogs = ({ user }) => {
                     blogs && blogs.length === 0 ? <div className="text-center text-sky-500 font-medium py-12">No blogs found!</div> :
                         blogs.map((blog, index) => (
                             <div key={index} className="border border-gray-800 w-full rounded-2xl p-5">
-                                <h1 className='md:text-3xl text-2xl text-sky-500 text-center font-bold py-5'>{blog.title}</h1>
-
-                                {blog.imgUrl && <img className="w-full pb-10" src={getImageURL(blog.imgUrl, 720)} alt="hero" />}
+                                <div className="flex flex-col w-full justify-center items-center">
+                                    <h1 className='lg:text-4xl md:text-3xl lg:max-w-2xl max-w-xl text-2xl px-6 text-sky-500 text-center font-bold py-5'>{blog.title}</h1>
+                                    {blog.imgUrl && <img className="lg:h-[32rem] md:h-[28rem] my-5" src={getImageURL(blog.imgUrl, 720)} alt={blog.title} />}
+                                </div>
 
                                 <MarkDown content={blog.message} />
 
