@@ -80,7 +80,7 @@ const HomePage = () => {
           <div className="mb-12 md:mb-0">
             <div className="m-auto mb-12 flex justify-center items-center lg:h-96 h-64 lg:w-96 w-64 rounded-full overflow-hidden">
               <img
-                src="https://drive.google.com/thumbnail?authuser=0&sz=w320&id=1uHLAWL2-T5vA-QeUJyISAqSlRp7kyOeW"
+                src="/images/PKJ_Desk_Photo.jpg"
                 className="shadow-lg h-full dark:shadow-black/30"
               />
             </div>

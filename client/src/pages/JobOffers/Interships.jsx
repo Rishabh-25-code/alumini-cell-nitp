@@ -20,6 +20,10 @@ const Interships = () => {
       <Meta name="Internship Opportunities" />
       <Heading heading="Internship" heading1="opportunities via Alumni"></Heading>
 
+      <div className='flex justify-center align items center text-2xl'>
+        <h1>This Page is currently under development data shown is merely a sample</h1>
+      </div>
+
       <div className='flex flex-col lg:w-[70%] md:w-[80%] w-full px-5 gap-6 m-auto items-center justify-center my-24'>
         {isPending && <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div>}
         {isError && <div className='text-center text-red-500'>Something went wrong!</div>}
