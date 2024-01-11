@@ -104,7 +104,7 @@ const NavBar = () => {
   return (
     <>
       <nav
-        className={`fixed w-[100%] items-center justify-center border-b bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md`}
+        className={`fixed w-[100%] items-center justify-center  bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm  shadow-md`}
       >
         <div className="flex items-center justify-between lg:w-[70rem] md:w-[96%] px-4 md:px-3 py-3 m-auto text-lg">
           <div className="flex items-center">
@@ -181,11 +181,11 @@ const NavBar = () => {
           <div className="flex items-center gap-3">
             {
               user ?
-                <button onClick={() => handleLogout()} className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-2xl">
+                <button onClick={() => handleLogout()} className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-xl">
                   Log Out
                 </button> :
                 <Link to="/signin">
-                  <button className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-2xl">
+                  <button className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-xl">
                     SignIn
                   </button>
                 </Link>
@@ -220,7 +220,7 @@ const NavBar = () => {
           {navLinks.map((link, index) => {
             if (link.children) {
               return (
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col sm:gap-0 gap-1">
                   <div className="text-sky-500">
                     {link.name}
                   </div>

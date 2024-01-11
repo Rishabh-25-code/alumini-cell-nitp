@@ -23,14 +23,14 @@ const QuickLinks = () => {
             link: "/alumni-meet"
         },
         {
-            name: "Blogs from Alumni" ,
+            name: "Blogs from Alumni",
             icon: "./images/quicklink/content.png",
             link: "/blogs"
         },
         {
-            name: "Alumni News",
+            name: "Alumni Experience",
             icon: "./images/quicklink/marketing.png",
-            link: "/news"
+            link: "/experiences"
         },
         {
             name: "Internship via Alumni",
