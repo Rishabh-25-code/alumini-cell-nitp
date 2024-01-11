@@ -16,7 +16,7 @@ const ForgotPassword = () => {
         }
         e.preventDefault();
         try {
-            const res = await account.createRecovery(email, 'http://localhost:5173/reset-password');
+            const res = await account.createRecovery(email, `${import.meta.env.VITE_APPWRITE_URL}reset-password`);
             console.log(res);
             toast.success("Recovery email sent!");
             setMailSent(true);
