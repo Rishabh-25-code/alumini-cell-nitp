@@ -23,6 +23,13 @@ const CreateAlumniProfile = () => {
         hobbies: [],
     });
 
+    const { data: alumni, isPending, refetch } = useQuery({
+        queryKey: ['alumni', user.email],
+        queryFn: () => getAlumniProfile('alumni', user.email),
+        enabled: !!user.email,
+        retry: 1,
+    })
+
     const onSubmit = useCallback(async (data) => {
         data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: null, uid: user.$id, email: user.email };
         setLoading(true);
@@ -36,6 +43,7 @@ const CreateAlumniProfile = () => {
 
             let res = await createDocument('alumni', data);
             resetForm();
+            refetch();
         } catch (error) {
             toast.error(error.message);
         } finally {
@@ -71,13 +79,6 @@ const CreateAlumniProfile = () => {
         }
 
     }, [profileImage]);
-
-    const { data: alumni, isPending, isError } = useQuery({
-        queryKey: ['alumni', user.email],
-        queryFn: () => getAlumniProfile('alumni', user.email),
-        enabled: !!user.email,
-        retry: 1,
-    })
 
     return (
         <div className='bg-gray-900 relative p-5 my-5 rounded-2xl'>
@@ -539,7 +540,7 @@ const CreateAlumniProfile = () => {
                                 {alumni[0].designation && alumni[0].designation} at {alumni[0].company && alumni[0].company}, {alumni[0].location && alumni[0].location}
                             </p>
                             <p className='py-3'>
-                                <span className='text-gray-300 font-normal text-base'>{alumni[0].bio} Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aut labore illum tempora eaque praesentium magnam amet repudiandae eos consequatur fugiat officia earum officiis maxime vel voluptatibus deserunt, nulla illo, quos dolorem error inventore adipisci. Voluptatibus officiis esse eius adipisci nesciunt, voluptate et vitae fugit reiciendis, veniam, consequuntur impedit. Dolorem.</span>
+                                <span className='text-gray-300 font-normal text-base'>{alumni[0].bio}</span>
                             </p>
                             <p className='font-medium text-sky-500'>
                                 Role : <span className='text-white'>{alumni[0].role.toUpperCase()}</span>
