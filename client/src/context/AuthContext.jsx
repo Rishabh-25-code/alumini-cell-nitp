@@ -30,12 +30,10 @@ const AuthProvider = ({ children }) => {
     const checkUser = async () => {
         try {
             const res = await account.get("current");
-            // console.log(res);
             setUser(res);
             setLoading(false);
             return res;
         } catch (error) {
-            // console.log(error.message);
             setUser(null);
             setLoading(false);
         }
@@ -62,7 +60,8 @@ const AuthProvider = ({ children }) => {
         user,
         handleLogin: login,
         handleLogout: logout,
-        handleSignUp: signUp
+        handleSignUp: signUp,
+        refresh: checkUser,
     }
 
     return (

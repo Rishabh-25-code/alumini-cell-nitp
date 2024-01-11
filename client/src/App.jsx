@@ -30,17 +30,18 @@ import {
   Verify,
   ForgotPassword,
   ResetPassword,
-  Profile, 
-  AlumniProfile, 
-  GiveTestimonial, 
-  PostInernship, 
-  PostJob, 
-  ShareExperience, 
-  WriteBlog, 
+  Profile,
+  AlumniProfile,
+  GiveTestimonial,
+  PostInernship,
+  PostJob,
+  ShareExperience,
+  WriteBlog,
   Dashboard,
   ReportBug,
   Experiences,
-  Experience
+  Experience,
+  VerifyEmail
 } from "./pages/index";
 import JobOffers from "./pages/JobOffers/JobOffers";
 import Interships from "./pages/JobOffers/Interships";
@@ -98,6 +99,11 @@ function App() {
       id: 6,
     },
     {
+      path: "/verify-email",
+      element: <VerifyEmail />,
+      id: 7,
+    },
+    {
       path: "/register",
       element: <Registration />,
       id: 8,
@@ -109,7 +115,7 @@ function App() {
     },
     {
       path: "/experiences",
-      element: <Experiences/>,
+      element: <Experiences />,
       id: 11,
     },
     {
@@ -199,7 +205,7 @@ function App() {
     }
   ]
 
- // Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard
+  // Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard
   const adminProtectedRoutes = [
     {
       path: "/profile",

@@ -45,8 +45,10 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if (user) {
-            navigate("/dashboard")
+        if (user && user.emailVerification) {
+            navigate("/dashboard");
+        } else {
+            navigate("/verify-email");
         }
     }, [])
 

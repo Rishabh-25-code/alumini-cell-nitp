@@ -1,14 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import { getDocuments } from '../../../services/documents';
+import { getUserPostedJobInternships } from '../../../services/documents';
 import { Link } from 'react-router-dom';
 import Loader from '../../../components/Loader';
 import { getDownloadURL, getImageURL } from '../../../services/files';
+import useAuth from '../../../hooks/useAuth';
 
 
 const PreviousPosts = () => {
+    const { user } = useAuth();
     const { data, isLoading, isError } = useQuery({
         queryKey: ['previousJobPosts'],
-        queryFn: () => getDocuments('job-opportunity'),
+        queryFn: () => getUserPostedJobInternships('job-opportunity', user.$id),
     })
 
     return (

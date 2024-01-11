@@ -1,8 +1,10 @@
 import { account } from "../../config/appwrite";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Verify = () => {
+    const { refresh } = useAuth();
     const navigate = useNavigate();
     const urlParams = new URLSearchParams(window.location.search);
     const secret = urlParams.get('secret');
@@ -15,7 +17,6 @@ const Verify = () => {
         const verifyAccount = async () => {
             try {
                 const res = await account.updateVerification(userId, secret);
-                console.log("Verification successful", res);
                 setIsAuthenticated(true);
             } catch (error) {
                 console.error("Verification failed:", error.message);
@@ -26,12 +27,15 @@ const Verify = () => {
         };
 
         if (!isAuthenticated) verifyAccount();
-        else navigate("/signin");
+        else {
+            refresh();
+            navigate("/dashboard");
+        }
 
     }, [userId, secret, navigate, isAuthenticated]);
 
     return (
-        <div>
+        <div className="pt-5 text-center m-auto">
             {isLoading ? (
                 <p>Loading...</p>
             ) : isAuthenticated ? (

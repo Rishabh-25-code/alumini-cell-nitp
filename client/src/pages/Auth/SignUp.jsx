@@ -14,6 +14,7 @@ const Register = () => {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [isAccountCreated, setIsAccountCreated] = useState(false);
+    const [accAlreadyExist, setAccAlreadyExists] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,9 +31,14 @@ const Register = () => {
                 password,
                 name,
             });
+            resetForm();
             setIsAccountCreated(true);
             toast.success("Registered successfully");
         } catch (error) {
+            if (error.message === "A user with the same id, email, or phone already exists in this project.") {
+                setAccAlreadyExists(true);
+                resetForm();
+            }
             toast.error(error.message);
         }
         finally {
@@ -40,8 +46,46 @@ const Register = () => {
         }
     };
 
+    const resetForm = () => {
+        setEmail("");
+        setName("");
+        setPassword("");
+        setConfirmPassword("");
+        setPassword("");
+    }
+
     return (
         <div className="flex justify-center items-center min-h-screen">
+            {
+                accAlreadyExist &&
+                <div className="flex items-center justify-center flex-col max-w-lg text-center">
+                    <div className="flex items-center justify-center">
+                        <img src="/images/logo.svg" alt="logo" className="h-14 mt-1 w-auto" height={40} width={150} />
+                    </div>
+
+                    <p className="text-white text-lg pt-6">
+                        A user with the provided email id already exists.
+                    </p>
+
+                    <p className="py-5">
+                        Create account with new <Link onClick={() => {
+                            resetForm();
+                            setAccAlreadyExists(false);
+                        }} to="/signup">
+                            <span className="text-sky-500">
+                                Email Id
+                            </span>.
+                        </Link>
+                    </p>
+
+                    <Link to="/forgot-password">
+                        <p className="text-sky-500">
+                            Forgot Password ?
+                        </p>
+                    </Link>
+                </div>
+            }
+
             {isAccountCreated ?
                 <div className="flex items-center justify-center flex-col max-w-lg">
                     <img src="/images/logo.svg" alt="logo" className="h-14 mt-1 w-auto" height={40} width={150} />
@@ -66,7 +110,8 @@ const Register = () => {
                         </button>
                     </Link>
                 </div>
-                : <div className="lg:w-[28rem] md:w-[28rem] w-[90%] border-gray-700 border p-8 rounded-3xl bg-[#0c0c0c]">
+                :
+                !accAlreadyExist && <div className="lg:w-[28rem] md:w-[28rem] w-[90%] border-gray-700 border p-8 rounded-3xl bg-[#0c0c0c]">
                     <h1 className="text-3xl font-bold mb-5 px-3">Sign Up</h1>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-2 px-3">
                         <div className="flex flex-col gap-1">

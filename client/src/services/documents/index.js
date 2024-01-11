@@ -84,6 +84,19 @@ export const getUserTestimonials = async (COLLECTION_ID, USER_ID) => {
     }
 }
 
+export const getUserPostedJobInternships = async (COLLECTION_ID, USER_ID) => {
+    try {
+        const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
+            Query.limit(100),
+            Query.offset(0),
+            Query.equal('userID', [USER_ID])
+        ]);
+        return res.documents;
+    } catch (error) {
+        throw new Error(err.message);
+    }
+}
+
 export const getAlumniProfile = async (COLLECTION_ID, email) => {
     try {
         const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
