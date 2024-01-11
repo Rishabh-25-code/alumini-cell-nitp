@@ -26,7 +26,7 @@ const Experience = () => {
                 <div className='m-auto flex flex-col items-center justify-center'>
                     <h1 className='lg:text-4xl md:text-3xl text-2xl font-bold lg:max-w-3xl md:max-w-2xl px-6 text-center m-auto text-sky-500 my-10 mt-6'>{experience.title}</h1>
 
-                    <div className='flex items-center h-56 overflow-hidden lg:w-[70%] md:w-[80%] w-[85%] rounded-lg border border-gray-900'>
+                    <div className='flex items-center  lg:h-96 md:h-72 h-64 overflow-hidden lg:w-[70%] md:w-[80%] w-[85%] rounded-lg border border-gray-900'>
                         <img className='w-full' src={getImageURL(experience.imgUrl)} alt={experience.title} />
                     </div>
 
