@@ -18,6 +18,11 @@ const Experiences = () => {
     <div>
       <Meta name="Experiences" />
       <Heading heading="Experiences by our Alumni"></Heading>
+
+      <div className='flex justify-center align items center text-2xl'>
+        <h1>This Page is currently under development data shown is merely a sample</h1>
+      </div>
+
       <div className='flex flex-wrap gap-6 m-auto px-5 items-center justify-center mb-32'>
         {isPending && <Loader />}
         {isError && <div className='text-center text-red-500'>Something went wrong!</div>}

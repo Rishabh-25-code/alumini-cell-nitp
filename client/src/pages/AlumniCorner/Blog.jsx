@@ -49,7 +49,7 @@ const Blog = () => {
           <div className='lg:w-[70%] md:w-[80%] w-[85%] text-lg mt-10'>
             <MarkDown content={blog.message}></MarkDown>
 
-            <p className='text-gray-400 text-base mt-4 mb-32'>Read the full blog <a className='text-blue-500' href={blog.link} target="_blank" rel="noopener noreferrer">here</a>.</p>
+            {/* <p className='text-gray-400 text-base mt-4 mb-32'>Read the full blog <a className='text-blue-500' href={blog.link} target="_blank" rel="noopener noreferrer">here</a>.</p> */}
           </div>
         </div>
       }
