@@ -63,6 +63,11 @@ const CreateExperience = ({ user }) => {
         tags: []
     });
     const [file, setFile] = useState(null);
+    const [resetItems, setResetItems] = useState(false);
+
+    const handleResetItems=()=>{
+        setResetItems(!resetItems);
+    }
 
     const handleInputChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -202,7 +207,9 @@ const CreateExperience = ({ user }) => {
                                     tags: items,
                                 }))
                             }
-                        } />
+                        } 
+                          resetItems={resetItems}
+                        />
                     </div>
 
                     <div className="flex-1">
@@ -257,6 +264,7 @@ const CreateExperience = ({ user }) => {
                         e.preventDefault();
                         resetForm();
                         toast.info("Form reset!");
+                        handleResetItems();
                     }} className="px-8 py-3 transition-all rounded-xl bg-rose-500 hover:bg-rose-600 active:scale-105 active:bg-red-600">
                         Reset
                     </button>

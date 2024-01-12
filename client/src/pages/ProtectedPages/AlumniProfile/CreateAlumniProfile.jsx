@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback,useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { branches } from '../../../utils/branches';
 import placeholder from "../../../assets/man-placeholder.jpg"
@@ -22,6 +22,11 @@ const CreateAlumniProfile = () => {
         interests: '',
         hobbies: [],
     });
+
+    const [resetItems,setResetItems] = useState(false);
+    const handleResetItems =()=>{
+            setResetItems(!resetItems);
+    }
 
     const { data: alumni, isPending, refetch } = useQuery({
         queryKey: ['alumni', user.email],
@@ -55,7 +60,15 @@ const CreateAlumniProfile = () => {
 
     const resetForm = () => {
         reset();
-    }
+        setFormData((prev) => ({
+            ...prev,
+            achievements: []
+        }));
+    };
+    
+    useEffect(() => {
+        console.log(formData);
+    }, [formData]);
 
     const handleImageUpload = useCallback(async function handleImgUpload(imageFile) {
         console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
@@ -501,6 +514,7 @@ const CreateAlumniProfile = () => {
                                         setFormData((prev) => ({ ...prev, achievements: value }))
                                     }}
                                     placeholder="Add Achievements"
+                                    resetItems={resetItems}
                                 />
                             </div>
 
@@ -514,6 +528,7 @@ const CreateAlumniProfile = () => {
                                         setFormData((prev) => ({ ...prev, hobbies: value }))
                                     }}
                                     placeholder="Add Hobbies"
+                                    resetItems={resetItems}
                                 />
                             </div>
                         </div>
@@ -523,6 +538,7 @@ const CreateAlumniProfile = () => {
                                 e.preventDefault();
                                 resetForm();
                                 toast.info("Form reset!");
+                                handleResetItems();
                             }} className="px-8 py-3 transition-all rounded-xl bg-rose-500 hover:bg-rose-600 active:scale-105 active:bg-red-600">
                                 Reset
                             </button>
