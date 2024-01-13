@@ -24,8 +24,8 @@ const PreviousPosts = () => {
                 await deleteDocument('job-opportunity', id);
             }
 
-            toast.success('Job deleted successfully');
             await refetch();
+            toast.success('Job deleted successfully');
         } catch (error) {
             toast.error(error.message);
         }

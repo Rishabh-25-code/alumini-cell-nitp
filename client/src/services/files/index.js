@@ -1,5 +1,6 @@
 import { storage, BUCKET_ID } from "../../config/appwrite";
 import { ID } from "appwrite";
+import imageCompression from "browser-image-compression";
 
 export const uploadFile = async (files, type = "image") => {
     try {
@@ -31,3 +32,20 @@ export const getImageURL = (fileId, width = 0, height = 0, gravity = "center", q
 export const getDownloadURL = (fileId) => {
     return storage.getFileDownload(BUCKET_ID, fileId);
 }
+
+export async function compressedImageUpload(imageFile, maxSizeMB = 0.3, maxWidthOrHeight = 1920, useWebWorker = true) {
+        const options = {
+            maxSizeMB,
+            maxWidthOrHeight,
+            useWebWorker,
+        }
+
+        try {
+            const compressedFile = await imageCompression(imageFile, options);
+            const newFile = new File([compressedFile], imageFile.name, { lastModified: new Date(), size: imageFile.size, type: imageFile.type });
+            const res = await uploadFile(newFile);
+            return res;
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    }

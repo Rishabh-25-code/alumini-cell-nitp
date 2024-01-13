@@ -33,9 +33,9 @@ const Experiences = ({ user }) => {
             } else {
                 await deleteDocument('experiences', id);
             }
-
-            toast.success('Experience deleted successfully');
+            
             await refetch();
+            toast.success('Experience deleted successfully');
         } catch (error) {
             toast.error(error.message);
         }

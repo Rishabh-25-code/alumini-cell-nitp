@@ -8,7 +8,7 @@ import { FaTrash } from 'react-icons/fa';
 
 const YourBlogs = ({ user }) => {
 
-    const { data: blogs, isPending, isError } = useQuery({
+    const { data: blogs, isPending, isError, refetch } = useQuery({
         queryKey: ['blogs', user.$id],
         queryFn: () => getUserTestimonials('blogs', user.$id),
         onSuccess: (data) => {
@@ -38,6 +38,7 @@ const YourBlogs = ({ user }) => {
             }
 
             toast.success('Blog deleted successfully');
+            await refetch();
         } catch (error) {
             toast.error(error.message);
         }

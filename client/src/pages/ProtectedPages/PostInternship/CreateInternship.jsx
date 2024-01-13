@@ -6,7 +6,8 @@ import { toast } from "react-toastify";
 import { MdDeleteForever } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import { branches } from '../../../utils/branches'
-import CreateAlumniProfile from "../AlumniProfile/CreateAlumniProfile";
+import { compressedImageUpload } from '../../../services/files';
+
 const CreateIntern = () => {
     const { user } = useAuth();
     const [message, setMessage] = useState("");
@@ -80,7 +81,7 @@ const CreateIntern = () => {
             setMessage("Uploading files...");
             let data = { ...internDetails }
             if (internCompanyLogo) {
-                let res = await uploadFile(internCompanyLogo);
+                let res = await compressedImageUpload(internCompanyLogo);
                 data = {
                     ...data,
                     internCompanyLogo: res.$id,

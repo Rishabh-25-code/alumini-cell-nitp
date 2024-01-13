@@ -4,8 +4,8 @@ import { branches } from '../../../utils/branches';
 import placeholder from "../../../assets/man-placeholder.jpg"
 import { MultiSelect } from '../PostJob/CreateJob';
 import { useForm } from 'react-hook-form';
-import imageCompression from 'browser-image-compression';
-import { uploadFile, getImageURL } from '../../../services/files';
+import { compressedImageUpload } from '../../../services/files';
+import { getImageURL } from '../../../services/files';
 import { createDocument, getAlumniProfile } from '../../../services/documents';
 import useAuth from '../../../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
@@ -40,7 +40,7 @@ const CreateAlumniProfile = () => {
         setLoading(true);
         try {
             if (profileImage) {
-                let res = await handleImageUpload(profileImage);
+                let res = await compressedImageUpload(profileImage);
                 if (res) {
                     data = { ...data, image: res.$id };
                 }
@@ -66,29 +66,6 @@ const CreateAlumniProfile = () => {
             achievements: []
         }));
     };
-
-    const handleImageUpload = useCallback(async function handleImgUpload(imageFile) {
-        console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
-        console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
-
-        const options = {
-            maxSizeMB: 0.3,
-            maxWidthOrHeight: 1920,
-            useWebWorker: true,
-        }
-
-        try {
-            const compressedFile = await imageCompression(imageFile, options);
-            console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); // true
-            console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); // smaller than maxSizeMB
-            const newFile = new File([compressedFile], imageFile.name, { lastModified: new Date(), size: imageFile.size, type: imageFile.type });
-            const res = await uploadFile(newFile);
-            return res;
-        } catch (error) {
-            toast.error(error.message);
-        }
-
-    }, [profileImage]);
 
     return (
         <div className='bg-gray-900 relative p-5 my-5 rounded-2xl'>
