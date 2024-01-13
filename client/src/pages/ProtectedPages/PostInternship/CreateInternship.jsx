@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { uploadFile } from "../../../services/files";
 import { createDocument } from "../../../services/documents";
 import { Loading } from "../../../components/Loader";
@@ -13,7 +13,7 @@ const CreateIntern = () => {
     const [message, setMessage] = useState("");
     const [resetItems, setResetItems] = useState(false);
 
-    const handleResetItems=()=>{
+    const handleResetItems = () => {
         setResetItems(!resetItems);
     }
     const [internDetails, setInternDetails] = useState({
@@ -173,8 +173,8 @@ const CreateIntern = () => {
                                 internSkills: items,
                             }))
                         }
-                    } 
-                      resetItems={resetItems}
+                    }
+                        resetItems={resetItems}
                     />
                 </div>
 
@@ -226,8 +226,8 @@ const CreateIntern = () => {
                                 internLinks: items,
                             }))
                         }
-                    } 
-                      resetItems={resetItems}
+                    }
+                        resetItems={resetItems}
                     />
                 </div>
 
@@ -358,7 +358,7 @@ const CreateIntern = () => {
 export default CreateIntern;
 
 
-const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item",resetItems }) => {
+const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item", resetItems }) => {
     const [items, setItems] = useState([]);
     const [current, setCurrent] = useState('');
 
@@ -368,6 +368,12 @@ const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add 
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (type === "url") {
+            if (!current.startsWith("http://") && !current.startsWith("https://")) {
+                toast.error("Please enter a valid URL, that starts with http:// or https://");
+                return;
+            }
+        }
         if (current !== '') {
             setItems([current, ...items]);
             setAllItems([current, ...allItems]);
