@@ -4,7 +4,7 @@ const EventCard = ({ data }) => {
     return (
         <div className='w-[20rem] p-4 border-2 hover:border-gray-800 hover:scale-[102%] transition-all delay-75 ease-in border-gray-900 rounded-2xl mt-5'>
             <div className='flex items-center h-44 overflow-hidden w-full rounded-lg border border-gray-900'>
-                <img className='w-full' src={data.image} alt={data.name} />
+                <img loading='lazy' className='w-full' src={data.image} alt={data.name} />
             </div>
             <p className='text-gray-400 pt-2 pl-2'>{data.clubName}</p>
             <h3 className='text-xl font-semibold pl-2'>{data.name}</h3>

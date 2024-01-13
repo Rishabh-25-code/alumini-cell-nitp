@@ -129,7 +129,7 @@ const HomePage = () => {
             <div className="columns-1">
               {GalleryImages.map((image, id) => (
                 <div className="overflow-hidden rounded-2xl" key={id}>
-                  <img className="border-black max-w-full h-auto aspect-square hover:scale-125 duration-500" src={image.link} alt="" />
+                  <img loading="lazy" className="border-black max-w-full h-auto aspect-square hover:scale-125 duration-500" src={image.link} alt="" />
                 </div>
               ))}
 

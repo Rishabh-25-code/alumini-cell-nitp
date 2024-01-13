@@ -212,7 +212,7 @@ const CreateIntern = () => {
 
                     <div className='flex-1'>
                         <label htmlFor="internCompany" className='text-gray-300'>Intern Company</label> <span className='text-rose-500 text-xl'>*</span>
-                        <input value={internDetails.internCompany} onChange={handleInputChange} type="text" id="internCompany" placeholder="Microsoft" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
+                        <input required={true} value={internDetails.internCompany} onChange={handleInputChange} type="text" id="internCompany" placeholder="Microsoft" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
                     </div>
                 </div>
 

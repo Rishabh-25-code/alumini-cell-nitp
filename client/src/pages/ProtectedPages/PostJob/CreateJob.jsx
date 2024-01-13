@@ -242,7 +242,7 @@ const CreateJob = () => {
 
                     <div className='flex-1'>
                         <label htmlFor="jobCompany" className='text-gray-300'>Job Company</label> <span className='text-rose-500 text-xl'>*</span>
-                        <input value={jobDetails.jobCompany} onChange={handleInputChange} type="text" id="jobCompany" placeholder="Microsoft" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
+                        <input required={true} value={jobDetails.jobCompany} onChange={handleInputChange} type="text" id="jobCompany" placeholder="Microsoft" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
                     </div>
                 </div>
 
