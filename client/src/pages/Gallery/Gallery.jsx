@@ -95,7 +95,7 @@ const Gallery = () => {
                         <div className="img-display">
                             <img
                                 loading="lazy"
-                                src={data[currentImg].url}
+                                src={data[currentImg].img}
                                 alt="Slide image"
                             />
                         </div>
