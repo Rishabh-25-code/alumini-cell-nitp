@@ -5,7 +5,7 @@ import { Loading } from "../../../components/Loader";
 import { toast } from "react-toastify";
 import { MdDeleteForever } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
-import CreateAlumniProfile from "../AlumniProfile/CreateAlumniProfile";
+import { compressedImageUpload } from '../../../services/files';
 
 const branches = [
     {
@@ -110,7 +110,7 @@ const CreateJob = () => {
             setMessage("Uploading files...");
             let data = { ...jobDetails }
             if (jobCompanyLogo) {
-                let res = await uploadFile(jobCompanyLogo);
+                let res = await compressedImageUpload(jobCompanyLogo);
                 console.log(res);
                 data = {
                     ...data,

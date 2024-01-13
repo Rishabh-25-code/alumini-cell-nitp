@@ -8,7 +8,7 @@ import useAuth from '../../../hooks/useAuth';
 
 const PreviousPosts = () => {
     const { user } = useAuth();
-    const { data, isLoading, isError } = useQuery({
+    const { data, isLoading, isError, refetch } = useQuery({
         queryKey: ['previousInternPosts'],
         queryFn: () => getUserPostedJobInternships('intern-opportunity', user.$id),
     })
@@ -22,6 +22,7 @@ const PreviousPosts = () => {
                 await deleteDocument('intern-opportunity', id);
             }
 
+            await refetch();
             toast.success('Internship deleted successfully');
         } catch (error) {
             toast.error(error.message);

@@ -2,12 +2,11 @@ import { useState, useCallback } from 'react';
 import { Loading } from "../../../components/Loader/index";
 import { toast } from "react-toastify";
 import { createDocument } from "../../../services/documents";
-import { uploadFile } from '../../../services/files';
-import "./unreset.scss"
 import { MultiSelect } from '../PostJob/CreateJob';
 import { branches } from '../../../utils/branches';
 import { useForm } from 'react-hook-form';
 import { Input, Select, MarkDownEditor, UploadImage } from '../../../components/FormComponents';
+import { compressedImageUpload } from '../../../services/files';
 
 
 const CreateExperience = ({ user }) => {
@@ -33,7 +32,7 @@ const CreateExperience = ({ user }) => {
 
         try {
             if (file) {
-                const res = await uploadFile(file);
+                const res = await compressedImageUpload(file);
                 data = {
                     ...data,
                     imgUrl: res.$id
@@ -41,7 +40,6 @@ const CreateExperience = ({ user }) => {
             }
 
             const res = await createDocument('experiences', data);
-            console.log(res);
             toast.success("Experience shared successfully!");
             resetForm();
         } catch (err) {
