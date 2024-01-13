@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { uploadFile } from "../../../services/files";
 import { createDocument } from "../../../services/documents";
 import { Loading } from "../../../components/Loader";
@@ -6,10 +6,15 @@ import { toast } from "react-toastify";
 import { MdDeleteForever } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import { branches } from '../../../utils/branches'
-
+import CreateAlumniProfile from "../AlumniProfile/CreateAlumniProfile";
 const CreateIntern = () => {
     const { user } = useAuth();
     const [message, setMessage] = useState("");
+    const [resetItems, setResetItems] = useState(false);
+
+    const handleResetItems=()=>{
+        setResetItems(!resetItems);
+    }
     const [internDetails, setInternDetails] = useState({
         internTitle: "",
         internLocation: "",
@@ -167,7 +172,9 @@ const CreateIntern = () => {
                                 internSkills: items,
                             }))
                         }
-                    } />
+                    } 
+                      resetItems={resetItems}
+                    />
                 </div>
 
                 <div className='flex md:flex-row flex-col gap-3'>
@@ -218,7 +225,9 @@ const CreateIntern = () => {
                                 internLinks: items,
                             }))
                         }
-                    } />
+                    } 
+                      resetItems={resetItems}
+                    />
                 </div>
 
                 <div>
@@ -332,6 +341,7 @@ const CreateIntern = () => {
                         e.preventDefault();
                         resetForm();
                         toast.info("Form reset!");
+                        handleResetItems();
                     }} className="px-8 py-3 transition-all rounded-xl bg-rose-500 hover:bg-rose-600 active:scale-105 active:bg-red-600">
                         Reset
                     </button>
@@ -347,9 +357,13 @@ const CreateIntern = () => {
 export default CreateIntern;
 
 
-const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item" }) => {
+const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item",resetItems }) => {
     const [items, setItems] = useState([]);
     const [current, setCurrent] = useState('');
+
+    useEffect(() => {
+        setItems([]);
+    }, [resetItems]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

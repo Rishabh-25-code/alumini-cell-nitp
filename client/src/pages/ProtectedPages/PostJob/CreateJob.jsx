@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { uploadFile } from "../../../services/files";
 import { createDocument } from "../../../services/documents";
 import { Loading } from "../../../components/Loader";
 import { toast } from "react-toastify";
 import { MdDeleteForever } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
+import CreateAlumniProfile from "../AlumniProfile/CreateAlumniProfile";
 
 const branches = [
     {
@@ -40,6 +41,11 @@ const branches = [
 const CreateJob = () => {
     const { user } = useAuth();
     const [message, setMessage] = useState("");
+    const [resetItems, setResetItems] = useState(false);
+
+    const handleResetItems=()=>{
+        setResetItems(!resetItems);
+    }
     const [jobDetails, setJobDetails] = useState({
         jobTitle: "",
         jobLocation: "",
@@ -197,7 +203,9 @@ const CreateJob = () => {
                                 jobSkills: items,
                             }))
                         }
-                    } />
+                    } 
+                      resetItems={resetItems}
+                    />
                 </div>
 
                 <div className='flex md:flex-row flex-col gap-3'>
@@ -247,7 +255,9 @@ const CreateJob = () => {
                                 jobLinks: items,
                             }))
                         }
-                    } />
+                    } 
+                     resetItems={resetItems}
+                    />
                 </div>
 
                 <div>
@@ -346,6 +356,7 @@ const CreateJob = () => {
                         e.preventDefault();
                         resetForm();
                         toast.info("Form reset!");
+                        handleResetItems();
                     }} className="px-8 py-3 transition-all rounded-xl bg-rose-500 hover:bg-rose-600 active:scale-105 active:bg-red-600">
                         Reset
                     </button>
@@ -361,7 +372,7 @@ const CreateJob = () => {
 export default CreateJob;
 
 
-const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item", fullWd = false }) => {
+const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item", fullWd = false,resetItems }) => {
     const [items, setItems] = useState([]);
     const [current, setCurrent] = useState('');
 
@@ -373,6 +384,11 @@ const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add 
         };
         setCurrent('');
     }
+
+    useEffect(() => {
+        setItems([]);
+    }, [resetItems]);
+
 
     return (
         <div className='flex flex-col gap-2 pt-2 w-full'>
