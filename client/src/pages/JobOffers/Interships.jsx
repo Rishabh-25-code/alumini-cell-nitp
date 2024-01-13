@@ -20,8 +20,8 @@ const Interships = () => {
       <Meta name="Internship Opportunities" />
       <Heading heading="Internship" heading1="opportunities via Alumni"></Heading>
 
-      <div className='flex justify-center align items center text-2xl'>
-        <h1>This Page is currently under development data shown is merely a sample</h1>
+      <div className='flex justify-center align items-center text-center text-xl text-rose-500'>
+        <h1>This Page is currently under development, data shown is merely a sample.</h1>
       </div>
 
       <div className='flex flex-col lg:w-[70%] md:w-[80%] w-full px-5 gap-6 m-auto items-center justify-center my-24'>
@@ -40,19 +40,19 @@ export default Interships;
 
 const InternOffersCard = ({ data }) => {
   return (
-    <div key={data.$id} className='border border-gray-800 rounded-2xl p-5 mb-5'>
+    <div className='border border-gray-800 rounded-2xl p-5 mb-5'>
       <div className='flex justify-between'>
-        <div className='flex gap-5 md:flex-row flex-col items-center'>
-          <div className='flex gap-2 items-center'>
-            <div className='md:w-16 w-12 md:h-16 h-12'>
+        <div className='flex gap-5 flex-col items-center'>
+          <div className='flex w-full gap-2 items-center'>
+            {data.internCompanyLogo && <div className='md:w-16 w-12 md:h-16 h-12 flex items-center justify-center'>
               <img src={data.internCompanyLogo ? getImageURL(data.internCompanyLogo, 200) : "logo-placeholder.jpg"} alt='Company Logo' />
-            </div>
+            </div>}
             <div className='flex flex-col'>
-              <p className='font-medium text-lg'>{data.internCompany}</p>
+              <p className='font-semibold text-rose-500 lg:text-xl text-lg'>{data.internCompany}</p>
               <p className='text-sm text-gray-400'>{data.internLocation}</p>
             </div>
           </div>
-          <div className='flex flex-col'>
+          <div className='flex flex-col w-full'>
             <p className=' font-medium'>{data.internTitle}</p>
             <p className='text-sm text-gray-400'>{data.internType}</p>
           </div>
@@ -83,7 +83,7 @@ const InternOffersCard = ({ data }) => {
         <p className=' text-gray-400'>Intern Link(s):</p>
         {
           data.internLinks.map((link) => (
-            <a href={link} target='_blank' rel='noreferrer'><button className='text-sm text-sky-500'>{link}</button></a>
+            <a href={link} target='_blank' rel='noreferrer'><button className='text-sm text-left text-sky-500'>{link}</button></a>
           ))
         }
       </div>}
@@ -96,14 +96,14 @@ const InternOffersCard = ({ data }) => {
         )
       }
       <div className='pt-2'>
-        <p className='text-sm text-gray-400'>Posted By: </p>
+        <p className='text-sm text-gray-400 pb-1'>Posted By: </p>
         <div className='flex gap-2 items-center'>
           <div className='w-10 h-10 rounded-full overflow-hidden flex items-center justify-center'>
             <img src={`https://cloud.appwrite.io/v1/avatars/initials?name=${data.name.split(" ").join("+")}&width=80&height=80`} alt='User Profile' />
           </div>
           <div className='flex flex-col'>
             <p className='font-medium'>{data.name} ({data.yourBatchyourBatch} {data.yourDepartment})</p>
-            <p className='text-sm text-gray-400'>{data.yourCurrentRole} at {data.yourCurrentCompany}</p>
+            <p className='text-sm text-gray-400 -mt-1'>{data.yourCurrentRole} at {data.yourCurrentCompany}</p>
           </div>
         </div>
       </div>
