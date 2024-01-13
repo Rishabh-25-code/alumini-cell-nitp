@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { getUserPostedJobInternships } from '../../../services/documents';
+import { getUserPostedJobInternships, deleteDocument } from '../../../services/documents';
 import { Link } from 'react-router-dom';
 import Loader from '../../../components/Loader';
-import { getDownloadURL, getImageURL } from '../../../services/files';
+import { getDownloadURL, getImageURL, deleteFile } from '../../../services/files';
 import useAuth from '../../../hooks/useAuth';
 
 
@@ -13,12 +13,35 @@ const PreviousPosts = () => {
         queryFn: () => getUserPostedJobInternships('intern-opportunity', user.$id),
     })
 
+    const deleteInternship = async (id) => {
+        try {
+            const internship = data.find((internship) => internship.$id === id);
+            if (internship.internCompanyLogo) {
+                await Promise.all([deleteFile(internship.internCompanyLogo), deleteDocument('intern-opportunity', id)])
+            } else {
+                await deleteDocument('intern-opportunity', id);
+            }
+
+            toast.success('Internship deleted successfully');
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
     return (
         <div className='py-5 w-full'>
             {isLoading && <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div>}
             {isError && <div className='py-10'>Someting went wrong!</div>}
             {data && data.map((post) => (
-                <div key={post.$id} className='border border-gray-800 rounded-2xl p-5 mb-5'>
+                <div key={post.$id} className='relative border border-gray-800 rounded-2xl p-5 mb-5'>
+                    <button onClick={() => {
+                        const ans = confirm('Are you sure you want to delete this internship?');
+                        if (ans) {
+                            deleteInternship(post.$id);
+                        }
+                    }} className="absolute right-6 top-6">
+                        <FaTrash className="text-red-500 md:text-2xl text-xl cursor-pointer" />
+                    </button>
                     <div className='flex justify-between'>
                         <div className='flex gap-5 flex-col items-center'>
                             <div className='flex w-full gap-2 items-center'>
