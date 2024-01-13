@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { uploadFile } from "../../../services/files";
 import { createDocument } from "../../../services/documents";
 import { Loading } from "../../../components/Loader";
@@ -43,7 +43,7 @@ const CreateJob = () => {
     const [message, setMessage] = useState("");
     const [resetItems, setResetItems] = useState(false);
 
-    const handleResetItems=()=>{
+    const handleResetItems = () => {
         setResetItems(!resetItems);
     }
     const [jobDetails, setJobDetails] = useState({
@@ -203,8 +203,8 @@ const CreateJob = () => {
                                 jobSkills: items,
                             }))
                         }
-                    } 
-                      resetItems={resetItems}
+                    }
+                        resetItems={resetItems}
                     />
                 </div>
 
@@ -255,8 +255,8 @@ const CreateJob = () => {
                                 jobLinks: items,
                             }))
                         }
-                    } 
-                     resetItems={resetItems}
+                    }
+                        resetItems={resetItems}
                     />
                 </div>
 
@@ -372,15 +372,17 @@ const CreateJob = () => {
 export default CreateJob;
 
 
-const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item", fullWd = false,resetItems }) => {
+const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item", fullWd = false, resetItems }) => {
     const [items, setItems] = useState([]);
     const [current, setCurrent] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (current !== '') {
-            setItems([current, ...items]);
-            setAllItems([current, ...allItems]);
+            let item = current;
+            item = item.replace("#", "").trim();
+            setItems([item, ...items]);
+            setAllItems([item, ...allItems]);
         };
         setCurrent('');
     }

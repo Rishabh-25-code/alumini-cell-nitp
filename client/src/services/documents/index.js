@@ -58,7 +58,7 @@ export const deleteDocument = async (COLLECTION_ID, ID) => {
         const res = await databases.deleteDocument(DATABASE_ID, COLLECTION_ID, ID);
         return res;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 
@@ -67,7 +67,7 @@ export const getDocumentsCount = async (COLLECTION_ID) => {
         const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID);
         return res.sum;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 
@@ -80,7 +80,7 @@ export const getUserTestimonials = async (COLLECTION_ID, USER_ID) => {
         ]);
         return res.documents;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 
@@ -93,7 +93,7 @@ export const getUserPostedJobInternships = async (COLLECTION_ID, USER_ID) => {
         ]);
         return res.documents;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 
@@ -104,7 +104,7 @@ export const getAlumniProfile = async (COLLECTION_ID, email) => {
         ]);
         return res.documents;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 

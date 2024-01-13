@@ -1,4 +1,4 @@
-import React, { useState, useCallback,useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { branches } from '../../../utils/branches';
 import placeholder from "../../../assets/man-placeholder.jpg"
@@ -23,9 +23,9 @@ const CreateAlumniProfile = () => {
         hobbies: [],
     });
 
-    const [resetItems,setResetItems] = useState(false);
-    const handleResetItems =()=>{
-            setResetItems(!resetItems);
+    const [resetItems, setResetItems] = useState(false);
+    const handleResetItems = () => {
+        setResetItems(!resetItems);
     }
 
     const { data: alumni, isPending, refetch } = useQuery({
@@ -46,7 +46,8 @@ const CreateAlumniProfile = () => {
                 }
             }
 
-            let res = await createDocument('alumni', data);
+            await createDocument('alumni', data);
+            toast.success("Profile created successfully!");
             resetForm();
             refetch();
         } catch (error) {
@@ -65,10 +66,6 @@ const CreateAlumniProfile = () => {
             achievements: []
         }));
     };
-    
-    useEffect(() => {
-        console.log(formData);
-    }, [formData]);
 
     const handleImageUpload = useCallback(async function handleImgUpload(imageFile) {
         console.log('originalFile instanceof Blob', imageFile instanceof Blob); // true
@@ -111,7 +108,7 @@ const CreateAlumniProfile = () => {
                             <Input
                                 label='Username'
                                 type='text'
-                                placeholder='Username'
+                                placeholder='DoeJohn@73'
                                 title='username'
                                 reactHookForm={register('username', {
                                     required: 'Username is required',
@@ -132,13 +129,14 @@ const CreateAlumniProfile = () => {
                                 errors={errors.username}
                             />
                             <Select
-                                label='Highest Degree'
+                                label='Highest Degree at NITP'
                                 id='degree'
                                 options={[
                                     { name: 'B.Tech', value: 'B.Tech' },
                                     { name: 'M.Tech', value: 'M.Tech' },
                                     { name: "B.Arch", value: 'B.Arch' },
                                     { name: 'MURP', value: 'MURP' },
+                                    { name: 'IMSc.', value: 'IMSc.' },
                                     { name: 'PhD', value: 'PhD' }
                                 ]}
                                 reactHookForm={register('degree', { required: 'Degree is required' })}
@@ -162,6 +160,7 @@ const CreateAlumniProfile = () => {
                                     { name: 'Mrs', value: 'Mrs' },
                                     { name: 'Dr', value: 'Dr.' },
                                     { name: 'Prof', value: 'Prof' },
+                                    { name: "Md", value: "Md." },
                                 ]}
                                 className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                 errors={errors.title}
@@ -209,7 +208,7 @@ const CreateAlumniProfile = () => {
 
                         <div className="flex md:flex-row flex-col gap-5">
                             <Select
-                                label='Which describes you best?'
+                                label='Which describes you best at NITP?'
                                 id='role'
                                 options={[
                                     {
@@ -250,6 +249,23 @@ const CreateAlumniProfile = () => {
                                         value: /^\d{4}$/i,
                                         message: 'Please enter a valid batch',
                                     },
+                                    minLength: {
+                                        value: 4,
+                                        message: 'Batch must be at least 4 characters',
+                                    },
+                                    maxLength: {
+                                        value: 4,
+                                        message: 'Batch must not exceed 4 characters',
+                                    },
+                                    onChange: (e) => {
+                                        if (e.target.value > new Date().getFullYear() + 4) {
+                                            e.target.value = new Date().getFullYear() + 4;
+                                        }
+
+                                        if (e.target.value.length === 4 && e.target.value < 1800) {
+                                            e.target.value = 1800;
+                                        }
+                                    }
                                 })}
                                 className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                 errors={errors.batchStart}
@@ -259,10 +275,20 @@ const CreateAlumniProfile = () => {
                                 label='Batch/Tenure End'
                                 type='number'
                                 min={1800}
-                                max={new Date().getFullYear()}
+                                max={new Date().getFullYear() + 4}
                                 placeholder='2020'
                                 title='batchEnd'
-                                reactHookForm={register('batchEnd')}
+                                reactHookForm={register('batchEnd', {
+                                    onChange: (e) => {
+                                        if (e.target.value > new Date().getFullYear() + 4) {
+                                            e.target.value = new Date().getFullYear() + 4;
+                                        }
+
+                                        if (e.target.value.length === 4 && e.target.value < 1800) {
+                                            e.target.value = 1800;
+                                        }
+                                    }
+                                })}
                                 className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                 errors={errors.batch}
                             />
@@ -280,7 +306,7 @@ const CreateAlumniProfile = () => {
                             />
                         </div>
 
-                        <TextArea id="bio" label="Bio" placeholder="Bio" title="bio" reactHookForm={register('bio', {
+                        <TextArea rows={3} id="bio" label="Bio" placeholder="Hello stranger! 👋, I am a self taught front end developer based in India with a passion for building digital services/stuff. I have a knack for all things building products, from planning and designing all the way to solving real-life problems with code." title="bio" reactHookForm={register('bio', {
                             maxLength: {
                                 value: 1000,
                                 message: 'Bio must not exceed 1000 characters',
@@ -322,7 +348,7 @@ const CreateAlumniProfile = () => {
                                     reactHookForm={register('phone', {
                                         required: 'Phone is required',
                                         pattern: {
-                                            value: /^\d{10}$/i,
+                                            value: /^(?!(\d)\1{9})[6,7,8,9]\d{9}$/,
                                             message: 'Please enter a valid phone no.',
                                         },
                                     })}
@@ -363,7 +389,7 @@ const CreateAlumniProfile = () => {
                             />
 
                             <Input
-                                label='Designation'
+                                label='Designation/Role'
                                 type='text'
                                 placeholder='Sr. Engineer'
                                 title='designation'
