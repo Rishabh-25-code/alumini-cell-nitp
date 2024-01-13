@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Loader from '../../../components/Loader';
 import { getDownloadURL, getImageURL, deleteFile } from '../../../services/files';
 import useAuth from '../../../hooks/useAuth';
+import { toast } from "react-toastify";
+import { FaTrash } from 'react-icons/fa';
 
 
 const PreviousPosts = () => {
@@ -40,7 +42,7 @@ const PreviousPosts = () => {
                         if (ans) {
                             deleteInternship(post.$id);
                         }
-                    }} className="absolute right-6 top-6">
+                    }} className="absolute right-6 bottom-6">
                         <FaTrash className="text-red-500 md:text-2xl text-xl cursor-pointer" />
                     </button>
                     <div className='flex justify-between'>
@@ -84,8 +86,8 @@ const PreviousPosts = () => {
                     {post.internLinks.length > 0 && <div>
                         <p className=' text-gray-400'>Intern Link(s):</p>
                         {
-                            post.internLinks.map((link) => (
-                                <a href={link} target='_blank' rel='noreferrer'><button className='text-sm text-left text-sky-500'>{link}</button></a>
+                            post.internLinks.map((link, idx) => (
+                                <a key={idx} href={link} target='_blank' rel='noreferrer'><button className='text-sm text-left text-sky-500'>{link}</button></a>
                             ))
                         }
                     </div>}
