@@ -1,5 +1,5 @@
 .gallery_container {
-  padding-top: 4rem;
+  margin-top: 4rem;
 }
 
 .photo-gallery-cont {
@@ -142,7 +142,8 @@
     filter: brightness(0.9);
     // transition: ease-in-out 0.3s;
   }
-  img:hover{
+
+  img:hover {
     filter: brightness(1);
   }
 }
