@@ -17,11 +17,41 @@ async function readGSheet(SHEET_ID) {
         for (const row of rows) {
             let d1 = {};
             for (let i = 0; i < row._rawData.length; i++) {
-                d1[header[i]] = row._rawData[i];
+                d1[header[i]] = row._rawData[i].trim();
             }
-            await addYear({ year: d1['admission_year'] });
-            let member = await addMember(d1);
-            result.push(member);
+            d1["email"] = d1["email"].toLowerCase();
+            d1["fname"] = d1["name"].split(" ")[0];
+            d1["lname"] = d1["name"].split(" ").slice(1).join(" ");
+            let degree = d1["degree"];
+            let role = "";
+            if (degree === "B.Tech." || degree === "B.Arch.") {
+                role = "ug";
+            } else if (degree === "M.Tech.") {
+                role = "pg";
+            } else if (degree === "Ph.D.") {
+                role = "phd";
+            } else {
+                role = "faculty-staff";
+            }
+            d1["batchStart"] = null;
+            d1["username"] = d1["email"].split("@")[0];
+            d1["showEmail"] = true;
+            d1["showPhone"] = false;
+            d1["role"] = role;
+            d1["hobbies"] = [];
+            d1["achievements"] = [];
+            d1["photo"] = convertDriveLink(d1["photo"]);
+            d1["linkedin"] = removeSearchParams(d1["linkedin"]);
+
+            delete d1["name"];
+            delete d1["dept"];
+            delete d1["course"];
+            delete d1["other"];
+            delete d1["photo"];
+            // await addYear({ year: d1['admission_year'] });
+            // let member = await addMember(d1);
+            // result.push(member);
+            result.push(d1);
         }
 
         return {
@@ -31,6 +61,32 @@ async function readGSheet(SHEET_ID) {
     };
 
     return await loadSheet();
+}
+
+function convertDriveLink(originalLink) {
+    // Extract the file ID from the original link
+    const url = new URL(originalLink);
+    const fileId = url.searchParams.get("id");
+
+    // Construct the new download link
+    const downloadLink = `https://drive.google.com/uc?export=download&id=${fileId}`;
+    return downloadLink;
+}
+
+function removeSearchParams(link) {
+    try {
+        // Check if it is a valid URL
+        const url = new URL(link);
+
+        // Remove search parameters
+        url.search = "";
+
+        // Convert the modified URL object back to a string
+        const modifiedLink = url.toString();
+        return modifiedLink;
+    } catch (error) {
+        return link ? link : null;
+    }
 }
 
 module.exports = readGSheet;

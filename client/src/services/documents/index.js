@@ -119,3 +119,19 @@ export const getPaginatedDocuments = async (COLLECTION_ID, limit = 20, offset = 
         throw new Error(err.message);
     }
 }
+export const getAlumniData = async (limit = 24, offset = 0, role, batchEnd, branch) => {
+    const queries = [
+        Query.limit(limit),
+        Query.offset(offset),
+    ];
+    if (role) queries.push(Query.equal('role', [role]));
+    if (batchEnd) queries.push(Query.equal('batchEnd', [batchEnd]));
+    if (branch) queries.push(Query.equal('branch', [branch]));
+
+    try {
+        const res = await databases.listDocuments(DATABASE_ID, "alumni", queries);
+        return res.documents;
+    } catch (err) {
+        throw new Error(err.message);
+    }
+}

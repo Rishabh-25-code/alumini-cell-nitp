@@ -1,5 +1,4 @@
 import React from "react";
-import "./Newsletter.scss";
 import { Link } from 'react-router-dom'
 import Meta from "../../components/Meta/Meta";
 

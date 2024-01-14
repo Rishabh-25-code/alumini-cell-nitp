@@ -25,6 +25,6 @@ export const branches = [
     },
     {
         name: 'Integrated MSc.',
-        value: 'IMSc.'
+        value: 'I.MSc'
     }
 ]

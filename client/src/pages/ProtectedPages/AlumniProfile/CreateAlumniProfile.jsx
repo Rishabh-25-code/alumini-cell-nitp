@@ -109,12 +109,12 @@ const CreateAlumniProfile = () => {
                                 label='Highest Degree at NITP'
                                 id='degree'
                                 options={[
-                                    { name: 'B.Tech', value: 'B.Tech' },
-                                    { name: 'M.Tech', value: 'M.Tech' },
-                                    { name: "B.Arch", value: 'B.Arch' },
+                                    { name: 'B.Tech.', value: 'B.Tech.' },
+                                    { name: 'M.Tech.', value: 'M.Tech.' },
+                                    { name: "B.Arch.", value: 'B.Arch.' },
                                     { name: 'MURP', value: 'MURP' },
-                                    { name: 'IMSc.', value: 'IMSc.' },
-                                    { name: 'PhD', value: 'PhD' }
+                                    { name: 'I.MSc', value: 'I.MSc' },
+                                    { name: 'Ph.D.', value: 'Ph.D.' }
                                 ]}
                                 reactHookForm={register('degree', { required: 'Degree is required' })}
                                 className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
@@ -201,8 +201,8 @@ const CreateAlumniProfile = () => {
                                         value: 'phd',
                                     },
                                     {
-                                        name: 'Employee',
-                                        value: 'employee',
+                                        name: 'Faculty/Staff',
+                                        value: 'Faculty/Staff',
                                     }
                                 ]}
                                 reactHookForm={register('role', {
@@ -256,6 +256,19 @@ const CreateAlumniProfile = () => {
                                 placeholder='2020'
                                 title='batchEnd'
                                 reactHookForm={register('batchEnd', {
+                                    required: 'Batch is required',
+                                    pattern: {
+                                        value: /^\d{4}$/i,
+                                        message: 'Please enter a valid batch',
+                                    },
+                                    minLength: {
+                                        value: 4,
+                                        message: 'Batch must be at least 4 characters',
+                                    },
+                                    maxLength: {
+                                        value: 4,
+                                        message: 'Batch must not exceed 4 characters',
+                                    },
                                     onChange: (e) => {
                                         if (e.target.value > new Date().getFullYear() + 4) {
                                             e.target.value = new Date().getFullYear() + 4;

@@ -7,6 +7,7 @@ const readGSheet = require('./src/readGoogleSheet');
 const connectDB = require('./src/config/db');
 const Member = require('./src/models/Member');
 const Years = require('./src/models/Years');
+const addAlumni = require('./src/controller/alumni.controller');
 
 const app = express();
 
@@ -22,10 +23,17 @@ app.post('/readGSheet/:sheetID', async (req, res) => {
     const { sheetID } = req.params;
     try {
         let result = await readGSheet(sheetID);
-        res.json(result);
+        const persons = result.data;
+        const response = [];
+        let count = 0;
+        for (const person of persons) {
+            const data = await addAlumni(person, count++);
+            response.push(data);
+        }
+        res.json(response);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ msg: 'Server Error' });
+        res.status(500).json({ msg: 'Server Error', error: error.message, stack: error.stack });
     }
 });
 

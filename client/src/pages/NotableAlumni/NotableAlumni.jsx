@@ -1,5 +1,4 @@
 import React from 'react'
-import './Projects.scss'
 import Heading from '../../components/Headings/Heading'
 import AlumniCard from './AlumniCard'
 import Meta from '../../components/Meta/Meta'
