@@ -12,7 +12,6 @@ import {
   Gallery,
   Events,
   NotableAlumni,
-  Registration,
   AlumniCorner,
   Donate,
   Resources,
@@ -102,11 +101,6 @@ function App() {
       path: "/verify-email",
       element: <VerifyEmail />,
       id: 7,
-    },
-    {
-      path: "/register",
-      element: <Registration />,
-      id: 8,
     },
     {
       path: "/blogs",

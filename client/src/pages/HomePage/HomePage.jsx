@@ -1,4 +1,3 @@
-import "./HomePage.scss";
 import { Link } from "react-router-dom";
 import { FaQuoteLeft } from "react-icons/fa";
 import { BsArrowUpRight } from "react-icons/bs";

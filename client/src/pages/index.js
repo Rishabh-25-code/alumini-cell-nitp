@@ -5,7 +5,6 @@ import Gallery from "./Gallery/Gallery";
 import Events from "./Events/Events";
 import NotableAlumni from "./NotableAlumni/NotableAlumni";
 // import News from "./Newsletter/News";
-import Registration from "./Registration/registration"
 import AlumniCorner from "./AlumniCorner/AlumniCorner";
 import Donate from "./Donate/Donate";
 import Resources from "./Resources/Resources";
@@ -42,4 +41,4 @@ import WriteBlog from "./ProtectedPages/WriteBlog/WriteBlog";
 import ReportBug from "./ProtectedPages/ReportBug/ReportBug";
 import VerifyEmail from "./Auth/VerifyEmail";
 
-export { Team, HomePage, Gallery, Events, NotableAlumni, Registration, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers, SuccessStories, PreviousMeets, SignIn, SignUp, Verify, ForgotPassword, ResetPassword, Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard, ReportBug, Experiences, Experience, VerifyEmail };
+export { Team, HomePage, Gallery, Events, NotableAlumni, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers, SuccessStories, PreviousMeets, SignIn, SignUp, Verify, ForgotPassword, ResetPassword, Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard, ReportBug, Experiences, Experience, VerifyEmail };

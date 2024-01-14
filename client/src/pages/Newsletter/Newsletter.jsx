@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./Newsletter.scss";
 import Heading from "../../components/Headings/Heading";
 import News from "./News";
 import { db } from "../../firebase";
