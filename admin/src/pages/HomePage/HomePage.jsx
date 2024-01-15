@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="">
-        <h1 className="lg:text-8xl md:text-7xl text-6xl font-bold text-center bg-gradient-to-r from-gray-200 via-gray-500 to-gray-900 bg-clip-text text-transparent animate-pulse">
+        <h1 className="lg:text-8xl md:text-7xl text-6xl font-bold text-center bg-gradient-to-r from-sky-400 via-pink-500 to-gray-600 bg-clip-text text-transparent animate-pulse">
           Admin Portal
         </h1>
 

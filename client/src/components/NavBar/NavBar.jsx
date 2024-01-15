@@ -106,9 +106,11 @@ const NavBar = () => {
       <nav
         className={`fixed w-[100%] items-center justify-center border-b bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md`}
       >
-        <div className="flex items-center justify-between lg:w-[70rem] md:w-[96%] px-4 md:px-3 py-3 m-auto text-lg">
+        <div className="flex items-center justify-between lg:w-full lg:px-5 md:w-[96%] px-4 md:px-3 lg:py-3 py-2.5 m-auto text-lg">
           <div className="flex items-center">
-            <Link to="/">
+            <Link onClick={() => {
+              window.scrollTo(0, 0);
+            }} to="/">
               <img
                 src="logo.jfif"
                 height={120}
@@ -123,7 +125,7 @@ const NavBar = () => {
             {navLinks.map((link, index) => {
               if (link.children) {
                 return (
-                  <div key={index} className="nav-link">
+                  <div key={link.name} className="nav-link">
                     <button
                       onClick={() => setPopup(index)}
                       onMouseOver={() => {
@@ -144,13 +146,13 @@ const NavBar = () => {
                       className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === index ? "flex" : "hidden"}`}>
                       <ul className="dropdown flex flex-col gap-2">
                         {
-                          link.children.map((child, i) => (
+                          link.children.map((child) => (
                             <Link
                               onClick={() => setPopup(-1)}
                               style={{ textDecoration: "none" }}
                               to={child.link}
                               className="dropdown-link mb-2"
-                              key={i + "child"}
+                              key={child.name}
                             >
                               <p className="text-gray-400 hover:text-blue-400">
                                 {child.name}
@@ -165,7 +167,7 @@ const NavBar = () => {
               }
               else {
                 return (
-                  <Link key={index} style={{ textDecoration: "none" }} to={link.link}>
+                  <Link key={link.name} style={{ textDecoration: "none" }} to={link.link}>
                     <p
                       className="text-white hover:text-blue-400"
                     >
@@ -217,20 +219,20 @@ const NavBar = () => {
           >
             {!menu ? <HiMenuAlt3 /> : <FiX />}
           </button>
-          {navLinks.map((link, index) => {
+          {navLinks.map((link) => {
             if (link.children) {
               return (
-                <div className="flex flex-col sm:gap-0 gap-1">
+                <div key={link.name} className="flex flex-col sm:gap-0 gap-1">
                   <div className="text-sky-500">
                     {link.name}
                   </div>
                   <div>
-                    {link.children.map((child, i) => (
+                    {link.children.map((child) => (
                       <Link
                         style={{ textDecoration: "none" }}
                         to={child.link}
                         className="dropdown-link text-base"
-                        key={i}
+                        key={child.name}
                         onClick={() => setMenu(!menu)}
                       >
                         <p className="text-gray-400 sm:py-0 py-0.5 hover:text-blue-400">
@@ -247,7 +249,7 @@ const NavBar = () => {
                   style={{ textDecoration: "none" }}
                   to={link.link}
                   className="dropdown-link mb-2"
-                  key={index}
+                  key={link.name}
                   onClick={() => setMenu(!menu)}
                 >
                   <p className="text-sky-500 hover:text-blue-400">
