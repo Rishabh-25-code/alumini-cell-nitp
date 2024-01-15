@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const EventCard = ({ data }) => {
     return (
-        <div className='w-[20rem] p-4 border-2 hover:border-gray-800 hover:scale-[102%] transition-all delay-75 ease-in border-gray-900 rounded-2xl mt-5'>
+        <div data-aos="fade-up" className='w-[20rem] p-4 border-2 hover:border-gray-800 border-gray-900 rounded-2xl mt-5'>
             <div className='flex items-center h-44 overflow-hidden w-full rounded-lg border border-gray-900'>
                 <img loading='lazy' className='w-full' src={data.image} alt={data.name} />
             </div>

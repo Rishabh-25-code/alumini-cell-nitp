@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom'
 
 const slideImages = [
     {
-        url: '/images/sliderimages/img1.jpeg',
+        url: '/images/sliderimages/img1.jpg',
     },
     {
-        url: '/images/sliderimages/img2.jpeg',
+        url: '/images/sliderimages/img2.jpg',
     },
     {
-        url: '/images/sliderimages/img3.jpeg',
+        url: '/images/sliderimages/img3.jpg',
     },
     {
-        url: '/images/sliderimages/img4.jpeg',
+        url: '/images/sliderimages/img4.jpg',
     },
 ];
 
@@ -33,7 +33,7 @@ function ImageSlider() {
                         {/* <div className="flex w-full items-center justify-center h-440 bg-cover bg-center" style={{backgroundImage: `url(${image.url})`}}> */}
                         <div style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center', height: '450px', backgroundSize: 'cover', backgroundPosition: '2% 5%', backgroundImage: `url(${image.url})` }}>
                             <span style={{ spanStyle }}>
-                                <div className="absolute w-full inset-0 text-left pt-32 lg:pl-24 md:pl-16 pl-8 bg-gradient-to-r  from-[rgba(0,0,0,0.7)] via-[rgba(0,0,0,0.5)] to-transparent">
+                                <div  data-aos="fade-right" className="absolute w-full inset-0 text-left pt-32 lg:pl-24 md:pl-16 pl-8 bg-gradient-to-r  from-[rgba(0,0,0,0.7)] via-[rgba(0,0,0,0.5)] to-transparent">
                                     <h5 className="lg:text-4xl md:text-3xl text-2xl font-bold pb-2">
                                         <span className="text-sky-500">Connect.</span> Give. Cherish.
                                     </h5>

@@ -22,19 +22,11 @@ const AlumniDatabase = () => {
     const page = parseInt(searchParams.get("page")) || 1;
     const [itemsPerPage] = useState(24);
 
-    const { isPending, error, data: alumni, refetch } = useQuery({
+    const { isPending, isError, data: alumni, refetch } = useQuery({
         queryKey: ["members", role || "", branch || "", batchEnd || "", page],
         queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, batchEnd, branch),
         staleTime: Infinity
     });
-
-
-    if (error)
-        return (
-            <div className="pt-24 px-8">
-                An error has occurred: {error.message}
-            </div>
-        );
 
     const changeParams = (key, value) => {
         setSearchParams(prev => {
@@ -149,14 +141,14 @@ const AlumniDatabase = () => {
                 </div>
             </div>
 
-            {isPending ? <div className="pt-12 px-8 text-center text-base font-medium text-white">Loading...</div> :
+            {isPending ? <div className="pt-32 px-8 text-center text-base font-medium text-white">Loading...</div> :
 
-                error ? <div className="pt-12 px-8 text-center text-base font-medium text-white">
-                    An error has occurred: {error.message}
+                isError ? <div className="pt-23 px-8 text-center text-base font-medium text-white">
+                    An error has occurred! Please try again later.
                 </div> :
 
                     alumni.length === 0 ?
-                        <div className="pt-24 px-8 text-center text-base font-medium text-white">
+                        <div className="pt-32 px-8 text-center text-base font-medium text-white">
                             No items.
                         </div>
                         : <>
@@ -169,15 +161,15 @@ const AlumniDatabase = () => {
                                             className="rounded-xl border hover:bg-[#101010] hover:border-gray-700 hover:border-l-sky-400  border-gray-900 bg-[#000000] border-l-sky-500 border-l-4 shadow-lg w-full"
                                         >
                                             <div className="flex flex-row gap-5 hover:scale-95 transition p-4 py-6">
-                                                <div className="w-20 h-20">
+                                                <div className="lg:w-20 md:w-16 w-14 lg:h-20 md:h-16 h-14">
                                                     <img
                                                         id={person.$id}
-                                                        className="rounded-full w-20 h-20"
+                                                        className="rounded-full lg:w-20 md:w-16 w-14 lg:h-20 md:h-16 h-14"
                                                         src={MalePlaceholder}
                                                         alt={person.name}
                                                     />
                                                 </div>
-                                                <div className="text-sm font-medium">
+                                                <div className="text-sm font-medium flex-1">
                                                     <p className="text-xl font-bold text-sky-500">{person.title}. {person.fname} {person.lname}</p>
                                                     <p className="font-medium text-base text-gray-300">
                                                         {person.branch} ({person.degree})

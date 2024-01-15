@@ -7,7 +7,7 @@ const Footer = () => {
   const year = date.getFullYear();
   return (
     // <div className="bg-sky-100 dark:bg-[#5e0404] text-sm w-[100%] mt-[10rem]">
-    <div className="bg-[#0b0b0b] text-sm w-[100%] mt-[10rem]">
+    <div data-aos="fade-in" className="bg-[#0b0b0b] text-sm w-[100%] mt-[10rem]">
 
       <div className="mb-10 w-[90%] grid gap-2 md:gap-4 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-[auto] items-start justify-items-center">
 
