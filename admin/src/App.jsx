@@ -28,13 +28,6 @@ function App() {
     AOS.init();
     AOS.refresh();
   }, []);
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       setUserName(user.displayName);
-  //     } else setUserName("");
-  //   });
-  // }, []);
 
   return (
     <>

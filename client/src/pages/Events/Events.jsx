@@ -1,4 +1,3 @@
-import React from 'react'
 import Heading from '../../components/Headings/Heading'
 import Card from "../../components/Carousel/Card";
 import EventCard from './EventCard'
