@@ -120,7 +120,7 @@ export const getPaginatedDocuments = async (COLLECTION_ID, limit = 20, offset = 
     }
 }
 
-export const getPaginatedPublishedDocs = async (COLLECTION_ID, limit = 24, offset = 0, status = "published") => {
+export const getPaginatedUnpublishedDocs = async (COLLECTION_ID, limit = 24, offset = 0, status = "reviewing") => {
     try {
         const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
             Query.limit(limit),
@@ -132,7 +132,6 @@ export const getPaginatedPublishedDocs = async (COLLECTION_ID, limit = 24, offse
         throw new Error(err.message);
     }
 }
-
 
 export const getAlumniData = async (limit = 24, offset = 0, role, batchEnd, branch) => {
     const queries = [

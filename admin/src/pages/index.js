@@ -1,14 +1,19 @@
-import Team from "./Team/Team";
 import HomePage from "./HomePage/HomePage";
-import Newsletter from "./Newsletter/Newsletter";
 import Gallery from "./Gallery/Gallery";
 import Events from "./Events/Events";
 import NotableAlumni from "./NotableAlumni/NotableAlumni";
-import News from "./Newsletter/News";
-import Registration from "./Registration/registration"
-import Signup from "./LogIn-SignUp/Signup/Signup"
-import Login from "./LogIn-SignUp/Login/Login";
-import CreateNews from "./Newsletter/CreateNews";
+import Error from "./Error/Error";
 
+import SignIn from "./Auth/SignIn";
+import SignUp from "./Auth/SignUp";
+import Verify from "./Auth/Verify";
+import ForgotPassword from "./Auth/ForgotPassword";
+import ResetPassword from "./Auth/ResetPassword";
+import VerifyEmail from "./Auth/VerifyEmail";
 
-export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, CreateNews };
+import Blogs from "./Blogs/Blogs";
+import Blog from "./Blogs/Blog";
+import Experience from "./Experiences/Experience";
+import Experiences from "./Experiences/Experiences";
+
+export { HomePage, Gallery, Events, NotableAlumni, Error, SignIn, SignUp, ForgotPassword, ResetPassword, VerifyEmail, Verify, Blogs, Blog, Experience, Experiences };
