@@ -54,7 +54,7 @@ const Testimonials = () => {
     return (
         <div className=' bg-gray-900 py-16'>
             <h1
-                data-aos="fade-in"
+                data-aos="fade-up"
                 className="font-semibold lg:text-5xl md:text-4xl text-3xl text-center  items-center  "
             >
                 Testimonials from our <span className="text-sky-500">Alumni</span>
@@ -91,7 +91,7 @@ const Testimonials = () => {
                 >
 
 
-                    <div className=" flex   items-center ">
+                    <div className="flex items-center">
                         {testimonials.map((data) => (
                             <SwiperSlide key={data.id}>
                                 <div className="mb-10">
@@ -114,7 +114,7 @@ const Testimonials = () => {
 
 const TestimonialCard = ({ data }) => {
     return (
-        <div data-aos="zoom-in" className='flex' >
+        <div data-aos="fade-up" className='flex' >
             <div className='border-[1px] border-gray-500 border-b-cyan-500 hover:border-b-cyan-600 border-b-8 rounded-2xl w-full p-3 pt-5 pb-7 hover:scale-[101%] z-0 hover:z-10 bg-[#090c14] transition-all delay-[30ms] ease-in-out m-1'>
                 <div className='rounded'>
                     <p className='px-2'>

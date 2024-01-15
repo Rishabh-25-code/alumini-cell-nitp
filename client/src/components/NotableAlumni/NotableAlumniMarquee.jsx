@@ -59,7 +59,7 @@ const NotableAlumniMarquee = () => {
     return (
         <div className="bg-gray-900 pt-16 pb-10 mt-16">
             <div className='flex items-center justify-center text-center gap-3 flex-col'>
-                <p className='lg:text-5xl text-4xl font-semibold pb-10'>Our Notable <span className='text-sky-500'>Alumni</span></p>
+                <p data-aos="fade-up" className='lg:text-5xl text-4xl font-semibold pb-10'>Our Notable <span className='text-sky-500'>Alumni</span></p>
 
                 <Marquee speed={70} autoFill={true} className="lg:mb-12 md:mb-10 mb-6" pauseOnHover={true}>
                     {
