@@ -7,27 +7,27 @@ const NotableAlumni = () => {
 
   const data = [
     {
-      imgUrl:"../../../public/images/faculty.png",
+      imgUrl:"./images/faculty.png",
       desc:"Short Description about the alumni.",
       title:"1 Alumni's name"
     },
     {
-      imgUrl:"../../../public/images/faculty.png",
+      imgUrl:"./images/faculty.png",
       desc:"Short Description about the alumni.",
       title:"2 Alumni's name"
     },
     {
-      imgUrl:"../../../public/images/faculty.png",
+      imgUrl:"./images/faculty.png",
       desc:"Short Description about the alumni.",
       title:"3 Alumni's name"
     },
     {
-      imgUrl:"../../../public/images/faculty.png",
+      imgUrl:"./images/faculty.png",
       desc:"Short Description about the alumni.",
       title:"4 Alumni's name"
     },
     {
-      imgUrl:"../../../public/images/faculty.png",
+      imgUrl:"./images/faculty.png",
       desc:"Short Description about the alumni.",
       title:"5 Alumni's name"
     },
