@@ -120,28 +120,35 @@ export const getPaginatedDocuments = async (COLLECTION_ID, limit = 20, offset = 
     }
 }
 
-export const getPaginatedPublishedDocs = async (COLLECTION_ID, limit = 24, offset = 0, status = "published") => {
+export const getPaginatedPublishedDocs = async (COLLECTION_ID, limit = 24, offset = 0, status = "published", search = "", type = "") => {
+    const queries = [
+        Query.limit(limit),
+        Query.offset(offset),
+        Query.equal('status', [status]),
+        Query.orderDesc('$createdAt'),
+    ]
+
+    if (search && type) queries.push(Query.search(type, [search]));
     try {
-        const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
-            Query.limit(limit),
-            Query.offset(offset),
-            Query.equal('status', [status])
-        ]);
+        const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, queries);
         return res.documents;
     } catch (err) {
+        console.log(err);
         throw new Error(err.message);
     }
 }
 
 
-export const getAlumniData = async (limit = 24, offset = 0, role, batchEnd, branch) => {
+export const getAlumniData = async (limit = 24, offset = 0, role, search, type, branch) => {
     const queries = [
         Query.limit(limit),
         Query.offset(offset),
+        Query.equal('role', [role])
     ];
-    if (role) queries.push(Query.equal('role', [role]));
-    if (batchEnd) queries.push(Query.equal('batchEnd', [batchEnd]));
+
     if (branch) queries.push(Query.equal('branch', [branch]));
+
+    if (search && type) queries.push(Query.search(type, [search]));
 
     try {
         const res = await databases.listDocuments(DATABASE_ID, "alumni", queries);

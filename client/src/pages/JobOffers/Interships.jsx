@@ -6,29 +6,66 @@ import { useQuery } from "@tanstack/react-query";
 import { useSearchParams, Link } from 'react-router-dom';
 import { getPaginatedPublishedDocs } from '../../services/documents';
 import { getImageURL } from '../../services/files';
+import { useState, useEffect } from 'react';
+import { FiSearch } from "react-icons/fi";
 
 
 const Interships = () => {
-  const [searchParams, setSearchParams] = useSearchParams({ page: 0 });
-
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1, search: "", type: "internTitle" });
   const page = parseInt(searchParams.get('page')) || 1;
-  const itemsPerPage = 24;
+  const search = searchParams.get('search') || "";
+  const type = searchParams.get('type') || "internTitle";
+  const [itemsPerPage] = useState(15);
 
-  const { data: internships, isPending, isError } = useQuery({
-    queryKey: ['intern-posts'],
-    queryFn: () => getPaginatedPublishedDocs('intern-opportunity', itemsPerPage, itemsPerPage * (page - 1), "published"),
+  const [searchText, setSearchText] = useState(search);
+  const [searchType, setSearchType] = useState(type);
+
+  const { data: internships, isLoading, isError } = useQuery({
+    queryKey: ['intern-posts', page, search],
+    queryFn: () => getPaginatedPublishedDocs('intern-opportunity', itemsPerPage, itemsPerPage * (page - 1), "published", search, type),
   })
+
+  const changeParams = (key, value) => {
+    setSearchParams(prev => {
+      prev.set(key, value);
+      if (key === "search" || key === "type") prev.set("page", 1);
+      return prev;
+    }, { replace: true });
+    window.scrollTo(0, 0);
+  }
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      changeParams('search', searchText);
+    }, 500);
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(debounceTimer);
+  }, [searchText]);
 
   return (
     <div>
       <Meta name="Internship Opportunities" />
       <Heading heading="Internship" heading1="opportunities via Alumni"></Heading>
 
-      <div className='flex justify-center align items-center text-center text-xl text-rose-500'>
-        <h1>This Page is currently under development, data shown is merely a sample.</h1>
+      <div className='lg:w-[80%] w-full px-6 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
+        <div className='flex-1 relative w-full'>
+          <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by title, company, skills.." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
+          <FiSearch className="absolute md:top-4 top-3 text-xl left-3.5 text-gray-400" />
+        </div>
+
+        <select value={searchType} onChange={(e) => {
+          setSearchType(e.target.value);
+          changeParams('type', e.target.value);
+        }} className='bg-gray-950 rounded-xl lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal text-gray-300'>
+          <option value="">Search By</option>
+          <option value="internCompany">Company</option>
+          <option value="internSkills">Skills</option>
+          <option value="internTitle">Intern Title</option>
+        </select>
       </div>
 
-      {isPending ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
+      {isLoading ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
         isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
           internships && internships.length === 0 ? <div className='text-center py-16 text-sky-500'>No items found!</div> :
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:w-[85%] md:w-[95%] w-full px-5 gap-6 m-auto items-center justify-center my-24'>
@@ -39,29 +76,29 @@ const Interships = () => {
       }
 
       {internships && internships.length !== 0 && (
-                <>
-                    <div data-aos="fade-up" className="text-center px-3 pt-16">
-                        Showing <span className="text-sky-500">{internships.length}</span> results of page <span className="text-sky-500">{page}</span>.
-                    </div>
+        <>
+          <div data-aos="fade-up" className="text-center px-3 pt-16">
+            Showing <span className="text-sky-500">{internships.length}</span> results of page <span className="text-sky-500">{page}</span>.
+          </div>
 
-                    <div data-aos="fade-up" className="flex items-center justify-center pt-5 gap-10 px-6">
-                        <button
-                            disabled={page <= 1}
-                            onClick={() => changeParams('page', page - 1)}
-                            className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold"
-                        >
-                            Prev
-                        </button>
-                        <button
-                            disabled={itemsPerPage > internships.length}
-                            onClick={() => changeParams('page', page + 1)}
-                            className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold"
-                        >
-                            Next
-                        </button>
-                    </div>
-                </>
-            )}
+          <div data-aos="fade-up" className="flex items-center justify-center pt-5 gap-10 px-6">
+            <button
+              disabled={page <= 1}
+              onClick={() => changeParams('page', page - 1)}
+              className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold"
+            >
+              Prev
+            </button>
+            <button
+              disabled={itemsPerPage > internships.length}
+              onClick={() => changeParams('page', page + 1)}
+              className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold"
+            >
+              Next
+            </button>
+          </div>
+        </>
+      )}
 
     </div>
   );

@@ -5,45 +5,49 @@ import Meta from "../../components/Meta/Meta";
 import { branches } from "../../utils/branches";
 import { getAlumniData } from "../../services/documents";
 import { useSearchParams } from "react-router-dom";
-import { useForm } from "react-hook-form"
-import { Input } from "../../components/FormComponents";
+import { FiSearch } from "react-icons/fi";
 
 
 const AlumniDatabase = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm({ trim: true });
     const [searchParams, setSearchParams] = useSearchParams({
-        type: null,
+        role: null,
         page: 1,
-        batch: "",
+        type: "fname",
+        search: "",
     });
-    const role = searchParams.get("type") || null;
-    const batchEnd = searchParams.get("batch") || null;
-    const [branch, setBranch] = useState(null);
-    const page = parseInt(searchParams.get("page")) || 1;
-    const [itemsPerPage] = useState(24);
+    const role = searchParams.get("role") || null;
+    const page = parseInt(searchParams.get('page')) || 1;
+    const search = searchParams.get('search') || "";
+    const type = searchParams.get('type') || "jobTitle";
+    const [itemsPerPage] = useState(15);
+    const [branch, setBranch] = useState("");
 
-    const { isPending, isError, data: alumni, refetch } = useQuery({
-        queryKey: ["members", role || "", branch || "", batchEnd || "", page],
-        queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, batchEnd, branch),
+    const [searchText, setSearchText] = useState(search);
+    const [searchType, setSearchType] = useState(type);
+
+    const { isLoading, isError, data: alumni, refetch } = useQuery({
+        queryKey: ["members", role, page, search, branch],
+        queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch),
         staleTime: Infinity
     });
 
     const changeParams = (key, value) => {
         setSearchParams(prev => {
             prev.set(key, value);
+            if (key === "search" || key === "type") prev.set("page", 1);
             return prev;
         }, { replace: true });
         window.scrollTo(0, 0);
     }
 
-    const onSubmit = (data) => {
-        console.log(data);
-        if (data.batch) {
-            changeParams("batch", data.batch)
-        } else if (data.batch === "") {
-            changeParams("batch", "")
-        }
-    }
+    useEffect(() => {
+        const debounceTimer = setTimeout(() => {
+            changeParams('search', searchText);
+        }, 500);
+
+        // Cleanup the timer on component unmount
+        return () => clearTimeout(debounceTimer);
+    }, [searchText]);
 
     return (
         <div className="min-h-screen">
@@ -62,63 +66,25 @@ const AlumniDatabase = () => {
                         </h5>
                     </div>
 
-                    <div className="lg:max-w-3xl md:max-w-2xl w-full px-6 m-auto py-10">
-                        <form onSubmit={handleSubmit(onSubmit)} className="w-full flex md:gap-5 gap-2 items-end justify-center">
-                            {/* <Input
-                                label="Name"
-                                type="search"
-                                placeholder="John Doe"
-                                title="name"
-                                reactHookForm={register('name', {
-                                    minLength: {
-                                        value: 1,
-                                        message: 'Name must be at least 4 characters',
-                                    }
-                                })}
-                                className='bg-gray-950 rounded-xl px-3 py-2 mt-1 w-full text-gray-300'
-                                
-                            /> */}
-                            <div className="lg:w-[17rem] md:w-[14rem] w-[12rem]">
-                                <Input
-                                    label="Batch"
-                                    type="number"
-                                    placeholder="2002"
-                                    title="batch"
-                                    reactHookForm={register('batch', {
-                                        minLength: {
-                                            value: 4,
-                                            message: 'Batch must be at least 4 characters',
-                                        },
-                                        maxLength: {
-                                            value: 4,
-                                            message: 'Batch must not exceed 4 characters',
-                                        },
-                                        onChange: (e) => {
-                                            if (e.target.value > new Date().getFullYear() + 4) {
-                                                e.target.value = new Date().getFullYear() + 4;
-                                            }
-
-                                            if (e.target.value.length === 4 && e.target.value < 1800) {
-                                                e.target.value = 1800;
-                                            }
-
-                                            if (e.target.value.length === 0) {
-                                                changeParams("batch", "");
-                                            }
-                                        }
-                                    })}
-                                    className='bg-gray-950 rounded-xl px-3 py-2 mt-1 w-full text-gray-300'
-                                />
-                            </div>
-                            <button type="submit" className="bg-sky-600 md:h-12 h-10 lg:py-3 py-2 lg:px-5 px-4  md:text-base text-sm md:rounded-2xl rounded-xl">
-                                Search
-                            </button>
-                        </form>
-                        <div className="text-center pt-2">
-                            {errors.name && <p className="text-rose-500">{errors.name.message}</p>}
-                            {errors.batch && <p className="text-rose-500">{errors.batch.message}</p>}
+                    <div className='lg:w-[80%] w-full px-6 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
+                        <div className='flex-1 relative w-full'>
+                            <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by title, company, skills.." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
+                            <FiSearch className="absolute md:top-4 top-3 text-xl left-3.5 text-gray-400" />
                         </div>
 
+                        <select value={searchType} onChange={(e) => {
+                            setSearchType(e.target.value);
+                            changeParams('type', e.target.value);
+                        }} className='bg-gray-950 rounded-xl lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal text-gray-300'>
+                            <option value="">Search By</option>
+                            <option value="fname">Name</option>
+                            <option value="batchEnd">Batch</option>
+                            <option value="company">Company</option>
+                            <option value="designation">Designation</option>
+                        </select>
+                    </div>
+
+                    <div className="lg:max-w-3xl md:max-w-2xl w-full px-6 m-auto py-10">
                         <div className="flex flex-wrap items-center gap-3 justify-center pt-6">
                             <button onClick={() => {
                                 setBranch(null);
@@ -141,8 +107,7 @@ const AlumniDatabase = () => {
                 </div>
             </div>
 
-            {isPending ? <div className="pt-32 px-8 text-center text-base font-medium text-white">Loading...</div> :
-
+            {isLoading ? <div className="pt-32 px-8 text-center text-base font-medium text-white">Loading...</div> :
                 isError ? <div className="pt-23 px-8 text-center text-base font-medium text-white">
                     An error has occurred! Please try again later.
                 </div> :

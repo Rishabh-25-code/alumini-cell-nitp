@@ -41,19 +41,19 @@ const NavBar = () => {
       children: [
         {
           name: "UG",
-          link: "/alumni-database?type=ug",
+          link: "/alumni-database?role=ug",
         },
         {
           name: "PG",
-          link: "/alumni-database?type=pg",
+          link: "/alumni-database?role=pg",
         },
         {
           name: "Ph.D",
-          link: "/alumni-database?type=phd",
+          link: "/alumni-database?role=phd",
         },
         {
           name: "Faculty/Staff",
-          link: "/alumni-database?type=faculty-staff",
+          link: "/alumni-database?role=faculty-staff",
         },
       ]
     },
