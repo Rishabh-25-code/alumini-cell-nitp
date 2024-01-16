@@ -21,7 +21,9 @@ import {
   VerifyEmail,
   Blog,
   Experience,
-  Experiences
+  Experiences,
+  Jobs, 
+  Job
 } from "./pages/index";
 import ScrollToTop from "./hooks/useScrollToTop";
 import {
@@ -43,6 +45,8 @@ function App() {
   const privateRoutes = [
     { path: "/gallery", element: <Gallery /> },
     { path: "/events", element: <Events /> },
+    { path: "/jobs", element: <Jobs /> },
+    { path: "/job/:jobId", element: <Job /> },
     { path: "/notablealumni", element: <NotableAlumni /> },
     { path: "/blogs", element: <Blogs /> },
     { path: "/blog/:blogId", element: <Blog /> },

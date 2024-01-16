@@ -15,5 +15,7 @@ import Blogs from "./Blogs/Blogs";
 import Blog from "./Blogs/Blog";
 import Experience from "./Experiences/Experience";
 import Experiences from "./Experiences/Experiences";
+import Jobs from "./Jobs/Jobs";
+import Job from "./Jobs/Job";
 
-export { HomePage, Gallery, Events, NotableAlumni, Error, SignIn, SignUp, ForgotPassword, ResetPassword, VerifyEmail, Verify, Blogs, Blog, Experience, Experiences };
+export { HomePage, Gallery, Events, NotableAlumni, Error, SignIn, SignUp, ForgotPassword, ResetPassword, VerifyEmail, Verify, Blogs, Blog, Experience, Experiences, Jobs, Job };
