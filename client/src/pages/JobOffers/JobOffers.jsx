@@ -1,5 +1,5 @@
-import React from 'react'
-import Heading from '../../components/Headings/Heading'
+import React, { useEffect } from 'react';
+import Heading from '../../components/Headings/Heading';
 import Meta from '../../components/Meta/Meta';
 import Loader from '../../components/Loader';
 import { useQuery } from "@tanstack/react-query";
@@ -7,26 +7,66 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { getPaginatedPublishedDocs } from '../../services/documents';
 import { getImageURL } from '../../services/files';
 import { useState } from 'react';
+import { FiSearch } from "react-icons/fi";
 
 const JobOffers = () => {
-     const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
+     const [searchParams, setSearchParams] = useSearchParams({ page: 1, search: "", type: "jobTitle" });
      const page = parseInt(searchParams.get('page')) || 1;
-     const [itemsPerPage, setItemsPerPage] = useState(24);
+     const search = searchParams.get('search') || "";
+     const type = searchParams.get('type') || "jobTitle";
+     const [itemsPerPage] = useState(15);
 
-     const { data: jobs, isPending, isError } = useQuery({
-          queryKey: ['job-posts'],
-          queryFn: () => getPaginatedPublishedDocs('job-opportunity', itemsPerPage, itemsPerPage * (page - 1), "published"),
-     })
+     const [searchText, setSearchText] = useState(search);
+     const [searchType, setSearchType] = useState(type);
+
+     const { data: jobs, isLoading, isError } = useQuery({
+          queryKey: ['job-posts', page, search],
+          queryFn: () => getPaginatedPublishedDocs('job-opportunity', itemsPerPage, itemsPerPage * (page - 1), "published", search, type),
+     });
+
+     const changeParams = (key, value) => {
+          setSearchParams(prev => {
+               prev.set(key, value);
+               if (key === "search" || key === "type") prev.set("page", 1);
+               return prev;
+          }, { replace: true });
+          window.scrollTo(0, 0);
+     }
+
+
+     useEffect(() => {
+          const debounceTimer = setTimeout(() => {
+               changeParams('search', searchText);
+          }, 500);
+
+          // Cleanup the timer on component unmount
+          return () => clearTimeout(debounceTimer);
+     }, [searchText]);
 
      return (
           <>
                <Meta name="Job Openings" />
                <Heading heading="Job Openings" heading1="via our Alumni"></Heading>
+               <div className='lg:w-[80%] w-full px-6 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
+                    <div className='flex-1 relative w-full'>
+                         <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by title, company, skills.." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
+                         <FiSearch className="absolute md:top-4 top-3 text-xl left-3.5 text-gray-400" />
+                    </div>
 
-               {isPending ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
+                    <select value={searchType} onChange={(e) => {
+                         setSearchType(e.target.value);
+                         changeParams('type', e.target.value);
+                    }} className='bg-gray-950 rounded-xl lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal text-gray-300'>
+                         <option value="">Search By</option>
+                         <option value="jobCompany">Company</option>
+                         <option value="jobSkills">Skills</option>
+                         <option value="jobTitle">Job Title</option>
+                    </select>
+               </div>
+
+               {isLoading ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
                     isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
                          jobs && jobs.length === 0 ? <div className='text-center py-16 text-sky-500'>No Jobs Found!</div> :
-
                               <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:w-[85%] md:w-[95%] w-full px-5 gap-6 m-auto items-center justify-center my-24'>
                                    {jobs.map((job) => (
                                         <JobOffersCard2 data={job} key={job.$id} />
@@ -59,10 +99,12 @@ const JobOffers = () => {
                     </>
                )}
           </>
-     )
+     );
 }
 
 export default JobOffers;
+
+
 
 
 const JobOffersCard2 = ({ data }) => {
@@ -98,7 +140,7 @@ const JobOffersCard2 = ({ data }) => {
                     </div>
 
                     <p className='text-sm pt-2 text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(data.$createdAt))}</span></p>
-                    
+
                     <div className='pt-2'>
                          <p className='text-sm text-gray-400 pb-1'>Posted By: </p>
                          <div className='flex gap-2 items-center'>
