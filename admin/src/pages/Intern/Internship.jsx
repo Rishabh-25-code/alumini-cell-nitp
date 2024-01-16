@@ -3,44 +3,44 @@ import { getDocument, updateDocument } from '../../services/documents';
 import { useParams, useNavigate } from 'react-router-dom'
 import Meta from '../../components/Meta/Meta';
 import Loader from '../../components/Loader';
-import { getImageURL } from '../../services/files';
+import { getImageURL, getDownloadURL } from '../../services/files';
 import { Input, Select } from '../../components/FormComponents';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 
-const Job = () => {
+const Internship = () => {
     const navigate = useNavigate();
-    const { jobId } = useParams();
+    const { internshipId } = useParams();
     const [loading, setLoading] = useState(false);
     const { register, reset, handleSubmit, formState: { errors } } = useForm({ trim: true });
 
-    const { data: job, isPending, isError, refetch } = useQuery({
-        queryKey: ['job', jobId],
-        queryFn: () => getDocument('job-opportunity', jobId),
+    const { data: intern, isPending, isError, refetch } = useQuery({
+        queryKey: ['intern', internshipId],
+        queryFn: () => getDocument('intern-opportunity', internshipId),
     });
 
     const onSubmit = async (data) => {
         try {
             setLoading(true);
-            const jobData = {
-                ...job,
+            const internData = {
+                ...intern,
                 status: data.status,
                 statusDesc: data.statusDesc
             }
 
-            delete jobData.$createdAt;
-            delete jobData.$updatedAt;
-            delete jobData.$id;
-            delete jobData.$collectionId;
-            delete jobData.$databaseId;
-            delete jobData.$permissions;
+            delete internData.$createdAt;
+            delete internData.$updatedAt;
+            delete internData.$id;
+            delete internData.$collectionId;
+            delete internData.$databaseId;
+            delete internData.$permissions;
 
-            await updateDocument('job-opportunity', jobId, jobData);
+            await updateDocument('intern-opportunity', internshipId, internData);
             await refetch();
             reset();
-            toast.success(`job ${data.status} successful!`);
-            navigate(`/jobs?type=${data.status}&page=1`);
+            toast.success(`internship ${data.status} successful!`);
+            navigate(`/internships?type=${data.status}&page=1`);
         } catch (error) {
             toast.error(error.message);
         } finally {
@@ -49,66 +49,66 @@ const Job = () => {
     }
     return (
         <div className='pt-36 min-h-screen'>
-            <Meta name={job ? job.title : "Experience - NIT Patna"} />
+            <Meta name={intern ? intern.title : "Experience - NIT Patna"} />
 
             <div className='lg:max-w-[85%] md:w-[90%] w-full px-5 m-auto'>
                 {isPending ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
                     isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
-                        job && <div className='border border-gray-800 rounded-2xl p-5 mb-5 w-full'>
+                        intern && <div className='border border-gray-800 rounded-2xl p-5 mb-5 w-full'>
                             <p className='text-lg font-semibold'>
-                                Status :  <span className={`${job.status === "reviewing" ? "text-yellow-500" : job.status === 'published' ? "text-green-500" : "text-red-500"}`}>{job.status}</span>
+                                Status :  <span className={`${intern.status === "reviewing" ? "text-yellow-500" : intern.status === 'published' ? "text-green-500" : "text-red-500"}`}>{intern.status}</span>
                             </p>
                             <div className='flex justify-between'>
                                 <div className='flex gap-5 flex-col items-center'>
                                     <div className='flex w-full gap-2 items-center'>
-                                        {job.jobCompanyLogo && <div className='md:w-16 w-12 md:h-16 h-12 flex items-center justify-center'>
-                                            <img src={job.jobCompanyLogo ? getImageURL(job.jobCompanyLogo, 200) : "logo-placeholder.jpg"} alt='Company Logo' />
+                                        {intern.internCompanyLogo && <div className='md:w-16 w-12 md:h-16 h-12 flex items-center justify-center'>
+                                            <img src={intern.internCompanyLogo ? getImageURL(intern.internCompanyLogo, 200) : "logo-placeholder.jpg"} alt='Company Logo' />
                                         </div>}
                                         <div className='flex flex-col'>
-                                            <p className='font-semibold text-rose-500 lg:text-xl text-lg'>{job.jobCompany}</p>
-                                            <p className='text-sm text-gray-400'>{job.jobLocation}</p>
+                                            <p className='font-semibold text-rose-500 lg:text-xl text-lg'>{intern.internCompany}</p>
+                                            <p className='text-sm text-gray-400'>{intern.internLocation}</p>
                                         </div>
                                     </div>
                                     <div className='flex flex-col w-full'>
-                                        <p className='font-medium'>{job.jobTitle}</p>
-                                        <p className='text-sm text-gray-400'>{job.jobType}</p>
+                                        <p className='font-medium'>{intern.internTitle}</p>
+                                        <p className='text-sm text-gray-400'>{intern.internType}</p>
                                     </div>
                                 </div>
                                 <div className='flex flex-col'>
-                                    <p className='text-sm text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(job.$createdAt))}</span></p>
-                                    <p className='text-sm text-gray-400'>Expires: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(job.jobDeadline))}</span></p>
+                                    <p className='text-sm text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(intern.$createdAt))}</span></p>
+                                    <p className='text-sm text-gray-400'>Expires: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(intern.internDeadline))}</span></p>
                                 </div>
                             </div>
                             <div className='mt-5'>
-                                <p className=''>{job.jobDescription}</p>
+                                <p className=''>{intern.internDescription}</p>
                             </div>
                             <div>
-                                <p className=' text-gray-400'>Skills Required: <span className='text-sky-500'>{job.jobSkills.join(", ")}</span></p>
+                                <p className=' text-gray-400'>Skills Required: <span className='text-sky-500'>{intern.internSkills.join(", ")}</span></p>
                             </div>
                             <div>
                                 <p className=' text-gray-400'>Experience Required: <span className="text-white">
-                                    {parseInt(job.jobExperience) === 0 ? "Fresher" : job.jobExperience + " years"}</span></p>
+                                    {parseInt(intern.internExperience) === 0 ? "Fresher" : intern.internExperience + " years"}</span></p>
                             </div>
-                            <div>
-                                <p className=' text-gray-400'>Expected Salary: <span className="text-white">{job.jobSalary} LPA</span></p>
-                            </div>
-                            {job.jobDetailsLink && <div className='flex gap-2'>
-                                <p className=' text-gray-400'>Job Info Doc:</p>
-                                <a href={getDownloadURL(job.jobDetailsLink)} target='_blank' rel='noreferrer'><button className='text-sm text-sky-500'>download</button></a>
+                            {intern.internSalary && <div>
+                                <p className=' text-gray-400'>Expected Stipend: <span className="text-white">{new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(intern.internSalary)} K</span></p>
                             </div>}
-                            {job.jobLinks.length > 0 && <div>
-                                <p className=' text-gray-400'>Job Link(s):</p>
+                            {intern.internDetailsLink && <div className='flex gap-2'>
+                                <p className=' text-gray-400'>Intern Info Doc:</p>
+                                <a href={getDownloadURL(intern.internDetailsLink)} target='_blank' rel='noreferrer'><button className='text-sm text-sky-500'>download</button></a>
+                            </div>}
+                            {intern.internLinks.length > 0 && <div>
+                                <p className=' text-gray-400'>Intern Link(s):</p>
                                 {
-                                    job.jobLinks.map((link, idx) => (
+                                    intern.internLinks.map((link, idx) => (
                                         <a key={idx} href={link} target='_blank' rel='noreferrer'><button className='text-sm text-left text-sky-500'>{link}</button></a>
                                     ))
                                 }
                             </div>}
                             {
-                                job.referralAvailable && (
+                                intern.referralAvailable && (
                                     <div>
                                         <p className=' text-gray-400'>For refferals:</p>
-                                        <p className='text-sky-500'>{job.referrerEmail}</p>
+                                        <p className='text-sky-500'>{intern.referrerEmail}</p>
                                     </div>
                                 )
                             }
@@ -116,11 +116,11 @@ const Job = () => {
                                 <p className='text-sm text-gray-400 pb-1'>Posted By: </p>
                                 <div className='flex gap-2 items-center'>
                                     <div className='w-10 h-10 rounded-full overflow-hidden flex items-center justify-center'>
-                                        <img src={`https://cloud.appwrite.io/v1/avatars/initials?name=${job.name.split(" ").join("+")}&width=80&height=80`} alt='User Profile' />
+                                        <img src={`https://cloud.appwrite.io/v1/avatars/initials?name=${intern.name.split(" ").join("+")}&width=80&height=80`} alt='User Profile' />
                                     </div>
                                     <div className='flex flex-col'>
-                                        <p className='font-medium'>{job.name} ({job.yourBatch} {job.yourDepartment})</p>
-                                        <p className='text-sm text-gray-400 -mt-1'>{job.yourCurrentRole} at {job.yourCurrentCompany}</p>
+                                        <p className='font-medium'>{intern.name} ({intern.yourBatch} {intern.yourDepartment})</p>
+                                        <p className='text-sm text-gray-400 -mt-1'>{intern.yourCurrentRole} at {intern.yourCurrentCompany}</p>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@ const Job = () => {
                                             type='text'
                                             reactHookForm={register('statusDesc', {
                                                 maxLength: { value: 511, message: 'Max length is 511 characters' },
-                                                value: job.statusDesc
+                                                value: intern.statusDesc
                                             })}
                                             error={errors.statusDesc?.message}
                                             className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
@@ -150,7 +150,7 @@ const Job = () => {
                                         error={errors.status?.message}
                                         reactHookForm={register('status', {
                                             required: { value: true, message: 'Status is required' },
-                                            value: job.status
+                                            value: intern.status
                                         })}
                                         options={[
                                             { name: 'reviewing', value: 'reviewing' },
@@ -169,4 +169,4 @@ const Job = () => {
     )
 }
 
-export default Job
+export default Internship

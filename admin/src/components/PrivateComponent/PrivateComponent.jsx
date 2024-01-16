@@ -11,7 +11,12 @@ const PrivateRoute = () => {
         if (user && !user.emailVerification) {
             navigate("/verify-email");
         }
-    }, [])
+
+        if (user && user.emailVerification && !user.labels.includes("admin")) {
+            navigate("/not-admin");
+        }
+
+    }, []);
 
     return (
         <div>

@@ -1,63 +1,29 @@
 import { useQuery } from '@tanstack/react-query';
-import { getDocument, updateDocument } from '../../services/documents';
-import { useParams, useNavigate } from 'react-router-dom'
+import { getDocument } from '../../services/documents';
+import { useParams } from 'react-router-dom'
 import Meta from '../../components/Meta/Meta';
 import Loader from '../../components/Loader';
 import { getImageURL } from '../../services/files';
-import { Input, Select } from '../../components/FormComponents';
-import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import { useState } from 'react';
+import Heading from '../../components/Headings/Heading';
 
 const Job = () => {
-    const navigate = useNavigate();
     const { jobId } = useParams();
-    const [loading, setLoading] = useState(false);
-    const { register, reset, handleSubmit, formState: { errors } } = useForm({ trim: true });
 
-    const { data: job, isPending, isError, refetch } = useQuery({
+    const { data: job, isPending, isError } = useQuery({
         queryKey: ['job', jobId],
         queryFn: () => getDocument('job-opportunity', jobId),
     });
 
-    const onSubmit = async (data) => {
-        try {
-            setLoading(true);
-            const jobData = {
-                ...job,
-                status: data.status,
-                statusDesc: data.statusDesc
-            }
-
-            delete jobData.$createdAt;
-            delete jobData.$updatedAt;
-            delete jobData.$id;
-            delete jobData.$collectionId;
-            delete jobData.$databaseId;
-            delete jobData.$permissions;
-
-            await updateDocument('job-opportunity', jobId, jobData);
-            await refetch();
-            reset();
-            toast.success(`job ${data.status} successful!`);
-            navigate(`/jobs?type=${data.status}&page=1`);
-        } catch (error) {
-            toast.error(error.message);
-        } finally {
-            setLoading(false);
-        }
-    }
     return (
-        <div className='pt-36 min-h-screen'>
+        <div className='min-h-screen'>
+            <Heading heading="Job Details" heading1={job && job.jobCompany && job.jobCompany }></Heading>
             <Meta name={job ? job.title : "Experience - NIT Patna"} />
 
             <div className='lg:max-w-[85%] md:w-[90%] w-full px-5 m-auto'>
                 {isPending ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
                     isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
+                       job && job.status !== "published" ? <div className='text-center py-24 text-red-500'>Job not found!</div> :
                         job && <div className='border border-gray-800 rounded-2xl p-5 mb-5 w-full'>
-                            <p className='text-lg font-semibold'>
-                                Status :  <span className={`${job.status === "reviewing" ? "text-yellow-500" : job.status === 'published' ? "text-green-500" : "text-red-500"}`}>{job.status}</span>
-                            </p>
                             <div className='flex justify-between'>
                                 <div className='flex gap-5 flex-col items-center'>
                                     <div className='flex w-full gap-2 items-center'>
@@ -71,7 +37,7 @@ const Job = () => {
                                     </div>
                                     <div className='flex flex-col w-full'>
                                         <p className='font-medium'>{job.jobTitle}</p>
-                                        <p className='text-sm text-gray-400'>{job.jobType}</p>
+                                        <p className='text-sm text-green-500'>{job.jobType}</p>
                                     </div>
                                 </div>
                                 <div className='flex flex-col'>
@@ -123,44 +89,6 @@ const Job = () => {
                                         <p className='text-sm text-gray-400 -mt-1'>{job.yourCurrentRole} at {job.yourCurrentCompany}</p>
                                     </div>
                                 </div>
-                            </div>
-
-
-                            <div className='bg-gray-800 p-5 pb-8 rounded-xl mt-10'>
-                                <h2 className='text-center mb-5 text-2xl font-semibold text-rose-500'>Review Experience</h2>
-                                <form onSubmit={handleSubmit(onSubmit)} className='flex gap-5'>
-                                    <div className='flex-1'>
-                                        <Input
-                                            label='Review Message'
-                                            id='statusDesc'
-                                            placeholder="Enter Review Message"
-                                            type='text'
-                                            reactHookForm={register('statusDesc', {
-                                                maxLength: { value: 511, message: 'Max length is 511 characters' },
-                                                value: job.statusDesc
-                                            })}
-                                            error={errors.statusDesc?.message}
-                                            className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
-                                        />
-                                    </div>
-                                    <Select
-                                        label='Mark as'
-                                        id='status'
-                                        placeholder="Select Status"
-                                        error={errors.status?.message}
-                                        reactHookForm={register('status', {
-                                            required: { value: true, message: 'Status is required' },
-                                            value: job.status
-                                        })}
-                                        options={[
-                                            { name: 'reviewing', value: 'reviewing' },
-                                            { name: 'published', value: 'published' },
-                                            { name: 'rejected', value: 'rejected' },
-                                        ]}
-                                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
-                                    />
-                                    <button disabled={loading} onClick={handleSubmit(onSubmit)} className='bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 h-10 self-end px-5 py-2 mt-2 rounded-lg cursor-pointer text-white'>Submit</button>
-                                </form>
                             </div>
                         </div>
                 }

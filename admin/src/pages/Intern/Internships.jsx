@@ -7,15 +7,15 @@ import { getPaginatedUnpublishedDocs } from '../../services/documents';
 import { getImageURL } from '../../services/files';
 import { useState } from 'react';
 
-const JobOffers = () => {
+const InternOffers = () => {
     const [searchParams, setSearchParams] = useSearchParams({ page: 1, type: 'reviewing' });
     const type = searchParams.get('type') || 'reviewing';
     const page = parseInt(searchParams.get('page')) || 1;
     const [itemsPerPage, setItemsPerPage] = useState(24);
 
-    const { data: jobs, isPending, isError, refetch } = useQuery({
-        queryKey: ['job-posts', page, type],
-        queryFn: () => getPaginatedUnpublishedDocs('job-opportunity', itemsPerPage, itemsPerPage * (page - 1), type),
+    const { data: internships, isPending, isError, refetch } = useQuery({
+        queryKey: ['intern-posts', page, type],
+        queryFn: () => getPaginatedUnpublishedDocs('intern-opportunity', itemsPerPage, itemsPerPage * (page - 1), type),
     })
 
     const changeParams = async (key, value) => {
@@ -34,8 +34,8 @@ const JobOffers = () => {
 
     return (
         <div className='pt-24'>
-            <Meta name="Job Openings" />
-            <Heading heading="Job Openings" heading1="via our Alumni"></Heading>
+            <Meta name="Intern Openings" />
+            <Heading heading="Intern Openings" heading1="via our Alumni"></Heading>
 
             <div className='px-10 flex mt-6 gap-4'>
                 <button onClick={() => {
@@ -53,19 +53,19 @@ const JobOffers = () => {
 
             {isPending ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
                 isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
-                    jobs && jobs.length === 0 ? <div className='text-center py-16 text-sky-500'>No Jobs Found!</div> :
+                    internships && internships.length === 0 ? <div className='text-center py-16 text-sky-500'>No items found!</div> :
 
                         <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:w-[85%] md:w-[95%] w-full px-5 gap-6 m-auto items-center justify-center my-24'>
-                            {jobs.map((job) => (
-                                <JobOffersCard2 data={job} key={job.$id} />
+                            {internships.map((intern) => (
+                                <JobOffersCard2 data={intern} key={intern.$id} />
                             ))}
                         </div>
             }
 
-            {jobs && jobs.length !== 0 && (
+            {internships && internships.length !== 0 && (
                 <>
                     <div data-aos="fade-up" className="text-center px-3 pt-16">
-                        Showing <span className="text-sky-500">{jobs.length}</span> results of page <span className="text-sky-500">{page}</span>.
+                        Showing <span className="text-sky-500">{internships.length}</span> results of page <span className="text-sky-500">{page}</span>.
                     </div>
 
                     <div data-aos="fade-up" className="flex items-center justify-center pt-5 gap-10 px-6">
@@ -77,7 +77,7 @@ const JobOffers = () => {
                             Prev
                         </button>
                         <button
-                            disabled={itemsPerPage > jobs.length}
+                            disabled={itemsPerPage > internships.length}
                             onClick={() => changeParams('page', page + 1)}
                             className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold"
                         >
@@ -90,40 +90,39 @@ const JobOffers = () => {
     )
 }
 
-export default JobOffers;
+export default InternOffers;
 
 const JobOffersCard2 = ({ data }) => {
     return (
-        <Link to={`/job/${data.$id}`}>
-            <div className='border border-gray-800 hover:border-gray-700 hover:bg-[#0b0b0f] hover:scale-[101%] transition-all rounded-2xl p-5 place-items-stretch'>
+        <Link to={`/internship/${data.$id}`}>
+            <div className='border border-gray-800 hover:border-gray-700 hover:bg-[#0b0b0f] hover:scale-[101%] transition-all rounded-2xl p-5'>
                 <div className='flex justify-between'>
                     <div className='flex gap-5 flex-col items-center'>
                         <div className='flex w-full gap-2 items-center'>
-                            {data.jobCompanyLogo && <div className='md:w-16 w-12 md:h-16 h-12 flex items-center justify-center'>
-                                <img src={data.jobCompanyLogo ? getImageURL(data.jobCompanyLogo, 200) : "logo-placeholder.jpg"} alt='Company Logo' />
+                            {data.internCompanyLogo && <div className='md:w-16 w-12 md:h-16 h-12 flex items-center justify-center'>
+                                <img src={data.internCompanyLogo ? getImageURL(data.internCompanyLogo, 200) : "logo-placeholder.jpg"} alt='Company Logo' />
                             </div>}
                             <div className='flex flex-col'>
-                                <p className='font-semibold text-rose-500 lg:text-xl text-lg'>{data.jobCompany}</p>
-                                <p className='text-sm text-gray-400'>{data.jobLocation}</p>
+                                <p className='font-semibold text-rose-500 lg:text-xl text-lg'>{data.internCompany}</p>
+                                <p className='text-sm text-gray-400'>{data.internLocation}</p>
                             </div>
                         </div>
                         <div className='flex flex-col w-full'>
-                            <p className='font-medium'>{data.jobTitle}</p>
-                            <p className='text-sm text-green-400'>{data.jobType}</p>
+                            <p className='font-medium'>{data.internTitle}</p>
+                            <p className='text-sm text-green-400'>{data.internType}</p>
                         </div>
                     </div>
                 </div>
-                {data.jobSkills.length !== 0 && <div>
-                    <p className=' text-gray-400'>Skills Required: <span className='text-sky-500'>{data.jobSkills.join(", ")}</span></p>
+                {data.internSkills.length !== 0 && <div>
+                    <p className=' text-gray-400'>Skills Required: <span className='text-sky-500'>{data.internSkills.join(", ")}</span></p>
                 </div>}
                 <div>
                     <p className=' text-gray-400'>Experience Required: <span className="text-white">
-                        {parseInt(data.jobExperience) === 0 ? "Fresher" : data.jobExperience + " years"}</span></p>
+                        {parseInt(data.internExperience) === 0 ? "Fresher" : data.internExperience + " years"}</span></p>
                 </div>
-                <div>
-                    <p className=' text-gray-400'>Expected Salary: <span className="text-white">{data.jobSalary} LPA</span></p>
-                </div>
-
+                {data.internSalary && <div>
+                    <p className=' text-gray-400'>Expected Stipend: <span className="text-white">{new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(data.internSalary)} K</span></p>
+                </div>}
                 <p className='text-sm pt-2 text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(data.$createdAt))}</span></p>
                 <p>
                     Status :  <span className={`${data.status === "reviewing" ? "text-yellow-500" : data.status === 'published' ? "text-green-500" : "text-red-500"}`}>{data.status}</span>
