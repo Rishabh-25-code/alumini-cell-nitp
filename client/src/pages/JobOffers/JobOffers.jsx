@@ -4,15 +4,16 @@ import Meta from '../../components/Meta/Meta';
 import Loader from '../../components/Loader';
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from 'react-router-dom';
-import { getPaginatedDocuments } from '../../services/documents';
+import { getPaginatedPublishedDocs } from '../../services/documents';
 import { getImageURL, getDownloadURL } from '../../services/files';
 
 const JobOffers = () => {
-     const [searchParams, setSearchParams] = useSearchParams({ offset: 0 });
+     const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
+     const page = parseInt(searchParams.get('page')) || 1;
 
      const { data: jobs, isPending, isError } = useQuery({
           queryKey: ['job-posts'],
-          queryFn: () => getPaginatedDocuments('job-opportunity', 20, parseInt(searchParams.get('offset')) || 0),
+          queryFn: () => getPaginatedPublishedDocs('job-opportunity', 24, 24 * (page - 1), "published"),
      })
 
      return (
