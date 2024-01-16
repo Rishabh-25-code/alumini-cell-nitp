@@ -13,6 +13,7 @@ import {
   Events,
   NotableAlumni,
   Error,
+  Profile,
   SignIn,
   SignUp,
   Verify,
@@ -23,7 +24,10 @@ import {
   Experience,
   Experiences,
   Jobs, 
-  Job
+  Job,
+  Internship,
+  Internships,
+  NotAdmin
 } from "./pages/index";
 import ScrollToTop from "./hooks/useScrollToTop";
 import {
@@ -43,10 +47,13 @@ function App() {
   }, []);
 
   const privateRoutes = [
+    { path: "/profile", element: <Profile /> },
     { path: "/gallery", element: <Gallery /> },
     { path: "/events", element: <Events /> },
     { path: "/jobs", element: <Jobs /> },
     { path: "/job/:jobId", element: <Job /> },
+    { path: "/internship/:internshipId", element: <Internship /> },
+    { path: "/internships", element: <Internships /> },
     { path: "/notablealumni", element: <NotableAlumni /> },
     { path: "/blogs", element: <Blogs /> },
     { path: "/blog/:blogId", element: <Blog /> },
@@ -68,6 +75,7 @@ function App() {
 
                 <Route path='/' element={<Layout1></Layout1>}>
                   <Route path="/" element={<HomePage />} />
+                  <Route path="/not-admin" element={<NotAdmin />} />
                 </Route>
 
                 <Route path='/' element={<Layout3></Layout3>}>
