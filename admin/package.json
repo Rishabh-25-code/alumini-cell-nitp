@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.3",
-    "@tanstack/react-query": "^5.17.12",
+    "@tanstack/react-query": "^5.17.15",
     "aos": "^2.3.4",
     "appwrite": "^13.0.1",
     "browser-image-compression": "^2.0.2",
