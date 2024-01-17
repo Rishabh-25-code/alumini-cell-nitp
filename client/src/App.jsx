@@ -12,7 +12,6 @@ import {
   Gallery,
   Events,
   NotableAlumni,
-  Registration,
   AlumniCorner,
   Donate,
   Resources,
@@ -41,7 +40,9 @@ import {
   ReportBug,
   Experiences,
   Experience,
-  VerifyEmail
+  VerifyEmail,
+  Job,
+  Internship
 } from "./pages/index";
 import JobOffers from "./pages/JobOffers/JobOffers";
 import Interships from "./pages/JobOffers/Interships";
@@ -104,9 +105,14 @@ function App() {
       id: 7,
     },
     {
-      path: "/register",
-      element: <Registration />,
+      path: "/job/:jobId",
+      element: <Job />,
       id: 8,
+    },
+    {
+      path: "/internship/:internshipId",
+      element: <Internship/>,
+      id: 9,
     },
     {
       path: "/blogs",

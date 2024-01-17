@@ -1,41 +1,54 @@
-let timelineElements = [
+const timelineElements = [
   {
     id: 1,
     title: "1886",
-    location: "",
+
     description:
-      "NIT Patna marked its humble beginning in 1886 with the establishment of pleaders survey training school",
-    // buttonText: "View More",
+      "NIT Patna traces its origins to 1886 when the institution was established as the Pleaders Survey Training School. This marked the humble beginning of technical education in the region.",
     date: "",
     icon: "work",
   },
   {
     id: 2,
     title: "1924",
-    location: "",
+
     description:
-      "Pleaders survey training school was subsequently promoted to Bihar College of Engineering Patna in 1924. This made this institute the 6th Oldest Engineering Institute of India. ",
-    // buttonText: "View More",
+      "In 1924, the Pleaders Survey Training School evolved into the Bihar College of Engineering Patna. This transformation positioned the institute as the 6th oldest engineering institute in India.",
     date: "",
     icon: "school",
   },
   {
     id: 3,
     title: "1978",
-    location: "",
+
     description:
-      "The graduate level curriculum was later elevated to the post graduate level in 1978.",
-    // buttonText: "View More",
+      "The institute witnessed a significant development in 1978 when the graduate-level curriculum was elevated to the postgraduate level, enhancing the educational offerings and opportunities.",
     date: "",
     icon: "work",
   },
   {
     id: 4,
-    title: "Present",
-    location: "",
+    title: "2004",
+
     description:
-      "The institute is situated on the south bank of holy river Ganges behind Gandhi Ghat, one of the most important and reverential place of Patna. The Gandhi Ghat is associated with the immersion of ashes of father of the Nation Mahatma Gandhi in the river Ganges. The campus has a picturesque river view with historic building presenting a spectacle of architectural delight and natural beauty.",
-    // buttonText: "View More",
+      "In 2004, the institution attained the prestigious status of the National Institute of Technology, Patna. This designation recognized its excellence in technical education and research.",
+    date: "",
+    icon: "school",
+  },
+  {
+    id: 5,
+    title: "Present",
+
+    description:
+      "The institute's present campus is situated on the south bank of the holy river Ganges, behind Gandhi Ghat. This location holds historical significance, associated with the immersion of Mahatma Gandhi's ashes. The campus features picturesque river views, historic buildings, and natural beauty.",
+    date: "",
+    icon: "work",
+  },
+  {
+    id: 6,
+    title: "Future (2024-25)",
+    description:
+      "The future of NIT Patna includes the inauguration of a state-of-the-art campus in Sikandarpur, near Bihta, covering an expansive area of 125 acres. This ambitious project is poised to significantly enhance the institute's infrastructure and facilities. The commencement of the shifting process is anticipated to coincide with the academic session of 2024-25.",
     date: "",
     icon: "school",
   },

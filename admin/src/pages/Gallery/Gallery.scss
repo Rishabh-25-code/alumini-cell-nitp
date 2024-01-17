@@ -1,10 +1,6 @@
-.gallery_container {
-  padding-top: 4rem;
-}
-
 .photo-gallery-cont {
   width: 90%;
-  margin: 6rem auto;
+  margin: 4rem auto;
 }
 
 .photo-gallery {
@@ -22,7 +18,7 @@
 
 .photo-item img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 1rem;
   height: 100%;
   object-fit: cover;
 }
@@ -39,17 +35,12 @@
   cursor: pointer;
 }
 
-
-
 .gallery_popup {
   position: fixed;
   height: 100vh;
   top: 0;
   z-index: 1;
 }
-
-
-
 
 .slideshow-container {
   height: 100vh;
@@ -77,6 +68,7 @@
       align-items: center;
       justify-content: center;
       margin-top: -3rem;
+      // transition: ease-in-out 0.3s;
     }
 
     .controls {
@@ -106,12 +98,13 @@
       }
 
       button:hover {
-        background-color: rgb(206, 205, 205);
+        background-color: rgb(54, 54, 54);
       }
     }
 
     img {
-      height: 70vh;
+      height: 75vh;
+      // transition: ease-in-out 0.3s;
 
       @media screen and (max-width:800px) {
         height: unset;
@@ -123,26 +116,30 @@
 
 
 .image-container {
-  columns: 3 10rem;
+  columns: 4 10rem;
   gap: 1.5rem;
 
   @media screen and (max-width:1000px) {
-    columns: 2 10rem;
+    columns: 3 10rem;
   }
 
   @media screen and (max-width:750px) {
+    columns: 2 10rem;
+  }
+
+  @media screen and (max-width:600px) {
     columns: 1 10rem;
   }
 
   img {
-    margin-bottom: 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     width: 100%;
     cursor: pointer;
     filter: brightness(0.9);
-    transition: ease-in-out 0.1s;
+    // transition: ease-in-out 0.3s;
   }
-  img:hover{
+
+  img:hover {
     filter: brightness(1);
   }
 }

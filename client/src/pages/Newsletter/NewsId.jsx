@@ -1,9 +1,4 @@
-
-
-
-
 import React from "react";
-import "./Newsletter.scss";
 // import { Link } from "react-router-dom";
 import Heading from "../../components/Headings/Heading";
 // import { db } from "../../firebase";

@@ -20,5 +20,20 @@ body {
   background-color: #000000;
 }
 
-/* <html class="h-full bg-gray-50">
-<body class="h-full"> */
+textarea,
+select,
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="search"],
+input[type="url"] {
+  @apply border-2 border-gray-700;
+}
+
+textarea:focus,
+input:focus,
+select:focus {
+  @apply outline outline-2 outline-blue-500;
+}

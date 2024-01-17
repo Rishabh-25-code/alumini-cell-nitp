@@ -1,12 +1,14 @@
 import Loader from "../../../components/Loader/index";
-import { getUserTestimonials } from "../../../services/documents";
+import { getUserTestimonials, deleteDocument } from "../../../services/documents";
 import { useQuery } from '@tanstack/react-query';
 import MarkDown from "../../../components/MarkDown";
-import { getImageURL } from "../../../services/files";
+import { getImageURL, deleteFile } from "../../../services/files";
+import { toast } from "react-toastify";
+import { FaTrash } from 'react-icons/fa';
 
 const YourBlogs = ({ user }) => {
 
-    const { data: blogs, isPending, isError } = useQuery({
+    const { data: blogs, isPending, isError, refetch } = useQuery({
         queryKey: ['blogs', user.$id],
         queryFn: () => getUserTestimonials('blogs', user.$id),
         onSuccess: (data) => {
@@ -26,6 +28,22 @@ const YourBlogs = ({ user }) => {
         )
     }
 
+    const deleteBlog = async (id) => {
+        try {
+            const blog = blogs.find((blog) => blog.$id === id);
+            if (blog.imgUrl) {
+                await Promise.all([deleteFile(blog.imgUrl), deleteDocument('blogs', id)])
+            } else {
+                await deleteDocument('blogs', id);
+            }
+
+            toast.success('Blog deleted successfully');
+            await refetch();
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
 
     return (
         <div className="py-5">
@@ -33,7 +51,16 @@ const YourBlogs = ({ user }) => {
                 {
                     blogs && blogs.length === 0 ? <div className="text-center text-sky-500 font-medium py-12">No blogs found!</div> :
                         blogs.map((blog, index) => (
-                            <div key={index} className="border border-gray-800 w-full rounded-2xl p-5">
+                            <div key={index} className="border relative border-gray-800 w-full rounded-2xl p-5">
+                                <button onClick={() => {
+                                    const ans = confirm('Are you sure you want to delete this blog?');
+                                    if (ans) {
+                                        deleteBlog(blog.$id);
+                                    }
+                                }
+                                } className="absolute right-6 top-6">
+                                    <FaTrash className="text-red-500 md:text-2xl text-xl cursor-pointer" />
+                                </button>
                                 <div className="flex flex-col w-full justify-center items-center">
                                     <h1 className='lg:text-4xl md:text-3xl lg:max-w-2xl max-w-xl text-2xl px-6 text-sky-500 text-center font-bold py-5'>{blog.title}</h1>
                                     {blog.imgUrl && <img className="lg:h-[32rem] md:h-[28rem] my-5" src={getImageURL(blog.imgUrl, 720)} alt={blog.title} />}

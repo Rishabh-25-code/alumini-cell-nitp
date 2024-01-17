@@ -58,7 +58,7 @@ export const deleteDocument = async (COLLECTION_ID, ID) => {
         const res = await databases.deleteDocument(DATABASE_ID, COLLECTION_ID, ID);
         return res;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 
@@ -67,7 +67,7 @@ export const getDocumentsCount = async (COLLECTION_ID) => {
         const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID);
         return res.sum;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 
@@ -80,7 +80,7 @@ export const getUserTestimonials = async (COLLECTION_ID, USER_ID) => {
         ]);
         return res.documents;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 
@@ -93,7 +93,7 @@ export const getUserPostedJobInternships = async (COLLECTION_ID, USER_ID) => {
         ]);
         return res.documents;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 
@@ -104,7 +104,7 @@ export const getAlumniProfile = async (COLLECTION_ID, email) => {
         ]);
         return res.documents;
     } catch (error) {
-        throw new Error(err.message);
+        throw new Error(error.message);
     }
 }
 
@@ -114,6 +114,44 @@ export const getPaginatedDocuments = async (COLLECTION_ID, limit = 20, offset = 
             Query.limit(limit),
             Query.offset(offset),
         ]);
+        return res.documents;
+    } catch (err) {
+        throw new Error(err.message);
+    }
+}
+
+export const getPaginatedPublishedDocs = async (COLLECTION_ID, limit = 24, offset = 0, status = "published", search = "", type = "") => {
+    const queries = [
+        Query.limit(limit),
+        Query.offset(offset),
+        Query.equal('status', [status]),
+        Query.orderDesc('$createdAt'),
+    ]
+
+    if (search && type) queries.push(Query.search(type, [search]));
+    try {
+        const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, queries);
+        return res.documents;
+    } catch (err) {
+        console.log(err);
+        throw new Error(err.message);
+    }
+}
+
+
+export const getAlumniData = async (limit = 24, offset = 0, role, search, type, branch) => {
+    const queries = [
+        Query.limit(limit),
+        Query.offset(offset),
+        Query.equal('role', [role])
+    ];
+
+    if (branch) queries.push(Query.equal('branch', [branch]));
+
+    if (search && type) queries.push(Query.search(type, [search]));
+
+    try {
+        const res = await databases.listDocuments(DATABASE_ID, "alumni", queries);
         return res.documents;
     } catch (err) {
         throw new Error(err.message);

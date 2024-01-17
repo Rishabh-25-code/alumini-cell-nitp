@@ -4,10 +4,10 @@ import { getImageURL } from '../../services/files';
 
 const BlogCard = ({ data, type }) => {
     return (
-        <Link to={`/${type === "experience" ? "experience" : "blog"}/${data.$id}`}>
-            <div className='w-[23rem] p-4 border-2 hover:border-gray-800 hover:scale-[102%] transition-all delay-75 ease-in border-gray-900 rounded-2xl mt-5'>
+        <Link data-aos="fade-up" to={`/${type === "experience" ? "experience" : "blog"}/${data.$id}`}>
+            <div  className='w-[23rem] p-4 border-2 hover:border-gray-800  border-gray-900 rounded-2xl mt-5'>
                 <div className='flex items-center h-44 overflow-hidden w-full rounded-lg border border-gray-900'>
-                    <img className='w-full' src={getImageURL(data.imgUrl)} alt={data.name} />
+                    <img loading='lazy' className='w-full' src={getImageURL(data.imgUrl)} alt={data.name} />
                 </div>
                 <p className='text-gray-400 pt-2 pl-2'>{data.clubName}</p>
                 <h3 className='text-xl font-semibold pl-2'>{data.title}</h3>

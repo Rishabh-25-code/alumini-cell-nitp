@@ -1,145 +1,108 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./utils/Layout";
+import { Layout1, Layout3 } from "./utils/Layout";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import 'react-toastify/dist/ReactToastify.css';
 import {
-  Team,
   HomePage,
-  Newsletter,
+  Blogs,
   Gallery,
   Events,
   NotableAlumni,
-  News,
-  Registration,
-  Signup,
-  Login,
+  Error,
+  Profile,
+  SignIn,
+  SignUp,
+  Verify,
+  ForgotPassword,
+  ResetPassword,
+  VerifyEmail,
+  Blog,
+  Experience,
+  Experiences,
+  Jobs, 
+  Job,
+  Internship,
+  Internships,
+  NotAdmin
 } from "./pages/index";
-import CreateNews from "./pages/Newsletter/CreateNews";
-import EditNews from "./pages/Newsletter/EditNews";
+import ScrollToTop from "./hooks/useScrollToTop";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import { AuthProvider } from "./context/AuthContext";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
+import PrivateComponent from "./components/PrivateComponent/PrivateComponent"
+
+const queryClient = new QueryClient()
 
 function App() {
-  // const [userName, setUserName] = useState("");
-
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       setUserName(user.displayName);
-  //     } else setUserName("");
-  //   });
-  // }, []);
+
+  const privateRoutes = [
+    { path: "/profile", element: <Profile /> },
+    { path: "/gallery", element: <Gallery /> },
+    { path: "/events", element: <Events /> },
+    { path: "/jobs", element: <Jobs /> },
+    { path: "/job/:jobId", element: <Job /> },
+    { path: "/internship/:internshipId", element: <Internship /> },
+    { path: "/internships", element: <Internships /> },
+    { path: "/notablealumni", element: <NotableAlumni /> },
+    { path: "/blogs", element: <Blogs /> },
+    { path: "/blog/:blogId", element: <Blog /> },
+    { path: "/experiences", element: <Experiences /> },
+    { path: "/experience/:experienceId", element: <Experience /> },
+    { path: "/verify-email", element: <VerifyEmail /> },
+    { path: "*", element: <Error /> }
+  ]
 
   return (
-    <>
-      <ToastContainer />
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Layout>
-                <HomePage />
-              </Layout>
-            }
-          />
-          <Route
-            path="/gallery"
-            element={
-              <Layout>
-                <Gallery />
-              </Layout>
-            }
-          />
-          <Route
-            path="/team"
-            element={
-              <Layout>
-                <Team />
-              </Layout>
-            }
-          />
-          <Route
-            path="/events"
-            element={
-              <Layout>
-                <Events />
-              </Layout>
-            }
-          />
-          <Route
-            path="/createNews"
-            element={
-              <Layout>
-                <CreateNews />
-              </Layout>
-            }
-          />
-          <Route
-            path="/editNews/:newsId"
-            element={
-              <Layout>
-                <EditNews />
-              </Layout>
-            }
-          />
-          <Route
-            path="/notablealumni"
-            element={
-              <Layout>
-                <NotableAlumni />
-              </Layout>
-            }
-          />
-          <Route
-            path="/news"
-            element={
-              <Layout>
-                <Newsletter />
-              </Layout>
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <Layout>
-                <Registration />
-              </Layout>
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <Layout>
-                <Signup />
-              </Layout>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <Layout>
-                <Login />
-              </Layout>
-            }
-          />
-          <Route
-            path="/news/:newsId"
-            element={
-              <Layout>
-                <News />
-              </Layout>
-            }
-          />
-        </Routes>
-      </Router>
-    </>
+    <div className="relative">
+      <QueryClientProvider client={queryClient}>
+        <ToastContainer />
+        <Router>
+          <ScrollToTop />
+          <ErrorBoundary>
+            <AuthProvider>
+              <Routes>
+
+                <Route path='/' element={<Layout1></Layout1>}>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/not-admin" element={<NotAdmin />} />
+                </Route>
+
+                <Route path='/' element={<Layout3></Layout3>}>
+                  <Route path="/signin" element={<SignIn />} />
+                  <Route path="/signup" element={<SignUp />} />
+                  <Route path="/verify" element={<Verify />} />
+                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Route path="/reset-password" element={<ResetPassword />} />
+                </Route>
+
+                <Route path='/' element={<Layout1></Layout1>}>
+                  {
+                    privateRoutes.map((route, id) => (
+                      <Route key={id} path={route.path} element={<PrivateComponent />} >
+                        <Route path={route.path} element={
+                          route.element ? route.element : <Error />
+                        } />
+                      </Route>
+                    ))
+                  }
+                </Route>
+              </Routes>
+            </AuthProvider>
+          </ErrorBoundary>
+        </Router>
+      </QueryClientProvider>
+    </div>
   );
 }
 

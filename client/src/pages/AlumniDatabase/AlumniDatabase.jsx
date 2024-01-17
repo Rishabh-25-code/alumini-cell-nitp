@@ -1,180 +1,160 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import MalePlaceholder from "../../assets/man-placeholder.jpg";
-import FemalePlaceHolder from "../../assets/woman-placeholder.jfif";
-import useSerchQuery from "../../hooks/useSearchQuery";
 import Meta from "../../components/Meta/Meta";
+import { branches } from "../../utils/branches";
+import { getAlumniData } from "../../services/documents";
+import { useSearchParams } from "react-router-dom";
+import { FiSearch } from "react-icons/fi";
 
-const courseCode = {
-    phd: "Ph.D.",
-    ug: "B.Tech",
-    pg: "M.Tech",
-    "faculty-staff": "Faculty/Staff"
-};
-
-const departments = [
-    {
-        name: "All",
-        code: null
-    },
-    {
-        name: "EE",
-        code: "Electrical Engineering"
-    },
-    {
-        name: "ME",
-        code: "Mechanical Engineering"
-    },
-    {
-        name: "CE",
-        code: "Civil Enginnering"
-    },
-    {
-        name: "CSE",
-        code: "Computer Science & Engineering"
-    },
-    {
-        name: "ECE",
-        code: "Electronics and Communications Engineering"
-    },
-    {
-        name: "Arch.",
-        code: "Architecture"
-    }
-]
-
-const getAlumnidata = async (course, department, page) => {
-    try {
-        const url = new URL("https://alumini-cell-nitp-two.vercel.app/members");
-        if (department === "Architecture" && course === "B.Tech") course = "B.Arch";
-        if (department === "Architecture" && course === "M.Tech") course = "MURP";
-        if (department === "Architecture" && course === "Ph.D.") course = "Ph.D.";
-        if (course) url.searchParams.append("degree", course);
-        if (department) url.searchParams.append("department", department);
-        url.searchParams.append("page", page);
-        const res = await axios.get(url.href);
-        const data = await res.data;
-        return data;
-    } catch (error) {
-        throw new Error(error.message);
-    }
-};
 
 const AlumniDatabase = () => {
-    const query = useSerchQuery();
-    const course = courseCode[query.get("type")] || null;
-    const [department, setDepartment] = useState(null);
-    const [page, setPage] = useState(1);
+    const [searchParams, setSearchParams] = useSearchParams({
+        role: null,
+        page: 1,
+        type: "fname",
+        search: "",
+    });
+    const role = searchParams.get("role") || null;
+    const page = parseInt(searchParams.get('page')) || 1;
+    const search = searchParams.get('search') || "";
+    const type = searchParams.get('type') || "jobTitle";
+    const [itemsPerPage] = useState(15);
+    const [branch, setBranch] = useState("");
 
-    const { isPending, error, data, refetch } = useQuery({
-        queryKey: ["members", course || "", department || "", page],
-        queryFn: () => getAlumnidata(course, department, page),
-        refetchOnWindowFocus: false,
+    const [searchText, setSearchText] = useState(search);
+    const [searchType, setSearchType] = useState(type);
+
+    const { isLoading, isError, data: alumni, refetch } = useQuery({
+        queryKey: ["members", role, page, search, branch],
+        queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch),
         staleTime: Infinity
     });
 
+    const changeParams = (key, value) => {
+        setSearchParams(prev => {
+            prev.set(key, value);
+            if (key === "search" || key === "type") prev.set("page", 1);
+            return prev;
+        }, { replace: true });
+        window.scrollTo(0, 0);
+    }
+
     useEffect(() => {
-        // Refetch data when the location changes (URL with query parameters changes)
-        refetch();
-    }, [location.search, refetch]);
+        const debounceTimer = setTimeout(() => {
+            changeParams('search', searchText);
+        }, 500);
 
-
-
-    if (error)
-        return (
-            <div className="pt-24 px-8">
-                An error has occurred: {error.message}
-            </div>
-        );
+        // Cleanup the timer on component unmount
+        return () => clearTimeout(debounceTimer);
+    }, [searchText]);
 
     return (
         <div className="min-h-screen">
             <Meta name="Alumni Database" />
             <div className="flex relative bg-[url(https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/static-images%2F007d2522-8220-4d3d-b506-8fef870eb1df.jpg?alt=media&token=46a7d8e5-aa90-4461-bd2e-15df0204e7d5)] bg-no-repeat  w-full flex-col gap-3 items-center bg-cover justify-center py-20 text-center text-white h-[55vh]">
-                <div className="absolute w-full inset-0 text-left pt-32 lg:pl-24 md:pl-16 pl-8 bg-gradient-to-t  from-[rgba(0,0,0,1)] via-[rgba(0,0,0,0.5)] to-transparent">
-                    <p className="lg:text-5xl md:text-4xl text-3xl font-bold pb-1">
-                        Alumni Database
-                    </p>
-                    <h5 className="lg:text-2xl md:text-xl text-lg font-medium pb-2">
-                        <span className="text-sky-500">Searching</span> for NITP Alumnus?
-                    </h5>
-                    <h5 className="lg:text-2xl md:text-xl text-lg font-bold pb-2">
-                        Type: <span className="text-rose-500">{course}</span>
-                    </h5>
+                <div className="absolute w-full inset-0 text-left pt-28  bg-gradient-to-t  from-[rgba(0,0,0,1)] via-[rgba(0,0,0,0.5)] to-transparent">
+                    <div className="lg:pl-24 md:pl-16 pl-8">
+                        <p className="lg:text-5xl md:text-4xl text-3xl font-bold pb-1">
+                            Alumni Database
+                        </p>
+                        <h5 className="lg:text-2xl md:text-xl text-lg font-medium pb-2">
+                            <span className="text-sky-500">Searching</span> for NITP Alumnus?
+                        </h5>
+                        <h5 className="lg:text-2xl md:text-xl text-lg font-bold pb-2">
+                            Type: <span className="text-rose-500">{role}</span>
+                        </h5>
+                    </div>
 
-                    <div className="flex flex-wrap items-center gap-3 justify-center pt-5">
-                        {
-                            departments.map((dept, idx) => (
-                                <button key={idx} onClick={() => {
-                                    setDepartment(dept.code);
-                                    setPage(1);
-                                }} className={`border-[#e9e1e1] border font-semibold text-[#e9e1e1] px-6 py-2 text-lg rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${department === dept.code && 'bg-[#e9e1e1] text-gray-900'}`}>
-                                    {dept.name}
-                                </button>
-                            ))
-                        }
+                    <div className='lg:w-[80%] w-full px-6 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
+                        <div className='flex-1 relative w-full'>
+                            <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by title, company, skills.." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
+                            <FiSearch className="absolute md:top-4 top-3 text-xl left-3.5 text-gray-400" />
+                        </div>
+
+                        <select value={searchType} onChange={(e) => {
+                            setSearchType(e.target.value);
+                            changeParams('type', e.target.value);
+                        }} className='bg-gray-950 rounded-xl lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal text-gray-300'>
+                            <option value="">Search By</option>
+                            <option value="fname">Name</option>
+                            <option value="batchEnd">Batch</option>
+                            <option value="company">Company</option>
+                            <option value="designation">Designation</option>
+                        </select>
+                    </div>
+
+                    <div className="lg:max-w-3xl md:max-w-2xl w-full px-6 m-auto py-10">
+                        <div className="flex flex-wrap items-center gap-3 justify-center pt-6">
+                            <button onClick={() => {
+                                setBranch(null);
+                                changeParams("page", 1);
+                            }} className={`border-[#e9e1e1] border font-semibold text-[#e9e1e1] px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${branch === null && 'bg-[#e9e1e1] text-gray-900'}`}>
+                                All
+                            </button>
+                            {
+                                branches.map((dept, idx) => (
+                                    <button key={idx} onClick={() => {
+                                        setBranch(dept.value);
+                                        changeParams("page", 1);
+                                    }} className={`border-[#e9e1e1] border font-semibold text-[#e9e1e1] px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${branch === dept.value && 'bg-[#e9e1e1] text-gray-900'}`}>
+                                        {dept.value}
+                                    </button>
+                                ))
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {isPending ? <div className="pt-24 px-8 text-center text-base font-medium text-white">Loading...</div> :
-
-                error ? <div className="pt-24 px-8 text-center text-base font-medium text-white">
-                    An error has occurred: {error.message}
+            {isLoading ? <div className="pt-32 px-8 text-center text-base font-medium text-white">Loading...</div> :
+                isError ? <div className="pt-23 px-8 text-center text-base font-medium text-white">
+                    An error has occurred! Please try again later.
                 </div> :
 
-                    data.data.length === 0 ?
-                        <div className="pt-24 px-8 text-center text-base font-medium text-white">
+                    alumni.length === 0 ?
+                        <div className="pt-32 px-8 text-center text-base font-medium text-white">
                             No items.
                         </div>
                         : <>
-                            <div className="mt-8 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-                                {data.data.map((member, idx) => {
+                            <div className="mt-24 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+                                {alumni.map((person, idx) => {
                                     return (
                                         <div
+                                            data-aos="fade-up"
                                             key={idx}
-                                            className="p-4 rounded-xl border border-gray-800 bg-[#171717] border-l-sky-500 border-l-4 shadow-lg w-full pt-5"
+                                            className="rounded-xl border hover:bg-[#101010] hover:border-gray-700 hover:border-l-sky-400  border-gray-900 bg-[#000000] border-l-sky-500 border-l-4 shadow-lg w-full"
                                         >
-                                            <div className="flex flex-row gap-5">
-                                                <div className="w-20 h-20">
+                                            <div className="flex flex-row gap-5 hover:scale-95 transition p-4 py-6">
+                                                <div className="lg:w-20 md:w-16 w-14 lg:h-20 md:h-16 h-14">
                                                     <img
-                                                        className="rounded-full w-20 h-20"
-                                                        src={
-                                                            member.gender === "Female"
-                                                                ? FemalePlaceHolder
-                                                                : MalePlaceholder
-                                                        }
-                                                        alt="Member"
+                                                        id={person.$id}
+                                                        className="rounded-full lg:w-20 md:w-16 w-14 lg:h-20 md:h-16 h-14"
+                                                        src={MalePlaceholder}
+                                                        alt={person.name}
                                                     />
                                                 </div>
-                                                <div className="text-sm font-medium">
-                                                    <p className="text-xl font-bold text-sky-500">{member.name}</p>
+                                                <div className="text-sm font-medium flex-1">
+                                                    <p className="text-xl font-bold text-sky-500">{person.title}. {person.fname} {person.lname}</p>
                                                     <p className="font-medium text-base text-gray-300">
-                                                        {member.department} ({member.degree})
+                                                        {person.branch} ({person.degree})
                                                     </p>
-                                                    <p>
-                                                        <span className="text-gray-400">Session:</span>{" "}
-                                                        {member.academic_session ? member.academic_session : "N.A."}
-                                                    </p>
-                                                    <p>
-                                                        <span className="text-gray-400">Roll No:</span>{" "}
-                                                        {member.roll_no}
-                                                    </p>
-                                                    <p>
-                                                        <span className="text-gray-400">Current Employment:</span>{" "}
-                                                        {member.currently_employed}
-                                                    </p>
-                                                    {member.designation && (
+                                                    {person.batchEnd && (
                                                         <p>
-                                                            <span className="text-gray-400">Designation:</span>{" "}
-                                                            {member.designation}
+                                                            <span className="text-gray-400">Batch:</span>{" "}
+                                                            {person.batchStart ? person.batchStart + "-" + person.batchEnd : person.batchEnd}
                                                         </p>
                                                     )}
-                                                    {member.current_company && (
+                                                    {person.company && (
                                                         <p>
                                                             <span className="text-gray-400">Company:</span>{" "}
-                                                            {member.current_company}
+                                                            {person.company}
+                                                        </p>
+                                                    )}
+                                                    {person.designation && (
+                                                        <p>
+                                                            <span className="text-gray-400">Designation:</span>{" "}
+                                                            {person.designation}
                                                         </p>
                                                     )}
                                                 </div>
@@ -184,20 +164,21 @@ const AlumniDatabase = () => {
                                 })}
                             </div>
 
-                            <div className="text-center px-3 pt-16">
-                                Showing <span className="text-sky-500">{data.dataPerPage}</span> results of page <span className="text-sky-500">{page}</span>.
-                            </div>
+                            {alumni && <>
+                                <div data-aos="fade-up" className="text-center px-3 pt-16">
+                                    Showing <span className="text-sky-500">{alumni.length}</span> results of page <span className="text-sky-500">{page}</span>.
+                                </div>
 
-                            <div className="flex items-center justify-center pt-5 gap-10 px-6">
-                                <button onClick={() => {
-                                    window.scrollTo(0, 0);
-                                    setPage(prev => --prev);
-                                }} disabled={!data.hasPreviousPage} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Prev</button>
-                                <button onClick={() => {
-                                    window.scrollTo(0, 0);
-                                    setPage(prev => ++prev);
-                                }} disabled={!data.hasNextPage} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Next</button>
-                            </div>
+                                <div data-aos="fade-up" className="flex items-center justify-center pt-5 gap-10 px-6">
+                                    <button disabled={page <= 1} onClick={() => {
+                                        changeParams('page', page - 1);
+                                    }} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Prev</button>
+                                    <button disabled={itemsPerPage > alumni.length} onClick={() => {
+                                        changeParams('page', page + 1);
+                                    }} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Next</button>
+                                </div>
+                            </>
+                            }
                         </>
             }
         </div>

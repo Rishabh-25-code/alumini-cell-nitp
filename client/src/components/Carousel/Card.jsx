@@ -1,5 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import { Carousel } from 'react-carousel-minimal';
 
 function Card(props) {

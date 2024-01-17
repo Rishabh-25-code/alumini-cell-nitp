@@ -1,16 +1,26 @@
-import Team from "./Team/Team";
 import HomePage from "./HomePage/HomePage";
-import Newsletter from "./Newsletter/Newsletter";
 import Gallery from "./Gallery/Gallery";
 import Events from "./Events/Events";
 import NotableAlumni from "./NotableAlumni/NotableAlumni";
-import News from "./Newsletter/News";
-import Registration from "./Registration/registration"
-// import SignUp from "./LogIn-SignUp/SignUp";
-import Signup from "./LogIn-SignUp/Signup/Signup"
-import Login from "./LogIn-SignUp/Login/Login";
-import CreateNews from "./Newsletter/CreateNews";
-// import addNews from "./Newsletter/addNews";
+import Error from "./Error/Error";
+
+import SignIn from "./Auth/SignIn";
+import SignUp from "./Auth/SignUp";
+import Verify from "./Auth/Verify";
+import ForgotPassword from "./Auth/ForgotPassword";
+import ResetPassword from "./Auth/ResetPassword";
+import VerifyEmail from "./Auth/VerifyEmail";
+import Profile from "./Auth/Profile";
+
+import Blogs from "./Blogs/Blogs";
+import Blog from "./Blogs/Blog";
+import Experience from "./Experiences/Experience";
+import Experiences from "./Experiences/Experiences";
+import Jobs from "./Jobs/Jobs";
+import Job from "./Jobs/Job";
+import Internship from "./Intern/Internship";
+import Internships from "./Intern/Internships";
+import NotAdmin from "./NotAdmin/NotAdmin";
 
 
-export { Team, HomePage, Newsletter, Gallery, Events, NotableAlumni, News, Registration, Signup, Login, CreateNews };
+export { HomePage, Gallery, Events, NotableAlumni, Error, SignIn, SignUp, ForgotPassword, ResetPassword, VerifyEmail, Verify, Blogs, Blog, Experience, Experiences, Jobs, Job, Internship, Internships, Profile, NotAdmin };

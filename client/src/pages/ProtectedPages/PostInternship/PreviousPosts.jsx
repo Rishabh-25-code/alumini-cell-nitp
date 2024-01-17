@@ -1,36 +1,62 @@
 import { useQuery } from '@tanstack/react-query';
-import { getUserPostedJobInternships } from '../../../services/documents';
+import { getUserPostedJobInternships, deleteDocument } from '../../../services/documents';
 import { Link } from 'react-router-dom';
 import Loader from '../../../components/Loader';
-import { getDownloadURL, getImageURL } from '../../../services/files';
+import { getDownloadURL, getImageURL, deleteFile } from '../../../services/files';
 import useAuth from '../../../hooks/useAuth';
+import { toast } from "react-toastify";
+import { FaTrash } from 'react-icons/fa';
 
 
 const PreviousPosts = () => {
     const { user } = useAuth();
-    const { data, isLoading, isError } = useQuery({
+    const { data, isLoading, isError, refetch } = useQuery({
         queryKey: ['previousInternPosts'],
         queryFn: () => getUserPostedJobInternships('intern-opportunity', user.$id),
     })
+
+    const deleteInternship = async (id) => {
+        try {
+            const internship = data.find((internship) => internship.$id === id);
+            if (internship.internCompanyLogo) {
+                await Promise.all([deleteFile(internship.internCompanyLogo), deleteDocument('intern-opportunity', id)])
+            } else {
+                await deleteDocument('intern-opportunity', id);
+            }
+
+            await refetch();
+            toast.success('Internship deleted successfully');
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
 
     return (
         <div className='py-5 w-full'>
             {isLoading && <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div>}
             {isError && <div className='py-10'>Someting went wrong!</div>}
             {data && data.map((post) => (
-                <div key={post.$id} className='border border-gray-800 rounded-2xl p-5 mb-5'>
+                <div key={post.$id} className='relative border border-gray-800 rounded-2xl p-5 mb-5'>
+                    <button onClick={() => {
+                        const ans = confirm('Are you sure you want to delete this internship?');
+                        if (ans) {
+                            deleteInternship(post.$id);
+                        }
+                    }} className="absolute right-6 bottom-6">
+                        <FaTrash className="text-red-500 md:text-2xl text-xl cursor-pointer" />
+                    </button>
                     <div className='flex justify-between'>
-                        <div className='flex gap-5 md:flex-row flex-col items-center'>
-                            <div className='flex gap-2 items-center'>
-                                <div className='md:w-16 w-12 md:h-16 h-12'>
+                        <div className='flex gap-5 flex-col items-center'>
+                            <div className='flex w-full gap-2 items-center'>
+                                {post.internCompanyLogo && <div className='md:w-16 w-12 md:h-16 h-12 flex items-center justify-center'>
                                     <img src={post.internCompanyLogo ? getImageURL(post.internCompanyLogo, 200) : "logo-placeholder.jpg"} alt='Company Logo' />
-                                </div>
+                                </div>}
                                 <div className='flex flex-col'>
-                                    <p className='font-medium text-lg'>{post.internCompany}</p>
+                                    <p className='font-semibold text-rose-500 lg:text-xl text-lg'>{post.internCompany}</p>
                                     <p className='text-sm text-gray-400'>{post.internLocation}</p>
                                 </div>
                             </div>
-                            <div className='flex flex-col'>
+                            <div className='flex flex-col w-full'>
                                 <p className=' font-medium'>{post.internTitle}</p>
                                 <p className='text-sm text-gray-400'>{post.internType}</p>
                             </div>
@@ -60,8 +86,8 @@ const PreviousPosts = () => {
                     {post.internLinks.length > 0 && <div>
                         <p className=' text-gray-400'>Intern Link(s):</p>
                         {
-                            post.internLinks.map((link) => (
-                                <a href={link} target='_blank' rel='noreferrer'><button className='text-sm text-sky-500'>{link}</button></a>
+                            post.internLinks.map((link, idx) => (
+                                <a key={idx} href={link} target='_blank' rel='noreferrer'><button className='text-sm text-left text-sky-500'>{link}</button></a>
                             ))
                         }
                     </div>}
@@ -74,14 +100,14 @@ const PreviousPosts = () => {
                         )
                     }
                     <div className='pt-2'>
-                        <p className='text-sm text-gray-400'>Posted By: </p>
+                        <p className='text-sm text-gray-400 pb-1'>Posted By: </p>
                         <div className='flex gap-2 items-center'>
                             <div className='w-10 h-10 rounded-full overflow-hidden flex items-center justify-center'>
                                 <img src={`https://cloud.appwrite.io/v1/avatars/initials?name=${post.name.split(" ").join("+")}&width=80&height=80`} alt='User Profile' />
                             </div>
                             <div className='flex flex-col'>
                                 <p className='font-medium'>{post.name} ({post.yourBatchyourBatch} {post.yourDepartment})</p>
-                                <p className='text-sm text-gray-400'>{post.yourCurrentRole} at {post.yourCurrentCompany}</p>
+                                <p className='text-sm text-gray-400 -mt-1'>{post.yourCurrentRole} at {post.yourCurrentCompany}</p>
                             </div>
                         </div>
                     </div>
