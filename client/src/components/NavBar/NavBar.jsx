@@ -92,7 +92,7 @@ const NavBar = () => {
       ]
     },
     {
-      name: "NIT Patna Bihta Campus",
+      name: "NITP Bihta Campus",
       link: "/bihtacampus",
     },
     {
@@ -106,7 +106,7 @@ const NavBar = () => {
       <nav
         className={`fixed w-[100%] items-center justify-center border-b bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md`}
       >
-        <div className="flex items-center justify-between lg:w-[70rem] md:w-[96%] px-4 md:px-3 py-3 m-auto text-lg">
+        <div className="flex items-center justify-between w-full lg:px-10 md:w-[96%] px-4 md:px-3 py-3 m-auto text-lg">
           <div className="flex items-center">
             <Link to="/">
               <img
@@ -181,9 +181,9 @@ const NavBar = () => {
           <div className="flex items-center gap-3">
             {
               user ?
-                <button onClick={() => handleLogout()} className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-xl">
-                  Log Out
-                </button> :
+                <Link to="/profile">
+                  <img title="profile" src={`https://cloud.appwrite.io/v1/avatars/initials?name=${user.name.split(" ").join("+")}&width=80&height=80`} alt="profile" className="h-11 w-11 hover:scale-105 transition-all rounded-full" />
+                </Link> :
                 <Link to="/signin">
                   <button className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-xl">
                     SignIn
