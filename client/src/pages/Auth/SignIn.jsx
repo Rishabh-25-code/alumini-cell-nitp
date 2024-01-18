@@ -44,7 +44,7 @@ const Login = () => {
     return (
         <div className="flex items-center justify-center h-screen w-full">
             <Meta title="Login | Alumni NITP" />
-            <div className="lg:w-[28rem] md:w-[28rem] w-[90%] border-gray-700 border p-8 rounded-3xl bg-[#0c0c0c]">
+            <div className="lg:w-[28rem] md:w-[28rem] sm:w-[90%] w-[95%] border-gray-700 border py-8 lg:px-8 md:px-7 px-4 rounded-3xl bg-[#050505]">
                 <div className="flex items-center justify-center">
                     <img src="logo.jfif"  height={200} width={200} alt="logo" className="lg:h-20 h-14 lg:w-20 w-14 rounded-full" />
                    

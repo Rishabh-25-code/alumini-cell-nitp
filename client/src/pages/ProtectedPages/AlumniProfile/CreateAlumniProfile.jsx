@@ -643,12 +643,12 @@ const CreateAlumniProfile = () => {
                             <p className='py-3'>
                                 <span className='text-gray-300 font-normal text-base'>{alumni[0].bio}</span>
                             </p>
-                            <p className='font-medium text-sky-500'>
+                            {alumni[0].gender && <p className='font-medium text-sky-500'>
                                 Gender : <span className='text-white'>{alumni[0].gender}</span>
-                            </p>
-                            <p className='font-medium text-sky-500'>
+                            </p>}
+                            {alumni[0].category && <p className='font-medium text-sky-500'>
                                 Category : <span className='text-white'>{alumni[0].category}</span>
-                            </p>
+                            </p>}
                             <p className='font-medium text-sky-500'>
                                 Role : <span className='text-white'>{alumni[0].role.toUpperCase()}</span>
                             </p>

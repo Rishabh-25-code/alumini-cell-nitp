@@ -6,38 +6,8 @@ import { toast } from "react-toastify";
 import { createDocument, getUserTestimonials } from "../../../services/documents";
 import { useQuery } from '@tanstack/react-query';
 import Meta from "../../../components/Meta/Meta";
+import { branches } from "../../../utils/branches";
 
-
-const branches = [
-  {
-    name: 'Electrical Engineering',
-    value: 'EE'
-  },
-  {
-    name: 'Computer Science & Engg.',
-    value: 'CSE'
-  },
-  {
-    name: 'Electronics & Communication Engg.',
-    value: 'ECE'
-  },
-  {
-    name: 'Mechanical Engineering',
-    value: 'ME'
-  },
-  {
-    name: 'Civil Engineering',
-    value: 'CE'
-  },
-  {
-    name: 'Architecture',
-    value: 'Arch.'
-  },
-  {
-    name: 'Mathematics',
-    value: 'IMSc.'
-  }
-]
 
 const GiveTestimonial = () => {
   const { user } = useAuth();

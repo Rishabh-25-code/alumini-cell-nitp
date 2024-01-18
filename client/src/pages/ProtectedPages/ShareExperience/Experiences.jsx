@@ -33,7 +33,7 @@ const Experiences = ({ user }) => {
             } else {
                 await deleteDocument('experiences', id);
             }
-            
+
             await refetch();
             toast.success('Experience deleted successfully');
         } catch (error) {
@@ -57,6 +57,50 @@ const Experiences = ({ user }) => {
                                 }} className="absolute right-6 top-6">
                                     <FaTrash className="text-red-500 md:text-2xl text-xl cursor-pointer" />
                                 </button>
+                                <div>
+                                    {
+                                        experience.status === 'reviewing' ? (
+                                            <div className="flex justify-center items-center">
+                                                <div className="bg-yellow-600 text-white text-sm font-bold py-1.5 px-3 rounded-full">Reviewing</div>
+                                            </div>
+                                        ) : experience.status === 'approved' ? (
+                                            <div className="flex justify-center items-center">
+                                                <div className="bg-green-500 text-white text-sm font-bold py-1.5 px-3 rounded-full">Approved</div>
+                                            </div>
+                                        ) : (
+                                            <div className="flex justify-center items-center">
+                                                <div className="bg-red-500 text-white text-sm font-bold py-1.5 px-3 rounded-full">Rejected</div>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+                                <div>
+                                    {
+                                        experience.status === 'reviewing' && (
+                                            <div className="flex justify-center items-center">
+                                                <p className="text-yellow-600 text-sm font-bold py-1.5 px-3 rounded-full">Your experience is under review. It will be published soon.</p>
+                                            </div>
+                                        )
+                                    }
+
+                                    {
+                                        experience.status === 'approved' && (
+                                            <div className="flex justify-center items-center">
+                                                <p className="text-green-500 text-sm font-bold py-1.5 px-3 rounded-full">Your experience is published.</p>
+                                            </div>
+                                        )
+                                    }
+
+                                    {
+                                        experience.status === 'rejected' && (
+                                            <div className="flex justify-center items-center">
+                                                <p className="text-red-500 text-sm font-bold py-1.5 px-3 rounded-full">
+                                                    {experience.statusDesc}
+                                                </p>
+                                            </div>
+                                        )
+                                    }
+                                </div>
                                 <div className="flex flex-col w-full justify-center items-center">
                                     <h1 className='lg:text-4xl md:text-3xl lg:max-w-2xl max-w-xl text-2xl px-6 text-sky-500 text-center font-bold py-5'>{experience.title}</h1>
                                     {experience.imgUrl && <img className="lg:h-[32rem] md:h-[28rem] my-5" src={getImageURL(experience.imgUrl, 720)} alt={experience.title} />}

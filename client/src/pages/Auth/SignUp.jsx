@@ -101,7 +101,7 @@ const Register = () => {
                     </Link>
                 </div>
                 :
-                !accAlreadyExist && <div className="lg:w-[28rem] md:w-[28rem] w-[90%] border-gray-700 border p-8 rounded-3xl bg-[#0c0c0c]">
+                !accAlreadyExist && <div className="lg:w-[28rem] md:w-[28rem] sm:w-[90%] w-[95%] border-gray-700 border py-8 lg:px-8 md:px-7 px-4 rounded-3xl bg-[#0c0c0c]">
                     <h1 className="text-3xl font-bold mb-3 px-3">Sign Up</h1>
                     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2 px-3">
                         <div className="flex flex-col gap-1">
@@ -247,10 +247,10 @@ const Register = () => {
                         </p>
 
                         <Link to="/" className="flex items-center justify-center -mt-3">
-                        <button className="text-rose-500">
-                           Skip for now
-                        </button>
-                    </Link>
+                            <button className="text-rose-500">
+                                Skip for now
+                            </button>
+                        </Link>
                     </form>
                 </div>}
         </div>
