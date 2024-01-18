@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getDocument } from '../../services/documents';
+import { FaShare } from "react-icons/fa";
 import { useParams } from 'react-router-dom'
 import { BsDot } from 'react-icons/bs'
 import Meta from '../../components/Meta/Meta';
@@ -52,6 +53,28 @@ const Blog = () => {
 
               {/* <p className='text-gray-400 text-base mt-4 mb-32'>Read the full blog <a className='text-blue-500' href={blog.link} target="_blank" rel="noopener noreferrer">here</a>.</p> */}
             </div>
+            <button
+                type="button"
+                className="text-lg font-medium text-sky-400 hover:scale-105 mt-5"
+                onClick={() => {
+                const shareItem = {
+                    title: blog.title,
+                    text: blog.name,
+                    url: `https://alumni.nitp.ac.in/blogs/${blogId}`,
+                }
+
+                if (navigator.share) {
+                    navigator.share(shareItem)
+                        .then(() => console.log('Successful share'))
+                        .catch((error) => console.log('Error sharing', error));
+                } else {
+                    console.log("Your browser does not support Web Share API");
+                }
+                }}
+            >
+                Share <FaShare className='inline-block ml-2' />
+                            
+            </button>                      
           </div>
       }
     </div >

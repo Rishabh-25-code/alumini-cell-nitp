@@ -1,4 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
+import { FaShare } from "react-icons/fa";
+
 import { getDocument } from '../../services/documents';
 import { useParams } from 'react-router-dom'
 import Meta from '../../components/Meta/Meta';
@@ -43,7 +45,28 @@ const Job = () => {
                                 <div className='flex flex-col'>
                                     <p className='text-sm text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(job.$createdAt))}</span></p>
                                     <p className='text-sm text-gray-400'>Expires: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(job.jobDeadline))}</span></p>
-                                </div>
+                                    <button
+                                        type="button"
+                                        className="text-lg font-medium text-sky-400 hover:scale-105 mt-5"
+                                        onClick={() => {
+                                        const shareItem = {
+                                            title: job.name,
+                                            url: `https://alumni.nitp.ac.in/job/${jobId}`,
+                                        }
+
+                                        if (navigator.share) {
+                                            navigator.share(shareItem)
+                                                .then(() => console.log('Successful share'))
+                                                .catch((error) => console.log('Error sharing', error));
+                                        } else {
+                                            console.log("Your browser does not support Web Share API");
+                                        }
+                                        }}
+                                        >
+                                        Share <FaShare className='inline-block ml-2' />
+                                                
+                                    </button>
+                            </div>
                             </div>
                             <div className='mt-5'>
                                 <p className=''>{job.jobDescription}</p>
@@ -90,8 +113,10 @@ const Job = () => {
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                 }
+                
             </div>
         </div >
     )
