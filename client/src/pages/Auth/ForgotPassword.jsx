@@ -8,6 +8,7 @@ import Meta from "../../components/Meta/Meta";
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");
     const [mailSent, setMailSent] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleForgotPassword = async (e) => {
         if (email === "") {
@@ -15,14 +16,16 @@ const ForgotPassword = () => {
             return;
         }
         e.preventDefault();
+        setLoading(true);
         try {
-            const res = await account.createRecovery(email, `${import.meta.env.VITE_APPWRITE_URL}reset-password`);
-            console.log(res);
+            await account.createRecovery(email, `${import.meta.env.VITE_APPWRITE_URL}reset-password`);
             toast.success("Recovery email sent!");
             setMailSent(true);
         } catch (error) {
-            toast.error("Something went wrong");
-            console.log(error.message);
+            toast.error(error.message);
+        } finally {
+            setLoading(false);
+            setEmail("");
         }
     }
 
@@ -54,8 +57,10 @@ const ForgotPassword = () => {
                         />
                     </div>
 
-                    <button type="submit" className="py-2.5 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 text-white font-bold w-full mt-6">
-                        Submit
+                    <button disabled={loading} type="submit" className="py-2.5 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 disabled:bg-gray-600 text-white font-bold w-full mt-6">
+                        {
+                            loading ? "Sending recovery email.." : "Submit"
+                        }
                     </button>
                 </form>
 

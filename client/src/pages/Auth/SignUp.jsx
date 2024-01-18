@@ -4,56 +4,44 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Meta from "../../components/Meta/Meta";
+import { useForm } from 'react-hook-form';
 
 const Register = () => {
     const { handleSignUp, user } = useAuth();
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
-    const [password, setPassword] = useState("");
+    const { register, reset, handleSubmit, formState: { errors } } = useForm({ trim: true });
+
     const [showPassword, setShowPassword] = useState(false);
-    const [confirmPassword, setConfirmPassword] = useState("");
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [isAccountCreated, setIsAccountCreated] = useState(false);
     const [accAlreadyExist, setAccAlreadyExists] = useState(false);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        if (password !== confirmPassword) {
-            alert("Passwords do not match");
+    const onSubmit = async (data) => {
+        if (data.password !== data.confirmPassword) {
+            toast.error("Passwords do not match.");
             return;
         }
 
         try {
             setLoading(true);
             await handleSignUp({
-                email,
-                password,
-                name,
+                email: data.email,
+                password: data.password,
+                name: data.name
             });
-            resetForm();
             setIsAccountCreated(true);
-            toast.success("Registered successfully");
+            toast.success("Registered successfully.");
         } catch (error) {
             if (error.message === "A user with the same id, email, or phone already exists in this project.") {
                 setAccAlreadyExists(true);
-                resetForm();
             }
             toast.error(error.message);
         }
         finally {
             setLoading(false);
+            reset();
         }
     };
-
-    const resetForm = () => {
-        setEmail("");
-        setName("");
-        setPassword("");
-        setConfirmPassword("");
-        setPassword("");
-    }
 
     return (
         <div className="flex justify-center items-center min-h-screen">
@@ -114,47 +102,77 @@ const Register = () => {
                 </div>
                 :
                 !accAlreadyExist && <div className="lg:w-[28rem] md:w-[28rem] w-[90%] border-gray-700 border p-8 rounded-3xl bg-[#0c0c0c]">
-                    <h1 className="text-3xl font-bold mb-5 px-3">Sign Up</h1>
-                    <form onSubmit={handleSubmit} className="flex flex-col gap-2 px-3">
+                    <h1 className="text-3xl font-bold mb-3 px-3">Sign Up</h1>
+                    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2 px-3">
                         <div className="flex flex-col gap-1">
                             <label htmlFor="email">Email</label>
                             <input
                                 autoComplete="email"
                                 autoFocus={true}
-                                required
                                 type="email"
                                 id="email"
-                                className="py-2.5 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                className="py-2 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
+                                placeholder="abc@tesla.co.in"
+                                {...register("email", {
+                                    required: "Email is required",
+                                    pattern: {
+                                        value: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i,
+                                        message: "Invalid email address"
+                                    }
+                                })}
                             />
+                            {errors.email && <p className="text-rose-500">{errors.email.message}</p>}
                         </div>
 
                         <div className="flex flex-col gap-1">
                             <label htmlFor="name">Name</label>
                             <input
                                 autoComplete="name"
-                                required
                                 type="text"
                                 id="name"
-                                className="py-2.5 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                className="py-2 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
+                                placeholder="John Doe"
+                                {
+                                ...register("name", {
+                                    required: "Name is required",
+                                    minLength: {
+                                        value: 3,
+                                        message: "Name should be at least 3 characters"
+                                    },
+                                })
+                                }
                             />
+                            {
+                                errors.name && <p className="text-rose-500">{errors.name.message}</p>
+                            }
                         </div>
 
                         <div className="flex relative flex-col gap-1">
                             <label htmlFor="password">Password</label>
                             <input
                                 autoComplete="password"
-                                required
                                 type={showPassword ? "text" : "password"}
                                 id="password"
-                                className="py-2.5 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                className="py-2 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
+                                placeholder="Enter Password"
+                                {
+                                ...register("password", {
+                                    required: "Password is required",
+                                    minLength: {
+                                        value: 8,
+                                        message: "Password should be at least 8 characters"
+                                    },
+                                    maxLength: {
+                                        value: 32,
+                                        message: "Password should not be greater than 32 characters"
+                                    }
+                                })
+                                }
                             />
-                            <div className="absolute bottom-3 right-4">
+                            {
+                                errors.password && <p className="text-rose-500">{errors.password.message}</p>
+                            }
+                            <div className="absolute top-10 right-4">
                                 {showPassword ? (
                                     <FaEye
                                         size={22}
@@ -174,15 +192,29 @@ const Register = () => {
                         <div className="flex relative flex-col gap-1">
                             <label htmlFor="confirmPassword">Confirm Password</label>
                             <input
-                                required
                                 autoComplete="password"
                                 type={showConfirmPassword ? "text" : "password"}
                                 id="confirmPassword"
-                                className="py-2.5 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
-                                value={confirmPassword}
-                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                className="py-2 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
+                                placeholder="Confirm Password"
+                                {
+                                ...register("confirmPassword", {
+                                    required: "Confirm Password is required",
+                                    minLength: {
+                                        value: 8,
+                                        message: "Password should be at least 8 characters"
+                                    },
+                                    maxLength: {
+                                        value: 32,
+                                        message: "Password should not be greater than 32 characters"
+                                    }
+                                })
+                                }
                             />
-                            <div className="absolute bottom-3 right-4">
+                            {
+                                errors.confirmPassword && <p className="text-rose-500">{errors.confirmPassword.message}</p>
+                            }
+                            <div className="absolute top-10 right-4">
                                 {showConfirmPassword ? (
                                     <FaEye
                                         size={22}
@@ -201,7 +233,7 @@ const Register = () => {
 
                         <button
                             disabled={loading}
-                            className="py-2.5 mt-3 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 text-white font-semibold"
+                            className="py-2.5 mt-3 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 disabled:bg-gray-600 text-white font-semibold"
                             type="submit"
                         >
                             {loading ? "Creating Account..." : "Sign Up"}
@@ -213,6 +245,12 @@ const Register = () => {
                                 Login
                             </Link>
                         </p>
+
+                        <Link to="/" className="flex items-center justify-center -mt-3">
+                        <button className="text-rose-500">
+                           Skip for now
+                        </button>
+                    </Link>
                     </form>
                 </div>}
         </div>

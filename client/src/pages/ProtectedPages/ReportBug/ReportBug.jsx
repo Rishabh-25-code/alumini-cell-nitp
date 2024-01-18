@@ -27,7 +27,7 @@ const ReportBug = () => {
   };
 
   return (
-    <div className='bg-gray-900 relative lg:p-5 m-5 rounded-2xl'>
+    <div className='bg-gray-900 relative lg:p-5 p-4 m-5 rounded-2xl'>
       <Meta title="Report Bug | Alumni NITP" />
       {loading && <Loading message={"Reporting Bugs.."} />}
       <div>

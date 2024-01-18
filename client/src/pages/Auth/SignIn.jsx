@@ -4,43 +4,31 @@ import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify"
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Meta from "../../components/Meta/Meta";
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
     const { handleLogin, user } = useAuth();
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-        showPassword: false,
-    });
+    const { register, reset, handleSubmit, formState: { errors } } = useForm({ trim: true });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-        setFormData((prev) => {
-            return {
-                ...prev,
-                [name]: value,
-            };
-        });
-    }
-
-    const Login = async (e) => {
-        e.preventDefault();
-        if (formData.email && formData.password) {
-            try {
-                await handleLogin({
-                    email: formData.email,
-                    password: formData.password,
-                });
-                toast.success("Logged in successfully");
-                navigate("/dashboard");
-            } catch (error) {
-                toast.error(error.message);
-            }
-        } else {
-            alert("Please fill the form");
+    const Login = async (data) => {
+        setLoading(true);
+        try {
+            await handleLogin({
+                email: data.email,
+                password: data.password,
+            });
+            toast.success("Logged in successfully");
+            navigate("/dashboard");
+        } catch (error) {
+            toast.error(error.message);
+        } finally {
+            setLoading(false);
+            reset();
         }
     }
 
@@ -66,7 +54,7 @@ const Login = () => {
                     </h1>
                 </div>
 
-                <form onSubmit={Login} className="flex flex-col gap-6 px-3 w-full">
+                <form onSubmit={handleSubmit(Login)} className="flex flex-col gap-4 px-3 w-full">
                     <div className="flex flex-col space-y-2">
                         <label className="text-lg">E-mail <span className="text-red-500">*</span></label>
                         <input
@@ -74,54 +62,59 @@ const Login = () => {
                             type="email"
                             name="email"
                             placeholder="abc@tesla.co.in"
-                            required
-                            onChange={handleChange}
-                            value={formData.email}
+                            {...register("email", {
+                                required: "Email is required",
+                                pattern: {
+                                    value: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i,
+                                    message: "Invalid email address"
+                                }
+                            })}
                         />
+                        {errors.email && <p className="text-rose-500">{errors.email.message}</p>}
                     </div>
                     <div className="flex relative flex-col space-y-2">
                         <label className="text-lg">Password <span className="text-red-500">*</span></label>
                         <input
                             className="py-2.5 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
-                            type={formData.showPassword ? "text" : "password"}
+                            type={showPassword ? "text" : "password"}
                             name="password"
                             autoComplete="password"
                             placeholder="Enter Password"
-                            required
-                            maxLength={16}
-                            minLength={8}
-                            onChange={handleChange}
-                            value={formData.password}
+                            {
+                            ...register("password", {
+                                required: "Password is required",
+                                minLength: {
+                                    value: 6,
+                                    message: "Password should be at least 6 characters"
+                                },
+                                maxLength: {
+                                    value: 32,
+                                    message: "Password should not be greater than 32 characters"
+                                }
+                            })
+                            }
                         />
-                        <div className="absolute bottom-3 right-4">
-                            {formData.showPassword ? (
+                        {errors.password && <p className="text-rose-500">{errors.password.message}</p>}
+
+                        <div className="absolute top-10 right-4">
+                            {showPassword ? (
                                 <FaEye
                                     size={22}
                                     className="text-gray-400 cursor-pointer"
-                                    onClick={() => setFormData((prev) => {
-                                        return {
-                                            ...prev,
-                                            showPassword: !prev.showPassword,
-                                        }
-                                    })}
+                                    onClick={() => setShowPassword((prev) => !prev)}
                                 />
                             ) : (
                                 <FaEyeSlash
                                     size={22}
                                     className="text-gray-400 cursor-pointer"
-                                    onClick={() => setFormData((prev) => {
-                                        return {
-                                            ...prev,
-                                            showPassword: !prev.showPassword,
-                                        }
-                                    })}
+                                    onClick={() => setShowPassword((prev) => !prev)}
                                 />
                             )}
                         </div>
                     </div>
 
-                    <button type="submit" className="py-2.5 mt-3 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 text-white font-bold">
-                        Login
+                    <button disabled={loading} type="submit" className="py-2.5 mt-3 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 focus:bg-gray-600 text-white font-bold">
+                        {loading ? "Logging in..." : "Login"}
                     </button>
 
                     <p className="text-center">
@@ -133,9 +126,17 @@ const Login = () => {
                         </Link>
                     </p>
 
-                    <Link to="/forgot-password" className="m-auto pt-0 -mt-3">
-                        <p className="text-sky-500">Forgot Password?</p>
-                    </Link>
+                    <div className="flex items-center justify-center gap-2">
+                        <Link to="/forgot-password" className="pt-0 -mt-3">
+                            <p className="text-sky-500">Forgot Password?</p>
+                        </Link>
+
+                        <Link to="/" className="flex items-center justify-center -mt-3">
+                            <button className="text-rose-500">
+                                Skip for now
+                            </button>
+                        </Link>
+                    </div>
                 </form>
             </div>
         </div>
