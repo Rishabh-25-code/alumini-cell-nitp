@@ -181,9 +181,34 @@ const CreateAlumniProfile = () => {
                                 className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                 errors={errors.lname}
                             />
+                            <Select
+                                label='Gender'
+                                id='Gender'
+                                options={[
+                                    {
+                                        name: 'Male',
+                                        value: 'Male',
+                                    },
+                                    {
+                                        name: 'Female',
+                                        value: 'Female',
+                                    },
+                                    {
+                                        name: 'Others',
+                                        value: 'Others',
+                                    }
+                                ]}
+                                reactHookForm={register('gender', {
+                                    required: 'Gender is required',
+                                })}
+                                className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                                errors={errors.gender}
+                                placeholder="Select gender"
+                            />
                         </div>
 
                         <div className="flex md:flex-row flex-col gap-5">
+                        
                             <Select
                                 label='Which describes you best at NITP?'
                                 id='role'
@@ -355,6 +380,45 @@ const CreateAlumniProfile = () => {
                                         className="ml-2"
                                     />
                                 </p>
+                            </div>
+                            <div className="flex-1">
+                            <Select
+                                label='Category'
+                                id='Category'
+                                options={[
+                                    {
+                                        name: 'General',
+                                        value: 'GEN',
+                                    },
+                                    {
+                                        name: 'OBC',
+                                        value: 'OBC',
+                                    },
+                                    {
+                                        name: 'OBC(NCL)',
+                                        value: 'OBC(NCL)',
+                                    },
+                                    {
+                                        name: 'SC',
+                                        value: 'SC',
+                                    },
+                                    {
+                                        name: 'ST',
+                                        value: 'ST',
+                                    },
+                                    {
+                                        name: 'EWS',
+                                        value: 'EWS',
+                                    }
+                                ]}
+                                reactHookForm={register('category', {
+                                    required: 'Category is required',
+                                })}
+                                className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                                errors={errors.category}
+                                placeholder="Select category"
+                            />
+
                             </div>
                         </div>
 
@@ -578,6 +642,12 @@ const CreateAlumniProfile = () => {
                             </p>
                             <p className='py-3'>
                                 <span className='text-gray-300 font-normal text-base'>{alumni[0].bio}</span>
+                            </p>
+                            <p className='font-medium text-sky-500'>
+                                Gender : <span className='text-white'>{alumni[0].gender}</span>
+                            </p>
+                            <p className='font-medium text-sky-500'>
+                                Category : <span className='text-white'>{alumni[0].category}</span>
                             </p>
                             <p className='font-medium text-sky-500'>
                                 Role : <span className='text-white'>{alumni[0].role.toUpperCase()}</span>
