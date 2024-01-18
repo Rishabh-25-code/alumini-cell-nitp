@@ -12,6 +12,7 @@ const ResetPassword = () => {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [isPasswordUpdated, setIsPasswordUpdated] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const urlParams = new URLSearchParams(window.location.search);
     const secret = urlParams.get('secret');
@@ -26,15 +27,17 @@ const ResetPassword = () => {
             toast.error("Passwords do not match");
             return;
         }
+        setLoading(true);
         try {
             const res = await account.updateRecovery(userId, secret, newPassword, confirmPassword);
             toast.success("Password updated successfully!");
-            setConfirmPassword("");
-            setNewPassword("");
             setIsPasswordUpdated(true);
         } catch (error) {
-            toast.error("Something went wrong");
-            console.log(error.message);
+            toast.error(error.message);
+        } finally {
+            setLoading(false);
+            setConfirmPassword("");
+            setNewPassword("");
         }
     }
 
@@ -115,8 +118,8 @@ const ResetPassword = () => {
                         </div>
                     </div>
 
-                    <button type="submit" className="py-2.5 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 text-white font-bold w-full mt-6">
-                        Submit
+                    <button disabled={loading} type="submit" className="py-2.5 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 text-white font-bold w-full mt-6">
+                        {loading ? "Resetting Password..." : "Submit"}
                     </button>
                 </form>
 
