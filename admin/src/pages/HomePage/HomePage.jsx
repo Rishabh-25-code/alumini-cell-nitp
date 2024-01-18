@@ -19,7 +19,7 @@ const HomePage = () => {
 
         <p className="text-center pt-5 flex items-center flex-col gap-5">
           <span className="text-xl text-gray-300 font-medium">
-            {user ? `You are logged in as : ${user.name}` : "Please login to continue"}
+            {user ? `You are logged in as : ${user.name}` : "Please register to continue"}
           </span>
           {!user ?
             <button className="bg-sky-600 hover:bg-sky-700 active:bg-gray-500 text--white px-8 py-2.5 rounded-full" onClick={handleLogout}>
