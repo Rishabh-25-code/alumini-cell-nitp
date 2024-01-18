@@ -6,7 +6,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
-  const { user, handleLogout } = useAuth();
+  const { user } = useAuth();
   const [menu, setMenu] = useState(false);
   const [popup, setPopup] = useState(-1);
 
@@ -69,7 +69,7 @@ const NavBar = () => {
           link: "/experiences",
         },
         {
-          name: "Job Openings from Alumni",
+          name: "Jobs via Alumni",
           link: "/jobs",
         },
         {
@@ -102,7 +102,7 @@ const NavBar = () => {
   ];
 
   return (
-    <>
+    <div className="relative">
       <nav
         className={`fixed w-[100%] items-center justify-center border-b bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md`}
       >
@@ -119,7 +119,7 @@ const NavBar = () => {
             </Link>
           </div>
 
-          <div className="lg:flex gap-5 hidden items-center text-[0.92rem]">
+          <div className="lg:flex gap-3.5 hidden items-center text-[0.92rem]">
             {navLinks.map((link, index) => {
               if (link.children) {
                 return (
@@ -133,32 +133,37 @@ const NavBar = () => {
                           setPopup(index);
                         }
                       }}
+                      onMouseLeave={() => setPopup(-1)}
                       style={{ textDecoration: "none" }}
-                      className="flex items-center gap-1"
+                      className="flex items-center text-white hover:text-sky-400"
                     >
-                      <p className="text-white hover:text-blue-400">{link.name}</p>
-                      <MdKeyboardArrowDown className={`${popup === index && "rotate-180 transition-all delay-75 ease-in text-blue-400"}`} size={24} />
+                      <p className="">{link.name}</p>
+                      <MdKeyboardArrowDown className={`${popup === index && "mt-1 transition-all"}`} size={24} />
                     </button>
 
-                    <div onMouseLeave={() => setPopup(-1)}
-                      className={`bg-gray-950 shadow-lg -ml-1 mt-2 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === index ? "flex" : "hidden"}`}>
-                      <ul className="dropdown flex flex-col gap-2">
-                        {
-                          link.children.map((child, i) => (
-                            <Link
-                              onClick={() => setPopup(-1)}
-                              style={{ textDecoration: "none" }}
-                              to={child.link}
-                              className="dropdown-link mb-2"
-                              key={i + "child"}
-                            >
-                              <p className="text-gray-400 hover:text-blue-400">
-                                {child.name}
-                              </p>
-                            </Link>
-                          ))
-                        }
-                      </ul>
+                    <div onMouseLeave={() => setPopup(-1)} onMouseOver={() => {
+                      setPopup(index);
+                    }}>
+                      <div
+                        className={`bg-gray-950 shadow-lg -ml-1 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === index ? "flex" : "hidden"}`}>
+                        <ul className="dropdown flex flex-col gap-1.5">
+                          {
+                            link.children.map((child, i) => (
+                              <Link
+                                onClick={() => setPopup(-1)}
+                                style={{ textDecoration: "none" }}
+                                to={child.link}
+                                className="dropdown-link mb-2"
+                                key={i + "child"}
+                              >
+                                <p className="text-gray-400 hover:text-blue-400">
+                                  {child.name}
+                                </p>
+                              </Link>
+                            ))
+                          }
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 )
@@ -200,7 +205,7 @@ const NavBar = () => {
                   setMenu(false);
                 }
               }}
-              className="animate-pulse lg:hidden bg-blue-50 z-[100000] border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 mr-2"
+              className="lg:hidden z-[100000] border focus:ring-[2.5px] focus:outline-none font-medium rounded-lg text-lg px-2.5 py-2.5 text-center items-center focus:ring-gray-400 bg-gray-800 border-gray-900 text-white hover:bg-gray-700 mr-2"
             >
               {!menu ? <HiMenuAlt3 /> : <FiX />}
             </button>
@@ -208,58 +213,57 @@ const NavBar = () => {
         </div>
       </nav>
 
-      {menu && (
-        <div className="lg:hidden xl:hidden fixed flex flex-col items-start text-base px-7 py-2 justify-center gap-2 inset-0 w-full h-full z-[100] shadow-md text-white bg-gray-950">
-          <button
-            type="button"
-            onClick={() => setMenu(!menu)}
-            className="animate-pulse lg:hidden bg-blue-50 top-3 right-6 border focus:ring-[2.5px] focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-lg px-2.5 py-2.5 mt-2 text-center items-center dark:focus:ring-gray-400 dark:bg-gray-800 border-gray-900 text-white hover:bg-gray-700 absolute"
-          >
-            {!menu ? <HiMenuAlt3 /> : <FiX />}
-          </button>
-          {navLinks.map((link, index) => {
-            if (link.children) {
-              return (
-                <div className="flex flex-col sm:gap-0 gap-1">
-                  <div className="text-sky-500">
-                    {link.name}
-                  </div>
-                  <div>
-                    {link.children.map((child, i) => (
-                      <Link
-                        style={{ textDecoration: "none" }}
-                        to={child.link}
-                        className="dropdown-link text-base"
-                        key={i}
-                        onClick={() => setMenu(!menu)}
-                      >
-                        <p className="text-gray-400 sm:py-0 py-0.5 hover:text-blue-400">
-                          {child.name}
-                        </p>
-                      </Link>
-                    ))}
-                  </div>
+
+      <div className={`lg:hidden xl:hidden fixed flex flex-col items-start text-base px-7 py-2 justify-center gap-2 inset-0 w-full h-full z-[100] shadow-md text-white bg-gray-950 transition-all ease-in-out delay-150 ${menu ? "translate-x-0" : "translate-x-[100%]"}`}>
+        <button
+          type="button"
+          onClick={() => setMenu(!menu)}
+          className="animate-pulse lg:hidden top-3 right-6 border focus:ring-[2.5px] focus:outline-none font-medium rounded-lg text-lg px-2.5 py-2.5 mt-2 text-center items-center focus:ring-gray-400 bg-gray-800 border-gray-900 text-white hover:bg-gray-700 absolute"
+        >
+          {!menu ? <HiMenuAlt3 /> : <FiX />}
+        </button>
+        {navLinks.map((link, index) => {
+          if (link.children) {
+            return (
+              <div className="flex flex-col sm:gap-0 gap-1">
+                <div className="text-sky-500">
+                  {link.name}
                 </div>
-              )
-            } else {
-              return (
-                <Link
-                  style={{ textDecoration: "none" }}
-                  to={link.link}
-                  className="dropdown-link mb-2"
-                  key={index}
-                  onClick={() => setMenu(!menu)}
-                >
-                  <p className="text-sky-500 hover:text-blue-400">
-                    {link.name}
-                  </p>
-                </Link>
-              )
-            }
-          })}
-        </div>
-      )}
-    </>
+                <div>
+                  {link.children.map((child, i) => (
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={child.link}
+                      className="dropdown-link text-base"
+                      key={i}
+                      onClick={() => setMenu(!menu)}
+                    >
+                      <p className="text-gray-400 sm:py-0 py-0.5 hover:text-blue-400">
+                        {child.name}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )
+          } else {
+            return (
+              <Link
+                style={{ textDecoration: "none" }}
+                to={link.link}
+                className="dropdown-link mb-2"
+                key={index}
+                onClick={() => setMenu(!menu)}
+              >
+                <p className="text-sky-500 hover:text-blue-400">
+                  {link.name}
+                </p>
+              </Link>
+            )
+          }
+        })}
+      </div>
+    </div>
   );
 };
 
