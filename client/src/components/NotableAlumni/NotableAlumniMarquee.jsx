@@ -75,7 +75,7 @@ const NotableAlumniMarquee = () => {
                 </Marquee>
                 <Link to="/notableAlumni" className="flex gap-1 py-2.5 mt-3 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 text-white font-medium">
                     <button >
-                        Notable Alumini
+                        Explore
                     </button>
                     <RxArrowRight size={24} />
                 </Link>

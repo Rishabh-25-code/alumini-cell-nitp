@@ -7,29 +7,29 @@ const NotableAlumni = () => {
 
   const data = [
     {
-      imgUrl:"./images/faculty.png",
-      desc:"Short Description about the alumni.",
-      title:"1 Alumni's name"
+      imgUrl: "./images/faculty.png",
+      desc: "Short Description about the alumni.",
+      title: "1 Alumni's name"
     },
     {
-      imgUrl:"./images/faculty.png",
-      desc:"Short Description about the alumni.",
-      title:"2 Alumni's name"
+      imgUrl: "./images/faculty.png",
+      desc: "Short Description about the alumni.",
+      title: "2 Alumni's name"
     },
     {
-      imgUrl:"./images/faculty.png",
-      desc:"Short Description about the alumni.",
-      title:"3 Alumni's name"
+      imgUrl: "./images/faculty.png",
+      desc: "Short Description about the alumni.",
+      title: "3 Alumni's name"
     },
     {
-      imgUrl:"./images/faculty.png",
-      desc:"Short Description about the alumni.",
-      title:"4 Alumni's name"
+      imgUrl: "./images/faculty.png",
+      desc: "Short Description about the alumni.",
+      title: "4 Alumni's name"
     },
     {
-      imgUrl:"./images/faculty.png",
-      desc:"Short Description about the alumni.",
-      title:"5 Alumni's name"
+      imgUrl: "./images/faculty.png",
+      desc: "Short Description about the alumni.",
+      title: "5 Alumni's name"
     },
   ]
 
@@ -38,11 +38,11 @@ const NotableAlumni = () => {
       <Heading heading="Notable Alumni of NIT Patna"></Heading>
       <div className='project-container'>
         {
-          data.map((project,i)=>(
-              <ProjectCard key={i} imgUrl={project.imgUrl} desc={project.desc} title={project.title}/>
+          data.map((project, i) => (
+            <ProjectCard key={i} imgUrl={project.imgUrl} desc={project.desc} title={project.title} />
           ))
         }
-      </div> 
+      </div>
     </div>
   )
 }
