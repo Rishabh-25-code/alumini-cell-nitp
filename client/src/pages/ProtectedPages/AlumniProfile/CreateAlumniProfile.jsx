@@ -381,7 +381,7 @@ const CreateAlumniProfile = () => {
                                     />
                                 </p>
                             </div>
-                            <div className="flex-2">
+                            <div className="flex-1">
                             <Select
                                 label='Category'
                                 id='Category'
