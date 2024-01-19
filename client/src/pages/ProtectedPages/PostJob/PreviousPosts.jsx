@@ -31,6 +31,23 @@ const PreviousPosts = () => {
         }
     }
 
+    const getStatusColor = (status) => {
+        switch (status.toLowerCase()) {
+            case 'reviewing':
+                return 'text-yellow-500';
+            case 'rejected':
+                return 'text-red-500';
+            case 'published':
+                return 'text-green-500';
+            default:
+                return '';
+        }
+    };
+
+    const toTitleCase = (str) => {
+        return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+    };
+
     return (
         <div className='py-5 w-full'>
             {isLoading && <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div>}
@@ -110,6 +127,13 @@ const PreviousPosts = () => {
                                 <p className='text-sm text-gray-400 -mt-1'>{post.yourCurrentRole} at {post.yourCurrentCompany}</p>
                             </div>
                         </div>
+                    </div>
+                    <br />
+                    <div>
+                        <h1 className="text-lg font-bold">Status: </h1>
+                        <h2 className={`text-xl ${getStatusColor(post.status)}`}>{toTitleCase(post.status)}</h2>
+                        <h1 className="text-lg font-bold mt-2">Feedback:</h1>
+                        <h2 className="text-gray-700">{post.statusDesc || "No feedback from Admin"}</h2>
                     </div>
                 </div>
             ))}

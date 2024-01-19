@@ -12,8 +12,9 @@ const YourBlogs = ({ user }) => {
         queryKey: ['blogs', user.$id],
         queryFn: () => getUserTestimonials('blogs', user.$id),
         onSuccess: (data) => {
-            console.log(data)
+            console.log(data);
         }
+
     });
 
     if (isPending) {
@@ -44,12 +45,32 @@ const YourBlogs = ({ user }) => {
         }
     }
 
+    const getStatusColor = (status) => {
+        switch (status.toLowerCase()) {
+          case 'reviewing':
+            return 'text-yellow-500';
+          case 'rejected':
+            return 'text-red-500';
+          case 'published':
+            return 'text-green-500';
+          default:
+            return '';
+        }
+      };
+      
+      const toTitleCase = (str) => {
+        return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+      };
+      
+
 
     return (
         <div className="py-5">
             <div className="flex gap-10 flex-col w-full">
                 {
+
                     blogs && blogs.length === 0 ? <div className="text-center text-sky-500 font-medium py-12">No blogs found!</div> :
+
                         blogs.map((blog, index) => (
                             <div key={index} className="border relative border-gray-800 w-full rounded-2xl p-5">
                                 <button onClick={() => {
@@ -81,6 +102,13 @@ const YourBlogs = ({ user }) => {
                                         ))
                                     }
                                 </div>
+                                <div>
+                                    <h1 className="text-lg font-bold">Status: </h1>
+                                    <h2 className={`text-xl ${getStatusColor(blog.status)}`}>{toTitleCase(blog.status)}</h2>
+                                    <h1 className="text-lg font-bold mt-2">Feedback:</h1>
+                                    <h2 className="text-gray-700">{blog.statusDesc || "No feedback from Admin"}</h2>
+                                </div>
+
                             </div>
                         ))
                 }

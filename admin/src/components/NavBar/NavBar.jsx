@@ -86,7 +86,7 @@ const NavBar = () => {
                                 user ?
                                     <Link to="/profile">
                                         <button>
-                                            <img className="h-11 w-11 rounded-full" src="https://cloud.appwrite.io/v1/avatars/initials?name=Sudhanshu+Ranjan&width=80&height=80" alt="profile" />
+                                            <img className="h-11 w-11 rounded-full" src={`https://cloud.appwrite.io/v1/avatars/initials?name=${user.name.split(" ").join("+")}&width=80&height=80`} alt={user.name} />
                                         </button>
                                     </Link>
                                     :
