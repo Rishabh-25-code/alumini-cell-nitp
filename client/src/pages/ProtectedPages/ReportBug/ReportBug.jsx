@@ -27,7 +27,7 @@ const ReportBug = () => {
   };
 
   return (
-    <div className='bg-gray-900 relative lg:p-5 m-5 rounded-2xl'>
+    <div className='bg-gray-900 relative lg:p-5 p-4 m-5 rounded-2xl'>
       <Meta title="Report Bug | Alumni NITP" />
       {loading && <Loading message={"Reporting Bugs.."} />}
       <div>
@@ -64,7 +64,7 @@ const ReportBug = () => {
               value: 4096,
               message: 'Description must not exceed 4096 characters',
             }
-          })} className='bg-gray-950 rounded-lg px-3 pb-2 w-full text-gray-300' errors={errors.description} />
+          })} className='bg-gray-950 rounded-lg px-3 py-2 w-full text-gray-300' errors={errors.description} />
 
           <div className='text-white self-end w-fit flex gap-3 -pt-5 pb-2'>
             <button onClick={(e) => {

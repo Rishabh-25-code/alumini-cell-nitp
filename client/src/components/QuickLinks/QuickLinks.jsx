@@ -5,17 +5,17 @@ const QuickLinks = () => {
         {
             name: "UG Alumni Database",
             icon: "./images/quicklink/blockchain.png",
-            link: "/alumni-database?type=ug"
+            link: "/alumni-database?role=ug"
         },
         {
             name: "PG Alumni Database",
             icon: "./images/quicklink/electrical.png",
-            link: "/alumni-database?type=pg"
+            link: "/alumni-database?role=pg"
         },
         {
             name: "PhD Alumni Database",
             icon: "./images/quicklink/web.png",
-            link: "/alumni-database?type=phd"
+            link: "/alumni-database?role=phd"
         },
         {
             name: "Alumni Meetings",

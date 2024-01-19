@@ -1,3 +1,6 @@
+import React from 'react'
+import { RxArrowRight } from 'react-icons/rx'
+import { Link } from 'react-router-dom'
 import Marquee from "react-fast-marquee";
 import AlumniCard from "../../pages/NotableAlumni/AlumniCard";
 
@@ -70,6 +73,12 @@ const NotableAlumniMarquee = () => {
                         ))
                     }
                 </Marquee>
+                <Link to="/notableAlumni" className="flex gap-1 py-2.5 mt-3 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 text-white font-medium">
+                    <button >
+                        Explore
+                    </button>
+                    <RxArrowRight size={24} />
+                </Link>
             </div>
         </div>
     )

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { FaShare } from "react-icons/fa";
 import Heading from '../../components/Headings/Heading';
 import Meta from '../../components/Meta/Meta';
 import Loader from '../../components/Loader';
@@ -108,9 +109,10 @@ export default JobOffers;
 
 
 const JobOffersCard2 = ({ data }) => {
-     return (
-          <Link to={`/job/${data.$id}`}>
+     return (<>
+          
                <div className='border border-gray-800 hover:border-gray-700 hover:bg-[#0b0b0f] hover:scale-[101%] transition-all rounded-2xl p-5 place-items-stretch'>
+               <Link to={`/job/${data.$id}`}>
                     <div className='flex justify-between'>
                          <div className='flex gap-5 flex-col items-center'>
                               <div className='flex w-full gap-2 items-center'>
@@ -153,7 +155,34 @@ const JobOffersCard2 = ({ data }) => {
                               </div>
                          </div>
                     </div>
+                    </Link>
+                    <button
+                         type="button"
+                         className="text-lg font-medium text-sky-400 hover:scale-105 mt-5"
+                         onClick={() => {
+                         const shareItem = {
+                              title: data.jobType,
+                              text: "hello",
+                              url: `https://alumni.nitp.ac.in/job/${data.$id}`,
+                         }
+
+                         if (navigator.share) {
+                              navigator.share(shareItem)
+                                   .then(() => console.log('Successful share'))
+                                   .catch((error) => console.log('Error sharing', error));
+                         } else {
+                              console.log("Your browser does not support Web Share API");
+                         }
+                         }}
+                    >
+                         Share <FaShare className='inline-block ml-2' />
+                                        
+                    </button>
                </div>
-          </Link>
+               
+               
+          
+          
+     </>
      )
 }

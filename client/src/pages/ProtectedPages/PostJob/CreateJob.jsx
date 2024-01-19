@@ -6,37 +6,7 @@ import { toast } from "react-toastify";
 import { MdDeleteForever } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import { compressedImageUpload } from '../../../services/files';
-
-const branches = [
-    {
-        name: 'Electrical Engineering',
-        value: 'EE'
-    },
-    {
-        name: 'Computer Science & Engg.',
-        value: 'CSE'
-    },
-    {
-        name: 'Electronics & Communication Engg.',
-        value: 'ECE'
-    },
-    {
-        name: 'Mechanical Engineering',
-        value: 'ME'
-    },
-    {
-        name: 'Civil Engineering',
-        value: 'CE'
-    },
-    {
-        name: 'Architecture',
-        value: 'Arch.'
-    },
-    {
-        name: 'Mathematics',
-        value: 'IMSc.'
-    }
-]
+import { branches } from '../../../utils/branches';
 
 const CreateJob = () => {
     const { user } = useAuth();
