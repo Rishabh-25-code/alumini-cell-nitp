@@ -20,34 +20,32 @@ async function readGSheet(SHEET_ID) {
                 d1[header[i]] = row._rawData[i].trim();
             }
             d1["email"] = d1["email"].toLowerCase();
-            d1["fname"] = d1["name"].split(" ")[0];
-            d1["lname"] = d1["name"].split(" ").slice(1).join(" ");
             let degree = d1["degree"];
             let role = "";
             if (degree === "B.Tech." || degree === "B.Arch.") {
                 role = "ug";
-            } else if (degree === "M.Tech.") {
+            } else if (degree === "M.Tech." || degree === "MURP") {
                 role = "pg";
             } else if (degree === "Ph.D.") {
                 role = "phd";
             } else {
                 role = "faculty-staff";
             }
-            d1["batchStart"] = null;
+
+            d1["degree"] = degree ? degree : "Faculty/Staff";
             d1["username"] = d1["email"].split("@")[0];
             d1["showEmail"] = true;
             d1["showPhone"] = false;
             d1["role"] = role;
             d1["hobbies"] = [];
             d1["achievements"] = [];
-            d1["photo"] = convertDriveLink(d1["photo"]);
-            d1["linkedin"] = removeSearchParams(d1["linkedin"]);
 
-            delete d1["name"];
             delete d1["dept"];
             delete d1["course"];
             delete d1["other"];
             delete d1["photo"];
+            delete d1["session"];
+            delete d1["linkedin"];
             // await addYear({ year: d1['admission_year'] });
             // let member = await addMember(d1);
             // result.push(member);

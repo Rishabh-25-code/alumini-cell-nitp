@@ -152,7 +152,7 @@ export const getAlumniData = async (limit = 24, offset = 0, role, search, type, 
 
     try {
         const res = await databases.listDocuments(DATABASE_ID, "alumni", queries);
-        return res.documents;
+        return res;
     } catch (err) {
         throw new Error(err.message);
     }

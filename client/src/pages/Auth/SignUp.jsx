@@ -7,7 +7,7 @@ import Meta from "../../components/Meta/Meta";
 import { useForm } from 'react-hook-form';
 
 const Register = () => {
-    const { handleSignUp, user } = useAuth();
+    const { handleSignUp } = useAuth();
     const { register, reset, handleSubmit, formState: { errors } } = useForm({ trim: true });
 
     const [showPassword, setShowPassword] = useState(false);
@@ -17,13 +17,14 @@ const Register = () => {
     const [accAlreadyExist, setAccAlreadyExists] = useState(false);
 
     const onSubmit = async (data) => {
+        setLoading(true);
+
         if (data.password !== data.confirmPassword) {
             toast.error("Passwords do not match.");
-            return;
+            return reset();
         }
 
         try {
-            setLoading(true);
             await handleSignUp({
                 email: data.email,
                 password: data.password,

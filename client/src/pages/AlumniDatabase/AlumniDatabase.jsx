@@ -12,20 +12,20 @@ const AlumniDatabase = () => {
     const [searchParams, setSearchParams] = useSearchParams({
         role: null,
         page: 1,
-        type: "fname",
+        type: "name",
         search: "",
     });
     const role = searchParams.get("role") || null;
     const page = parseInt(searchParams.get('page')) || 1;
     const search = searchParams.get('search') || "";
     const type = searchParams.get('type') || "jobTitle";
-    const [itemsPerPage] = useState(15);
-    const [branch, setBranch] = useState("");
+    const [itemsPerPage] = useState(21);
+    const [branch, setBranch] = useState(null);
 
     const [searchText, setSearchText] = useState(search);
     const [searchType, setSearchType] = useState(type);
 
-    const { isLoading, isError, data: alumni, refetch } = useQuery({
+    const { isLoading, isError, data: alumni } = useQuery({
         queryKey: ["members", role, page, search, branch],
         queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch),
         staleTime: Infinity
@@ -77,7 +77,7 @@ const AlumniDatabase = () => {
                             changeParams('type', e.target.value);
                         }} className='bg-gray-950 rounded-xl lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal text-gray-300'>
                             <option value="">Search By</option>
-                            <option value="fname">Name</option>
+                            <option value="name">Name</option>
                             <option value="batchEnd">Batch</option>
                             <option value="company">Company</option>
                             <option value="designation">Designation</option>
@@ -112,13 +112,13 @@ const AlumniDatabase = () => {
                     An error has occurred! Please try again later.
                 </div> :
 
-                    alumni.length === 0 ?
+                    alumni?.documents.length === 0 ?
                         <div className="pt-32 px-8 text-center text-base font-medium text-white">
                             No items.
                         </div>
                         : <>
                             <div className="mt-24 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-                                {alumni.map((person, idx) => {
+                                {alumni.documents.map((person, idx) => {
                                     return (
                                         <div
                                             data-aos="fade-up"
@@ -135,7 +135,7 @@ const AlumniDatabase = () => {
                                                     />
                                                 </div>
                                                 <div className="text-sm font-medium flex-1">
-                                                    <p className="text-xl font-bold text-sky-500">{person.title}. {person.fname} {person.lname}</p>
+                                                    <p className="text-xl font-bold text-sky-500">{person.title} {person.name}</p>
                                                     <p className="font-medium text-base text-gray-300">
                                                         {person.branch} ({person.degree})
                                                     </p>
@@ -166,14 +166,17 @@ const AlumniDatabase = () => {
 
                             {alumni && <>
                                 <div data-aos="fade-up" className="text-center px-3 pt-16">
-                                    Showing <span className="text-sky-500">{alumni.length}</span> results of page <span className="text-sky-500">{page}</span>.
+                                    <p>Showing <span className="text-sky-500">{itemsPerPage * (page - 1) + 1}-{Math.min(
+                                            itemsPerPage * page,
+                                            alumni.total
+                                        )}</span> results of <span className="text-sky-500">{alumni.total}</span></p>
                                 </div>
 
                                 <div data-aos="fade-up" className="flex items-center justify-center pt-5 gap-10 px-6">
                                     <button disabled={page <= 1} onClick={() => {
                                         changeParams('page', page - 1);
                                     }} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Prev</button>
-                                    <button disabled={itemsPerPage > alumni.length} onClick={() => {
+                                    <button disabled={itemsPerPage > alumni.documents.length} onClick={() => {
                                         changeParams('page', page + 1);
                                     }} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Next</button>
                                 </div>

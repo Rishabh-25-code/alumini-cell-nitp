@@ -144,42 +144,27 @@ const CreateAlumniProfile = () => {
                             />
 
                             <Input
-                                label='First Name'
+                                label='Name'
                                 type='text'
-                                placeholder='First Name'
+                                placeholder='John Doe'
                                 title='fname'
-                                reactHookForm={register('fname', {
+                                reactHookForm={register('name', {
                                     pattern: {
                                         value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
                                         message: 'Please enter a valid name',
                                     },
-                                    required: 'First name is required',
+                                    required: 'Name is required',
                                     minLength: {
                                         value: 3,
-                                        message: 'First Name must be at least 3 characters',
+                                        message: 'Name must be at least 3 characters',
                                     },
                                     maxLength: {
-                                        value: 56,
-                                        message: 'First Name must not exceed 56 characters',
+                                        value: 500,
+                                        message: 'Name must not exceed 500 characters',
                                     },
                                 })}
                                 className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
-                                errors={errors.fname}
-                            />
-
-                            <Input
-                                label='Last Name'
-                                type='text'
-                                placeholder='Last Name'
-                                title='lname'
-                                reactHookForm={register('lname', {
-                                    maxLength: {
-                                        value: 56,
-                                        message: 'Name must not exceed 56 characters',
-                                    },
-                                })}
-                                className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
-                                errors={errors.lname}
+                                errors={errors.name}
                             />
                             <Select
                                 label='Gender'
@@ -208,7 +193,7 @@ const CreateAlumniProfile = () => {
                         </div>
 
                         <div className="flex md:flex-row flex-col gap-5">
-                        
+
                             <Select
                                 label='Which describes you best at NITP?'
                                 id='role'
@@ -281,7 +266,7 @@ const CreateAlumniProfile = () => {
                                 placeholder='2020'
                                 title='batchEnd'
                                 reactHookForm={register('batchEnd', {
-                                    required: 'Batch is required',
+                                    required: 'Batch/Tenure is required',
                                     pattern: {
                                         value: /^\d{4}$/i,
                                         message: 'Please enter a valid batch',
@@ -382,42 +367,42 @@ const CreateAlumniProfile = () => {
                                 </p>
                             </div>
                             <div className="flex-1">
-                            <Select
-                                label='Category'
-                                id='Category'
-                                options={[
-                                    {
-                                        name: 'General',
-                                        value: 'GEN',
-                                    },
-                                    {
-                                        name: 'OBC',
-                                        value: 'OBC',
-                                    },
-                                    {
-                                        name: 'OBC(NCL)',
-                                        value: 'OBC(NCL)',
-                                    },
-                                    {
-                                        name: 'SC',
-                                        value: 'SC',
-                                    },
-                                    {
-                                        name: 'ST',
-                                        value: 'ST',
-                                    },
-                                    {
-                                        name: 'EWS',
-                                        value: 'EWS',
-                                    }
-                                ]}
-                                reactHookForm={register('category', {
-                                    required: 'Category is required',
-                                })}
-                                className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
-                                errors={errors.category}
-                                placeholder="Select category"
-                            />
+                                <Select
+                                    label='Category'
+                                    id='Category'
+                                    options={[
+                                        {
+                                            name: 'General',
+                                            value: 'GEN',
+                                        },
+                                        {
+                                            name: 'OBC',
+                                            value: 'OBC',
+                                        },
+                                        {
+                                            name: 'OBC(NCL)',
+                                            value: 'OBC(NCL)',
+                                        },
+                                        {
+                                            name: 'SC',
+                                            value: 'SC',
+                                        },
+                                        {
+                                            name: 'ST',
+                                            value: 'ST',
+                                        },
+                                        {
+                                            name: 'EWS',
+                                            value: 'EWS',
+                                        }
+                                    ]}
+                                    reactHookForm={register('category', {
+                                        required: 'Category is required',
+                                    })}
+                                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                                    errors={errors.category}
+                                    placeholder="Select category"
+                                />
 
                             </div>
                         </div>
@@ -634,7 +619,7 @@ const CreateAlumniProfile = () => {
                         </div>
                         <div className='py-5 text-lg'>
                             <p className='font-medium text-sky-500'>
-                                <span className='text-white'>{alumni[0].title}. {alumni[0].fname + " " + alumni[0].lname}</span>
+                                <span className='text-white'>{alumni[0].title} {alumni[0].name}</span>
                             </p>
                             <p className='text-sky-500 font-medium'>
                                 {alumni[0].designation.trim() && <span>{alumni[0].designation && alumni[0].designation} {alumni[0].company && " at " + alumni[0].company}{alumni[0].location && ", " + alumni[0].location}</span>
@@ -653,7 +638,7 @@ const CreateAlumniProfile = () => {
                                 Role : <span className='text-white'>{alumni[0].role.toUpperCase()}</span>
                             </p>
                             <p className='font-medium text-sky-500'>
-                                Batch : <span className='text-white'>{alumni[0].batchEnd ? alumni[0].batchStart + "-" + alumni[0].batchEnd : alumni[0].batchStart}</span>
+                                Batch : <span className='text-white'>{alumni[0].batchStart ? alumni[0].batchStart + "-" + alumni[0].batchEnd : alumni[0].batchEnd}</span>
                             </p>
                             <p className='font-medium text-sky-500'>
                                 Branch : <span className='text-white'>{
@@ -662,7 +647,7 @@ const CreateAlumniProfile = () => {
                             </p>
                             <p className='font-medium text-sky-500'>
                                 Email : <span className='text-white'>{alumni[0].email}</span> <span className="text-rose-500 text-sm">
-                                    {alumni[0].showEmail && "(hidden)"}
+                                    {!alumni[0].showEmail && "(hidden)"}
                                 </span>
                             </p>
                             <p className='font-medium text-sky-500'>
@@ -673,19 +658,19 @@ const CreateAlumniProfile = () => {
                             <p className='font-medium text-sky-500'>
                                 Degree: <span className='text-white'>{alumni[0].degree}</span>
                             </p>
-                            <p className='font-medium text-sky-500'>
+                            {alumni[0].interests && <p className='font-medium text-sky-500'>
                                 Interests: <span className='text-white'>{alumni[0].interests}</span>
-                            </p>
-                            <p className='font-medium text-sky-500'>
+                            </p>}
+                            {alumni[0].hobbies.length !== 0 && <p className='font-medium text-sky-500'>
                                 Hobbies: <span className='text-white'>{alumni[0].hobbies.join(", ")}</span>
-                            </p>
-                            <p className='font-medium text-sky-500 flex items-start gap-2'>
+                            </p>}
+                            {alumni[0].achievements.length !== 0 && <p className='font-medium text-sky-500 flex items-start gap-2'>
                                 <span>Achievements:</span> <p className='text-white'>{
                                     alumni[0].achievements.map((ach, idx) => (
                                         <p className='text-base text-yellow-500' key={idx}>- {ach}</p>
                                     ))
                                 }</p>
-                            </p>
+                            </p>}
                         </div>
                     </div>
             }

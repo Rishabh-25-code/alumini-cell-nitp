@@ -9,6 +9,7 @@ client
     .setSelfSigned() // Use only on dev mode with a self-signed SSL cert
     ;
 
+const users = new sdk.Users(client);
 const databases = new sdk.Databases(client);
 
-module.exports = { sdk, client, databases };
+module.exports = { sdk, client, databases, users };
