@@ -70,7 +70,7 @@ const YourBlogs = ({ user }) => {
                                             <div className="flex justify-center items-center">
                                                 <div className="bg-yellow-600 text-white text-sm font-bold py-1.5 px-3 rounded-full">Reviewing</div>
                                             </div>
-                                        ) : blog.status === 'approved' ? (
+                                        ) : blog.status === 'published' ? (
                                             <div className="flex justify-center items-center">
                                                 <div className="bg-green-500 text-white text-sm font-bold py-1.5 px-3 rounded-full">Approved</div>
                                             </div>
@@ -85,15 +85,15 @@ const YourBlogs = ({ user }) => {
                                     {
                                         blog.status === 'reviewing' && (
                                             <div className="flex justify-center items-center">
-                                                <p className="text-yellow-600 text-sm font-bold py-1.5 px-3 rounded-full">Your experience is under review. It will be published soon.</p>
+                                                <p className="text-yellow-600 text-sm font-bold py-1.5 px-3 rounded-full">Your blog is under review. It will be published soon.</p>
                                             </div>
                                         )
                                     }
 
                                     {
-                                        blog.status === 'approved' && (
+                                        blog.status === 'published' && (
                                             <div className="flex justify-center items-center">
-                                                <p className="text-green-500 text-sm font-bold py-1.5 px-3 rounded-full">Your experience is published.</p>
+                                                <p className="text-green-500 text-sm font-bold py-1.5 px-3 rounded-full">Your blog is published.</p>
                                             </div>
                                         )
                                     }
