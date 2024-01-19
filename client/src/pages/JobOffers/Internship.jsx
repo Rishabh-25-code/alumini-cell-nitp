@@ -46,28 +46,6 @@ const Internship = () => {
                                 <div className='flex flex-col'>
                                     <p className='text-sm text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(intern.$createdAt))}</span></p>
                                     <p className='text-sm text-gray-400'>Expires: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(intern.internDeadline))}</span></p>
-                                    <button
-                                        type="button"
-                                        className="text-lg font-medium text-sky-400 hover:scale-105 mt-5"
-                                        onClick={() => {
-                                        const shareItem = {
-                                            title: intern.internTitle,
-                                            text: intern.internType,
-                                            url: `https://alumni.nitp.ac.in/internship/${internshipId}`,
-                                        }
-
-                                        if (navigator.share) {
-                                            navigator.share(shareItem)
-                                                .then(() => console.log('Successful share'))
-                                                .catch((error) => console.log('Error sharing', error));
-                                        } else {
-                                            console.log("Your browser does not support Web Share API");
-                                        }
-                                        }}
-                                    >
-                                        Share <FaShare className='inline-block ml-2' />
-                                                    
-                                    </button>     
                                 </div>
                             </div>
                             <div className='mt-5'>
@@ -103,17 +81,40 @@ const Internship = () => {
                                     </div>
                                 )
                             }
-                            <div className='pt-2'>
-                                <p className='text-sm text-gray-400 pb-1'>Posted By: </p>
-                                <div className='flex gap-2 items-center'>
-                                    <div className='w-10 h-10 rounded-full overflow-hidden flex items-center justify-center'>
-                                        <img src={`https://cloud.appwrite.io/v1/avatars/initials?name=${intern.name.split(" ").join("+")}&width=80&height=80`} alt='User Profile' />
-                                    </div>
-                                    <div className='flex flex-col'>
-                                        <p className='font-medium'>{intern.name} ({intern.yourBatch} {intern.yourDepartment})</p>
-                                        <p className='text-sm text-gray-400 -mt-1'>{intern.yourCurrentRole} at {intern.yourCurrentCompany}</p>
+                            <div className='flex justify-between md:flex-row flex-col'>
+                                <div className='pt-2'>
+                                    <p className='text-sm text-gray-400 pb-1'>Posted By: </p>
+                                    <div className='flex gap-2 items-center'>
+                                        <div className='w-10 h-10 rounded-full overflow-hidden flex items-center justify-center'>
+                                            <img src={`https://cloud.appwrite.io/v1/avatars/initials?name=${intern.name.split(" ").join("+")}&width=80&height=80`} alt='User Profile' />
+                                        </div>
+                                        <div className='flex flex-col'>
+                                            <p className='font-medium'>{intern.name} ({intern.yourBatch} {intern.yourDepartment})</p>
+                                            <p className='text-sm text-gray-400 -mt-1'>{intern.yourCurrentRole} at {intern.yourCurrentCompany}</p>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <button
+                                    type="button"
+                                    className="text-lg font-medium text-sky-400 hover:scale-105 mt-5 self-end"
+                                    onClick={() => {
+                                        const shareItem = {
+                                            title: "Here is an internship opportunity by NITP Alumni.",
+                                            text: intern.internTitle,
+                                            url: `https://alumni.nitp.ac.in/internship/${intern.$id}`,
+                                        }
+                                        if (navigator.share) {
+                                            navigator.share(shareItem)
+                                                .then(() => console.log('Successful share'))
+                                                .catch((error) => console.log('Error sharing'));
+                                        } else {
+                                            console.log("Your browser does not support Web Share API");
+                                        }
+                                    }}
+                                >
+                                    Share <FaShare className='inline-block ml-2' />
+                                </button>
                             </div>
                         </div>
                 }

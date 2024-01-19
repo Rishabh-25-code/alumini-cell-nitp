@@ -6,6 +6,9 @@ import Meta from '../../components/Meta/Meta';
 import Loader from '../../components/Loader';
 import { getImageURL } from '../../services/files';
 import MarkDown from '../../components/MarkDown';
+import { toast } from 'react-toastify'
+import { FaShare } from "react-icons/fa";
+
 
 const Experience = () => {
     const { experienceId } = useParams();
@@ -47,10 +50,29 @@ const Experience = () => {
                                 }
                             </div>
 
-                            <div className='lg:w-[70%] md:w-[80%] w-[85%] text-lg mt-10'>
+                            <div className='lg:w-[70%] md:w-[80%] w-[85%] text-lg mt-10 flex flex-col'>
                                 <MarkDown content={experience.message}></MarkDown>
 
-                                <p className='text-gray-400 text-base mt-4 mb-32'>Read the full experience <a className='text-blue-500' href={experience.link} target="_blank" rel="noopener noreferrer">here</a>.</p>
+                                <button
+                                    type="button"
+                                    className="text-lg font-medium text-sky-400 hover:scale-105 mt-5 self-end"
+                                    onClick={() => {
+                                        const shareItem = {
+                                            title: "Check out this college experience by NITP Alumni.",
+                                            text: experience.title + " by " + experience.name,
+                                            url: `https://alumni.nitp.ac.in/blogs/${experience.$id}`,
+                                        }
+
+                                        if (navigator.share) {
+                                            navigator.share(shareItem)
+                                                .catch((error) => toast.error('Error sharing'));
+                                        } else {
+                                            toast.error("Your browser does not support Web Share API");
+                                        }
+                                    }}
+                                >
+                                    Share <FaShare className='inline-block ml-2' />
+                                </button>
                             </div>
                         </div>
             }

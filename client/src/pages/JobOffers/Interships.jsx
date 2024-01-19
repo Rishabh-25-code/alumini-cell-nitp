@@ -109,8 +109,8 @@ export default Interships;
 
 const JobOffersCard2 = ({ data }) => {
   return (<>
-      <div className='border border-gray-800 hover:border-gray-700 hover:bg-[#0b0b0f] hover:scale-[101%] transition-all rounded-2xl p-5'>
-    <Link to={`/internship/${data.$id}`}>
+    <div className='border border-gray-800 hover:border-gray-700 hover:bg-[#0b0b0f] hover:scale-[101%] transition-all rounded-2xl p-5'>
+      <Link to={`/internship/${data.$id}`}>
         <div className='flex justify-between'>
           <div className='flex gap-5 flex-col items-center'>
             <div className='flex w-full gap-2 items-center'>
@@ -155,31 +155,29 @@ const JobOffersCard2 = ({ data }) => {
             </div>
           </div>
         </div>
-    </Link>
+      </Link>
 
-        <button
-            type="button"
-            className="text-lg font-medium text-sky-400 hover:scale-105 mt-5"
-            onClick={() => {
-            const shareItem = {
-                  title: data.jobType,
-                  text: "hello",
-                  url: `https://alumni.nitp.ac.in/internship/${data.$id}`,
-            }
-
-            if (navigator.share) {
-                  navigator.share(shareItem)
-                      .then(() => console.log('Successful share'))
-                      .catch((error) => console.log('Error sharing', error));
-            } else {
-                  console.log("Your browser does not support Web Share API");
-            }
-            }}
-        >
-            Share <FaShare className='inline-block ml-2' />
-                        
-        </button>         
-      </div>
-    </>
+      <button
+        type="button"
+        className="text-lg font-medium text-sky-400 hover:scale-105 mt-5 self-end"
+        onClick={() => {
+          const shareItem = {
+            title: "Here is an internship opportunity by NITP Alumni.",
+            text: data.internTitle,
+            url: `https://alumni.nitp.ac.in/internship/${data.$id}`,
+          }
+          if (navigator.share) {
+            navigator.share(shareItem)
+              .then(() => console.log('Successful share'))
+              .catch((error) => console.log('Error sharing'));
+          } else {
+            console.log("Your browser does not support Web Share API");
+          }
+        }}
+      >
+        Share <FaShare className='inline-block ml-2' />
+      </button>
+    </div>
+  </>
   )
 }

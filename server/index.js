@@ -8,6 +8,7 @@ const connectDB = require('./src/config/db');
 const Member = require('./src/models/Member');
 const Years = require('./src/models/Years');
 const addAlumni = require('./src/controller/alumni.controller');
+const { users } = require('./src/config/appwrite');
 
 const app = express();
 
@@ -24,20 +25,27 @@ app.post('/readGSheet/:sheetID', async (req, res) => {
     try {
         let result = await readGSheet(sheetID);
         const persons = result.data;
-        const response = [];
         let count = 0;
         for (const person of persons) {
-            const data = await addAlumni(person, count++);
-            response.push(data);
+            await addAlumni(person, count++);
         }
-        res.json(response);
+        res.json({ success: true, result: persons });
     } catch (error) {
         console.log(error);
         res.status(500).json({ msg: 'Server Error', error: error.message, stack: error.stack });
     }
 });
 
-
+app.post('/addrole', async (req, res) => {
+    try {
+        const { uid, labels } = req.body;
+        const response = await users.updateLabels(uid, labels);
+        res.json(response);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: 'Server Error', error: error.message, stack: error.stack });
+    }
+})
 
 app.get('/years', async (req, res) => {
     try {
