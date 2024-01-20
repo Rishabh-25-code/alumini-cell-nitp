@@ -108,7 +108,7 @@ const AlumniDatabase = () => {
             </div>
 
             {isLoading ? <div className="pt-32 px-8 text-center text-base font-medium text-white">Loading...</div> :
-                isError ? <div className="pt-23 px-8 text-center text-base font-medium text-white">
+                isError ? <div className="pt-24 px-8 text-center text-base font-medium text-white">
                     An error has occurred! Please try again later.
                 </div> :
 
@@ -167,9 +167,9 @@ const AlumniDatabase = () => {
                             {alumni && <>
                                 <div data-aos="fade-up" className="text-center px-3 pt-16">
                                     <p>Showing <span className="text-sky-500">{itemsPerPage * (page - 1) + 1}-{Math.min(
-                                            itemsPerPage * page,
-                                            alumni.total
-                                        )}</span> results of <span className="text-sky-500">{alumni.total}</span></p>
+                                        itemsPerPage * page,
+                                        alumni.total
+                                    )}</span> results of <span className="text-sky-500">{alumni.total}</span></p>
                                 </div>
 
                                 <div data-aos="fade-up" className="flex items-center justify-center pt-5 gap-10 px-6">
