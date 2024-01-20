@@ -42,7 +42,8 @@ import {
   Experience,
   VerifyEmail,
   Job,
-  Internship
+  Internship,
+  ShareFeedback,
 } from "./pages/index";
 import JobOffers from "./pages/JobOffers/JobOffers";
 import Interships from "./pages/JobOffers/Interships";
@@ -111,7 +112,7 @@ function App() {
     },
     {
       path: "/internship/:internshipId",
-      element: <Internship/>,
+      element: <Internship />,
       id: 9,
     },
     {
@@ -211,7 +212,6 @@ function App() {
     }
   ]
 
-  // Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard
   const adminProtectedRoutes = [
     {
       path: "/profile",
@@ -257,6 +257,11 @@ function App() {
       path: "/report-bug",
       component: <ReportBug />,
       id: 9
+    },
+    {
+      path: "/share-feedback",
+      component: <ShareFeedback />,
+      id: 10
     }
   ];
 

@@ -7,8 +7,11 @@ import { MdDeleteForever } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import { compressedImageUpload } from '../../../services/files';
 import { branches } from '../../../utils/branches';
+import { useForm } from 'react-hook-form';
+import { Input, Select, UploadImage, TextArea } from '../../../components/FormComponents';
 
 const CreateJob = () => {
+    const { register, reset, handleSubmit, formState: { errors } } = useForm({ trim: true });
     const { user } = useAuth();
     const [message, setMessage] = useState("");
     const [resetItems, setResetItems] = useState(false);
@@ -16,72 +19,30 @@ const CreateJob = () => {
     const handleResetItems = () => {
         setResetItems(!resetItems);
     }
+
     const [jobDetails, setJobDetails] = useState({
-        jobTitle: "",
-        jobLocation: "",
-        jobDescription: "",
         jobSkills: [],
-        jobExperience: "",
-        jobSalary: "",
-        jobType: "FullTime",
-        jobDeadline: "",
-        jobCompany: "",
         jobLinks: [],
-        jobCompanyDescription: "",
-        jobCompanyLogo: "",
-        jobDetailsLink: "",
-        jobCompanyEmail: "",
-        yourCurrentRole: "",
-        yourCurrentCompany: "",
-        yourBatch: "",
-        yourDepartment: "EE",
         referralAvailable: false,
-        referrerEmail: "",
-        name: user.name,
-        email: user.email,
-        userID: user.$id,
+        jobCompanyLogo: null,
+        jobDetailsLink: null,
+        referrerEmail: ""
     });
     const [loading, setLoading] = useState(false);
 
     const [jobCompanyLogo, setJobCompanyLogo] = useState(null);
     const [jobDetailsFile, setJobDetailsFile] = useState(null);
 
-    const handleInputChange = (e) => {
-        const { id, value, type, checked } = e.target;
-
-        setJobDetails((prevDetails) => ({
-            ...prevDetails,
-            [id]: type === "checkbox" ? checked : value,
-        }));
-    };
-
-    const handleReferralChange = (e) => {
-        const { id, checked } = e.target;
-
-        setJobDetails((prevDetails) => ({
-            ...prevDetails,
-            [id]: checked,
-        }));
-
-        if (!checked) {
-            setJobDetails((prevDetails) => ({
-                ...prevDetails,
-                referrerEmail: "",
-            }));
-        }
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const onSubmit = async (data) => {
         setLoading(true);
 
         try {
             // Upload the job company logo
             setMessage("Uploading files...");
-            let data = { ...jobDetails }
+            data = { ...data, ...jobDetails, name: user.name, email: user.email, userID: user.$id }
+
             if (jobCompanyLogo) {
                 let res = await compressedImageUpload(jobCompanyLogo);
-                console.log(res);
                 data = {
                     ...data,
                     jobCompanyLogo: res.$id,
@@ -100,8 +61,8 @@ const CreateJob = () => {
             setMessage("Creating document...");
 
             // Create the document
-            let doc = await createDocument("job-opportunity", data);
-            // console.log(jobDetails);
+            await createDocument("job-opportunity", data);
+            // console.log(data);
 
             // Reset the form
             resetForm();
@@ -117,29 +78,14 @@ const CreateJob = () => {
 
     const resetForm = () => {
         setJobDetails({
-            jobTitle: "",
-            jobLocation: "",
-            jobDescription: "",
-            jobSkills: "",
-            jobExperience: "",
-            jobSalary: "",
-            jobType: "FullTime",
-            jobDeadline: "",
-            jobCompany: "",
-            jobLinks: "",
-            jobCompanyDescription: "",
-            jobCompanyLogo: "",
-            jobDetailsLink: "",
-            jobCompanyEmail: "",
-            yourCurrentRole: "",
-            yourCurrentCompany: "",
-            yourBatch: "",
-            yourDepartment: "",
+            jobSkills: [],
+            jobLinks: [],
             referralAvailable: false,
-            referrerEmail: "",
-            name: user.name,
-            email: user.email,
+            jobCompanyLogo: null,
+            jobDetailsLink: null,
+            referrerEmail: ""
         });
+        reset();
 
         setJobCompanyLogo(null);
         setJobDetailsFile(null);
@@ -150,101 +96,215 @@ const CreateJob = () => {
             {
                 loading && <Loading message={message} />
             }
-            <form className='flex gap-3 flex-col' onSubmit={handleSubmit}>
+            <form className='flex gap-3 flex-col' onSubmit={handleSubmit(onSubmit)}>
                 <h2 className='text-2xl font-semibold'>
                     <span className='text-sky-500'>Job Info</span>
                 </h2>
-                <div>
-                    <label htmlFor="jobTitle" className='text-gray-300'>Job Title</label> <span className='text-rose-500 text-xl'>*</span>
-                    <input required={true} value={jobDetails.jobTitle} onChange={handleInputChange} type="text" id="jobTitle" placeholder="Software Engineer" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                </div>
+                <Input
+                    label='Job Title'
+                    type='text'
+                    placeholder='Software Engineer'
+                    title='jobTitle'
+                    reactHookForm={register('jobTitle', {
+                        required: 'Job Title is required',
+                        minLength: {
+                            value: 5,
+                            message: 'Job title must be at least 5 characters',
+                        },
+                        maxLength: {
+                            value: 256,
+                            message: 'Job title must not exceed 256 characters',
+                        },
+                    })}
+                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                    errors={errors.jobTitle}
+                />
 
-                <div>
-                    <label htmlFor="jobDescription" className='text-gray-300'>Job Description</label>
-                    <textarea value={jobDetails.jobDescription} onChange={handleInputChange} rows={8} type="text" id="jobDescription" placeholder="Job Description" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                </div>
+                <TextArea
+                    label='Job Description'
+                    placeholder='Job Description'
+                    title='jobDescription'
+                    reactHookForm={register('jobDescription', {
+                        required: 'Job Description is required',
+                        minLength: {
+                            value: 10,
+                            message: 'Job Description must be at least 10 characters',
+                        },
+                        maxLength: {
+                            value: 10000,
+                            message: 'Job Description must not exceed 10000 characters',
+                        },
+                    })}
+                    rows={6}
+                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                    errors={errors.jobDescription}
+                />
 
-                <div>
-                    <label htmlFor="jobSkills" className='text-gray-300'>Job Skills</label>
-                    <MultiSelect allItems={jobDetails.jobSkills} setAllItems={
-                        (items) => {
-                            setJobDetails((prevDetails) => ({
-                                ...prevDetails,
-                                jobSkills: items,
-                            }))
-                        }
-                    }
-                        resetItems={resetItems}
+                <div className='flex md:flex-row flex-col gap-3'>
+                    <Input
+                        label='Job Experience Req.(in min years)'
+                        type='number'
+                        placeholder='1 Year'
+                        title='jobExperience'
+                        reactHookForm={register('jobExperience', {
+                            required: 'Job Experience is required',
+                            min: {
+                                value: 0,
+                                message: 'Job Experience must be at least 0 years',
+                            },
+                            max: {
+                                value: 45,
+                                message: 'Job Experience must not exceed 45 years',
+                            },
+                        })}
+                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                        errors={errors.jobExperience}
+                    />
+
+                    <Input
+                        label='Job Location'
+                        type='text'
+                        placeholder='Bangalore, India'
+                        title='jobLocation'
+                        reactHookForm={register('jobLocation', {
+                            minLength: {
+                                value: 3,
+                                message: 'Job Location must be at least 3 characters',
+                            },
+                            maxLength: {
+                                value: 256,
+                                message: 'Job Location must not exceed 256 characters',
+                            },
+                        })}
+                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                        errors={errors.jobLocation}
+                    />
+
+                    <Input
+                        label='Job Salary (CTC in LPA)'
+                        type='number'
+                        placeholder='12'
+                        title='jobSalary'
+                        reactHookForm={register('jobSalary', {
+                            min: {
+                                value: 0,
+                                message: 'Job Salary must be at least 0 LPA',
+                            },
+                            max: {
+                                value: 100,
+                                message: 'Job Salary must not exceed 100 LPA',
+                            },
+                        })}
+                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                        errors={errors.jobSalary}
                     />
                 </div>
 
                 <div className='flex md:flex-row flex-col gap-3'>
-                    <div className='flex-1'>
-                        <label htmlFor="jobExperience" className='text-gray-300'>Job Experience Req.(in min years)</label> <span className='text-rose-500 text-xl'>*</span>
-                        <input required={true} value={jobDetails.jobExperience} onChange={handleInputChange} min={0} type="number" id="jobExperience" placeholder="1 Year" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                    </div>
-
-                    <div className='flex-1'>
-                        <label htmlFor="jobLocation" className='text-gray-300'>Job Location</label>
-                        <input value={jobDetails.jobLocation} onChange={handleInputChange} type="text" id="jobLocation" placeholder="Bangalore, India" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                    </div>
-
-                    <div className='flex-1'>
-                        <label htmlFor="jobSalary" className='text-gray-300'>Job Salary (CTC in LPA)</label>
-                        <input value={jobDetails.jobSalary} onChange={handleInputChange} type="number" id="jobSalary" placeholder="12" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                    </div>
-                </div>
-
-                <div className='flex md:flex-row flex-col gap-3'>
-                    <div className='flex-1'>
-                        <label htmlFor="jobType" className='text-gray-300'>Job Type</label> <span className='text-rose-500 text-xl'>*</span>
-                        <select required={true} value={jobDetails.jobType} onChange={handleInputChange} name="jobType" id="jobType" placeholder="FullTime/PartTime/Remote" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg'>
-                            <option value="FullTime">Full Time</option>
-                            <option value="PartTime">Part Time</option>
-                            <option value="Remote">Remote</option>
-                        </select>
-                    </div>
+                    <Select
+                        label='Job Type'
+                        title='jobType'
+                        options={[
+                            { value: 'FullTime', name: 'Full Time' },
+                            { value: 'PartTime', name: 'Part Time' },
+                            { value: 'Remote', name: 'Remote' },
+                        ]}
+                        placeholder={'Select Job Type'}
+                        reactHookForm={register('jobType', {
+                            required: 'Job Type is required',
+                        })}
+                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                        errors={errors.jobType}
+                    />
 
                     <div className='flex-1'>
                         <label htmlFor="jobDeadline" className='text-gray-300'>Job Application Deadline</label>
-                        <input value={jobDetails.jobDeadline} onChange={handleInputChange} type="date" id="jobDeadline" placeholder="Job Deadline" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
+                        <input value={jobDetails.jobDeadline}
+                            type="date"
+                            id="jobDeadline"
+                            placeholder="Job Deadline" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg'
+                            {...register('jobDeadline')}
+                        />
+                        {errors.jobDeadline && <p>{errors.jobDeadline.message}</p>}
                     </div>
 
-                    <div className='flex-1'>
-                        <label htmlFor="jobCompany" className='text-gray-300'>Job Company</label> <span className='text-rose-500 text-xl'>*</span>
-                        <input required={true} value={jobDetails.jobCompany} onChange={handleInputChange} type="text" id="jobCompany" placeholder="Microsoft" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                    </div>
-                </div>
-
-                <div>
-                    <label htmlFor="jobLinks" className='text-gray-300'>Job Links</label>
-                    <MultiSelect type="url" allItems={jobDetails.jobLinks} setAllItems={
-                        (items) => {
-                            setJobDetails((prevDetails) => ({
-                                ...prevDetails,
-                                jobLinks: items,
-                            }))
-                        }
-                    }
-                        resetItems={resetItems}
+                    <Input
+                        label='Job Company'
+                        type='text'
+                        placeholder='Microsoft'
+                        title='jobCompany'
+                        reactHookForm={register('jobCompany', {
+                            required: 'Job Company is required',
+                            minLength: {
+                                value: 3,
+                                message: 'Job Company must be at least 3 characters',
+                            },
+                            maxLength: {
+                                value: 118,
+                                message: 'Job Company must not exceed 118 characters',
+                            },
+                        })}
+                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                        errors={errors.jobCompany}
                     />
                 </div>
 
-                <div>
-                    <label htmlFor="jobCompanyDescription" className='text-gray-300'>Job Company Description</label>
-                    <textarea value={jobDetails.jobCompanyDescription} onChange={handleInputChange} rows={4} id="jobCompanyDescription" placeholder="Job Company Description" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
+                <div className="flex">
+                    <div className="flex-1">
+                        <label htmlFor="jobSkills" className='text-gray-300'>Job Skills</label>
+                        <MultiSelect allItems={jobDetails.jobSkills} setAllItems={
+                            (items) => {
+                                setJobDetails((prevDetails) => ({
+                                    ...prevDetails,
+                                    jobSkills: items,
+                                }))
+                            }
+                        }
+                            resetItems={resetItems}
+                        />
+                    </div>
+
+                    <div className="flex-1">
+                        <label htmlFor="jobLinks" className='text-gray-300'>Job Links</label>
+                        <MultiSelect type="url" allItems={jobDetails.jobLinks} setAllItems={
+                            (items) => {
+                                setJobDetails((prevDetails) => ({
+                                    ...prevDetails,
+                                    jobLinks: items,
+                                }))
+                            }
+                        }
+                            resetItems={resetItems}
+                        />
+                    </div>
                 </div>
 
+                <TextArea
+                    label='Job Company Description'
+                    placeholder='Job Company Description'
+                    title='jobCompanyDescription'
+                    reactHookForm={register('jobCompanyDescription', {
+                        minLength: {
+                            value: 10,
+                            message: 'Job Company Description must be at least 10 characters',
+                        },
+                        maxLength: {
+                            value: 4980,
+                            message: 'Job Company Description must not exceed 4980 characters',
+                        },
+                    })}
+                    rows={6}
+                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                    errors={errors.jobCompanyDescription}
+                />
+
                 <div className="flex md:flex-row flex-col gap-5 py-3">
-                    <div className="flex-1">
-                        <label htmlFor="jobCompanyLogo" className='text-gray-300'>Job Company Logo (max 5MB)</label>
-                        <div className="p-3">
-                            <img src={jobCompanyLogo ? URL.createObjectURL(jobCompanyLogo) : "logo-placeholder.jpg"} className='h-[5rem]' alt="placeholder" />
-                        </div>
-                        <input type="file" accept="image/*" onChange={(e) => {
-                            setJobCompanyLogo(e.target.files[0]);
-                        }} id="jobCompanyLogo" placeholder="Job Company Logo" className='mt-2 text-sm text-grey-500 file:mr-5 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:cursor-pointer hover:file:bg-amber-50 hover:file:text-amber-700' />
-                    </div>
+                    <UploadImage
+                        label='Job Company Logo'
+                        placeholder='logo-placeholder.jpg'
+                        setImage={setJobCompanyLogo}
+                        image={jobCompanyLogo}
+                    />
 
                     <div className="flex-1">
                         <label htmlFor="jobDetails" className='text-gray-300'>Job Details (doc,pdf,image etc. max 5MB)</label>
@@ -256,10 +316,24 @@ const CreateJob = () => {
                     </div>
                 </div>
 
-                <div>
-                    <label htmlFor="jobCompanyEmail" className='text-gray-300'>Job Company Email</label>
-                    <input value={jobDetails.jobCompanyEmail} onChange={handleInputChange} type="email" id="jobCompanyEmail" placeholder="Job Company Email" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                </div>
+                <Input
+                    label="jobCompanyEmail"
+                    type="email"
+                    placeholder="Job Company Email"
+                    title="jobCompanyEmail"
+                    reactHookForm={register('jobCompanyEmail', {
+                        pattern: {
+                            value: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i,
+                            message: 'Job Company Email must be a valid email address',
+                        },
+                        maxLength: {
+                            value: 256,
+                            message: 'Job Company Email must not exceed 256 characters',
+                        },
+                    })}
+                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                    errors={errors.jobCompanyEmail}
+                />
 
                 {/* Referral Availability */}
                 <div className='flex gap-5'>
@@ -270,7 +344,20 @@ const CreateJob = () => {
                             type="checkbox"
                             id="referralAvailable"
                             checked={jobDetails.referralAvailable}
-                            onChange={handleReferralChange}
+                            onChange={(e) => {
+                                if (!e.target.checked) {
+                                    setJobDetails((prevDetails) => ({
+                                        ...prevDetails,
+                                        referrerEmail: '',
+                                        referralAvailable: e.target.checked
+                                    }))
+                                } else {
+                                    setJobDetails((prevDetails) => ({
+                                        ...prevDetails,
+                                        referralAvailable: e.target.checked,
+                                    }))
+                                }
+                            }}
                         />
                         <label htmlFor="referralAvailable" className='text-gray-300 pl-2'>Yes</label>
                     </div>
@@ -284,7 +371,12 @@ const CreateJob = () => {
                             type="text"
                             id="referrerEmail"
                             value={jobDetails.referrerEmail}
-                            onChange={handleInputChange}
+                            onChange={(e) => {
+                                setJobDetails((prevDetails) => ({
+                                    ...prevDetails,
+                                    referrerEmail: e.target.value
+                                }))
+                            }}
                             placeholder="Referrer Email/LinkedIn/Twitter"
                             className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg'
                         />
@@ -295,30 +387,87 @@ const CreateJob = () => {
                     <span className='text-sky-500'>Your Info</span>
                 </h2>
 
-                <div>
-                    <label htmlFor="yourCurrentRole" className='text-gray-300'>Your Current Role</label> <span className='text-rose-500 text-xl'>*</span>
-                    <input required={true} value={jobDetails.yourCurrentRole} onChange={handleInputChange} type="text" id="yourCurrentRole" placeholder="Your Current Role" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                </div>
+                <Input
+                    label="Your Current Role"
+                    type="text"
+                    placeholder="Your Current Role"
+                    title="yourCurrentRole"
+                    reactHookForm={register('yourCurrentRole', {
+                        required: 'Your Current Role is required',
+                        minLength: {
+                            value: 3,
+                            message: 'Your Current Role must be at least 3 characters',
+                        },
+                        maxLength: {
+                            value: 256,
+                            message: 'Your Current Role must not exceed 256 characters',
+                        },
+                    })}
+                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                    errors={errors.yourCurrentRole}
+                />
 
                 <div className='flex md:flex-row flex-col gap-3'>
-                    <div className='flex-1'>
-                        <label htmlFor="yourCurrentCompany" className='text-gray-300'>Your Current Company</label> <span className='text-rose-500 text-xl'>*</span>
-                        <input required={true} value={jobDetails.yourCurrentCompany} onChange={handleInputChange} type="text" id="yourCurrentCompany" placeholder="Your Current Company" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                    </div>
+                    <Input
+                        label="Your Current Company"
+                        type="text"
+                        placeholder="Your Current Company"
+                        title="yourCurrentCompany"
+                        reactHookForm={register('yourCurrentCompany', {
+                            required: 'Your Current Company is required',
+                            minLength: {
+                                value: 3,
+                                message: 'Your Current Company must be at least 3 characters',
+                            },
+                            maxLength: {
+                                value: 256,
+                                message: 'Your Current Company must not exceed 256 characters',
+                            },
+                        })}
+                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                        errors={errors.yourCurrentCompany}
+                    />
 
-                    <div className='flex-1'>
-                        <label htmlFor="yourBatch" className='text-gray-300'>Your Batch</label><span className='text-rose-500 text-xl'>*</span>
-                        <input required={true} value={jobDetails.yourBatch} onChange={handleInputChange} type="text" id="yourBatch" placeholder="Your Batch" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' />
-                    </div>
+                    <Input
+                        label="Your Batch"
+                        type="number"
+                        placeholder="2002"
+                        title="batch"
+                        reactHookForm={register('yourBatch', {
+                            required: 'Batch is required',
+                            minLength: {
+                                value: 4,
+                                message: 'Batch must be at least 4 characters',
+                            },
+                            maxLength: {
+                                value: 4,
+                                message: 'Batch must not exceed 4 characters',
+                            },
+                            onChange: (e) => {
+                                if (e.target.value > new Date().getFullYear() + 4) {
+                                    e.target.value = new Date().getFullYear() + 4;
+                                }
 
-                    <div className='flex-1'>
-                        <label htmlFor="yourDepartment" className='text-gray-300'>Your Department</label><span className='text-rose-500 text-xl'>*</span>
-                        <select required={true} value={jobDetails.yourDepartment} onChange={handleInputChange} type="text" id="yourDepartment" placeholder="Your Department" className='w-full bg-gray-950 text-gray-300 px-4 py-2 rounded-lg' >
-                            {branches.map((branch) => (
-                                <option key={branch.value} value={branch.value}>{branch.name}</option>
-                            ))}
-                        </select>
-                    </div>
+                                if (e.target.value.length === 4 && e.target.value < 1800) {
+                                    e.target.value = 1800;
+                                }
+                            }
+                        })}
+                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                        errors={errors.yourBatch}
+                    />
+
+                    <Select
+                        label='Your Department'
+                        id='branch'
+                        options={branches}
+                        reactHookForm={register('yourDepartment', {
+                            required: 'Department is required',
+                        })}
+                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                        errors={errors.yourDepartment}
+                        placeholder="Select Dept."
+                    />
                 </div>
 
                 <div className='text-white self-end w-fit flex gap-3 pt-6 pb-4'>

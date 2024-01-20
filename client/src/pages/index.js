@@ -42,5 +42,6 @@ import ShareExperience from "./ProtectedPages/ShareExperience/ShareExperience";
 import WriteBlog from "./ProtectedPages/WriteBlog/WriteBlog";
 import ReportBug from "./ProtectedPages/ReportBug/ReportBug";
 import VerifyEmail from "./Auth/VerifyEmail";
+import ShareFeedback from "./ProtectedPages/ShareFeedback/ShareFeedback";
 
-export { Team, HomePage, Gallery, Events, NotableAlumni, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers,Job, SuccessStories, PreviousMeets, SignIn, SignUp, Verify, ForgotPassword, ResetPassword, Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard, ReportBug, Experiences, Experience, VerifyEmail, Internship };
+export { Team, HomePage, Gallery, Events, NotableAlumni, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers,Job, SuccessStories, PreviousMeets, SignIn, SignUp, Verify, ForgotPassword, ResetPassword, Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard, ReportBug, Experiences, Experience, VerifyEmail, Internship, ShareFeedback };

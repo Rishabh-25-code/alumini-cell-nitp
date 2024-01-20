@@ -44,7 +44,7 @@ const Job = () => {
                                     </div>
                                     <div className='flex flex-col'>
                                         <p className='text-sm text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(job.$createdAt))}</span></p>
-                                        <p className='text-sm text-gray-400'>Expires: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(job.jobDeadline))}</span></p>
+                                        {job.jobDeadline && <p className='text-sm text-gray-400'>Expires: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(job.jobDeadline))}</span></p>}
                                     </div>
                                 </div>
                                 <div className='mt-5'>

@@ -12,7 +12,7 @@ import { FiSearch } from "react-icons/fi";
 
 
 const Interships = () => {
-  const [searchParams, setSearchParams] = useSearchParams({ page: 1, search: "", type: "internTitle" });
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1, type: "internTitle", search: "" });
   const page = parseInt(searchParams.get('page')) || 1;
   const search = searchParams.get('search') || "";
   const type = searchParams.get('type') || "internTitle";
@@ -69,7 +69,7 @@ const Interships = () => {
       {isLoading ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
         isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
           internships && internships.length === 0 ? <div className='text-center py-16 text-sky-500'>No items found!</div> :
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:w-[85%] md:w-[95%] w-full px-5 gap-6 m-auto items-center justify-center my-24'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:w-[85%] md:w-[95%] w-full px-5 gap-6 m-auto my-24'>
               {internships.map((intern) => (
                 <JobOffersCard2 data={intern} key={intern.$id} />
               ))}
@@ -109,7 +109,7 @@ export default Interships;
 
 const JobOffersCard2 = ({ data }) => {
   return (<>
-    <div className='border border-gray-800 hover:border-gray-700 hover:bg-[#0b0b0f] hover:scale-[101%] transition-all rounded-2xl p-5'>
+    <div data-aos="fade-up" className='border border-gray-800 hover:border-gray-700 hover:bg-[#0b0b0f] hover:scale-[101%] transition-all rounded-2xl p-5'>
       <Link to={`/internship/${data.$id}`}>
         <div className='flex justify-between'>
           <div className='flex gap-5 flex-col items-center'>
@@ -139,6 +139,7 @@ const JobOffersCard2 = ({ data }) => {
           <p className=' text-gray-400'>Expected Stipend: <span className="text-white">{new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(data.internSalary)} K</span></p>
         </div>}
         <p className='text-sm pt-2 text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(data.$createdAt))}</span></p>
+        {data.internDeadline && <p className='text-sm text-gray-400'>Deadline: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(data.internDeadline))}</span></p>}
         <p>
           Status :  <span className={`${data.status === "reviewing" ? "text-yellow-500" : data.status === 'published' ? "text-green-500" : "text-red-500"}`}>{data.status}</span>
         </p>

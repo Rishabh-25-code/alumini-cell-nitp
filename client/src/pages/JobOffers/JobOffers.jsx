@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { FiSearch } from "react-icons/fi";
 
 const JobOffers = () => {
-     const [searchParams, setSearchParams] = useSearchParams({ page: 1, search: "", type: "jobTitle" });
+     const [searchParams, setSearchParams] = useSearchParams({ page: 1, type: "jobTitle", search: "" });
      const page = parseInt(searchParams.get('page')) || 1;
      const search = searchParams.get('search') || "";
      const type = searchParams.get('type') || "jobTitle";
@@ -68,7 +68,7 @@ const JobOffers = () => {
                {isLoading ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
                     isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
                          jobs && jobs.length === 0 ? <div className='text-center py-16 text-sky-500'>No Jobs Found!</div> :
-                              <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:w-[85%] md:w-[95%] w-full px-5 gap-6 m-auto items-center justify-center my-24'>
+                              <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:w-[85%] md:w-[95%] w-full px-5 gap-6 m-auto my-24'>
                                    {jobs.map((job) => (
                                         <JobOffersCard2 data={job} key={job.$id} />
                                    ))}
@@ -110,8 +110,7 @@ export default JobOffers;
 
 const JobOffersCard2 = ({ data }) => {
      return (<>
-
-          <div className='border border-gray-800 hover:border-gray-700 hover:bg-[#0b0b0f] hover:scale-[101%] transition-all rounded-2xl p-5 place-items-stretch'>
+          <div data-aos="fade-up" className='border border-gray-800 hover:border-gray-700 hover:bg-[#0b0b0f] hover:scale-[101%] transition-all rounded-2xl p-5'>
                <Link to={`/job/${data.$id}`}>
                     <div className='flex justify-between'>
                          <div className='flex gap-5 flex-col items-center'>
@@ -142,6 +141,7 @@ const JobOffersCard2 = ({ data }) => {
                     </div>
 
                     <p className='text-sm pt-2 text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(data.$createdAt))}</span></p>
+                    {data.jobDeadline && <p className='text-sm text-gray-400'>Deadline: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(data.jobDeadline))}</span></p>}
 
                     <div className='pt-2'>
                          <p className='text-sm text-gray-400 pb-1'>Posted By: </p>
@@ -178,10 +178,6 @@ const JobOffersCard2 = ({ data }) => {
                     Share <FaShare className='inline-block ml-2' />
                </button>
           </div>
-
-
-
-
      </>
      )
 }

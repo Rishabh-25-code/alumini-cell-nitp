@@ -14,16 +14,16 @@ const PreviousPosts = () => {
         queryKey: ['previousJobPosts'],
         queryFn: () => getUserPostedJobInternships('job-opportunity', user.$id),
     })
-
     const deleteJob = async (id) => {
         try {
             const job = data.find((job) => job.$id === id);
-            if (job.jobCompanyLogo) {
+            if (job.jobDetailsLink && job.jobCompanyLogo) {
+                await Promise.all([deleteFile(job.jobDetailsLink), deleteFile(job.jobCompanyLogo), deleteDocument('job-opportunity', id)])
+            } else if (job.jobCompanyLogo) {
                 await Promise.all([deleteFile(job.jobCompanyLogo), deleteDocument('job-opportunity', id)])
             } else {
                 await deleteDocument('job-opportunity', id);
             }
-
             await refetch();
             toast.success('Job deleted successfully');
         } catch (error) {
