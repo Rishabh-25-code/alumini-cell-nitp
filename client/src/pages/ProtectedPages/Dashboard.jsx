@@ -47,7 +47,7 @@ const Dashboard = () => {
       link: '/post-a-job?tab=create-job',
     },
     {
-      name: 'View Intern Openings',
+      name: 'Post Intern Opening',
       desc: 'Internships',
       link: '/post-an-internship?tab=post-internship'
     },

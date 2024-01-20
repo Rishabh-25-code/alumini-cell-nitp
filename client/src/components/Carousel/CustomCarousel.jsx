@@ -25,6 +25,7 @@ const CustomCarousel = ({ data, captionStyle, slideNumberStyle }) => {
             thumbnails={true}
             thumbnailWidth="100px"
             style={{
+              loading:"lazy",
               textAlign: 'center',
               maxWidth: '850px',
               maxHeight: '500px',

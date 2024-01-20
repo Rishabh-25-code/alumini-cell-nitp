@@ -26,7 +26,7 @@ export const Input = ({ id, label, type, placeholder, title, reactHookForm, clas
 
 export const Select = ({ label, id, options, placeholder, reactHookForm, className, errors }) => {
     return (
-        <div>
+        <div className="flex-1">
             <label htmlFor={id} className='text-gray-300'>{label}</label>
             <select
                 id={id}

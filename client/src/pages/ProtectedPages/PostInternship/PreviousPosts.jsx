@@ -18,12 +18,13 @@ const PreviousPosts = () => {
     const deleteInternship = async (id) => {
         try {
             const internship = data.find((internship) => internship.$id === id);
-            if (internship.internCompanyLogo) {
+            if (internship.internDetailsLink && internship.internCompanyLogo) {
+                await Promise.all([deleteFile(internship.internDetailsLink), deleteFile(internship.internCompanyLogo), deleteDocument('intern-opportunity', id)])
+            } else if (internship.internCompanyLogo) {
                 await Promise.all([deleteFile(internship.internCompanyLogo), deleteDocument('intern-opportunity', id)])
             } else {
                 await deleteDocument('intern-opportunity', id);
             }
-
             await refetch();
             toast.success('Internship deleted successfully');
         } catch (error) {

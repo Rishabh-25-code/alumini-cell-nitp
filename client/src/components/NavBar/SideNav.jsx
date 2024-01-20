@@ -54,6 +54,11 @@ const SideNav = () => {
       name: "Report a Bug",
       icon: <FaBug className="inline-block" />,
       path: "/report-bug",
+    },
+    {
+      name:"Share Feedback",
+      icon:<MdFeedback className="inline-block" />,
+      path:"/share-feedback",
     }
   ]
 

@@ -114,7 +114,7 @@ const PreviousMeets = () => {
                             </div>
 
                             <div className='pt-5'>
-                                <img className='w-full' src={meet.img} alt="alumni meet" />
+                                <img loading="lazy" className='w-full' src={meet.img} alt="alumni meet" />
 
                                 <div className='flex flex-col text-justify gap-5 pt-5'>
                                     {
@@ -149,8 +149,6 @@ const PreviousMeets = () => {
                                     Share <FaShare className='inline-block ml-2' />
                                 </button>
                             </div>
-
-
                         </div>
                     ))
                 }

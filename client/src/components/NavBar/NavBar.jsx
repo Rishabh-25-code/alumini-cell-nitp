@@ -170,7 +170,7 @@ const NavBar = () => {
               }
               else {
                 return (
-                  <Link key={index} style={{ textDecoration: "none" }} to={link.link}>
+                  <Link key={index + "other"} style={{ textDecoration: "none" }} to={link.link}>
                     <p
                       className="text-white hover:text-blue-400"
                     >
@@ -225,7 +225,7 @@ const NavBar = () => {
         {navLinks.map((link, index) => {
           if (link.children) {
             return (
-              <div className="flex flex-col sm:gap-0 gap-1">
+              <div key={index} className="flex flex-col sm:gap-0 gap-1">
                 <div className="text-sky-500">
                   {link.name}
                 </div>
@@ -235,7 +235,7 @@ const NavBar = () => {
                       style={{ textDecoration: "none" }}
                       to={child.link}
                       className="dropdown-link text-base"
-                      key={i}
+                      key={i + "child"}
                       onClick={() => setMenu(!menu)}
                     >
                       <p className="text-gray-400 sm:py-0 py-0.5 hover:text-blue-400">

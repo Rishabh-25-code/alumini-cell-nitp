@@ -28,6 +28,7 @@ input[type="email"],
 input[type="number"],
 input[type="tel"],
 input[type="search"],
+input[type="date"],
 input[type="url"] {
   @apply border-2 border-gray-700;
 }
