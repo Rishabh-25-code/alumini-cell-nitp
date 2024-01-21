@@ -491,8 +491,8 @@ const CreateJob = () => {
 export default CreateJob;
 
 
-const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item", fullWd = false, resetItems }) => {
-    const [items, setItems] = useState([]);
+const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add an item", fullWd = false, resetItems, value = [] }) => {
+    const [items, setItems] = useState(value);
     const [current, setCurrent] = useState('');
 
     const handleSubmit = (e) => {
@@ -507,9 +507,8 @@ const MultiSelect = ({ allItems, setAllItems, type = "text", placeholder = "Add 
     }
 
     useEffect(() => {
-        setItems([]);
+        setItems(value);
     }, [resetItems]);
-
 
     return (
         <div className='flex flex-col gap-2 pt-2 w-full'>

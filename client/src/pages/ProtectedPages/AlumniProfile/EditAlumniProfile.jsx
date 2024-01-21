@@ -4,34 +4,23 @@ import { branches } from '../../../utils/branches';
 import placeholder from "../../../assets/man-placeholder.jpg"
 import { MultiSelect } from '../PostJob/CreateJob';
 import { useForm } from 'react-hook-form';
-import { compressedImageUpload } from '../../../services/files';
-import { getImageURL } from '../../../services/files';
-import { createDocument, getAlumniProfile } from '../../../services/documents';
+import { compressedImageUpload, deleteFile } from '../../../services/files';
+import { updateDocument, getAlumniProfile } from '../../../services/documents';
 import useAuth from '../../../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import Loader, { Loading } from '../../../components/Loader';
 import { Input, Select, ProfileImage, TextArea } from '../../../components/FormComponents';
-import { FaEdit } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import Meta from '../../../components/Meta/Meta';
+import { PageHeading } from "../../../components/Headings/Heading"
+import { useNavigate } from "react-router-dom"
 
 
-const CreateAlumniProfile = () => {
+const EditAlumniProfile = () => {
     const navigate = useNavigate();
-    const { register, reset, handleSubmit, formState: { errors } } = useForm({ trim: true });
+    const { register, handleSubmit, formState: { errors } } = useForm({ trim: true });
     const [loading, setLoading] = useState(false);
-    const [message, setMessage] = useState('Creating profile...');
     const { user } = useAuth();
-    const [formData, setFormData] = useState({
-        achievements: [],
-        interests: '',
-        hobbies: [],
-    });
-    const [profileImage, setProfileImage] = useState(null);
-    const [resetItems, setResetItems] = useState(false);
-    const handleResetItems = () => {
-        setResetItems(!resetItems);
-    }
-
+    const [message, setMessage] = useState("");
     const { data: alumni, isLoading, isError, refetch } = useQuery({
         queryKey: ['alumni', user.email],
         queryFn: () => getAlumniProfile('alumni', user.email),
@@ -39,53 +28,73 @@ const CreateAlumniProfile = () => {
         retry: 2,
     })
 
+    const [profileImage, setProfileImage] = useState(null);
+
+    const [formData, setFormData] = useState({
+        achievements: alumni?.achievements || [],
+        hobbies: alumni?.hobbies || [],
+    });
+
+    const [resetItems, setResetItems] = useState(false);
+    const handleResetItems = () => {
+        setResetItems(!resetItems);
+    }
+
     const onSubmit = useCallback(async (data) => {
-        data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: null, uid: user.$id, email: user.email };
+        data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: alumni.image, uid: user.$id, email: user.email };
         setLoading(true);
         try {
-            setMessage('Uploading Image...');
+            setMessage("Uploading Image...");
+            if (data.image && profileImage === null) {
+                await deleteFile(data.image);
+                data = { ...data, image: null }
+            }
             if (profileImage) {
+                await deleteFile(alumni.image);
                 let res = await compressedImageUpload(profileImage);
                 if (res) {
                     data = { ...data, image: res.$id };
                 }
             }
 
-            setMessage('Creating profile...');
-            await createDocument('alumni', data);
-            toast.success("Profile created successfully!");
-            resetForm();
+            setMessage("Updating Profile...");
+            await updateDocument('alumni', alumni.$id, data);
+            toast.success("Profile updated successfully!");
             refetch();
+            navigate(`/alumni-profile`);
         } catch (error) {
             toast.error(error.message);
         } finally {
             setLoading(false);
         }
-    }, [formData, profileImage, refetch, reset]);
+    }, [formData, profileImage, refetch]);
 
     const resetForm = () => {
-        reset();
         setFormData((prev) => ({
             ...prev,
-            achievements: []
+            achievements: [],
+            hobbies: [],
         }));
     };
 
     return (
-        <div className='bg-gray-900 relative p-5 my-5 rounded-2xl'>
+        <div className='lg:px-9 px-4 relative'>
             {
                 loading && <Loading message={message} />
             }
-            {isLoading ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
-                isError ? <div className='w-full h-[10rem] flex items-center justify-center'>Something went wrong!</div> :
-                    !alumni ?
+            <Meta title="Edit Profile | Alumni NITP" />
+            <PageHeading heading='Edit' heading1='Alumni Profile' />
+            <div className='bg-gray-900 relative p-5 my-5 rounded-2xl'>
+                {isLoading ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
+                    isError ? <div className='w-full h-[10rem] flex items-center justify-center'>Something went wrong!</div> :
+                        alumni &&
                         <form className='flex gap-3 flex-col' onSubmit={handleSubmit(onSubmit)}>
                             <h2 className='text-2xl font-semibold'>
                                 <span className='text-sky-500'>Alumni Info </span>
                             </h2>
 
                             <div className="flex md:flex-row flex-col gap-5 py-3">
-                                <ProfileImage placeholder={placeholder} profileImage={profileImage} setProfileImage={setProfileImage} />
+                                <ProfileImage prevImage={alumni.image} placeholder={placeholder} profileImage={profileImage} setProfileImage={setProfileImage} />
                             </div>
 
                             <div className="flex md:flex-row flex-col gap-5 py-3">
@@ -108,6 +117,7 @@ const CreateAlumniProfile = () => {
                                             value: 30,
                                             message: 'Username must not exceed 16 characters',
                                         },
+                                        value: alumni.username,
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.username}
@@ -123,7 +133,10 @@ const CreateAlumniProfile = () => {
                                         { name: 'I.MSc', value: 'I.MSc' },
                                         { name: 'Ph.D.', value: 'Ph.D.' }
                                     ]}
-                                    reactHookForm={register('degree', { required: 'Degree is required' })}
+                                    reactHookForm={register('degree', {
+                                        required: 'Degree is required',
+                                        value: alumni.degree,
+                                    })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.degree}
                                     placeholder="Select Degree"
@@ -136,15 +149,17 @@ const CreateAlumniProfile = () => {
                                     placeholder="Select Title"
                                     title='title'
                                     reactHookForm={register('title', {
-                                        required: 'Title is required'
+                                        required: 'Title is required',
+                                        value: alumni.title
                                     })}
                                     options={[
                                         { name: 'Mr', value: 'Mr' },
-                                        { name: 'Miss.', value: 'Miss' },
+                                        { name: 'Miss', value: 'Miss' },
+                                        { name: 'Ms', value: 'Ms' },
                                         { name: 'Mrs', value: 'Mrs' },
-                                        { name: 'Dr', value: 'Dr.' },
+                                        { name: 'Dr', value: 'Dr' },
                                         { name: 'Prof', value: 'Prof' },
-                                        { name: "Md", value: "Md." },
+                                        { name: "Md", value: "Md" },
                                     ]}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.title}
@@ -169,6 +184,7 @@ const CreateAlumniProfile = () => {
                                             value: 500,
                                             message: 'Name must not exceed 500 characters',
                                         },
+                                        value: alumni.name
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.name}
@@ -192,6 +208,7 @@ const CreateAlumniProfile = () => {
                                     ]}
                                     reactHookForm={register('gender', {
                                         required: 'Gender is required',
+                                        value: alumni.gender
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.gender}
@@ -224,6 +241,7 @@ const CreateAlumniProfile = () => {
                                     ]}
                                     reactHookForm={register('role', {
                                         required: 'Role is required',
+                                        value: alumni.role
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.role}
@@ -251,6 +269,7 @@ const CreateAlumniProfile = () => {
                                             value: 4,
                                             message: 'Batch must not exceed 4 characters',
                                         },
+                                        value: alumni.batchStart,
                                         onChange: (e) => {
                                             if (e.target.value > new Date().getFullYear() + 4) {
                                                 e.target.value = new Date().getFullYear() + 4;
@@ -274,6 +293,7 @@ const CreateAlumniProfile = () => {
                                     title='batchEnd'
                                     reactHookForm={register('batchEnd', {
                                         required: 'Batch/Tenure is required',
+                                        value: alumni.batchEnd,
                                         pattern: {
                                             value: /^\d{4}$/i,
                                             message: 'Please enter a valid batch',
@@ -306,6 +326,7 @@ const CreateAlumniProfile = () => {
                                     options={branches}
                                     reactHookForm={register('branch', {
                                         required: 'Branch is required',
+                                        value: alumni.branch
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.branch}
@@ -317,7 +338,8 @@ const CreateAlumniProfile = () => {
                                 maxLength: {
                                     value: 1000,
                                     message: 'Bio must not exceed 1000 characters',
-                                }
+                                },
+                                value: alumni.bio
                             })} className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300' errors={errors.bio} />
 
                             <div className="flex md:flex-row flex-col gap-5">
@@ -329,17 +351,30 @@ const CreateAlumniProfile = () => {
                                         title='email'
                                         disabled={true}
                                         value={user.email}
-                                        reactHookForm={register('email')}
+                                        reactHookForm={register('email', {
+                                            required: 'Email is required',
+                                            value: alumni.email,
+                                            pattern: {
+                                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                                message: 'Please enter a valid email address',
+                                            },
+                                            maxLength: {
+                                                value: 255,
+                                                message: 'Email must not exceed 255 characters',
+                                            }
+                                        })}
                                         className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                         errors={errors.email}
                                     />
-                                    <p className="pt-2 text-sm text-gray-300">
+                                    <p className="pt-2 text-sm text-sky-500">
                                         Do you want to show your email on your public profile?
                                         <input
                                             type="checkbox"
                                             defaultChecked={true}
                                             id="showEmail"
-                                            {...register('showEmail')}
+                                            {...register('showEmail', {
+                                                value: alumni.showEmail
+                                            })}
                                             className="ml-2"
                                         />
                                     </p>
@@ -354,6 +389,7 @@ const CreateAlumniProfile = () => {
                                         title='phone'
                                         reactHookForm={register('phone', {
                                             required: 'Phone is required',
+                                            value: alumni.phone,
                                             pattern: {
                                                 value: /^(?!(\d)\1{9})[6,7,8,9]\d{9}$/,
                                                 message: 'Please enter a valid phone no.',
@@ -362,7 +398,7 @@ const CreateAlumniProfile = () => {
                                         className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                         errors={errors.phone}
                                     />
-                                    <p className="pt-2 text-sm text-gray-300">
+                                    <p className="pt-2 text-sm text-sky-500">
                                         Do you want to show your phone no. on your public profile?
                                         <input
                                             type="checkbox"
@@ -405,6 +441,7 @@ const CreateAlumniProfile = () => {
                                         ]}
                                         reactHookForm={register('category', {
                                             required: 'Category is required',
+                                            value: alumni.category
                                         })}
                                         className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                         errors={errors.category}
@@ -428,7 +465,8 @@ const CreateAlumniProfile = () => {
                                         maxLength: {
                                             value: 56,
                                             message: 'Company name must not exceed 56 characters',
-                                        }
+                                        },
+                                        value: alumni.company
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.company}
@@ -443,7 +481,8 @@ const CreateAlumniProfile = () => {
                                         maxLength: {
                                             value: 100,
                                             message: 'Designation must not exceed 56 characters',
-                                        }
+                                        },
+                                        value: alumni.designation
                                     }
                                     )}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
@@ -459,7 +498,8 @@ const CreateAlumniProfile = () => {
                                         maxLength: {
                                             value: 100,
                                             message: 'Location must not exceed 250 characters',
-                                        }
+                                        },
+                                        value: alumni.location
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.location}
@@ -474,8 +514,9 @@ const CreateAlumniProfile = () => {
                                 reactHookForm={register('interests', {
                                     maxLength: {
                                         value: 250,
-                                        message: 'Interests must not exceed 100 characters',
-                                    }
+                                        message: 'Interests must not exceed 250 characters',
+                                    },
+                                    value: alumni.interests
                                 })}
                                 className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                 errors={errors.interests}
@@ -492,6 +533,7 @@ const CreateAlumniProfile = () => {
                                             value: /^(http[s]?:\/\/(www\.)?|ftp:\/\/(www\.)?|www\.){1}([0-9A-Za-z-\.@:%_\+~#=]+)+((\.[a-zA-Z]{2,3})+)(\/(.)*)?(\?(.)*)?/g,
                                             message: 'Please enter a valid URL',
                                         },
+                                        value: alumni.linkedin
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.linkedin}
@@ -507,6 +549,7 @@ const CreateAlumniProfile = () => {
                                             value: /^(http[s]?:\/\/(www\.)?|ftp:\/\/(www\.)?|www\.){1}([0-9A-Za-z-\.@:%_\+~#=]+)+((\.[a-zA-Z]{2,3})+)(\/(.)*)?(\?(.)*)?/g,
                                             message: 'Please enter a valid URL',
                                         },
+                                        value: alumni.facebook
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.facebook}
@@ -522,6 +565,7 @@ const CreateAlumniProfile = () => {
                                             value: /^(http[s]?:\/\/(www\.)?|ftp:\/\/(www\.)?|www\.){1}([0-9A-Za-z-\.@:%_\+~#=]+)+((\.[a-zA-Z]{2,3})+)(\/(.)*)?(\?(.)*)?/g,
                                             message: 'Please enter a valid URL',
                                         },
+                                        value: alumni.instagram
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.instagram}
@@ -539,6 +583,7 @@ const CreateAlumniProfile = () => {
                                             value: /^(http[s]?:\/\/(www\.)?|ftp:\/\/(www\.)?|www\.){1}([0-9A-Za-z-\.@:%_\+~#=]+)+((\.[a-zA-Z]{2,3})+)(\/(.)*)?(\?(.)*)?/g,
                                             message: 'Please enter a valid URL',
                                         },
+                                        value: alumni.twitter
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.twitter}
@@ -554,6 +599,7 @@ const CreateAlumniProfile = () => {
                                             value: /^(http[s]?:\/\/(www\.)?|ftp:\/\/(www\.)?|www\.){1}([0-9A-Za-z-\.@:%_\+~#=]+)+((\.[a-zA-Z]{2,3})+)(\/(.)*)?(\?(.)*)?/g,
                                             message: 'Please enter a valid URL',
                                         },
+                                        value: alumni.github
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.github}
@@ -569,6 +615,7 @@ const CreateAlumniProfile = () => {
                                             value: /^(http[s]?:\/\/(www\.)?|ftp:\/\/(www\.)?|www\.){1}([0-9A-Za-z-\.@:%_\+~#=]+)+((\.[a-zA-Z]{2,3})+)(\/(.)*)?(\?(.)*)?/g,
                                             message: 'Please enter a valid URL',
                                         },
+                                        value: alumni.website
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.website}
@@ -582,6 +629,7 @@ const CreateAlumniProfile = () => {
                                         fullWd={true}
                                         id="achievements"
                                         allItems={formData.achievements}
+                                        value={alumni.achievements}
                                         setAllItems={(value) => {
                                             setFormData((prev) => ({ ...prev, achievements: value }))
                                         }}
@@ -596,6 +644,7 @@ const CreateAlumniProfile = () => {
                                         fullWd={true}
                                         id="hobbies"
                                         allItems={formData.hobbies}
+                                        value={alumni.hobbies}
                                         setAllItems={(value) => {
                                             setFormData((prev) => ({ ...prev, hobbies: value }))
                                         }}
@@ -615,106 +664,14 @@ const CreateAlumniProfile = () => {
                                     Reset
                                 </button>
                                 <button disabled={loading} type="submit" className="px-8 py-3 transition-all rounded-xl bg-sky-500 hover:bg-sky-600 active:scale-105 active:bg-blue-600">
-                                    Submit
+                                    Save
                                 </button>
                             </div>
                         </form>
-                        :
-                        <div className='p-2 relative'>
-                            <p className='text-rose-500 text-center pb-2'>
-                                Everytime you update your profile, it will be reviewed by our team and then published.
-                            </p>
-                            <p className='text-sky-500 font-medium text-center'>
-                                {alumni.reviewMsg}
-                            </p>
-                            <div>
-                                {
-                                    alumni.status === 'reviewing' ? (
-                                        <div className="flex justify-center items-center">
-                                            <div className="bg-yellow-600 text-white text-sm font-bold py-1.5 px-3 rounded-full">Profile Reviewing</div>
-                                        </div>
-                                    ) : alumni.status === 'published' || alumni.status === null ? (
-                                        <div className="flex justify-center items-center">
-                                            <div className="bg-green-500 text-white text-sm font-bold py-1.5 px-3 rounded-full">Profile Approved</div>
-                                        </div>
-                                    ) : (
-                                        <div className="flex justify-center items-center">
-                                            <div className="bg-red-500 text-white text-sm font-bold py-1.5 px-3 rounded-full">Profile Rejected</div>
-                                        </div>
-                                    )
-                                }
-                            </div>
-                            <div className='flex items-start justify-between pt-4'>
-                                <div className="w-32 h-32 flex items-center justify-center rounded-full overflow-hidden border-4 border-gray-700">
-                                    <img src={alumni.image ? getImageURL(alumni.image) : placeholder} alt="placeholder" />
-                                </div>
-                                <button onClick={() => navigate("/edit-alumni-profile")} className='text-green-500 hover:border-green-600 hover:bg-green-600 hover:text-white transition md:px-8 px-6 py-1.5 border border-green-500 rounded-full text-lg'>
-                                    <FaEdit className='inline-block mr-1' /> Edit
-                                </button>
-                            </div>
-                            <div className='py-5 text-lg'>
-                                <p className='font-medium text-sky-500'>
-                                    <span className='text-white'>{alumni.title} {alumni.name}</span>
-                                </p>
-                                <p className='text-sky-500 font-medium'>
-                                    {alumni.designation && <span>{alumni.designation && alumni.designation} {alumni.company && " at " + alumni.company}{alumni.location && ", " + alumni.location}</span>
-                                    }
-                                </p>
-                                <p className='py-3'>
-                                    <span className='text-gray-300 font-normal text-base'>{alumni.bio}</span>
-                                </p>
-                                {alumni.gender && <p className='font-medium text-sky-500'>
-                                    Gender : <span className='text-white'>{alumni.gender}</span>
-                                </p>}
-                                {alumni.category && <p className='font-medium text-sky-500'>
-                                    Category : <span className='text-white'>{alumni.category}</span>
-                                </p>}
-                                {alumni.role && <p className='font-medium text-sky-500'>
-                                    Role : <span className='text-white'>{alumni.role.toUpperCase()}</span>
-                                </p>}
-                                <p className='font-medium text-sky-500'>
-                                    Batch : <span className='text-white'>{alumni.batchStart ? alumni.batchStart + "-" + alumni.batchEnd : alumni.batchEnd}</span>
-                                </p>
-                                <p className='font-medium text-sky-500'>
-                                    Branch : <span className='text-white'>{
-                                        branches.find((branch) => branch.value === alumni.branch)?.name
-                                    }</span>
-                                </p>
-                                <p className='font-medium text-sky-500'>
-                                    Email : <span className='text-white'>{alumni.email}</span> <span className="text-rose-500 text-sm">
-                                        {!alumni.showEmail && "(hidden)"}
-                                    </span>
-                                </p>
-                                <p className='font-medium text-sky-500'>
-                                    Phone : <span className='text-white'>{alumni.phone}</span> <span className="text-rose-500 text-sm">
-                                        {!alumni.showPhone && "(hidden)"}
-                                    </span>
-                                </p>
-                                <p className='font-medium text-sky-500'>
-                                    Degree: <span className='text-white'>{alumni.degree}</span>
-                                </p>
-                                {alumni.interests && <p className='font-medium text-sky-500'>
-                                    Interests: <span className='text-white'>{alumni.interests}</span>
-                                </p>}
-                                {alumni.hobbies.length !== 0 && <p className='font-medium text-sky-500'>
-                                    Hobbies: <span className='text-white'>{alumni.hobbies.join(", ")}</span>
-                                </p>}
-                                {alumni.achievements.length !== 0 && <p className='font-medium text-sky-500 flex items-start gap-2'>
-                                    <span>Achievements:</span> <span className='text-white'>{
-                                        alumni.achievements.map((ach, idx) => (
-                                            <span className='text-base text-yellow-500' key={idx}>- {ach}</span>
-                                        ))
-                                    }</span>
-                                </p>}
-                                <p className='text-sm font-medium pt-3'>
-                                    <span className='text-gray-400'>Last updated on </span>
-                                    <span className='text-green-500'>{new Date(alumni.$updatedAt).toDateString()}.</span>
-                                </p>
-                            </div>
-                        </div>
-            }
+                }
+            </div>
         </div>
     )
 }
 
-export default CreateAlumniProfile;
+export default EditAlumniProfile

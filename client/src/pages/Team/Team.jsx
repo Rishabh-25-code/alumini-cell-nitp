@@ -57,7 +57,7 @@ const Team = () => {
 
           <div className="mx-auto mt-16 max-w-5xl md:px-0 px-5">
             <h2 className="font-semibold text-2xl pb-10 pt-10">Full List of Contributors</h2>
-            <img className="mb-10 m-auto" src="https://contrib.rocks/image?repo=Rishabh-25-code/alumini-cell-nitp" alt="team" />
+            <img height={240} className="mb-10 m-auto" src="https://contrib.rocks/image?repo=Rishabh-25-code/alumini-cell-nitp" alt="team" />
             <a href="https://github.com/Rishabh-25-code/alumini-cell-nitp/graphs/contributors" target="_blank" rel="noopener noreferrer">
               <button className="bg-sky-600 active:bg-gray-500 hover:scale-105 transition text-white font-medium hover:bg-sky-500 md:px-8 px-6 py-2 rounded-xl">
                 Explore Contributions

@@ -6,6 +6,7 @@ import { branches } from "../../utils/branches";
 import { getAlumniData } from "../../services/documents";
 import { useSearchParams } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import { getImageURL } from "../../services/files";
 
 
 const AlumniDatabase = () => {
@@ -54,7 +55,7 @@ const AlumniDatabase = () => {
             <Meta name="Alumni Database" />
             <div className="flex relative bg-[url(https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/static-images%2F007d2522-8220-4d3d-b506-8fef870eb1df.jpg?alt=media&token=46a7d8e5-aa90-4461-bd2e-15df0204e7d5)] bg-no-repeat  w-full flex-col gap-3 items-center bg-cover justify-center py-20 text-center text-white h-[55vh]">
                 <div className="absolute w-full inset-0 text-left pt-28  bg-gradient-to-t  from-[rgba(0,0,0,1)] via-[rgba(0,0,0,0.5)] to-transparent">
-                    <div className="lg:pl-24 md:pl-16 pl-8">
+                    <div className="lg:pl-24 md:pl-16 pl-6">
                         <p className="lg:text-5xl md:text-4xl text-3xl font-bold pb-1">
                             Alumni Database
                         </p>
@@ -62,11 +63,11 @@ const AlumniDatabase = () => {
                             <span className="text-sky-500">Searching</span> for NITP Alumnus?
                         </h5>
                         <h5 className="lg:text-2xl md:text-xl text-lg font-bold pb-2">
-                            Type: <span className="text-rose-500">{role}</span>
+                            Type: <span className="text-rose-500">{role.toUpperCase()}</span>
                         </h5>
                     </div>
 
-                    <div className='lg:w-[80%] w-full px-6 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
+                    <div className='lg:w-[80%] w-full md:px-6 px-3 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
                         <div className='flex-1 relative w-full'>
                             <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by title, company, skills.." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
                             <FiSearch className="absolute md:top-4 top-3 text-xl left-3.5 text-gray-400" />
@@ -84,7 +85,7 @@ const AlumniDatabase = () => {
                         </select>
                     </div>
 
-                    <div className="lg:max-w-3xl md:max-w-2xl w-full px-6 m-auto py-10">
+                    <div className="lg:max-w-3xl md:max-w-2xl w-full md:px-6 px-4 m-auto py-10 pt-5">
                         <div className="flex flex-wrap items-center gap-3 justify-center pt-6">
                             <button onClick={() => {
                                 setBranch(null);
@@ -97,7 +98,7 @@ const AlumniDatabase = () => {
                                     <button key={idx} onClick={() => {
                                         setBranch(dept.value);
                                         changeParams("page", 1);
-                                    }} className={`border-[#e9e1e1] border font-semibold text-[#e9e1e1] px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${branch === dept.value && 'bg-[#e9e1e1] text-gray-900'}`}>
+                                    }} className={`border-[#e9e1e1] border font-semibold text-[#e9e1e1] md:px-5 px-4 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${branch === dept.value && 'bg-[#e9e1e1] text-gray-900'}`}>
                                         {dept.value}
                                     </button>
                                 ))
@@ -130,7 +131,7 @@ const AlumniDatabase = () => {
                                                     <img
                                                         id={person.$id}
                                                         className="rounded-full lg:w-20 md:w-16 w-14 lg:h-20 md:h-16 h-14"
-                                                        src={MalePlaceholder}
+                                                        src={person.image ? getImageURL(person.image) : MalePlaceholder}
                                                         alt={person.name}
                                                     />
                                                 </div>
