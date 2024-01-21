@@ -47,7 +47,7 @@ const Footer = () => {
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-blue-700 mr-3'>|</h1><h1 className='text-lg font-semibold text-sky-500'>Must Check</h1></div>
           <ul className='mt-4 flex flex-col gap-3 text-base'>
             <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/events">Event Gallery</Link></li>
-            <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/notableAlumni">Notable Alumni</Link></li>
+            <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/notable-alumni">Notable Alumni</Link></li>
             <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/events">Upcoming Events</Link></li>
             <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/success-stories">Success Stories</Link></li>
             <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/experiences">Experiences</Link></li>

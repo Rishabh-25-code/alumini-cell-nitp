@@ -61,7 +61,7 @@ export const TextArea = ({ id, label, placeholder, title, reactHookForm, classNa
     )
 }
 
-export const ProfileImage = ({ profileImage, setProfileImage, placeholder }) => {
+export const ProfileImage = ({ profileImage, setProfileImage, placeholder,...rest }) => {
     const [overSize, setOverSize] = useState(false);
 
     const handleImageChange = (e) => {
@@ -81,7 +81,7 @@ export const ProfileImage = ({ profileImage, setProfileImage, placeholder }) => 
             </div>
             <label htmlFor="profileImage" className='text-gray-300'>Profile Image (max 2MB)</label>
             <button className="relative bg-sky-500 hover:bg-sky-600 px-5 py-1 mt-2 rounded-full cursor-pointer text-white">Select
-                <input onChange={handleImageChange} type="file" accept="image/jpeg, image/jpg, image/png, image/img" placeholder="Import" className="absolute top-0 left-0 opacity-0 w-full h-full cursor-pointer" />
+                <input {...rest} onChange={handleImageChange} type="file" accept="image/jpeg, image/jpg, image/png, image/img" placeholder="Import" className="absolute top-0 left-0 opacity-0 w-full h-full cursor-pointer" />
             </button>
             {overSize && <p className="text-rose-500">Image size must be less than 2MB</p>}
         </div>)
