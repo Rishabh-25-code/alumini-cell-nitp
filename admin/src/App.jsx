@@ -54,7 +54,7 @@ function App() {
     { path: "/job/:jobId", element: <Job /> },
     { path: "/internship/:internshipId", element: <Internship /> },
     { path: "/internships", element: <Internships /> },
-    { path: "/notablealumni", element: <NotableAlumni /> },
+    { path: "/notable-alumni", element: <NotableAlumni /> },
     { path: "/blogs", element: <Blogs /> },
     { path: "/blog/:blogId", element: <Blog /> },
     { path: "/experiences", element: <Experiences /> },
@@ -72,7 +72,6 @@ function App() {
           <ErrorBoundary>
             <AuthProvider>
               <Routes>
-
                 <Route path='/' element={<Layout1></Layout1>}>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/not-admin" element={<NotAdmin />} />
