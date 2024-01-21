@@ -1,11 +1,14 @@
-<h1 align='center'> Alumni NIT, Patna 🤖 </h1>
-This is the official website of Alumni of NIT, Patna.
+<h1 align='center'> Alumni NIT, Patna 🧑🏼‍🎓 </h1>
+The National Institute of Technology (NIT) Patna takes pride in its accomplished alumni who have made significant contributions in various fields. The institute recognizes the invaluable role played by its alumni in its progress, development, and future direction.<br/><br/>
+The National Institute of Technology (NIT) Patna Alumni Association is a non-profit organization founded by NIT Patna to connect, engage and support the institute's alumni community. The association was established in 2014 and is registered under the Societies Registration Act, 1860.
+<br/><br/>
+We are pleased to share that our institute is commemorating the historic occasion of its centenary year in 2024. We eagerly anticipate meaningful and inclusive engagement with our alumni that will benefit our institution, its current students, and the broader community. We invite you to join the NIT Patna Alumni Association. Please feel free to reach out to us.
+<br/><br/>
 
+# NIT PATNA ALUMNI WEBSTE
+Official website of Alumni NIT Patna, Connect, inspire, thrive: NIT Patna Alumni Association - Your gateway to a vibrant & supportive community.  Connect with fellow alumni, discover inspiring stories, access career resources, & stay updated on NIT Patna news.
 
-# nitp-alumni
-Official website of Alumni NIT Patna
-
-![plot]()
+![plot](homepage.jpg)
 
 Project has following functionalities
 
@@ -24,15 +27,25 @@ Refer to https://nodejs.org/en/ to install nodejs
 ### Install vite
 Install Vite npm package globally. This will help to easily run the project and also build the source files easily. Use the following command to install vite
 
-### Learn Tailwind CSS
-This project uses `Tailwind CSS` if you don't have any hands-on experience with tailwind css then you can refer to their [docs](https://tailwindcss.com/).
-
 ```bash
 npm install -g vite
 ```
+
+### Learn Tailwind CSS
+This project uses `Tailwind CSS` if you don't have any hands-on experience with tailwind css then you can refer to their [docs](https://tailwindcss.com/).
+
+### Learn React JS
+If you are new to React JS then you can refer to their [docs](https://react.dev/).
+
+### Learn SCSS
+If you are new to SCSS then you can refer to their [docs](https://sass-lang.com/documentation).
+
+### Learn Appwrite
+If you are new to Appwrite then you can refer to their [docs](https://appwrite.io/docs).
+
 ## Live WebSite URL
 
-Checkout the website at "https://alumini-nitp.vercel.app/"
+The WebSite is deployed in https://alumini-nitp.vercel.app/
 
 Click on the link to see the website.
 
@@ -40,14 +53,24 @@ Click on the link to see the website.
 
 Clone the project into local.
 
-Install all the npm packages. Go into the root folder and type the following command to install all npm packages
+Install all the npm packages. Go into the `client folder` and type the following command to install all npm packages
 
 ```bash
 npm install
 ```
 
-In order to run the application Type the following command
+Change the `.env.example` file to `.env` and add the required credentials.
+(You can get the credentials from the admin of the project or you can create your own project in appwrite and use the credentials)
 
+```bash
+VITE_APPWRITE_PROJECT_ID=
+VITE_APPWRITE_DATABASE_ID=
+VITE_APPWRITE_BUCKET_ID=
+VITE_APPWRITE_URL=http://localhost:5173/
+```
+
+
+In order to run the application Type the following command
 
 ```bash
 npm run dev
@@ -70,7 +93,6 @@ Please refer to the project's style and contribution guidelines for submitting p
  3. **Commit** changes to your own branch
  4. **Push** your work back up to your fork
  5. Submit a **Pull request** so that we can review your changes
-
 
 
 ### 🚀 Please abide by  **Contributing Guidelines** and **Code of Conduct**.
