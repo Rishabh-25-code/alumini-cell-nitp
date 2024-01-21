@@ -44,6 +44,7 @@ import {
   Job,
   Internship,
   ShareFeedback,
+  EditAlumniProfile,
 } from "./pages/index";
 import JobOffers from "./pages/JobOffers/JobOffers";
 import Interships from "./pages/JobOffers/Interships";
@@ -262,6 +263,11 @@ function App() {
       path: "/share-feedback",
       component: <ShareFeedback />,
       id: 10
+    },
+    {
+      path: "/edit-alumni-profile",
+      component: <EditAlumniProfile />,
+      id: 11
     }
   ];
 

@@ -6,17 +6,19 @@ import remarkGfm from 'remark-gfm'
 import remarkRehype from 'remark-rehype'
 import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
+import { getImageURL } from "../../services/files"
 
 
 export const Input = ({ id, label, type, placeholder, title, reactHookForm, className, errors, ...rest }) => {
     return (
         <div className='flex-1'>
-            <label htmlFor={title} className='text-gray-300'>{label}</label>
+            <label htmlFor={id} className='text-gray-300'>{label}</label>
             <input
                 {...rest}
                 id={id}
                 {...reactHookForm}
                 type={type}
+                name={title}
                 placeholder={placeholder}
                 className={className} />
             {errors && <p className="text-rose-500">{errors.message}</p>}
@@ -30,6 +32,7 @@ export const Select = ({ label, id, options, placeholder, reactHookForm, classNa
             <label htmlFor={id} className='text-gray-300'>{label}</label>
             <select
                 id={id}
+                name={id}
                 className={className}
                 placeholder={placeholder}
                 {...reactHookForm}>
@@ -51,7 +54,8 @@ export const TextArea = ({ id, label, placeholder, title, reactHookForm, classNa
             <label htmlFor={title} className='text-gray-300'>{label}</label>
             <textarea
                 {...rest}
-                id={id}
+                id={title}
+                name={title}
                 {...reactHookForm}
                 placeholder={placeholder}
                 className={className} />
@@ -60,13 +64,14 @@ export const TextArea = ({ id, label, placeholder, title, reactHookForm, classNa
     )
 }
 
-export const ProfileImage = ({ profileImage, setProfileImage, placeholder }) => {
+export const ProfileImage = ({ profileImage, setProfileImage, placeholder, prevImage = null }) => {
     const [overSize, setOverSize] = useState(false);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file.size > 1024 * 1024 * 2) {
             setOverSize(true);
+            setProfileImage(null);
         } else {
             setOverSize(false);
             setProfileImage(file);
@@ -76,7 +81,7 @@ export const ProfileImage = ({ profileImage, setProfileImage, placeholder }) => 
     return (
         <div className="flex-1 flex flex-col items-center justify-center gap-1">
             <div className="h-28 w-28 rounded-full overflow-hidden flex items-center justify-center">
-                <img className="w-28 h-auto" src={profileImage ? URL.createObjectURL(profileImage) : placeholder} alt="placeholder" />
+                <img className="w-28 h-auto" src={profileImage ? URL.createObjectURL(profileImage) : prevImage ? getImageURL(prevImage) : placeholder} alt="placeholder" />
             </div>
             <label htmlFor="profileImage" className='text-gray-300'>Profile Image (max 2MB)</label>
             <button className="relative bg-sky-500 hover:bg-sky-600 px-5 py-1 mt-2 rounded-full cursor-pointer text-white">Select

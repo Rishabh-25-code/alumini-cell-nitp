@@ -102,7 +102,8 @@ export const getAlumniProfile = async (COLLECTION_ID, email) => {
         const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
             Query.equal('email', [email])
         ]);
-        return res.documents;
+        
+        return res.documents.length > 0 ? res.documents[0] : null;
     } catch (error) {
         throw new Error(error.message);
     }
