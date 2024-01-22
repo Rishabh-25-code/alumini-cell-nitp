@@ -154,7 +154,7 @@ const CreateAlumniProfile = () => {
                                     label='Name'
                                     type='text'
                                     placeholder='John Doe'
-                                    title='fname'
+                                    title='name'
                                     reactHookForm={register('name', {
                                         pattern: {
                                             value: /^(?!\s)([a-z ,.'-]+)$/i,
