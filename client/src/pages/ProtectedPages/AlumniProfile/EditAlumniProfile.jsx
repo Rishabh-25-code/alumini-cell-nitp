@@ -41,32 +41,33 @@ const EditAlumniProfile = () => {
     }
 
     const onSubmit = useCallback(async (data) => {
-        data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: alumni.image, uid: user.$id, email: user.email };
-        setLoading(true);
-        try {
-            setMessage("Uploading Image...");
-            if (data.image && profileImage === null) {
-                await deleteFile(data.image);
-                data = { ...data, image: null }
-            }
-            if (profileImage) {
-                await deleteFile(alumni.image);
-                let res = await compressedImageUpload(profileImage);
-                if (res) {
-                    data = { ...data, image: res.$id };
-                }
-            }
+        data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: alumni.image, uid: alumni.uid, email: alumni.email };
+        console.log(data)
+        // setLoading(true);
+        // try {
+        //     setMessage("Uploading Image...");
+        //     if (data.image && profileImage === null) {
+        //         await deleteFile(data.image);
+        //         data = { ...data, image: null }
+        //     }
+        //     if (profileImage) {
+        //         await deleteFile(alumni.image);
+        //         let res = await compressedImageUpload(profileImage);
+        //         if (res) {
+        //             data = { ...data, image: res.$id };
+        //         }
+        //     }
 
-            setMessage("Updating Profile...");
-            await updateDocument('alumni', alumni.$id, data);
-            toast.success("Profile updated successfully!");
-            refetch();
-            navigate(`/alumni-profile`);
-        } catch (error) {
-            toast.error(error.message);
-        } finally {
-            setLoading(false);
-        }
+        //     setMessage("Updating Profile...");
+        //     await updateDocument('alumni', alumni.$id, data);
+        //     toast.success("Profile updated successfully!");
+        //     refetch();
+        //     navigate(`/alumni-profile`);
+        // } catch (error) {
+        //     toast.error(error.message);
+        // } finally {
+        //     setLoading(false);
+        // }
     }, [formData, profileImage, refetch]);
 
     const resetForm = () => {
@@ -169,10 +170,10 @@ const EditAlumniProfile = () => {
                                     label='Name'
                                     type='text'
                                     placeholder='John Doe'
-                                    title='fname'
+                                    title='name'
                                     reactHookForm={register('name', {
                                         pattern: {
-                                            value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
+                                            value: /^(?!\s)([a-z ,.'-]+)$/i,
                                             message: 'Please enter a valid name',
                                         },
                                         required: 'Name is required',
