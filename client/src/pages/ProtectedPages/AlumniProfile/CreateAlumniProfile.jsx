@@ -157,7 +157,7 @@ const CreateAlumniProfile = () => {
                                     title='fname'
                                     reactHookForm={register('name', {
                                         pattern: {
-                                            value: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
+                                            value: /^([^\p{N}\p{S}\p{C}\\\/]{3,500})$/,
                                             message: 'Please enter a valid name',
                                         },
                                         required: 'Name is required',
