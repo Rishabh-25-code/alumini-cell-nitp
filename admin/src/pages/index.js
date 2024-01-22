@@ -3,6 +3,8 @@ import Gallery from "./Gallery/Gallery";
 import Events from "./Events/Events";
 import NotableAlumni from "./NotableAlumni/NotableAlumni";
 import Error from "./Error/Error";
+import Bugs from "./Error/Bugs";
+import Bug from "./Error/Bug";
 
 import SignIn from "./Auth/SignIn";
 import SignUp from "./Auth/SignUp";
@@ -23,4 +25,4 @@ import Internships from "./Intern/Internships";
 import NotAdmin from "./NotAdmin/NotAdmin";
 
 
-export { HomePage, Gallery, Events, NotableAlumni, Error, SignIn, SignUp, ForgotPassword, ResetPassword, VerifyEmail, Verify, Blogs, Blog, Experience, Experiences, Jobs, Job, Internship, Internships, Profile, NotAdmin };
+export { HomePage, Gallery, Events, NotableAlumni, Error, SignIn, SignUp, ForgotPassword, ResetPassword, VerifyEmail, Verify, Blogs, Blog, Experience, Experiences, Jobs, Job, Internship, Internships, Profile, NotAdmin,Bugs,Bug };

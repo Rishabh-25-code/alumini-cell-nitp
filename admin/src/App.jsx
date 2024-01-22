@@ -27,7 +27,9 @@ import {
   Job,
   Internship,
   Internships,
-  NotAdmin
+  NotAdmin,
+  Bugs,
+  Bug
 } from "./pages/index";
 import ScrollToTop from "./hooks/useScrollToTop";
 import {
@@ -60,6 +62,8 @@ function App() {
     { path: "/experiences", element: <Experiences /> },
     { path: "/experience/:experienceId", element: <Experience /> },
     { path: "/verify-email", element: <VerifyEmail /> },
+    { path: "/bugs", element: <Bugs /> },
+    { path: "/bug/:bugId", element: <Bug /> },
     { path: "*", element: <Error /> }
   ]
 
