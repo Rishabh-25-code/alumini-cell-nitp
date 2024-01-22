@@ -24,8 +24,6 @@ const EditAlumniProfile = () => {
     const { data: alumni, isLoading, isError, refetch } = useQuery({
         queryKey: ['alumni', user.email],
         queryFn: () => getAlumniProfile('alumni', user.email),
-        enabled: !!user.email,
-        retry: 2,
     })
 
     const [profileImage, setProfileImage] = useState(null);
@@ -42,7 +40,6 @@ const EditAlumniProfile = () => {
 
     const onSubmit = useCallback(async (data) => {
         data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: alumni.image, uid: alumni.uid, email: alumni.email };
-        console.log(data)
         setLoading(true);
         try {
             setMessage("Uploading Image...");

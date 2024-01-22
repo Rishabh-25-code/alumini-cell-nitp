@@ -102,7 +102,7 @@ export const getAlumniProfile = async (COLLECTION_ID, email) => {
         const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
             Query.equal('email', [email])
         ]);
-        
+
         return res.documents.length > 0 ? res.documents[0] : null;
     } catch (error) {
         throw new Error(error.message);
@@ -141,10 +141,12 @@ export const getPaginatedPublishedDocs = async (COLLECTION_ID, limit = 24, offse
 
 
 export const getAlumniData = async (limit = 24, offset = 0, role, search, type, branch) => {
+    // only fetch alumni with no status or status is approved
     const queries = [
         Query.limit(limit),
         Query.offset(offset),
-        Query.equal('role', [role])
+        Query.equal('role', [role]),
+        Query.isNull('status')
     ];
 
     if (branch) queries.push(Query.equal('branch', [branch]));
