@@ -172,7 +172,7 @@ const EditAlumniProfile = () => {
                                     title='fname'
                                     reactHookForm={register('name', {
                                         pattern: {
-                                            value: /^([^\p{N}\p{S}\p{C}\\\/]{2,20})$/,
+                                            value: /^(?!\s)([a-z ,.'-]+)$/i,
                                             message: 'Please enter a valid name',
                                         },
                                         required: 'Name is required',
