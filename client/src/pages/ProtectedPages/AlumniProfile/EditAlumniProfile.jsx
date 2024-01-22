@@ -43,31 +43,31 @@ const EditAlumniProfile = () => {
     const onSubmit = useCallback(async (data) => {
         data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: alumni.image, uid: alumni.uid, email: alumni.email };
         console.log(data)
-        // setLoading(true);
-        // try {
-        //     setMessage("Uploading Image...");
-        //     if (data.image && profileImage === null) {
-        //         await deleteFile(data.image);
-        //         data = { ...data, image: null }
-        //     }
-        //     if (profileImage) {
-        //         await deleteFile(alumni.image);
-        //         let res = await compressedImageUpload(profileImage);
-        //         if (res) {
-        //             data = { ...data, image: res.$id };
-        //         }
-        //     }
+        setLoading(true);
+        try {
+            setMessage("Uploading Image...");
+            // if (data.image && profileImage === null) {
+            //     await deleteFile(data.image);
+            //     data = { ...data, image: null }
+            // }
+            if (profileImage) {
+                if (data.image) await deleteFile(data.image);
+                let res = await compressedImageUpload(profileImage);
+                if (res) {
+                    data = { ...data, image: res.$id };
+                }
+            }
 
-        //     setMessage("Updating Profile...");
-        //     await updateDocument('alumni', alumni.$id, data);
-        //     toast.success("Profile updated successfully!");
-        //     refetch();
-        //     navigate(`/alumni-profile`);
-        // } catch (error) {
-        //     toast.error(error.message);
-        // } finally {
-        //     setLoading(false);
-        // }
+            setMessage("Updating Profile...");
+            await updateDocument('alumni', alumni.$id, data);
+            toast.success("Profile updated successfully!");
+            refetch();
+            navigate(`/alumni-profile`);
+        } catch (error) {
+            toast.error(error.message);
+        } finally {
+            setLoading(false);
+        }
     }, [formData, profileImage, refetch]);
 
     const resetForm = () => {
