@@ -62,7 +62,8 @@ const Register = () => {
                 accAlreadyExist &&
                 <div className="flex items-center justify-center flex-col max-w-lg text-center">
                     <div className="flex items-center justify-center">
-                        <img src="/images/logo.svg" alt="logo" className="h-14 mt-1 w-auto" height={40} width={150} />
+                    <img src="/public/images/logo512.png" alt="logo" height={200} width={200}  className="lg:h-20 h-14 lg:w-20 w-14 rounded-full"  />
+
                     </div>
 
                     <p className="text-white text-lg pt-6">
@@ -90,7 +91,7 @@ const Register = () => {
 
             {isAccountCreated ?
                 <div className="flex items-center justify-center flex-col max-w-lg">
-                    <img src="/images/logo.svg" alt="logo" className="h-14 mt-1 w-auto" height={40} width={150} />
+                    <img src="/public/images/logo512.png" alt="logo" height={200} width={200}  className="lg:h-20 h-14 lg:w-20 w-14 rounded-full"  />
                     <h3 className="text-xl font-semibold pt-5">Alumni Website NITP</h3>
                     <h1 className="text-3xl font-bold px-3 text-sky-500 pt-10">Account Created!</h1>
                     <p className="text-center mt-1">
@@ -114,6 +115,10 @@ const Register = () => {
                 </div>
                 :
                 !accAlreadyExist && <div className="lg:w-[28rem] md:w-[28rem] w-[90%] border-gray-700 border p-8 rounded-3xl bg-[#0c0c0c]">
+                    <div className="flex items-center justify-center">
+                    <img src="/public/images/logo512.png" alt="logo" height={200} width={200}  className="lg:h-20 h-14 lg:w-20 w-14 rounded-full"  />
+                        
+                    </div>
                     <h1 className="text-3xl font-bold mb-5 px-3">Sign Up</h1>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-2 px-3">
                         <div className="flex flex-col gap-1">
