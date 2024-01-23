@@ -40,7 +40,8 @@ const Footer = () => {
             <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/jobs">Jobs</Link></li>
             <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/internships">Internships</Link></li>
             <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/team">Web Team</Link></li>
-          </ul>
+
+            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="https://alumini-nitp.vercel.app/" target="_blank">Alumni Website</Link></li>          </ul>
         </div>
 
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
