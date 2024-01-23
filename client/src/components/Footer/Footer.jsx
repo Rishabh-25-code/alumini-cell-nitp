@@ -6,7 +6,7 @@ const Footer = () => {
   const date = new Date;
   const year = date.getFullYear();
   return (
-    <div data-aos="fade-in" className="bg-[#0b0b0b] text-sm w-[100%] mt-[10rem]">
+    <div data-aos="fade-in" className="bg-[#09090b] text-sm w-[100%] mt-[10rem]">
       <div className="mb-10 w-[90%] grid gap-2 md:gap-4 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-[auto] items-start justify-items-center">
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-1 md:order-1 lg:order-1'>
           <Link href="/">
@@ -30,33 +30,32 @@ const Footer = () => {
 
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-blue-700 mr-3'>|</h1><h1 className='text-lg font-semibold text-sky-500'>Useful Links</h1></div>
-          <ul className='mt-4 flex flex-col gap-3 text-base'>
-            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="https://www.nitp.ac.in/" target="_blank">NIT Patna</Link></li>
-            <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/history">History</Link></li>
-            <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/jobs">Jobs</Link></li>
-            <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/internships">Internships</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/team">Web Team</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="https://alumini-nitp-admin.vercel.app/">Admin</Link></li>
-
+          <ul className='mt-4 flex flex-col gap-2 text-base'>
+            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="https://www.nitp.ac.in/" target="_blank">NIT Patna</Link></li>
+            <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/history">NITP History</Link></li>
+            <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/jobs">Search Jobs</Link></li>
+            <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/internships">Look for Internships</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/team">Web Team</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="https://alumini-nitp-admin.vercel.app/">Admin Portal</Link></li>
           </ul>
         </div>
 
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-blue-700 mr-3'>|</h1><h1 className='text-lg font-semibold text-sky-500'>Must Check</h1></div>
-          <ul className='mt-4 flex flex-col gap-3 text-base'>
-            <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/events">Event Gallery</Link></li>
-            <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/notableAlumni">Notable Alumni</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/events">Upcoming Events</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/success-stories">Success Stories</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/experiences">Experiences</Link></li>
+          <ul className='mt-4 flex flex-col gap-2 text-base'>
+            <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/events">Event Gallery</Link></li>
+            <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/notableAlumni">Notable Alumni</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/events">Upcoming Events</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/success-stories">Success Stories</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/experiences">Experiences</Link></li>
           </ul>
         </div>
 
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-3 md:order-3 lg:order-3 text-base'>
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-blue-700 mr-3'>|</h1><h1 className='text-lg font-semibold text-sky-500'>Contact Us</h1></div>
           <p className='max-w-[16rem] pt-4 text'>NIT Patna, Ashok Rajpath, Patna, Bihar-800005, India</p>
-          <p className='pt-2'>Ph : <a href="tel:06122371715" style={{color:"#009bd6"}} className='text-blue-700 ml-2 font-semibold'>+91-0612 237 1715 / 237 2715</a></p>
-          <p className='pt-2'>Mail : <a href="mailto:alumni@nitp.ac.in" style={{color:"#009bd6"}} className='text-blue-700 ml-2 font-semibold'>alumni@nitp.ac.in</a></p>
+          <p className='pt-2'>Ph : <a href="tel:06122371715" style={{ color: "#009bd6" }} className='text-blue-700 ml-2 font-semibold'>+91-0612 237 1715 / 237 2715</a></p>
+          <p className='pt-2'>Mail : <a href="mailto:alumni@nitp.ac.in" style={{ color: "#009bd6" }} className='text-blue-700 ml-2 font-semibold'>alumni@nitp.ac.in</a></p>
         </div>
 
       </div>
@@ -68,11 +67,11 @@ const Footer = () => {
         </p>
         <p className='flex items-center gap-1'>
           <span className='md:block hidden'>Designed & Developed</span> <span className='md:hidden block'>Designed</span>
-          <span>by <Link style={{color:"#009bd6"}} className="font-medium" to="/team">Electrical Engineers of NIT Patna</Link>.</span>
+          <span>by <Link style={{ color: "#009bd6" }} className="font-medium" to="/team">Electrical Engineers of NIT Patna</Link>.</span>
         </p>
       </div>
 
-      <BackToTopButton/>
+      <BackToTopButton />
     </div>
   )
 }

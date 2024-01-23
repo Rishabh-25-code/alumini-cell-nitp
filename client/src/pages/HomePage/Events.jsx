@@ -99,14 +99,14 @@ const Events = () => {
     ]
 
     return (
-        <div className='pb-10'>
+        <div class="bg-[#000000] bg-[radial-gradient(#aaaaaa33_1px,#000000_1px)] bg-[size:20px_20px] py-10">
             <h1 data-aos="fade-right" className="mb-2.5 mt-10 lg:ml-10 md:ml-10 p-5 lg:text-left md:text-left text-center text-sky-400 lg:text-5xl md:text-4xl text-4xl font-bold leading-tight">
                 Eventful Life at <span className="text-white">
                     NIT Patna
                 </span>
             </h1>
 
-            <div className='flex flex-wrap m-auto px-5 items-center justify-evenly mb-10'>
+            <div className='flex flex-wrap m-auto px-5 gap-y-5 gap-5 items-center justify-evenly mb-10'>
                 {events.slice(0, 3).map((event, id) => (
                     <EventCard data={event} key={id} />
                 ))}

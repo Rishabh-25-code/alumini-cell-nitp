@@ -457,7 +457,7 @@ const EditAlumniProfile = () => {
                                     title='company'
                                     reactHookForm={register('company', {
                                         pattern: {
-                                            value: /^[a-zA-Z0-9+_.-]+$/i,
+                                            value: /^(?!\s)([a-z ,.'-]+)$/i,
                                             message: 'Please enter a valid company name',
                                         },
                                         maxLength: {
@@ -653,12 +653,18 @@ const EditAlumniProfile = () => {
                             </div>
 
                             <div className='text-white self-end w-fit flex gap-3 pt-6 pb-4'>
+                                <button disabled={loading} onClick={(e)=>{
+                                    e.preventDefault();
+                                    navigate(`/alumni-profile`);
+                                }} className="px-8 py-3 transition-all rounded-xl bg-rose-500 hover:bg-rose-600 active:scale-105 active:bg-rose-600">
+                                    Cancel
+                                </button>
                                 <button onClick={(e) => {
                                     e.preventDefault();
                                     resetForm();
                                     toast.info("Form reset!");
                                     handleResetItems();
-                                }} className="px-8 py-3 transition-all rounded-xl bg-rose-500 hover:bg-rose-600 active:scale-105 active:bg-red-600">
+                                }} className="px-8 py-3 transition-all rounded-xl bg-green-500 hover:bg-green-600 active:scale-105 active:bg-green-600">
                                     Reset
                                 </button>
                                 <button disabled={loading} type="submit" className="px-8 py-3 transition-all rounded-xl bg-sky-500 hover:bg-sky-600 active:scale-105 active:bg-blue-600">

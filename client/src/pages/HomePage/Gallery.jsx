@@ -26,7 +26,7 @@ const Gallery = () => {
                 isLoading ? <div className="flex justify-center items-center h-96"><Loader /></div> :
                     isError ? <div className="flex justify-center items-center h-96"><h1>Something went wrong...</h1></div> :
                         data.length === 0 ? <div className="flex justify-center items-center h-96"><h1>No Data Found...</h1></div> :
-                            <div className="mx-3 mt-4 bg-black lg:p-16">
+                            <div className="mx-3 mt-4  lg:p-16">
                                 <div className="grid md:grid-cols-5 grid-cols-4 lg:gap-10 md:gap-6 gap-3">
                                     {data.map((image, id) => (
                                         <div data-aos="fade-up" className="overflow-hidden aspect-square rounded-2xl flex items-center justify-center" key={id}>

@@ -38,7 +38,6 @@ const Events = () => {
         venue: "Visvesvaraya Hall",
         link: "https://www.google.com"
     },
-    
     {
         id: 3,
         name: "One Mic Stand",
@@ -61,7 +60,6 @@ const Events = () => {
         venue: "Visvesvaraya Hall",
         link: "https://www.google.com"
     },
-    
     {
         id: 5,
         name: "Eccentrica 5.0",
@@ -94,8 +92,8 @@ const Events = () => {
         time: "10:00 AM",
         venue: "SAC Building",
         link: "https://www.google.com"
-    },
-]
+    }
+  ]
 
 
   return (
@@ -106,12 +104,10 @@ const Events = () => {
         head=""
         writer=""
       />
-      <br></br>
-      <br></br>
 
-      <h1 className='heading-head-text'>Past Events</h1>
+      <h1 className='heading-head-text pt-16'>Past Events</h1>
 
-      <div className='flex flex-wrap gap-6 m-auto px-5 items-center justify-center mb-32'>
+      <div className='flex flex-wrap m-auto px-5 gap-y-5 gap-8 items-center justify-center mb-10'>
         {events.map((event, id) => (
           <EventCard data={event} key={id} />
         ))}
