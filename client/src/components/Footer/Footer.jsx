@@ -36,7 +36,7 @@ const Footer = () => {
             <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/jobs">Search Jobs</Link></li>
             <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/internships">Look for Internships</Link></li>
             <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/team">Web Team</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="https://alumini-nitp-admin.vercel.app/">Admin Portal</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="https://alumini-nitp-admin.vercel.app/"  target="_blank">Admin Portal</Link></li>
           </ul>
         </div>
 
