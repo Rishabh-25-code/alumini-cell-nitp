@@ -80,7 +80,7 @@ const Alumnis = () => {
                 </button>
                 <button onClick={() => {
                     changeParams('status', 'uploaded');
-                }} className={`border-blue-500 border font-semibold  px-4 py-1.5 text-base rounded-xl hover:bg-blue-500 hover:text-gray-900 ${status === "approved" ? 'bg-blue-500 text-gray-900' : 'text-blue-500'}`}>
+                }} className={`border-blue-500 border font-semibold  px-4 py-1.5 text-base rounded-xl hover:bg-blue-500 hover:text-gray-900 ${status === "uploaded" ? 'bg-blue-500 text-gray-900' : 'text-blue-500'}`}>
                     Uploaded
                 </button>
             </div>
