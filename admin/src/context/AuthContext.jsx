@@ -30,7 +30,7 @@ const AuthProvider = ({ children }) => {
     const checkUser = async () => {
         try {
             const res = await account.get("current");
-            console.log(res);
+            // console.log(res);
             setUser(res);
             setLoading(false);
             return res;

@@ -48,8 +48,8 @@ const Footer = () => {
           <ul className='mt-4 flex flex-col gap-3 text-base'>
             <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/events">Event Gallery</Link></li>
             <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/notable-alumni">Notable Alumni</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/events">Upcoming Events</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/success-stories">Success Stories</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/feedbacks">Feedbacks</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/bugs">Bugs</Link></li>
             <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/experiences">Experiences</Link></li>
           </ul>
         </div>

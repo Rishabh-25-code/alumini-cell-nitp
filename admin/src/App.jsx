@@ -23,13 +23,14 @@ import {
   Blog,
   Experience,
   Experiences,
-  Jobs, 
+  Jobs,
   Job,
   Internship,
   Internships,
   NotAdmin,
   Bugs,
-  Bug
+  Bug,
+  Alumnis, Alumni, Feedback, Feedbacks, Testimonial, Testimonials, Team
 } from "./pages/index";
 import ScrollToTop from "./hooks/useScrollToTop";
 import {
@@ -50,6 +51,13 @@ function App() {
 
   const privateRoutes = [
     { path: "/profile", element: <Profile /> },
+    { path: "/team", element: <Team /> },
+    { path: "/alumnis", element: <Alumnis /> },
+    { path: "/alumni/:alumniId", element: <Alumni /> },
+    { path: "/feedbacks", element: <Feedbacks /> },
+    { path: "/feedback/:feedbackId", element: <Feedback /> },
+    { path: "/testimonials", element: <Testimonials /> },
+    { path: "/testimonial/:testimonialId", element: <Testimonial /> },
     { path: "/gallery", element: <Gallery /> },
     { path: "/events", element: <Events /> },
     { path: "/jobs", element: <Jobs /> },
@@ -68,7 +76,7 @@ function App() {
   ]
 
   return (
-    <div className="relative">
+    <div className="bg-[#000000] bg-[radial-gradient(#cccccc33_1px,#000000_1px)] bg-[size:20px_20px]">
       <QueryClientProvider client={queryClient}>
         <ToastContainer />
         <Router>

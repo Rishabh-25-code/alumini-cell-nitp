@@ -8,6 +8,7 @@ import { Input, Select } from '../../components/FormComponents';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import Heading from '../../components/Headings/Heading';
 
 const Internship = () => {
     const navigate = useNavigate();
@@ -48,10 +49,11 @@ const Internship = () => {
         }
     }
     return (
-        <div className='pt-36 min-h-screen'>
+        <div className='pt-24 min-h-screen'>
             <Meta name={intern ? intern.title : "Experience - NIT Patna"} />
+            <Heading heading={"Review Interns"} />
 
-            <div className='lg:max-w-[85%] md:w-[90%] w-full px-5 m-auto'>
+            <div className='lg:max-w-[85%] md:w-[90%] w-full pt-16 px-5 m-auto'>
                 {isPending ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
                     isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
                         intern && <div className='border border-gray-800 rounded-2xl p-5 mb-5 w-full'>

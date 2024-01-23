@@ -36,7 +36,7 @@ const NavBar = () => {
         },
         {
             name: "Alumni",
-            path: "/alumni",
+            path: "/alumnis",
             id: 5,
         },
         {
@@ -54,11 +54,6 @@ const NavBar = () => {
             path: "/gallery",
             id: 3,
         },
-        {
-            name: "Bugs",
-            path: "/bugs",
-            id: 3,
-        }
     ]
 
     return (

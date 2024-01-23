@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getDocument, updateDocument, deleteDocument } from "../../services/documents";
+import { getDocument, updateDocument } from "../../services/documents";
 import { useParams } from "react-router-dom";
 import { BsDot } from "react-icons/bs";
 import Meta from "../../components/Meta/Meta";
@@ -10,10 +10,10 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import Heading from "../../components/Headings/Heading";
 
-const Bug = () => {
-
-  const { bugId } = useParams();
+const Feedback = () => {
+  const { feedbackId } = useParams();
   const [loading, setLoading] = useState(false);
+
   const {
     register,
     reset,
@@ -22,35 +22,35 @@ const Bug = () => {
   } = useForm({ trim: true });
 
   const {
-    data: bugs,
+    data: feedback,
     isPending,
     isError,
     refetch,
   } = useQuery({
-    queryKey: ["bugs", bugId],
-    queryFn: () => getDocument("bugs", bugId),
+    queryKey: ["feedback", feedbackId],
+    queryFn: () => getDocument("feedback", feedbackId),
   });
 
   const onSubmit = async (data) => {
     try {
       setLoading(true);
-      const bugsData = {
-        ...bugs,
+      const feedbackData = {
+        ...feedback,
         status: data.status,
         statusDesc: data.statusDesc
       }
 
-      delete bugsData.$createdAt;
-      delete bugsData.$updatedAt;
-      delete bugsData.$id;
-      delete bugsData.$collectionId;
-      delete bugsData.$databaseId;
-      delete bugsData.$permissions;
-      delete bugsData.$email;
+      delete feedbackData.$createdAt;
+      delete feedbackData.$updatedAt;
+      delete feedbackData.$id;
+      delete feedbackData.$collectionId;
+      delete feedbackData.$databaseId;
+      delete feedbackData.$permissions;
+      delete feedbackData.$email;
 
-      await updateDocument('bugs', bugId, bugsData);
+      await updateDocument('feedback', feedbackId, feedbackData);
       await refetch();
-      toast.success(`bugs ${data.status} successful!`);
+      toast.success(`feedback ${data.status} successful!`);
       reset();
     } catch (error) {
       toast.error(error.message);
@@ -61,8 +61,8 @@ const Bug = () => {
 
   return (
     <div className="pt-24 min-h-screen">
-      <Meta name={bugs ? bugs.title : "Bugs - NIT Patna"} />
-      <Heading heading="Review Bugs"></Heading>
+      <Meta name={feedback ? feedback.title : "Feedbacks - NIT Patna"} />
+      <Heading heading="Review Feedbacks"></Heading>
 
       {isPending ? (
         <div className="w-full h-[10rem] flex items-center justify-center">
@@ -71,10 +71,10 @@ const Bug = () => {
       ) : isError ? (
         <div className="text-center text-red-500">Something went wrong!</div>
       ) : (
-        bugs && (
+        feedback && (
           <div className="m-auto flex flex-col items-center justify-center">
             <h1 className="lg:text-4xl md:text-3xl text-2xl font-bold lg:max-w-3xl md:max-w-2xl px-6 text-center m-auto text-sky-500 my-10 mt-6">
-              {bugs.title}
+              {feedback.title}
             </h1>
 
             <div className="flex items-center pt-5">
@@ -82,7 +82,7 @@ const Bug = () => {
               <BsDot size={20} className='text-gray-300' />
               <p className="text-gray-400">
                 {new Intl.DateTimeFormat("en-AU").format(
-                  new Date(bugs.$createdAt)
+                  new Date(feedback.$createdAt)
                 )}
               </p>
             </div>
@@ -90,8 +90,8 @@ const Bug = () => {
             <div className="flex items-center pt-2">
               <p className='text-gray-400'>Status</p>
               <BsDot size={20} className='text-gray-300' />
-              <p className={`font-medium ${bugs.status === "reviewing" ? "text-yellow-500" : bugs.status === "resolved" ? "text-green-500" : "text-red-500"}`}>
-                {bugs.status}
+              <p className={`font-medium ${feedback.status === "reviewing" ? "text-yellow-500" : feedback.status === "resolved" ? "text-green-500" : "text-red-500"}`}>
+                {feedback.status}
               </p>
             </div>
 
@@ -99,12 +99,12 @@ const Bug = () => {
               <p className='text-gray-400'>Reported by</p>
               <BsDot size={20} className='text-gray-300' />
               <p className="text-gray-400">
-                {bugs.email}
+                {feedback.email}
               </p>
             </div>
 
             <div className="lg:w-[70%] md:w-[80%] w-[85%] text-lg mt-10 text-center">
-              {bugs.description}
+              {feedback.description}
             </div>
 
             <div className='bg-gray-800 p-5 pb-8 rounded-xl mt-11'>
@@ -118,7 +118,7 @@ const Bug = () => {
                     type='text'
                     reactHookForm={register('statusDesc', {
                       maxLength: { value: 511, message: 'Max length is 511 characters' },
-                      value: bugs.statusDesc
+                      value: feedback.statusDesc
                     })}
                     error={errors.statusDesc?.message}
                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
@@ -131,7 +131,7 @@ const Bug = () => {
                   error={errors.status?.message}
                   reactHookForm={register('status', {
                     required: { value: true, message: 'Status is required' },
-                    value: bugs.status
+                    value: feedback.status
                   })}
                   options={[
                     { name: 'reviewing', value: 'reviewing' },
@@ -151,4 +151,4 @@ const Bug = () => {
   );
 };
 
-export default Bug;
+export default Feedback;
