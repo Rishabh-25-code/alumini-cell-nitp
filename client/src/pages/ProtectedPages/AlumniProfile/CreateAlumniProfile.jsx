@@ -204,7 +204,7 @@ const CreateAlumniProfile = () => {
                             <div className="flex md:flex-row flex-col gap-5">
 
                                 <Select
-                                    label='Which describes you best at NITP?'
+                                    label='Last course attended at NITP?'
                                     id='role'
                                     options={[
                                         {
