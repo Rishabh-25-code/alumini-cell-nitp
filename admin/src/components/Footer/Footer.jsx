@@ -8,7 +8,6 @@ const Footer = () => {
   const date = new Date;
   const year = date.getFullYear();
 
-
   return (
     <div data-aos="fade-in" className="bg-[#0b0b0b] text-sm w-[100%] mt-[10rem]">
       <div className="mb-10 w-[90%] grid gap-2 md:gap-4 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-[auto] items-start justify-items-center">
@@ -36,7 +35,6 @@ const Footer = () => {
           <div className='flex items-center justify-start'><h1 className='font-extrabold text-2xl text-blue-700 mr-3'>|</h1><h1 className='text-lg font-semibold text-sky-500'>Useful Links</h1></div>
           <ul className='mt-4 flex flex-col gap-3 text-base'>
             <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="https://www.nitp.ac.in/" target="_blank">NIT Patna</Link></li>
-            <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/history">History</Link></li>
             <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/jobs">Jobs</Link></li>
             <li className='hover:text-blue-600'><Link style={{color:"#aaa"}} to="/internships">Internships</Link></li>
             <li className=' hover:text-blue-600'><Link style={{color:"#aaa"}} to="/team">Web Team</Link></li>
