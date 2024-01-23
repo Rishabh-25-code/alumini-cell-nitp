@@ -64,7 +64,7 @@ const NavBar = () => {
                 <div className="flex items-center justify-between lg:w-full lg:px-5 md:w-[96%] px-4 md:px-3 lg:py-3 py-2.5 m-auto text-lg">
                     <div className="flex items-center">
                         <Link to="/">
-                        <img src="/public/images/logo512.png" height={120} width={120} alt="logo" className="lg:h-14 h-12 lg:w-14 w-12 rounded-full"/>
+                            <img src="/images/logo512.png" height={120} width={120} alt="logo" className="lg:h-14 h-12 lg:w-14 w-12 rounded-full" />
                         </Link>
                     </div>
                     <div className="flex items-center gap-5">
