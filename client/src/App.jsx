@@ -272,7 +272,7 @@ function App() {
   ];
 
   return (
-    <div className="bg-[#000000] bg-[radial-gradient(#aaaaaa33_1px,#000000_1px)] bg-[size:20px_20px] pb-10">
+    <div className="bg-[#000000] bg-[radial-gradient(#aaaaaa33_1px,#000000_1px)] bg-[size:20px_20px]">
       <QueryClientProvider client={queryClient}>
         <ToastContainer />
         <Router>
