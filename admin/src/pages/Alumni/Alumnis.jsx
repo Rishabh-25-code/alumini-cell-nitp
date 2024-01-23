@@ -57,7 +57,7 @@ const Alumnis = () => {
             <Meta name="Alumni Profiles" />
             <Heading heading="Alumni Profiles"></Heading>
 
-            <div className='md:px-10 px-5 flex mt-6 gap-2.5'>
+            <div className='md:px-10 px-5 flex mt-6 flex-wrap gap-2.5'>
                 <button onClick={() => {
                     changeParams('status', 'all');
                 }} className={`border-white border font-semibold  px-5 py-2 text-base rounded-xl hover:bg-white hover:text-gray-900 ${status === "all" ? 'bg-white text-gray-900' : 'text-white'}`}>
