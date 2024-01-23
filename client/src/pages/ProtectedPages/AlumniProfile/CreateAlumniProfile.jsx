@@ -13,6 +13,7 @@ import Loader, { Loading } from '../../../components/Loader';
 import { Input, Select, ProfileImage, TextArea } from '../../../components/FormComponents';
 import { FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import Meta from '../../../components/Meta/Meta';
 
 
 const CreateAlumniProfile = () => {
@@ -72,7 +73,8 @@ const CreateAlumniProfile = () => {
     };
 
     return (
-        <div className='bg-gray-900 relative p-5 my-5 rounded-2xl'>
+        <div className='bg-[#0e0f14] relative p-5 my-5 rounded-2xl'>
+            <Meta title="Profile | Alumni NITP" />
             {
                 loading && <Loading message={message} />
             }

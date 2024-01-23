@@ -24,7 +24,7 @@ const NotableAlumniMarquee = () => {
         {
             name: "Dr. Ratan Kumar Sinha",
             designation: "Former Chairman, Atomic Energy Commission",
-            about: "Dr. Ratan Kumar Sinha is an Indian nuclear scientist who served as the chairman of the Atomic Energy Commission of India and the Secretary to the Government of India, Department of Atomic Energy from 2012 to 2015.",
+            about: "Dr. Ratan Kumar Sinha is an Indian nuclear scientist who served as the chairman of the Atomic Energy Commission of India and the Secretary to the Govt. of India, Department of Atomic Energy from 2012 to 2015.",
             image: "./notable-alumni/Ratan_Kumar_Sinha.jpg",
             id: 3
         },
@@ -52,7 +52,7 @@ const NotableAlumniMarquee = () => {
         {
             name: "Ajit Kumar Mehta",
             designation: "Former Member of Parliament",
-            about: "Ajit Kumar Mehta was member of 6th Lok Sabha from Samastipur in Bihar State, India. He was elected to 7th, 11th and 12th Lok Sabha from Samastipur. Before joining active politics, Mehta was an educationist, working as professor at Birla Institute of Technology Mesra. ",
+            about: "Ajit Kumar Mehta was member of 6th Lok Sabha from Samastipur in Bihar State, India. He was elected to 7th, 11th and 12th Lok Sabha from Samastipur. Before joining active politics, Mehta was working as professor at BIT Mesra.",
             image: "./notable-alumni/Ajit_Kumar_Mehta.jpg",
             id: 7
         }
@@ -60,7 +60,7 @@ const NotableAlumniMarquee = () => {
 
 
     return (
-        <div className="bg-gray-900 pt-16 pb-10 mt-16">
+        <div className="bg-gray-900 pt-16 pb-10">
             <div className='flex items-center justify-center text-center gap-3 flex-col'>
                 <p data-aos="fade-up" className='lg:text-5xl text-4xl font-semibold pb-10'>Our Notable <span className='text-sky-500'>Alumni</span></p>
 
@@ -73,7 +73,7 @@ const NotableAlumniMarquee = () => {
                         ))
                     }
                 </Marquee>
-                <Link to="/notableAlumni" className="flex gap-1 py-2.5 mt-3 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 text-white font-medium">
+                <Link to="/notableAlumni" className="flex gap-1 py-3 mt-3 px-8 rounded-xl bg-sky-500 hover:bg-sky-600 hover:scale-105 transition focus:bg-gray-600 text-white font-medium">
                     <button >
                         Explore
                     </button>
