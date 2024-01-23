@@ -32,7 +32,7 @@ const ForgotPassword = () => {
             <Meta title="Forgot Password | Alumni NITP" />
             <div className="lg:w-[28rem] md:w-[28rem] w-[90%] border-gray-700 border p-8 rounded-3xl bg-[#0c0c0c]">
                 <div className="flex items-center justify-center">
-                <img src="/public/images/logo512.png" alt="logo" height={200} width={200}  className="lg:h-20 h-14 lg:w-20 w-14 rounded-full"  />
+                <img src="/images/logo512.png" alt="logo" height={200} width={200}  className="lg:h-20 h-14 lg:w-20 w-14 rounded-full"  />
 
                 </div>
                 <div>

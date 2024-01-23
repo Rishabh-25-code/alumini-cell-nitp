@@ -34,10 +34,10 @@ const Gallery = () => {
                                         </div>
                                     ))}
 
-                                    <Link data-aos="fade-up" to="/gallery" className="p-2 max-w-full h-auto align-center border-2 border-dashed rounded-2xl border-sky-500 flex items-center justify-center bg-sky-950">
+                                    <Link data-aos="fade-up" to="/gallery" className="p-2 max-w-full h-auto align-center border-2 border-dashed rounded-2xl border-sky-500 flex items-center justify-center bg-[#1c43768a]">
                                         <button
                                             type="button"
-                                            className="md:text-lg text-sm font-medium text-sky-400 hover:scale-105"
+                                            className="md:text-lg text-sm font-medium text-sky-400 hover:scale-105 transition"
                                         >
                                             See All
                                         </button>
