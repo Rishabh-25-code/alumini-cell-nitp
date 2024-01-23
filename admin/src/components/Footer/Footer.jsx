@@ -14,7 +14,7 @@ const Footer = () => {
       <div className="mb-10 w-[90%] grid gap-2 md:gap-4 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-[auto] items-start justify-items-center">
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-1 md:order-1 lg:order-1'>
           <Link href="/">
-            <img src="/images/logo.svg" alt="logo" className='h-16' />
+            <img src="/images/logo512.png" alt="logo" className='h-16' />
           </Link>
 
           <p className='max-w-[17rem] py-3 text-base text-gray-200'>One-stop portal for alumni of the National Institute of Technology, Patna, Bihar.</p>
