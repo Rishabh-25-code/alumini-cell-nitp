@@ -6,7 +6,18 @@ import Meta from '../../components/Meta/Meta';
 const Events = () => {
   const events = [
     {
-        id: 0,
+      id: 0,
+      name: "Conference on Computational Intelligence Communications and Business Analytics.",
+      image: "/images/events/computational intelligence.jpg",
+      clubName: " CSE Department",
+      description: " ",
+      date: "2024-01-23",
+      time: "10:00 AM",
+      venue: "Meghnadh Saha Hall",
+      link: "https://www.google.com"
+  },
+    {
+        id: 1,
         name: "Alumni Meet 2023",
         image: "/images/Meet5300/DSC_0139-min.jpg",
         clubName: "Alumni Cell",
@@ -17,7 +28,7 @@ const Events = () => {
         link: "https://www.google.com"
     },
     {
-        id: 1,
+        id: 2,
         name: "ICEFEET",
         image: "/images/icefeet/icefeet12.jpeg",
         clubName: "IEEE",
@@ -29,7 +40,7 @@ const Events = () => {
     },
     
     {
-        id: 2,
+        id: 3,
         name: "One Mic Stand",
         image: "/images/events/standup-min.jpg",
         clubName: "Natvansh",
@@ -40,7 +51,7 @@ const Events = () => {
         link: "https://www.google.com"
     },
     {
-        id: 3,
+        id: 4,
         name: "Vimantriki",
         image: "/images/events/vimantriki-min.jpg",
         clubName: "Tesla",
@@ -52,7 +63,7 @@ const Events = () => {
     },
     
     {
-        id: 4,
+        id: 5,
         name: "Eccentrica 5.0",
         image: "/images/events/eccentrica-min.jpg",
         clubName: "",
@@ -63,7 +74,7 @@ const Events = () => {
         link: "https://www.google.com"
     },
     {
-        id: 5,
+        id: 6,
         name: "Physics Workshop",
         image: "/images/events/physicsworkshop-min.jpg",
         clubName: "",
@@ -74,7 +85,7 @@ const Events = () => {
         link: "https://www.google.com"
     },
     {
-        id: 6,
+        id: 7,
         name: "Doodle Art",
         image: "/images/events/doodle-min.jpg",
         clubName: "Expresso",

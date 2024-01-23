@@ -3,6 +3,10 @@ import { Carousel } from 'react-carousel-minimal';
 function Card(props) {
     const data = [
         {
+            image: "/images/events/computational intelligence.jpg",
+            caption: ""
+        },
+        {
             image: "/images/Meet5300/DSC_0139-min.jpg",
             caption: ""
         },
