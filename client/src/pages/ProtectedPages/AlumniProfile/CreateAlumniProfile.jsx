@@ -114,6 +114,40 @@ const CreateAlumniProfile = () => {
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.username}
                                 />
+
+                                <Select
+                                    label='Last course attended at NITP?'
+                                    id='role'
+                                    options={[
+                                        {
+                                            name: 'UG Student',
+                                            value: 'ug',
+                                        },
+                                        {
+                                            name: 'PG Student',
+                                            value: 'pg',
+                                        },
+                                        {
+                                            name: 'PhD Student',
+                                            value: 'phd',
+                                        },
+                                        {
+                                            name: 'Faculty/Staff',
+                                            value: 'faculty-staff',
+                                        },
+                                        {
+                                            name: 'Both (Student and Faculty/Staff)',
+                                            value: 'faculty-staff',
+                                        }
+                                    ]}
+                                    reactHookForm={register('role', {
+                                        required: 'Role is required',
+                                    })}
+                                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                                    errors={errors.role}
+                                    placeholder="Select Role"
+                                />
+                                
                                 <Select
                                     label='Highest Degree at NITP'
                                     id='degree'
@@ -125,7 +159,7 @@ const CreateAlumniProfile = () => {
                                         { name: 'I.MSc', value: 'I.MSc' },
                                         { name: 'Ph.D.', value: 'Ph.D.' }
                                     ]}
-                                    reactHookForm={register('degree', { required: 'Degree is required' })}
+                                    reactHookForm={register('degree')}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.degree}
                                     placeholder="Select Degree"
@@ -175,6 +209,7 @@ const CreateAlumniProfile = () => {
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.name}
                                 />
+
                                 <Select
                                     label='Gender'
                                     id='Gender'
@@ -202,36 +237,6 @@ const CreateAlumniProfile = () => {
                             </div>
 
                             <div className="flex md:flex-row flex-col gap-5">
-
-                                <Select
-                                    label='Last course attended at NITP?'
-                                    id='role'
-                                    options={[
-                                        {
-                                            name: 'UG Student',
-                                            value: 'ug',
-                                        },
-                                        {
-                                            name: 'PG Student',
-                                            value: 'pg',
-                                        },
-                                        {
-                                            name: 'PhD Student',
-                                            value: 'phd',
-                                        },
-                                        {
-                                            name: 'Faculty/Staff',
-                                            value: 'Faculty/Staff',
-                                        }
-                                    ]}
-                                    reactHookForm={register('role', {
-                                        required: 'Role is required',
-                                    })}
-                                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
-                                    errors={errors.role}
-                                    placeholder="Select Role"
-                                />
-
                                 <Input
                                     label='Batch/Tenure Start'
                                     type='number'
@@ -254,8 +259,8 @@ const CreateAlumniProfile = () => {
                                             message: 'Batch must not exceed 4 characters',
                                         },
                                         onChange: (e) => {
-                                            if (e.target.value > new Date().getFullYear() + 4) {
-                                                e.target.value = new Date().getFullYear() + 4;
+                                            if (e.target.value > new Date().getFullYear() + 1) {
+                                                e.target.value = new Date().getFullYear() + 1;
                                             }
 
                                             if (e.target.value.length === 4 && e.target.value < 1800) {
@@ -275,7 +280,6 @@ const CreateAlumniProfile = () => {
                                     placeholder='2020'
                                     title='batchEnd'
                                     reactHookForm={register('batchEnd', {
-                                        required: 'Batch/Tenure is required',
                                         pattern: {
                                             value: /^\d{4}$/i,
                                             message: 'Please enter a valid batch',
@@ -289,8 +293,8 @@ const CreateAlumniProfile = () => {
                                             message: 'Batch must not exceed 4 characters',
                                         },
                                         onChange: (e) => {
-                                            if (e.target.value > new Date().getFullYear() + 4) {
-                                                e.target.value = new Date().getFullYear() + 4;
+                                            if (e.target.value > new Date().getFullYear() + 1) {
+                                                e.target.value = new Date().getFullYear() + 1;
                                             }
 
                                             if (e.target.value.length === 4 && e.target.value < 1800) {
@@ -315,7 +319,7 @@ const CreateAlumniProfile = () => {
                                 />
                             </div>
 
-                            <TextArea rows={3} id="bio" label="Bio" placeholder="Hello stranger! 👋, I am a self taught front end developer based in India with a passion for building digital services/stuff. I have a knack for all things building products, from planning and designing all the way to solving real-life problems with code." title="bio" reactHookForm={register('bio', {
+                            <TextArea rows={3} id="bio" label="Bio" placeholder="About Yourself" title="bio" reactHookForm={register('bio', {
                                 maxLength: {
                                     value: 1000,
                                     message: 'Bio must not exceed 1000 characters',
@@ -346,8 +350,6 @@ const CreateAlumniProfile = () => {
                                         />
                                     </p>
                                 </div>
-
-
                                 <div className="flex-1">
                                     <Input
                                         label='Mobile No.'
@@ -374,45 +376,6 @@ const CreateAlumniProfile = () => {
                                             className="ml-2"
                                         />
                                     </p>
-                                </div>
-                                <div className="flex-1">
-                                    <Select
-                                        label='Category'
-                                        id='Category'
-                                        options={[
-                                            {
-                                                name: 'General',
-                                                value: 'GEN',
-                                            },
-                                            {
-                                                name: 'OBC',
-                                                value: 'OBC',
-                                            },
-                                            {
-                                                name: 'OBC(NCL)',
-                                                value: 'OBC(NCL)',
-                                            },
-                                            {
-                                                name: 'SC',
-                                                value: 'SC',
-                                            },
-                                            {
-                                                name: 'ST',
-                                                value: 'ST',
-                                            },
-                                            {
-                                                name: 'EWS',
-                                                value: 'EWS',
-                                            }
-                                        ]}
-                                        reactHookForm={register('category', {
-                                            required: 'Category is required',
-                                        })}
-                                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
-                                        errors={errors.category}
-                                        placeholder="Select category"
-                                    />
-
                                 </div>
                             </div>
 
@@ -635,7 +598,7 @@ const CreateAlumniProfile = () => {
                                         <div className="flex justify-center items-center">
                                             <div className="bg-yellow-600 text-white text-sm font-bold py-1.5 px-3 rounded-full">Profile Reviewing</div>
                                         </div>
-                                    ) : alumni.status === 'published' || alumni.status === null ? (
+                                    ) : alumni.status === 'approved' || alumni.status === null ? (
                                         <div className="flex justify-center items-center">
                                             <div className="bg-green-500 text-white text-sm font-bold py-1.5 px-3 rounded-full">Profile Approved</div>
                                         </div>

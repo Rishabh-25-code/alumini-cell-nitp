@@ -39,7 +39,7 @@ const EditAlumniProfile = () => {
     }
 
     const onSubmit = useCallback(async (data) => {
-        data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: alumni.image, uid: alumni.uid, email: alumni.email };
+        data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: alumni.image, uid: alumni.uid, email: alumni.email, status: "reviewing" };
         setLoading(true);
         try {
             setMessage("Uploading Image...");
@@ -97,6 +97,7 @@ const EditAlumniProfile = () => {
 
                             <div className="flex md:flex-row flex-col gap-5 py-3">
                                 <Input
+                                    require={true}
                                     label='Username'
                                     type='text'
                                     placeholder='DoeJohn@73'
@@ -120,6 +121,43 @@ const EditAlumniProfile = () => {
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.username}
                                 />
+
+                                
+
+                                <Select
+                                    label='What describes you best?'
+                                    id='role'
+                                    options={[
+                                        {
+                                            name: 'UG Student',
+                                            value: 'ug',
+                                        },
+                                        {
+                                            name: 'PG Student',
+                                            value: 'pg',
+                                        },
+                                        {
+                                            name: 'PhD Student',
+                                            value: 'phd',
+                                        },
+                                        {
+                                            name: 'Faculty/Staff',
+                                            value: 'faculty-staff',
+                                        },
+                                        {
+                                            name: 'Both (Student and Faculty/Staff)',
+                                            value: 'faculty-staff',
+                                        }
+                                    ]}
+                                    reactHookForm={register('role', {
+                                        required: 'Role is required',
+                                        value: alumni.role
+                                    })}
+                                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
+                                    errors={errors.role}
+                                    placeholder="Select Role"
+                                />
+
                                 <Select
                                     label='Highest Degree at NITP'
                                     id='degree'
@@ -132,7 +170,6 @@ const EditAlumniProfile = () => {
                                         { name: 'Ph.D.', value: 'Ph.D.' }
                                     ]}
                                     reactHookForm={register('degree', {
-                                        required: 'Degree is required',
                                         value: alumni.degree,
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
@@ -215,37 +252,6 @@ const EditAlumniProfile = () => {
                             </div>
 
                             <div className="flex md:flex-row flex-col gap-5">
-
-                                <Select
-                                    label='Last course attended at NITP?'
-                                    id='role'
-                                    options={[
-                                        {
-                                            name: 'UG Student',
-                                            value: 'ug',
-                                        },
-                                        {
-                                            name: 'PG Student',
-                                            value: 'pg',
-                                        },
-                                        {
-                                            name: 'PhD Student',
-                                            value: 'phd',
-                                        },
-                                        {
-                                            name: 'Faculty/Staff',
-                                            value: 'Faculty/Staff',
-                                        }
-                                    ]}
-                                    reactHookForm={register('role', {
-                                        required: 'Role is required',
-                                        value: alumni.role
-                                    })}
-                                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
-                                    errors={errors.role}
-                                    placeholder="Select Role"
-                                />
-
                                 <Input
                                     label='Batch/Tenure Start'
                                     type='number'
@@ -290,7 +296,6 @@ const EditAlumniProfile = () => {
                                     placeholder='2020'
                                     title='batchEnd'
                                     reactHookForm={register('batchEnd', {
-                                        required: 'Batch/Tenure is required',
                                         value: alumni.batchEnd,
                                         pattern: {
                                             value: /^\d{4}$/i,
@@ -305,8 +310,8 @@ const EditAlumniProfile = () => {
                                             message: 'Batch must not exceed 4 characters',
                                         },
                                         onChange: (e) => {
-                                            if (e.target.value > new Date().getFullYear() + 4) {
-                                                e.target.value = new Date().getFullYear() + 4;
+                                            if (e.target.value > new Date().getFullYear() + 1) {
+                                                e.target.value = new Date().getFullYear() + 1;
                                             }
 
                                             if (e.target.value.length === 4 && e.target.value < 1800) {
@@ -332,7 +337,7 @@ const EditAlumniProfile = () => {
                                 />
                             </div>
 
-                            <TextArea rows={3} id="bio" label="Bio" placeholder="Hello stranger! 👋, I am a self taught front end developer based in India with a passion for building digital services/stuff. I have a knack for all things building products, from planning and designing all the way to solving real-life problems with code." title="bio" reactHookForm={register('bio', {
+                            <TextArea rows={3} id="bio" label="Bio" placeholder="About Yourself" title="bio" reactHookForm={register('bio', {
                                 maxLength: {
                                     value: 1000,
                                     message: 'Bio must not exceed 1000 characters',
@@ -406,46 +411,6 @@ const EditAlumniProfile = () => {
                                             className="ml-2"
                                         />
                                     </p>
-                                </div>
-                                <div className="flex-1">
-                                    <Select
-                                        label='Category'
-                                        id='Category'
-                                        options={[
-                                            {
-                                                name: 'General',
-                                                value: 'GEN',
-                                            },
-                                            {
-                                                name: 'OBC',
-                                                value: 'OBC',
-                                            },
-                                            {
-                                                name: 'OBC(NCL)',
-                                                value: 'OBC(NCL)',
-                                            },
-                                            {
-                                                name: 'SC',
-                                                value: 'SC',
-                                            },
-                                            {
-                                                name: 'ST',
-                                                value: 'ST',
-                                            },
-                                            {
-                                                name: 'EWS',
-                                                value: 'EWS',
-                                            }
-                                        ]}
-                                        reactHookForm={register('category', {
-                                            required: 'Category is required',
-                                            value: alumni.category
-                                        })}
-                                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
-                                        errors={errors.category}
-                                        placeholder="Select category"
-                                    />
-
                                 </div>
                             </div>
 
@@ -653,7 +618,7 @@ const EditAlumniProfile = () => {
                             </div>
 
                             <div className='text-white self-end w-fit flex gap-3 pt-6 pb-4'>
-                                <button disabled={loading} onClick={(e)=>{
+                                <button disabled={loading} onClick={(e) => {
                                     e.preventDefault();
                                     navigate(`/alumni-profile`);
                                 }} className="px-8 py-3 transition-all rounded-xl bg-rose-500 hover:bg-rose-600 active:scale-105 active:bg-rose-600">
