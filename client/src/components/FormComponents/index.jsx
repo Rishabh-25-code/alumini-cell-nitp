@@ -9,10 +9,10 @@ import rehypeStringify from 'rehype-stringify'
 import { getImageURL } from "../../services/files"
 
 
-export const Input = ({ id, label, type, placeholder, title, reactHookForm, className, errors, ...rest }) => {
+export const Input = ({ id, require, label, type, placeholder, title, reactHookForm, className, errors, ...rest }) => {
     return (
         <div className='flex-1'>
-            <label htmlFor={id} className='text-gray-300'>{label}</label>
+            <label htmlFor={id} className='text-gray-300'>{label}</label> {require && <span className='text-rose-500 text-xl'>*</span>}
             <input
                 {...rest}
                 id={id}
