@@ -424,7 +424,7 @@ const CreateAlumniProfile = () => {
                                     title='company'
                                     reactHookForm={register('company', {
                                         pattern: {
-                                            value: /^[a-zA-Z0-9+_.-]+$/i,
+                                            value: /^(?!\s)([a-z ,.'-]+)$/i,
                                             message: 'Please enter a valid company name',
                                         },
                                         maxLength: {
