@@ -12,7 +12,7 @@ import { getImageURL } from "../../services/files"
 export const Input = ({ id, require, label, type, placeholder, title, reactHookForm, className, errors, ...rest }) => {
     return (
         <div className='flex-1'>
-            <label htmlFor={id} className='text-gray-300'>{label}</label> {require && <span className='text-rose-500 text-xl'>*</span>}
+            <label htmlFor={id} className='text-gray-300'>{label}</label> {require }
             <input
                 {...rest}
                 id={id}

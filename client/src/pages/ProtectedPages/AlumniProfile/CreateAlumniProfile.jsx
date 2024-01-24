@@ -92,7 +92,9 @@ const CreateAlumniProfile = () => {
 
                             <div className="flex md:flex-row flex-col gap-5 py-3">
                                 <Input
-                                    label='Username'
+                                    label={<>
+                                        Username <span className="text-red-500">*</span>
+                                    </>}
                                     type='text'
                                     placeholder='DoeJohn@73'
                                     title='username'
@@ -116,7 +118,9 @@ const CreateAlumniProfile = () => {
                                 />
 
                                 <Select
-                                    label='Last course attended at NITP?'
+                                    label={<>
+                                        What describes you best? <span className="text-red-500">*</span>
+                                    </>}
                                     id='role'
                                     options={[
                                         {
@@ -168,7 +172,9 @@ const CreateAlumniProfile = () => {
 
                             <div className="flex md:flex-row flex-col gap-5">
                                 <Select
-                                    label="Title"
+                                    label={<>
+                                        Title <span className="text-red-500">*</span>
+                                    </>}
                                     placeholder="Select Title"
                                     title='title'
                                     reactHookForm={register('title', {
@@ -187,7 +193,9 @@ const CreateAlumniProfile = () => {
                                 />
 
                                 <Input
-                                    label='Name'
+                                    label={<>
+                                        Name <span className="text-red-500">*</span>
+                                    </>}
                                     type='text'
                                     placeholder='John Doe'
                                     title='name'
@@ -211,7 +219,9 @@ const CreateAlumniProfile = () => {
                                 />
 
                                 <Select
-                                    label='Gender'
+                                    label={<>
+                                        Gender <span className="text-red-500">*</span>
+                                    </>}
                                     id='Gender'
                                     options={[
                                         {
@@ -238,7 +248,9 @@ const CreateAlumniProfile = () => {
 
                             <div className="flex md:flex-row flex-col gap-5">
                                 <Input
-                                    label='Batch/Tenure Start'
+                                    label={<>
+                                        Batch/Tenure start <span className="text-red-500">*</span>
+                                    </>}
                                     type='number'
                                     min={1800}
                                     max={new Date().getFullYear()}
@@ -307,7 +319,9 @@ const CreateAlumniProfile = () => {
                                 />
 
                                 <Select
-                                    label='Branch'
+                                    label={<>
+                                        Department <span className="text-red-500">*</span>
+                                    </>}
                                     id='branch'
                                     options={branches}
                                     reactHookForm={register('branch', {
@@ -352,7 +366,9 @@ const CreateAlumniProfile = () => {
                                 </div>
                                 <div className="flex-1">
                                     <Input
-                                        label='Mobile No.'
+                                        label={<>
+                                            Mobile No. <span className="text-red-500">*</span>
+                                        </>}
                                         type='text'
                                         placeholder='Phone'
                                         title='phone'

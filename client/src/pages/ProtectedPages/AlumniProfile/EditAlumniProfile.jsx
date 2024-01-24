@@ -98,7 +98,9 @@ const EditAlumniProfile = () => {
                             <div className="flex md:flex-row flex-col gap-5 py-3">
                                 <Input
                                     require={true}
-                                    label='Username'
+                                    label={<>
+                                        Username <span className="text-red-500">*</span>
+                                    </>}
                                     type='text'
                                     placeholder='DoeJohn@73'
                                     title='username'
@@ -120,12 +122,14 @@ const EditAlumniProfile = () => {
                                     })}
                                     className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     errors={errors.username}
-                                />
+                                /> 
 
                                 
 
                                 <Select
-                                    label='What describes you best?'
+                                    label={<>
+                                        What describes you best? <span className="text-red-500">*</span>
+                                    </>}
                                     id='role'
                                     options={[
                                         {
@@ -180,7 +184,9 @@ const EditAlumniProfile = () => {
 
                             <div className="flex md:flex-row flex-col gap-5">
                                 <Select
-                                    label="Title"
+                                    label={<>
+                                        Title <span className="text-red-500">*</span>
+                                    </>}
                                     placeholder="Select Title"
                                     title='title'
                                     reactHookForm={register('title', {
@@ -201,7 +207,9 @@ const EditAlumniProfile = () => {
                                 />
 
                                 <Input
-                                    label='Name'
+                                    label={<>
+                                        Name <span className="text-red-500">*</span>
+                                    </>}
                                     type='text'
                                     placeholder='John Doe'
                                     title='name'
@@ -225,7 +233,9 @@ const EditAlumniProfile = () => {
                                     errors={errors.name}
                                 />
                                 <Select
-                                    label='Gender'
+                                    label={<>
+                                        Gender <span className="text-red-500">*</span>
+                                    </>}
                                     id='Gender'
                                     options={[
                                         {
@@ -324,7 +334,9 @@ const EditAlumniProfile = () => {
                                 />
 
                                 <Select
-                                    label='Branch'
+                                    label={<>
+                                        Department <span className="text-red-500">*</span>
+                                    </>}
                                     id='branch'
                                     options={branches}
                                     reactHookForm={register('branch', {
@@ -386,7 +398,9 @@ const EditAlumniProfile = () => {
 
                                 <div className="flex-1">
                                     <Input
-                                        label='Mobile No.'
+                                        label={<>
+                                            Mobile No. <span className="text-red-500">*</span>
+                                        </>}
                                         type='text'
                                         placeholder='Phone'
                                         title='phone'
