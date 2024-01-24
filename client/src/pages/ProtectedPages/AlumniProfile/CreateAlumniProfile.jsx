@@ -44,7 +44,7 @@ const CreateAlumniProfile = () => {
         data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: null, uid: user.$id, email: user.email };
         setLoading(true);
         try {
-            const doesProfileExist = getAlumniProfileWithUserName('alumni', data.username);
+            const doesProfileExist = await getAlumniProfileWithUserName('alumni', data.username);
             if (doesProfileExist) return toast.error(`The username (${data.username}) is already taken`);
             setMessage('Uploading Image...');
             if (profileImage) {
