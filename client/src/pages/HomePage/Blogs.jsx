@@ -20,7 +20,7 @@ const Blogs = () => {
         <div className='pt-10 pb-20 lg:px-24 md:px-16 px-6'>
             <Heading1 details={"Our alumni actively contribute to the intellectual discourse by passionately writing blogs on a diverse range of topics."} text1={"Our Latest"} text2={" Blogs"} />
 
-            <div className='flex flex-wrap m-auto px-5 items-center justify-evenly my-10 min-h-[16rem]'>
+            <div className='flex flex-wrap m-auto items-center justify-evenly my-10 min-h-[16rem]'>
                 {isPending && <Loader />}
                 {isError && <div className='text-center text-red-500'>Something went wrong!</div>}
 
