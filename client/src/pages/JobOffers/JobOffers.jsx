@@ -163,7 +163,7 @@ const JobOffersCard2 = ({ data }) => {
                          const shareItem = {
                               title: "Here is a job by NITP Alumni.",
                               text: data.jobTitle,
-                              url: `https://alumni.nitp.ac.in/job/${data.$id}`,
+                              url: `https://alumini-nitp.vercel.app/job/${data.$id}`,
                          }
 
                          if (navigator.share) {
