@@ -85,7 +85,7 @@ const EditAlumniProfile = () => {
             <div className='bg-gray-900 relative p-5 my-5 rounded-2xl'>
                 {isLoading ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
                     isError ? <div className='w-full h-[10rem] flex items-center justify-center'>Something went wrong!</div> :
-                        alumni &&
+                        alumni ?
                         <form className='flex gap-3 flex-col' onSubmit={handleSubmit(onSubmit)}>
                             <h2 className='text-2xl font-semibold'>
                                 <span className='text-sky-500'>Alumni Info </span>
@@ -124,13 +124,14 @@ const EditAlumniProfile = () => {
                                     errors={errors.username}
                                 /> 
 
-                                
+
 
                                 <Select
                                     label={<>
                                         What describes you best? <span className="text-red-500">*</span>
                                     </>}
                                     id='role'
+                                    require={true}
                                     options={[
                                         {
                                             name: 'UG Student',
@@ -184,6 +185,7 @@ const EditAlumniProfile = () => {
 
                             <div className="flex md:flex-row flex-col gap-5">
                                 <Select
+                                    require={true}
                                     label={<>
                                         Title <span className="text-red-500">*</span>
                                     </>}
@@ -207,9 +209,7 @@ const EditAlumniProfile = () => {
                                 />
 
                                 <Input
-                                    label={<>
-                                        Name <span className="text-red-500">*</span>
-                                    </>}
+                                    label='Name'
                                     type='text'
                                     placeholder='John Doe'
                                     title='name'
@@ -233,9 +233,7 @@ const EditAlumniProfile = () => {
                                     errors={errors.name}
                                 />
                                 <Select
-                                    label={<>
-                                        Gender <span className="text-red-500">*</span>
-                                    </>}
+                                    label='Gender'
                                     id='Gender'
                                     options={[
                                         {
@@ -264,6 +262,7 @@ const EditAlumniProfile = () => {
                             <div className="flex md:flex-row flex-col gap-5">
                                 <Input
                                     label='Batch/Tenure Start'
+                                    require={true}
                                     type='number'
                                     min={1800}
                                     max={new Date().getFullYear()}
@@ -338,6 +337,7 @@ const EditAlumniProfile = () => {
                                         Department <span className="text-red-500">*</span>
                                     </>}
                                     id='branch'
+                                    require={true}
                                     options={branches}
                                     reactHookForm={register('branch', {
                                         required: 'Branch is required',
@@ -361,6 +361,7 @@ const EditAlumniProfile = () => {
                                 <div className="flex-1">
                                     <Input
                                         label='Email'
+                                        require={true}
                                         type='email'
                                         placeholder='Email'
                                         title='email'
@@ -404,6 +405,7 @@ const EditAlumniProfile = () => {
                                         type='text'
                                         placeholder='Phone'
                                         title='phone'
+                                        require={true}
                                         reactHookForm={register('phone', {
                                             required: 'Phone is required',
                                             value: alumni.phone,
@@ -471,7 +473,9 @@ const EditAlumniProfile = () => {
                                     type='text'
                                     placeholder='Las Vegas'
                                     title='location'
+                                    require={true}
                                     reactHookForm={register('location', {
+                                        required: 'Location is required',
                                         maxLength: {
                                             value: 100,
                                             message: 'Location must not exceed 250 characters',
@@ -650,7 +654,10 @@ const EditAlumniProfile = () => {
                                     Save
                                 </button>
                             </div>
-                        </form>
+                        </form> :
+                        <div className='py-16 text-center text-sky-500 font-medium'>
+                            Alumni Profile not created yet!
+                        </div>
                 }
             </div>
         </div>

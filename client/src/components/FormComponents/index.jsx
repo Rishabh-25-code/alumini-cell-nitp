@@ -26,10 +26,10 @@ export const Input = ({ id, require, label, type, placeholder, title, reactHookF
     )
 }
 
-export const Select = ({ label, id, options, placeholder, reactHookForm, className, errors }) => {
+export const Select = ({ label, require, id, options, placeholder, reactHookForm, className, errors }) => {
     return (
         <div className="flex-1">
-            <label htmlFor={id} className='text-gray-300'>{label}</label>
+            <label htmlFor={id} className='text-gray-300'>{label}</label>{require && <span className='text-rose-500 text-xl'>*</span>}
             <select
                 id={id}
                 name={id}
@@ -48,10 +48,10 @@ export const Select = ({ label, id, options, placeholder, reactHookForm, classNa
     )
 }
 
-export const TextArea = ({ id, label, placeholder, title, reactHookForm, className, errors, ...rest }) => {
+export const TextArea = ({ id, require, label, placeholder, title, reactHookForm, className, errors, ...rest }) => {
     return (
         <div className='flex-1'>
-            <label htmlFor={title} className='text-gray-300'>{label}</label>
+            <label htmlFor={title} className='text-gray-300'>{label}</label> {require && <span className='text-rose-500 text-xl'>*</span>}
             <textarea
                 {...rest}
                 id={title}
@@ -64,7 +64,7 @@ export const TextArea = ({ id, label, placeholder, title, reactHookForm, classNa
     )
 }
 
-export const ProfileImage = ({ profileImage, setProfileImage, placeholder, prevImage = null }) => {
+export const ProfileImage = ({ require, profileImage, setProfileImage, placeholder, prevImage = null }) => {
     const [overSize, setOverSize] = useState(false);
 
     const handleImageChange = (e) => {
@@ -83,7 +83,7 @@ export const ProfileImage = ({ profileImage, setProfileImage, placeholder, prevI
             <div className="h-28 w-28 rounded-full overflow-hidden flex items-center justify-center">
                 <img className="w-28 h-auto" src={profileImage ? URL.createObjectURL(profileImage) : prevImage ? getImageURL(prevImage) : placeholder} alt="placeholder" />
             </div>
-            <label htmlFor="profileImage" className='text-gray-300'>Profile Image (max 2MB)</label>
+            <label htmlFor="profileImage" className='text-gray-300'>Profile Image (max 2MB)</label> {require && <span className='text-rose-500 text-xl'>*</span>}
             <button className="relative bg-sky-500 hover:bg-sky-600 px-5 py-1 mt-2 rounded-full cursor-pointer text-white">Select
                 <input onChange={handleImageChange} type="file" accept="image/jpeg, image/jpg, image/png, image/img" placeholder="Import" className="absolute top-0 left-0 opacity-0 w-full h-full cursor-pointer" />
             </button>
@@ -92,7 +92,7 @@ export const ProfileImage = ({ profileImage, setProfileImage, placeholder, prevI
 }
 
 
-export const MarkDownEditor = ({ id, label, placeholder, title, reactHookForm, errors, reset }) => {
+export const MarkDownEditor = ({ id, require = true, label, placeholder, title, reactHookForm, errors, reset }) => {
     const [active, setActive] = useState("write");
     const [editorState, setEditorState] = useState("");
 
@@ -103,7 +103,7 @@ export const MarkDownEditor = ({ id, label, placeholder, title, reactHookForm, e
 
     return (
         <div>
-            <label htmlFor={title} className='text-gray-300'>{label}</label><span className='text-rose-500 text-xl'>*</span>
+            <label htmlFor={title} className='text-gray-300'>{label}</label>{require && <span className='text-rose-500 text-xl'>*</span>}
             <div className="w-full border-2 border-gray-800 bg-gray-950 my-3 rounded-2xl">
                 <div className='pl-4 pt-2.5'>
                     <button
@@ -165,7 +165,7 @@ export const MarkDownEditor = ({ id, label, placeholder, title, reactHookForm, e
 }
 
 
-export const UploadImage = ({ image, setImage, placeholder, label }) => {
+export const UploadImage = ({ image,require, setImage, placeholder, label }) => {
     const [overSize, setOverSize] = useState(false);
 
     const handleImageChange = (e) => {
@@ -183,7 +183,7 @@ export const UploadImage = ({ image, setImage, placeholder, label }) => {
             <div className="h-28 overflow-hidden flex items-center justify-center">
                 <img className="h-28 w-auto" src={image ? URL.createObjectURL(image) : placeholder} alt="placeholder" />
             </div>
-            <label htmlFor="profileImage" className='text-gray-300'>{label} (max 2MB)</label>
+            <label htmlFor="profileImage" className='text-gray-300'>{label} (max 2MB)</label> {require && <span className='text-rose-500 text-xl'>*</span>}
             <button className="relative bg-sky-500 hover:bg-sky-600 px-5 py-1 mt-2 rounded-full cursor-pointer text-white">Select
                 <input onChange={handleImageChange} type="file" accept="image/jpeg, image/jpg, image/png, image/img" placeholder="Import" className="absolute top-0 left-0 opacity-0 w-full h-full cursor-pointer" />
             </button>

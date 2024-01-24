@@ -12,8 +12,8 @@ import { useQuery } from '@tanstack/react-query';
 import Loader, { Loading } from '../../../components/Loader';
 import { Input, Select, ProfileImage, TextArea } from '../../../components/FormComponents';
 import { FaEdit } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import Meta from '../../../components/Meta/Meta';
+import { Link, useNavigate } from 'react-router-dom';
+import { FaLinkedin, FaFacebook, FaInstagram, FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 
 
 const CreateAlumniProfile = () => {
@@ -74,7 +74,6 @@ const CreateAlumniProfile = () => {
 
     return (
         <div className='bg-[#0e0f14] relative p-5 my-5 rounded-2xl'>
-            <Meta title="Profile | Alumni NITP" />
             {
                 loading && <Loading message={message} />
             }
@@ -96,6 +95,7 @@ const CreateAlumniProfile = () => {
                                         Username <span className="text-red-500">*</span>
                                     </>}
                                     type='text'
+                                    require={true}
                                     placeholder='DoeJohn@73'
                                     title='username'
                                     reactHookForm={register('username', {
@@ -122,6 +122,7 @@ const CreateAlumniProfile = () => {
                                         What describes you best? <span className="text-red-500">*</span>
                                     </>}
                                     id='role'
+                                    require={true}
                                     options={[
                                         {
                                             name: 'UG Student',
@@ -151,7 +152,7 @@ const CreateAlumniProfile = () => {
                                     errors={errors.role}
                                     placeholder="Select Role"
                                 />
-                                
+
                                 <Select
                                     label='Highest Degree at NITP'
                                     id='degree'
@@ -175,6 +176,7 @@ const CreateAlumniProfile = () => {
                                     label={<>
                                         Title <span className="text-red-500">*</span>
                                     </>}
+                                    require={true}
                                     placeholder="Select Title"
                                     title='title'
                                     reactHookForm={register('title', {
@@ -197,6 +199,7 @@ const CreateAlumniProfile = () => {
                                         Name <span className="text-red-500">*</span>
                                     </>}
                                     type='text'
+                                    require={true}
                                     placeholder='John Doe'
                                     title='name'
                                     reactHookForm={register('name', {
@@ -223,6 +226,7 @@ const CreateAlumniProfile = () => {
                                         Gender <span className="text-red-500">*</span>
                                     </>}
                                     id='Gender'
+                                    require={true}
                                     options={[
                                         {
                                             name: 'Male',
@@ -252,6 +256,7 @@ const CreateAlumniProfile = () => {
                                         Batch/Tenure start <span className="text-red-500">*</span>
                                     </>}
                                     type='number'
+                                    require={true}
                                     min={1800}
                                     max={new Date().getFullYear()}
                                     placeholder='2016'
@@ -323,6 +328,7 @@ const CreateAlumniProfile = () => {
                                         Department <span className="text-red-500">*</span>
                                     </>}
                                     id='branch'
+                                    require={true}
                                     options={branches}
                                     reactHookForm={register('branch', {
                                         required: 'Branch is required',
@@ -345,6 +351,7 @@ const CreateAlumniProfile = () => {
                                     <Input
                                         label='Email'
                                         type='email'
+                                        require={true}
                                         placeholder='Email'
                                         title='email'
                                         disabled={true}
@@ -370,6 +377,7 @@ const CreateAlumniProfile = () => {
                                             Mobile No. <span className="text-red-500">*</span>
                                         </>}
                                         type='text'
+                                        require={true}
                                         placeholder='Phone'
                                         title='phone'
                                         reactHookForm={register('phone', {
@@ -434,9 +442,11 @@ const CreateAlumniProfile = () => {
                                 <Input
                                     label='Location'
                                     type='text'
+                                    require={true}
                                     placeholder='Las Vegas'
                                     title='location'
                                     reactHookForm={register('location', {
+                                        required: "Location is required",
                                         maxLength: {
                                             value: 100,
                                             message: 'Location must not exceed 250 characters',
@@ -638,9 +648,50 @@ const CreateAlumniProfile = () => {
                                     <span className='text-white'>{alumni.title} {alumni.name}</span>
                                 </p>
                                 <p className='text-sky-500 font-medium'>
-                                    {alumni.designation && <span>{alumni.designation && alumni.designation} {alumni.company && " at " + alumni.company}{alumni.location && ", " + alumni.location}</span>
+                                    {alumni.designation && <span>{alumni.designation && alumni.designation} {alumni.company && " at " + alumni.company}</span>
                                     }
                                 </p>
+                                <p className='text-gray-300 text-sm font-medium'>
+                                    {alumni.location && alumni.location}
+                                </p>
+
+                                <div className='flex gap-3 items-center py-3'>
+                                    {
+                                        alumni.linkedin && <Link to={alumni.linkedin} target="_blank">
+                                            <FaLinkedin size={20} className='hover:scale-95 transition hover:text-gray-400' />
+                                        </Link>
+                                    }
+
+                                    {
+                                        alumni.facebook && <Link to={alumni.facebook} target="_blank">
+                                            <FaFacebook size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                        </Link>
+                                    }
+
+                                    {
+                                        alumni.github && <Link to={alumni.github} target="_blank">
+                                            <FaGithub size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                        </Link>
+                                    }
+
+                                    {
+                                        alumni.instagram && <Link to={alumni.instagram} target="_blank">
+                                            <FaInstagram size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                        </Link>
+                                    }
+
+                                    {
+                                        alumni.twitter && <Link to={alumni.twitter} target="_blank">
+                                            <FaTwitter size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                        </Link>
+                                    }
+
+                                    {
+                                        alumni.website && <Link to={alumni.website} target="_blank">
+                                            <FaGlobe size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                        </Link>
+                                    }
+                                </div>
                                 <p className='py-3'>
                                     <span className='text-gray-300 font-normal text-base'>{alumni.bio}</span>
                                 </p>
@@ -662,26 +713,26 @@ const CreateAlumniProfile = () => {
                                     }</span>
                                 </p>
                                 <p className='font-medium text-sky-500'>
-                                    Email : <span className='text-white'>{alumni.email}</span> <span className="text-rose-500 text-sm">
-                                        {!alumni.showEmail && "(hidden)"}
+                                    Email : <a target='_blank' href={`mailto:${alumni.email}`} className='text-white'>{alumni.email}</a> <span className="text-rose-500 text-sm">
+                                        {alumni.showEmail ? "(public)" : "(hidden)"}
                                     </span>
                                 </p>
                                 <p className='font-medium text-sky-500'>
                                     Phone : <span className='text-white'>{alumni.phone}</span> <span className="text-rose-500 text-sm">
-                                        {!alumni.showPhone && "(hidden)"}
+                                        {alumni.showPhone ? "(public)" : "(hidden)"}
                                     </span>
                                 </p>
-                                <p className='font-medium text-sky-500'>
+                                {alumni.degree && <p className='font-medium text-sky-500'>
                                     Degree: <span className='text-white'>{alumni.degree}</span>
-                                </p>
+                                </p>}
                                 {alumni.interests && <p className='font-medium text-sky-500'>
                                     Interests: <span className='text-white'>{alumni.interests}</span>
                                 </p>}
                                 {alumni.hobbies.length !== 0 && <p className='font-medium text-sky-500'>
                                     Hobbies: <span className='text-white'>{alumni.hobbies.join(", ")}</span>
                                 </p>}
-                                {alumni.achievements.length !== 0 && <p className='font-medium text-sky-500 flex items-start gap-2'>
-                                    <span>Achievements:</span> <span className='text-white'>{
+                                {alumni.achievements.length !== 0 && <p className='font-medium text-sky-500 flex flex-col items-start gap-2'>
+                                    <span>Achievements:</span> <span className='text-white flex flex-col'>{
                                         alumni.achievements.map((ach, idx) => (
                                             <span className='text-base text-yellow-500' key={idx}>- {ach}</span>
                                         ))
