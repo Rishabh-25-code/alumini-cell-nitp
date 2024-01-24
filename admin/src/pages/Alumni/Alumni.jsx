@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getDocument, updateDocument } from '../../services/documents';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Meta from '../../components/Meta/Meta';
 import Loader from '../../components/Loader';
 import { getImageURL } from '../../services/files';
@@ -11,6 +11,7 @@ import { useState } from 'react';
 import { FaEdit } from 'react-icons/fa';
 import { branches } from '../../utils/branches';
 import Heading from '../../components/Headings/Heading';
+import { FaLinkedin, FaFacebook, FaInstagram, FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
 
 const Alumni = () => {
 
@@ -98,9 +99,52 @@ const Alumni = () => {
                             <span className='text-white'>{alumni.title} {alumni.name}</span>
                         </p>
                         <p className='text-sky-500 font-medium'>
-                            {alumni.designation && <span>{alumni.designation && alumni.designation} {alumni.company && " at " + alumni.company}{alumni.location && ", " + alumni.location}</span>
+                            {alumni.designation && <span>{alumni.designation && alumni.designation} {alumni.company && " at " + alumni.company}</span>
                             }
                         </p>
+
+                        <p className='text-gray-300 text-sm font-medium'>
+                            {alumni.location && alumni.location}
+                        </p>
+
+                        <div className='flex gap-3 items-center py-3'>
+                            {
+                                alumni.linkedin && <Link to={alumni.linkedin} target="_blank">
+                                    <FaLinkedin size={20} className='hover:scale-95 transition hover:text-gray-400' />
+                                </Link>
+                            }
+
+                            {
+                                alumni.facebook && <Link to={alumni.facebook} target="_blank">
+                                    <FaFacebook size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                </Link>
+                            }
+
+                            {
+                                alumni.github && <Link to={alumni.github} target="_blank">
+                                    <FaGithub size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                </Link>
+                            }
+
+                            {
+                                alumni.instagram && <Link to={alumni.instagram} target="_blank">
+                                    <FaInstagram size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                </Link>
+                            }
+
+                            {
+                                alumni.twitter && <Link to={alumni.twitter} target="_blank">
+                                    <FaTwitter size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                </Link>
+                            }
+
+                            {
+                                alumni.website && <Link to={alumni.website} target="_blank">
+                                    <FaGlobe size={20} className='hover:scale-105 transition hover:text-gray-400' />
+                                </Link>
+                            }
+                        </div>
+
                         <p className='py-3'>
                             <span className='text-gray-300 font-normal text-base'>{alumni.bio}</span>
                         </p>
@@ -122,26 +166,26 @@ const Alumni = () => {
                             }</span>
                         </p>
                         <p className='font-medium text-sky-500'>
-                            Email : <span className='text-white'>{alumni.email}</span> <span className="text-rose-500 text-sm">
-                                {!alumni.showEmail && "(hidden)"}
+                            Email : <a target='_blank' href={`mailto:${alumni.email}`} className='text-white'>{alumni.email}</a> <span className="text-rose-500 text-sm">
+                                {alumni.showEmail ? "(public)" : "(hidden)"}
                             </span>
                         </p>
                         <p className='font-medium text-sky-500'>
                             Phone : <span className='text-white'>{alumni.phone}</span> <span className="text-rose-500 text-sm">
-                                {!alumni.showPhone && "(hidden)"}
+                                {alumni.showPhone ? "(public)" : "(hidden)"}
                             </span>
                         </p>
-                        <p className='font-medium text-sky-500'>
+                        {alumni.degree && <p className='font-medium text-sky-500'>
                             Degree: <span className='text-white'>{alumni.degree}</span>
-                        </p>
+                        </p>}
                         {alumni.interests && <p className='font-medium text-sky-500'>
                             Interests: <span className='text-white'>{alumni.interests}</span>
                         </p>}
                         {alumni.hobbies.length !== 0 && <p className='font-medium text-sky-500'>
                             Hobbies: <span className='text-white'>{alumni.hobbies.join(", ")}</span>
                         </p>}
-                        {alumni.achievements.length !== 0 && <p className='font-medium text-sky-500 flex items-start gap-2'>
-                            <span>Achievements:</span> <span className='text-white'>{
+                        {alumni.achievements.length !== 0 && <p className='font-medium text-sky-500 flex flex-col items-start gap-2'>
+                            <span>Achievements:</span> <span className='text-white flex flex-col'>{
                                 alumni.achievements.map((ach, idx) => (
                                     <span className='text-base text-yellow-500' key={idx}>- {ach}</span>
                                 ))
