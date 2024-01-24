@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getDocuments } from '../../services/documents';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader';
+import Heading1 from '../../components/Headings/Heading1';
 
 const Gallery = () => {
     const { data, isLoading, isError } = useQuery({
@@ -15,18 +16,13 @@ const Gallery = () => {
 
 
     return (
-        <div className="lg:p-10 md:p-7 p-4 w-full" >
-            <div className="p-2" data-aos="fade-right" >
-                <h1 className="mb-2.5 mt-10 lg:text-left md:text-left text-center text-sky-400 lg:text-5xl md:text-4xl text-4xl font-bold leading-tight">
-                    Our <span className="text-white">Gallery</span>
-                </h1>
-            </div>
-
+        <div className='pt-20 lg:px-24 md:px-16 px-6' >
+            <Heading1 details={"Glimpses of our events, meets and activities."} text1={"Our"} text2={" Gallery"} />
             {
-                isLoading ? <div className="flex justify-center items-center h-96"><Loader /></div> :
-                    isError ? <div className="flex justify-center items-center h-96"><h1>Something went wrong...</h1></div> :
-                        data.length === 0 ? <div className="flex justify-center items-center h-96"><h1>No Data Found...</h1></div> :
-                            <div className="mx-3 mt-4  lg:p-16">
+                isLoading ? <div className="flex justify-center mt-10 items-center h-96"><Loader /></div> :
+                    isError ? <div className="flex justify-center items-center mt-10 h-96"><h1>Something went wrong...</h1></div> :
+                        data.length === 0 ? <div className="flex justify-center mt-10 items-center h-96"><h1>No Data Found...</h1></div> :
+                            <div className="mx-3 mt-10 lg:p-16">
                                 <div className="grid md:grid-cols-5 grid-cols-4 lg:gap-10 md:gap-6 gap-3">
                                     {data.map((image, id) => (
                                         <div data-aos="fade-up" className="overflow-hidden aspect-square rounded-2xl flex items-center justify-center" key={id}>

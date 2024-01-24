@@ -43,6 +43,7 @@ const ShareFeedback = () => {
                             type='text'
                             placeholder='Title'
                             title='title'
+                            require={true}
                             reactHookForm={register('title', {
                                 required: 'Title is required',
                                 minLength: {
@@ -59,7 +60,7 @@ const ShareFeedback = () => {
                         />
                     </div>
 
-                    <TextArea rows={8} id="description" label="Description" placeholder="Description" title="description" reactHookForm={register('description', {
+                    <TextArea require={true} rows={8} id="description" label="Description" placeholder="Description" title="description" reactHookForm={register('description', {
                         required: 'Description is required',
                         maxLength: {
                             value: 4096,

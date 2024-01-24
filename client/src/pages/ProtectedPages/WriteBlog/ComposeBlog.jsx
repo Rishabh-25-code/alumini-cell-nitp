@@ -71,6 +71,7 @@ const ComposeBlog = ({ user }) => {
                     type='text'
                     placeholder='Title'
                     title='title'
+                    require={true}
                     reactHookForm={register('title', {
                         required: 'Title is required',
                         minLength: {
@@ -135,6 +136,7 @@ const ComposeBlog = ({ user }) => {
                         type="text"
                         placeholder="ISRO"
                         title="currentCompany"
+                        require={true}
                         reactHookForm={register('currentCompany', {
                             required: 'Current Company is required',
                             minLength: {
@@ -155,6 +157,7 @@ const ComposeBlog = ({ user }) => {
                         type="number"
                         placeholder="2002"
                         title="batch"
+                        require={true}
                         reactHookForm={register('batch', {
                             required: 'Batch is required',
                             minLength: {
@@ -182,6 +185,7 @@ const ComposeBlog = ({ user }) => {
                     <Select
                         label='Branch'
                         id='branch'
+                        require={true}
                         options={branches}
                         reactHookForm={register('branch', {
                             required: 'Branch is required',
@@ -198,6 +202,7 @@ const ComposeBlog = ({ user }) => {
                         type="text"
                         placeholder="Your Designation/Role"
                         title="currentPost"
+                        require={true}
                         reactHookForm={register('currentPost', {
                             required: 'Current Post is required',
                             minLength: {
@@ -217,6 +222,7 @@ const ComposeBlog = ({ user }) => {
                         label="Your Current City"
                         type="text"
                         placeholder="Patna"
+                        require={true}
                         title="currentCity"
                         reactHookForm={register('currentCity', {
                             required: 'Current City is required',

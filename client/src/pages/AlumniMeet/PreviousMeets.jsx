@@ -114,7 +114,7 @@ const PreviousMeets = () => {
                             </div>
 
                             <div className='pt-5'>
-                                <img loading="lazy" className='w-full' src={meet.img} alt="alumni meet" />
+                                <img height={720} loading="lazy" className='w-full' src={meet.img} alt="alumni meet" />
 
                                 <div className='flex flex-col text-justify gap-5 pt-5'>
                                     {

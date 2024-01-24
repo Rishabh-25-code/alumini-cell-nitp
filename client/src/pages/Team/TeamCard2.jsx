@@ -1,7 +1,7 @@
 import { FaTwitter, FaLinkedin, FaInstagram, FaGithub } from "react-icons/fa";
 
 
-const TeamCard2 = ({ img2, name2, detail2 }) => {
+const TeamCard2 = ({ img2, name2, detail2, academics, socials }) => {
   return (
     <>
       <div
@@ -14,42 +14,51 @@ const TeamCard2 = ({ img2, name2, detail2 }) => {
           alt="Bonnie Avatar"
         />
         <h3 className="mb-1 text-2xl font-bold tracking-tight text-white">
-          <a href="#">{name2}</a>
+          <div>{name2}</div>
         </h3>
+        <p className="text-sky-500 font-medium text-sm">{academics}</p>
         <p>{detail2}</p>
         <ul className="flex justify-center mt-4 space-x-4">
-          <li>
+          {socials[0].link && <li>
             <a
-              href="www.linkedin.com"
+              href={socials[0].link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition text-white ease-in delay-50  hover:text-gray-400 hover:scale-[110%]"              
+            >
+              <FaGithub size={22} />
+            </a>
+          </li>}
+          {socials[1].link && <li>
+            <a
+              href={socials[1].link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition ease-in delay-50 text-blue-500 hover:text-blue-600 hover:scale-[110%]"
             >
               <FaLinkedin size={22} />
             </a>
-          </li>
-          <li>
+          </li>}
+          {socials[2].link && <li>
             <a
-              href="https://instagram.com"
-              className="transition text-white ease-in delay-50 text-white-500 hover:text-white-600 hover:scale-[110%]"
-            >
-              <FaGithub size={22} />
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://instagram.com"
+              href={socials[2].link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition ease-in delay-50 text-blue-500 hover:text-blue-600 hover:scale-[110%]"
             >
               <FaTwitter size={22} />
             </a>
-          </li>
-          <li>
+          </li>}
+          {socials[3].link && <li>
             <a
-              href="https://instagram.com"
+              href={socials[3].link}
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition ease-in delay-75 text-pink-500 hover:text-pink-600 hover:scale-110"
             >
               <FaInstagram size={22} />
             </a>
-          </li>
+          </li>}
         </ul>
       </div>
     </>
