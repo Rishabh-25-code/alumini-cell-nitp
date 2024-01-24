@@ -39,7 +39,7 @@ const BlogCard = ({ data, type }) => {
                         if (navigator.share) {
                             navigator.share(shareItem)
                                 .catch((error) => {
-                                    toast.error('Error sharing')
+                                    console.error('Error sharing')
                                 });
                         } else {
                             toast.error("Your browser does not support Web Share API");
