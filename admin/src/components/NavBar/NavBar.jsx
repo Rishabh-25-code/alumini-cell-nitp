@@ -40,6 +40,11 @@ const NavBar = () => {
             id: 5,
         },
         {
+            name: "Testimonials",
+            path: "/testimonials",
+            id: 5,
+        },
+        {
             name: "Events",
             path: "/events",
             id: 2,
