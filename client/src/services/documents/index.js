@@ -109,6 +109,18 @@ export const getAlumniProfile = async (COLLECTION_ID, email) => {
     }
 }
 
+export const getAlumniProfileWithUserName = async (COLLECTION_ID, username) => {
+    try {
+        const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
+            Query.equal('username', [username])
+        ]);
+
+        return res.documents.length > 0 ? false : true;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
 export const getPaginatedDocuments = async (COLLECTION_ID, limit = 20, offset = 0) => {
     try {
         const res = await databases.listDocuments(DATABASE_ID, COLLECTION_ID, [
