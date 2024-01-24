@@ -1,12 +1,13 @@
 import Heading from "../../components/Headings/Heading";
 import Meta from "../../components/Meta/Meta";
 import { getImageURL } from "../../services/files";
-import { getAlumniData } from "../../services/documents";
+import { getAlumniData, updateDocument } from "../../services/documents";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { branches } from "../../utils/branches";
 import { FiSearch } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const Alumnis = () => {
     const [searchParams, setSearchParams] = useSearchParams({
@@ -21,11 +22,12 @@ const Alumnis = () => {
     const search = searchParams.get('search') || "";
     const status = searchParams.get('status') || "all"
     const type = searchParams.get('type') || "jobTitle";
-    const [itemsPerPage] = useState(21);
+    const [itemsPerPage] = useState(42);
     const [branch, setBranch] = useState(null);
 
     const [searchText, setSearchText] = useState(search);
     const [searchType, setSearchType] = useState(type);
+    const [loading, setLoading] = useState(false);
 
     const { isLoading, isError, data: alumni, refetch, error } = useQuery({
         queryKey: ["members", role, page, search, branch, status],
@@ -50,6 +52,42 @@ const Alumnis = () => {
         // Cleanup the timer on component unmount
         return () => clearTimeout(debounceTimer);
     }, [searchText]);
+
+    const bulkApprove = async (alumnis) => {
+        setLoading(true);
+        try {
+            for (let i = 0; i < alumnis.length; i++) {
+                await approveAlumni(alumnis[i]);
+            }
+            // toast.success("Alumni approved successfully");
+            refetch();
+        } catch (error) {
+            toast.error(error.message);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const approveAlumni = async (alumni) => {
+        try {
+            const alumniData = {
+                ...alumni,
+                status: "approved",
+                reviewMsg: ""
+            }
+
+            delete alumniData.$createdAt;
+            delete alumniData.$updatedAt;
+            delete alumniData.$id;
+            delete alumniData.$collectionId;
+            delete alumniData.$databaseId;
+            delete alumniData.$permissions;
+
+            await updateDocument('alumni', alumni.$id, alumniData);
+        } catch (error) {
+            console.log(error.message, alumni.$id, alumni.name);
+        }
+    }
 
 
     return (
@@ -150,7 +188,7 @@ const Alumnis = () => {
                             <div className="mt-16 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                                 {alumni.documents.map((person, idx) => {
                                     return (
-                                        <Link 
+                                        <Link
                                             to={`/alumni/${person.$id}`}
                                             data-aos="fade-up"
                                             key={idx}
@@ -188,7 +226,7 @@ const Alumnis = () => {
                                                             {person.designation}
                                                         </p>
                                                     )}
-                                                    <p className="text-gray-400">Status: <span className={`text-medium text-sm ${person.status === "reviewing" ? "text-yellow-500" : person.status === "approved" ? "text-green-500" : person.status === null? "text-blue-500": "text-red-500"}`}>{person.status === null ?
+                                                    <p className="text-gray-400">Status: <span className={`text-medium text-sm ${person.status === "reviewing" ? "text-yellow-500" : person.status === "approved" ? "text-green-500" : person.status === null ? "text-blue-500" : "text-red-500"}`}>{person.status === null ?
                                                         "uploaded" : person.status
                                                     }</span></p>
                                                 </div>
@@ -214,6 +252,20 @@ const Alumnis = () => {
                                         changeParams('page', page + 1);
                                     }} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Next</button>
                                 </div>
+
+                                {status === "uploaded" && <div className="flex pt-16">
+                                    <button disabled={loading} onClick={() => {
+                                        toast.promise(
+                                            bulkApprove(alumni.documents),
+                                            {
+                                                pending: 'Approving alumni...',
+                                                success: 'Approved Successfully 👌',
+                                                error: 'Something went wrong 🤯'
+                                            }
+                                        )
+                                        // bulkApprove(alumni.documents);
+                                    }} className="px-8 py-2.5 rounded-xl m-auto bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Bulk Approve</button>
+                                </div>}
                             </>
                             }
                         </>

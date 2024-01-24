@@ -154,7 +154,7 @@ const Alumni = () => {
                     </div>
 
                     <div className='bg-gray-800 p-5 pb-8 rounded-xl mt-10'>
-                        <h2 className='text-center mb-5 text-2xl font-semibold text-rose-500'>Review Experience</h2>
+                        <h2 className='text-center mb-5 text-2xl font-semibold text-rose-500'>Review Alumni Profiles</h2>
                         <form onSubmit={handleSubmit(onSubmit)} className='flex md:flex-row flex-col gap-5'>
                             <div className='flex-1'>
                                 <Input
