@@ -63,7 +63,6 @@ const Bug = () => {
     <div className="pt-24 min-h-screen">
       <Meta name={bugs ? bugs.title : "Bugs - NIT Patna"} />
       <Heading heading="Review Bugs"></Heading>
-
       {isPending ? (
         <div className="w-full h-[10rem] flex items-center justify-center">
           <Loader />
