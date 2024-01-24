@@ -5,7 +5,6 @@ import Marquee from "react-fast-marquee";
 import AlumniCard from "../../pages/NotableAlumni/AlumniCard";
 
 const NotableAlumniMarquee = () => {
-
     const notableAlums = [
         {
             name: "Manas Bihari Verma",
@@ -43,16 +42,23 @@ const NotableAlumniMarquee = () => {
             id: 5
         },
         {
-            name: "Dr. Parth p Gopmandal",
-            designation: "Assistant Professor",
-            about: "Dr. Partha P. Gopmandal. Asst. Prof., Dept. of Mathematics. He currently works at the Department of Mathematics, National Institute of Technology Durgapur.",
-            image: "./notable-alumni/parth-p-gopmandal.jfif",
-            id: 6
+            name: "Shri Arun Kumar Singh",
+            designation: "Chairman & CEO, ONGC, (B.Tech- ME, NIT Patna)",
+            about: "A proud alumnus of NIT , Patna, Shri Arun Kumar Singh completed his Bachelor's degree in Mechanical Engg. He currently serves as the Chairman & CEO at Oil and Natural Gas Corporation Ltd, Prior to this, he held the distinguished role of Chairman & MD at Bharat Petroleum Corporation Limited. His extensive experience and profound knowledge have played a pivotal role in shaping the landscape of the oil and gas industry in India.",
+            image: "https://cloud.appwrite.io/v1/storage/buckets/6593b1b8b109a7de4596/files/65b0ecbe5c63f42ad2cf/view?project=65911d3f132f4163e49b&mode=admin",
+            id: 8
+        },
+        {
+            name: "Usha Singh",
+            designation: "HR Director at MOIL LIMITED",
+            about: "Ms. Usha Singh, the In-charge CMD and first Director (HR) at MOIL Limited, boasts over 30 years of experience, including key roles at NMDC and SAIL, and has received global recognition as one of the top 100 Inspirational Women in Mining in 2020. She holds an Engg. degree and an MBA, with numerous awards for her contributions to the industry.",
+            image: "https://media.licdn.com/dms/image/D4E03AQGb1IYHU037Ig/profile-displayphoto-shrink_400_400/0/1669020811402?e=1711584000&v=beta&t=X13oegTbL3_LR9p-DP4TIGzf8E_t_vecOVQEP5FzYjU",
+            id: 9
         },
         {
             name: "Ajit Kumar Mehta",
             designation: "Former Member of Parliament",
-            about: "Ajit Kumar Mehta was member of 6th Lok Sabha from Samastipur in Bihar State, India. He was elected to 7th, 11th and 12th Lok Sabha from Samastipur. Before joining active politics, Mehta was working as professor at BIT Mesra.",
+            about: "Ajit Kumar Mehta was member of 6th Lok Sabha from Samastipur in Bihar State, India. He was elected to 7th, 11th and 12th Lok Sabha from Samastipur. Before joining active politics, Mehta was an educationist, working as professor at Birla Institute of Technology Mesra. ",
             image: "./notable-alumni/Ajit_Kumar_Mehta.jpg",
             id: 7
         }

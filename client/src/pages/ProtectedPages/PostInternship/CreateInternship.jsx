@@ -107,6 +107,7 @@ const CreateIntern = () => {
                     label="Intern Title"
                     placeholder="Software Engineer Intern"
                     title="internTitle"
+                    require={true}
                     reactHookForm={{
                         ...register("internTitle", {
                             required: 'Intern Title is required',
@@ -129,6 +130,7 @@ const CreateIntern = () => {
                     label="Intern Description"
                     placeholder="Intern Description"
                     title="internDescription"
+                    require={true}
                     reactHookForm={{
                         ...register("internDescription", {
                             required: 'Intern Description is required',
@@ -154,6 +156,7 @@ const CreateIntern = () => {
                         placeholder="6 months"
                         title="internExperience"
                         type="number"
+                        require={true}
                         reactHookForm={{
                             ...register("internExperience", {
                                 required: 'Intern Experience is required',
@@ -177,6 +180,7 @@ const CreateIntern = () => {
                         placeholder="Bangalore, India"
                         title="internLocation"
                         type="text"
+                        require={true}
                         reactHookForm={{
                             ...register("internLocation", {
                                 required: 'Intern Location is required',
@@ -196,10 +200,11 @@ const CreateIntern = () => {
 
                     <Input
                         id="internSalary"
-                        label="Intern Stipend(in Thousand)"
+                        label="Expected Stipend(in Thousands)"
                         placeholder="50,000"
                         title="internSalary"
                         type="number"
+                        require={true}
                         reactHookForm={{
                             ...register("internSalary", {
                                 required: 'Intern Stipend is required',
@@ -222,6 +227,7 @@ const CreateIntern = () => {
                     <Select
                         label='Intern Type'
                         title='internType'
+                        require={true}
                         options={[
                             { name: 'FullTime', value: 'FullTime' },
                             { name: 'PartTime', value: 'PartTime' },
@@ -250,6 +256,7 @@ const CreateIntern = () => {
                     <Select
                         label='Intern Duration'
                         title='internDuration'
+                        require={true}
                         options={[
                             {
                                 name: "Unknown",
@@ -285,6 +292,7 @@ const CreateIntern = () => {
                         type='text'
                         placeholder='Microsoft'
                         title='internCompany'
+                        require={true}
                         reactHookForm={register('internCompany', {
                             required: 'Intern Company is required',
                             minLength: {
@@ -462,6 +470,7 @@ const CreateIntern = () => {
                 <Input
                     label="Your Current Role"
                     type="text"
+                    require={true}
                     placeholder="Your Current Role"
                     title="yourCurrentRole"
                     reactHookForm={register('yourCurrentRole', {
@@ -483,6 +492,7 @@ const CreateIntern = () => {
                     <Input
                         label="Your Current Company"
                         type="text"
+                        require={true}
                         placeholder="Your Current Company"
                         title="yourCurrentCompany"
                         reactHookForm={register('yourCurrentCompany', {
@@ -503,6 +513,7 @@ const CreateIntern = () => {
                     <Input
                         label="Your Batch"
                         type="number"
+                        require={true}
                         placeholder="2002"
                         title="batch"
                         reactHookForm={register('yourBatch', {
@@ -532,6 +543,7 @@ const CreateIntern = () => {
                     <Select
                         label='Your Department'
                         id='branch'
+                        require={true}
                         options={branches}
                         reactHookForm={register('yourDepartment', {
                             required: 'Department is required',

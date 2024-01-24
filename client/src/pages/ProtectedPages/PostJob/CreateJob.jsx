@@ -105,6 +105,7 @@ const CreateJob = () => {
                     type='text'
                     placeholder='Software Engineer'
                     title='jobTitle'
+                    require={true}
                     reactHookForm={register('jobTitle', {
                         required: 'Job Title is required',
                         minLength: {
@@ -124,6 +125,7 @@ const CreateJob = () => {
                     label='Job Description'
                     placeholder='Job Description'
                     title='jobDescription'
+                    require={true}
                     reactHookForm={register('jobDescription', {
                         required: 'Job Description is required',
                         minLength: {
@@ -144,6 +146,7 @@ const CreateJob = () => {
                     <Input
                         label='Job Experience Req.(in min years)'
                         type='number'
+                        require={true}
                         placeholder='1 Year'
                         title='jobExperience'
                         reactHookForm={register('jobExperience', {
@@ -204,6 +207,7 @@ const CreateJob = () => {
                     <Select
                         label='Job Type'
                         title='jobType'
+                        require={true}
                         options={[
                             { value: 'FullTime', name: 'Full Time' },
                             { value: 'PartTime', name: 'Part Time' },
@@ -233,6 +237,7 @@ const CreateJob = () => {
                         type='text'
                         placeholder='Microsoft'
                         title='jobCompany'
+                        require={true}
                         reactHookForm={register('jobCompany', {
                             required: 'Job Company is required',
                             minLength: {
@@ -392,6 +397,7 @@ const CreateJob = () => {
                     type="text"
                     placeholder="Your Current Role"
                     title="yourCurrentRole"
+                    require={true}
                     reactHookForm={register('yourCurrentRole', {
                         required: 'Your Current Role is required',
                         minLength: {
@@ -413,6 +419,7 @@ const CreateJob = () => {
                         type="text"
                         placeholder="Your Current Company"
                         title="yourCurrentCompany"
+                        require={true}
                         reactHookForm={register('yourCurrentCompany', {
                             required: 'Your Current Company is required',
                             minLength: {
@@ -432,6 +439,7 @@ const CreateJob = () => {
                         label="Your Batch"
                         type="number"
                         placeholder="2002"
+                        require={true}
                         title="batch"
                         reactHookForm={register('yourBatch', {
                             required: 'Batch is required',
@@ -460,6 +468,7 @@ const CreateJob = () => {
                     <Select
                         label='Your Department'
                         id='branch'
+                        require={true}
                         options={branches}
                         reactHookForm={register('yourDepartment', {
                             required: 'Department is required',

@@ -10,6 +10,7 @@ import NotableAlumniMarquee from "../../components/NotableAlumni/NotableAlumniMa
 import Meta from "../../components/Meta/Meta";
 import Welcome from "../../components/Welcome/Welcome";
 import Gallery from "./Gallery";
+import Faq from "../../components/Faqs/Faq";
 
 const HomePage = () => {
 
@@ -95,6 +96,8 @@ const HomePage = () => {
         <Testimonials />
 
         <Gallery />
+
+        <Faq/>
     </>
   );
 };

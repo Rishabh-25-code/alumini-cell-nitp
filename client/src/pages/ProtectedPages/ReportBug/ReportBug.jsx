@@ -43,6 +43,7 @@ const ReportBug = () => {
               type='text'
               placeholder='Title'
               title='title'
+              require={true}
               reactHookForm={register('title', {
                 required: 'Title is required',
                 minLength: {
