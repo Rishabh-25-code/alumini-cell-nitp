@@ -6,7 +6,7 @@ import { MultiSelect } from '../PostJob/CreateJob';
 import { useForm } from 'react-hook-form';
 import { compressedImageUpload } from '../../../services/files';
 import { getImageURL } from '../../../services/files';
-import { createDocument, getAlumniProfile } from '../../../services/documents';
+import { createDocument, getAlumniProfile, getAlumniProfileWithUserName } from '../../../services/documents';
 import useAuth from '../../../hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import Loader, { Loading } from '../../../components/Loader';
@@ -44,6 +44,8 @@ const CreateAlumniProfile = () => {
         data = { ...data, achievements: formData.achievements, hobbies: formData.hobbies, image: null, uid: user.$id, email: user.email };
         setLoading(true);
         try {
+            const doesProfileExist = await getAlumniProfileWithUserName('alumni', data.username);
+            if (doesProfileExist) return toast.error(`The username (${data.username}) is already taken`);
             setMessage('Uploading Image...');
             if (profileImage) {
                 let res = await compressedImageUpload(profileImage);
