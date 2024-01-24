@@ -60,7 +60,7 @@ const Experience = () => {
                                         const shareItem = {
                                             title: "Check out this college experience by NITP Alumni.",
                                             text: experience.title + " by " + experience.name,
-                                            url: `https://alumni.nitp.ac.in/blogs/${experience.$id}`,
+                                            url: `https://alumini.nitp.vercel.app/blogs/${experience.$id}`,
                                         }
 
                                         if (navigator.share) {
