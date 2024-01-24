@@ -102,7 +102,7 @@ const Internship = () => {
                                         const shareItem = {
                                             title: "Here is an internship opportunity by NITP Alumni.",
                                             text: intern.internTitle,
-                                            url: `https://alumini-nitp.vercel.app/internships/${intern.$id}`,
+                                            url: `https://alumini-nitp.vercel.app/internship/${intern.$id}`,
                                         }
                                         if (navigator.share) {
                                             navigator.share(shareItem)
