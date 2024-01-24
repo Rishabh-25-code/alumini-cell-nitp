@@ -101,7 +101,7 @@ const Job = () => {
                                             const shareItem = {
                                                 title: "Here is a job by NITP Alumni.",
                                                 text: job.jobTitle,
-                                                url: `http://alumni-nitp.vercel.app/..rest/job/${job.$id}`,
+                                                url: `https://alumini-nitp.vercel.app/jobs/${job.$id}`,
                                             }
                                             if (navigator.share) {
                                                 navigator.share(shareItem)
