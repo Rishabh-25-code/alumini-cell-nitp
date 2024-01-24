@@ -33,7 +33,7 @@ const BlogCard = ({ data, type }) => {
                         const shareItem = {
                             title: "Check out this blog by NITP Alumni.",
                             text: data.title + " by " + data.name,
-                            url: `https://alumni.nitp.ac.in/${type === "experience" ? "experience" : "blog"}/${data.$id}`,
+                            url: `https://alumini-nitp.vercel.app/${type === "experience" ? "experience" : "blog"}/${data.$id}`,
                         }
 
                         if (navigator.share) {
