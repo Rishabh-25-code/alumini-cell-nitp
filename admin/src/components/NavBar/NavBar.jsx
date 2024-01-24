@@ -16,22 +16,22 @@ const NavBar = () => {
         },
         {
             name: "Blogs",
-            path: "/blogs",
+            path: "alumni-nitp.vercel.app/..rest ",
             id: 1,
         },
         {
             name: "Experiences",
-            path: "/experiences",
+            path: "alumni-nitp.vercel.app/..rest",
             id: 2,
         },
         {
             name: "Jobs",
-            path: "/jobs",
+            path: "alumni-nitp.vercel.app/..rest ",
             id: 3,
         },
         {
             name: "Internships",
-            path: "/internships",
+            path: "alumni-nitp.vercel.app/..rest ",
             id: 4,
         },
         {
@@ -41,7 +41,7 @@ const NavBar = () => {
         },
         {
             name: "Events",
-            path: "/events",
+            path: "alumni-nitp.vercel.app/..rest",
             id: 2,
         },
         {
