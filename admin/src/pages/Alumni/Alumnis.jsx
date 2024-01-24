@@ -32,7 +32,6 @@ const Alumnis = () => {
     const { isLoading, isError, data: alumni, refetch, error } = useQuery({
         queryKey: ["members", role, page, search, branch, status],
         queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch, status),
-        staleTime: Infinity
     });
 
     const changeParams = (key, value) => {
