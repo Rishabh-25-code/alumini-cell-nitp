@@ -1,19 +1,14 @@
 import Team from "./Team/Team";
 import HomePage from "./HomePage/HomePage";
-// import Newsletter from "./Newsletter/Newsletter";
 import Gallery from "./Gallery/Gallery";
 import Events from "./Events/Events";
 import NotableAlumni from "./NotableAlumni/NotableAlumni";
-// import News from "./Newsletter/News";
 import AlumniCorner from "./AlumniCorner/AlumniCorner";
 import Donate from "./Donate/Donate";
 import Resources from "./Resources/Resources";
-import Interaction from "./Interaction/Interaction";
 import About from "./About/About";
 import TeamCard from "./Team/TeamCard";
 import TeamCard2 from "./Team/TeamCard2";
-// import NewsId from "./Newsletter/NewsId";
-// import Blog from "./AlumniCorner/Blog";
 import Blogs from "./Blogs/Blogs";
 import BihtaCampus from "./Bihta-Campus/BihtaCampus";
 import Error from "./Error/Error";
@@ -45,4 +40,4 @@ import VerifyEmail from "./Auth/VerifyEmail";
 import ShareFeedback from "./ProtectedPages/ShareFeedback/ShareFeedback";
 import EditAlumniProfile from "./ProtectedPages/AlumniProfile/EditAlumniProfile";
 
-export { Team, HomePage, Gallery, Events, NotableAlumni, AlumniCorner, Donate, Resources, Interaction, About, TeamCard, TeamCard2, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers,Job, SuccessStories, PreviousMeets, SignIn, SignUp, Verify, ForgotPassword, ResetPassword, Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard, ReportBug, Experiences, Experience, VerifyEmail, Internship, ShareFeedback, EditAlumniProfile };
+export { Team, HomePage, Gallery, Events, NotableAlumni, AlumniCorner, Donate, Resources, About, TeamCard, TeamCard2, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers,Job, SuccessStories, PreviousMeets, SignIn, SignUp, Verify, ForgotPassword, ResetPassword, Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard, ReportBug, Experiences, Experience, VerifyEmail, Internship, ShareFeedback, EditAlumniProfile };

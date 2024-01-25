@@ -156,7 +156,7 @@ const NavBar = () => {
                                 className="dropdown-link mb-2"
                                 key={i + "child"}
                               >
-                                <p className="text-gray-400 hover:text-blue-400">
+                                <p className="text-gray-400 hover:text-blue-400 w-full">
                                   {child.name}
                                 </p>
                               </Link>

@@ -15,7 +15,6 @@ import {
   AlumniCorner,
   Donate,
   Resources,
-  Interaction,
   About,
   Blogs,
   History,
@@ -150,11 +149,6 @@ function App() {
       path: "/resources",
       element: <Resources />,
       id: 16,
-    },
-    {
-      path: "/interaction",
-      element: <Interaction />,
-      id: 17,
     },
     {
       path: "/about",
