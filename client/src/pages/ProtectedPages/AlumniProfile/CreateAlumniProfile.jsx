@@ -623,7 +623,11 @@ const CreateAlumniProfile = () => {
                             </div>
                             <div className='flex items-start justify-between pt-4'>
                                 <div className="w-32 h-32 flex items-center justify-center rounded-full overflow-hidden border-4 border-gray-700">
-                                    <img src={alumni.image ? getImageURL(alumni.image) : placeholder} alt="placeholder" />
+                                    <img
+                                        src={alumni.image ? getImageURL(alumni.image) : placeholder}
+                                        alt="placeholder"
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
                                 <button onClick={() => navigate("/edit-alumni-profile")} className='text-green-500 hover:border-green-600 hover:bg-green-600 hover:text-white transition md:px-8 px-6 py-1.5 border border-green-500 rounded-full text-lg'>
                                     <FaEdit className='inline-block mr-1' /> Edit

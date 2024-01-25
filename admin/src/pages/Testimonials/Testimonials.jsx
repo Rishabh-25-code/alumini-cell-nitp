@@ -1,11 +1,13 @@
 import React from 'react'
 import Heading from "../../components/Headings/Heading";
 import Meta from "../../components/Meta/Meta";
-import { getPaginatedUnpublishedDocs } from '../../services/documents';
+import { getPaginatedUnpublishedDocs, deleteDocument } from '../../services/documents';
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams, Link } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { useState } from "react";
+import { toast } from "react-toastify";
+import { FaTrash } from 'react-icons/fa'
 
 const Testimonials = () => {
   const [searchParams, setSearchParams] = useSearchParams({ page: 1, type: 'reviewing' });
@@ -13,23 +15,32 @@ const Testimonials = () => {
   const page = parseInt(searchParams.get('page')) || 1;
   const [itemsPerPage, setItemsPerPage] = useState(24);
 
-  const { data: Testimonials, isLoading, isError, refetch } = useQuery({
+  const { data: Testimonials, isLoading, isError, refetch, error } = useQuery({
     queryKey: ['testimonials', page, type],
     queryFn: () => getPaginatedUnpublishedDocs('testimonials', itemsPerPage, itemsPerPage * (page - 1), type),
   });
 
   const changeParams = async (key, value) => {
     setSearchParams((prev) => {
-        prev.set(key, value);
-        return prev;
+      prev.set(key, value);
+      return prev;
     }, { replace: true });
     window.scrollTo(0, 0);
     refetch();
-}
+  }
 
   const changeType = (newType) => {
     changeParams('type', newType);
     changeParams('page', 1);
+  }
+
+  const deleteTestimonial = async (id) => {
+    try {
+      await deleteDocument('testimonials', id);
+      refetch();
+    } catch (error) {
+      toast.error(error.message);
+    }
   }
 
   return (
@@ -59,7 +70,7 @@ const Testimonials = () => {
           Testimonials.length === 0 ? <div className="text-center py-16 font-medium text-sky-500">No Testimonials found! </div>
             : (
               <div className="lg:w-[90%] md:w-[95%] gap-6 w-full m-auto px-5 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mb-32 mt-10 place-items-center">
-                {Testimonials.map((Testimonial, idx) => <TestimonialCard data={Testimonial} key={idx} />)}
+                {Testimonials.map((Testimonial, idx) => <TestimonialCard deleteTestimonial={deleteTestimonial} data={Testimonial} key={idx} />)}
               </div>
             )}
 
@@ -96,11 +107,26 @@ const Testimonials = () => {
 export default Testimonials;
 
 
-const TestimonialCard = ({ data }) => {
+const TestimonialCard = ({ data, deleteTestimonial }) => {
   return (
     <Link data-aos="fade-up"
       to={`/testimonial/${data.$id}`}
-      className="w-full max-w-sm min-w-[18rem] p-4 border-2 hover:border-gray-800 border-gray-900 rounded-2xl">
+      className="w-full max-w-sm min-w-[18rem] rounded-2xl relative">
+        <button onClick={(e) => {
+            e.preventDefault();
+            const res = window.confirm('Are you sure you want to delete this testimonial?');
+            if (res) {
+              toast.promise(
+                deleteTestimonial(data.$id),
+                {
+                  loading: 'Deleting testimonial...',
+                  success: 'Testimonial deleted successfully!',
+                  error: 'Failed to delete testimonial!'
+                })
+            }
+          }} className='absolute z-40 top-5 right-5 p-2 text-rose-500 hover:text-red-500'>
+            <FaTrash size={22} />
+          </button>
       <div data-aos="fade-up" className='flex' >
         <div className='border-[1px] border-gray-500 border-b-cyan-500 hover:border-b-cyan-600 border-b-8 rounded-2xl w-full p-3 pt-5 pb-7 hover:scale-[101%] z-0 hover:z-10 transition-all delay-[30ms] ease-in-out m-1 bg-[#000000] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] py-10'>
           <div className='rounded'>
@@ -113,9 +139,14 @@ const TestimonialCard = ({ data }) => {
           </div>
           <div className='flex items-center lg:gap-5 md:gap-3 gap-2 mt-6 px-2'>
             <div>
-              <h2 className='text-base font-medium'><span className='text-sky-500 font-semibold text-lg'>{data.name}</span> ({data.batch})</h2>
+              <h2 className='text-base font-medium'><span className='text-sky-500 font-semibold text-lg'>{data.name}</span> ({data.branch} {data.batch})</h2>
               <p className='text-gray-500 text-sm font-medium leading-5 mt-1'>
-                {data.designation}
+                {data.currentPost} at {data.currentCompany}
+              </p>
+              <p>
+                <span className='text-gray-500 text-sm font-medium leading-5 mt-1'>
+                  {data.currentCity}, {data.currentLocation}
+                </span>
               </p>
             </div>
           </div>

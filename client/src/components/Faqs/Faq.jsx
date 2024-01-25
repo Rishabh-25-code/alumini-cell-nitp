@@ -10,17 +10,17 @@ const Faq = () => {
         },
         {
             question: "Who can create an alumni account?",
-            answer: "Alumni accounts can be created by students who have graduated from the college or staff/faculty members. The admin will verify each alumni account before making it public. Any account found to be fake or belonging to current students will be rejected. If you encounter any issues during the account creation process, whom should you contact for assistance?",
+            answer: "Alumni accounts can be created by students who have graduated from the college or staff/faculty members. The admin will verify each alumni account before making it public. Any account found to be fake or belonging to current students will be rejected.",
             id: "1"
         },
         {
             question: "What are the benefits of creating an alumni account?",
-            answer: "By creating an alumni account, you gain the ability to connect with your batchmates and other alumni. Additionally, you can view the profiles of fellow alumni, connect with them, write blogs and articles, post jobs and internships, and share your experiences with the community. Are there specific features or tools within the alumni account that are particularly noteworthy for users?",
+            answer: "By creating an alumni account, you gain the ability to connect with your batchmates and other alumni. Additionally, you can view the profiles of fellow alumni, connect with them, write blogs and articles, post jobs and internships, and share your experiences with the community.",
             id: "2"
         },
         {
             question: "What does the alumni portal offer?",
-            answer: "The alumni portal provides a platform for alumni to connect, search alumni database, share experiences, post jobs and internships for current students, and contribute blogs and articles to the community. How has the alumni portal evolved over time, and are there any upcoming enhancements or features in the pipeline?",
+            answer: "The alumni portal provides a platform for alumni to connect, search alumni database, share experiences, post jobs and internships for current students, and contribute blogs and articles to the community.",
             id: "3"
         },
         {
@@ -30,7 +30,7 @@ const Faq = () => {
         },
         {
             question: "Can alumni contribute to the development of the alumni portal?",
-            answer: "Yes, alumni are encouraged to contribute to the development of the alumni portal. Whether through feedback, suggestions, or collaboration, your input is valuable in enhancing the overall experience for the alumni community. How can alumni actively participate in providing feedback or contributing to the portal's development?",
+            answer: "Yes, alumni are encouraged to contribute to the development of the alumni portal. Whether through feedback, suggestions, or collaboration, your input is valuable in enhancing the overall experience for the alumni community.",
             id: "5"
         },
     ];

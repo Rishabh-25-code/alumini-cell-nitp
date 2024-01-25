@@ -43,7 +43,7 @@ const Blogs = () => {
       <Meta name="Blogs" />
       <Heading heading="Blogs by our Alumni"></Heading>
 
-      <div className='lg:w-[80%] w-full px-6 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
+      <div className='lg:w-[80%] w-full md:px-6 px-3 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
         <div className='flex-1 relative w-full'>
           <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search blog by title." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
           <FiSearch className="absolute md:top-4 top-3 text-xl left-3.5 text-gray-400" />

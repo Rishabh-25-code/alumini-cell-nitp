@@ -127,14 +127,15 @@ const AlumniDatabase = () => {
                                             className="rounded-xl border hover:bg-[#101010] hover:border-gray-700 hover:border-l-sky-400  border-gray-900 bg-[#000000] border-l-sky-500 border-l-4 shadow-lg w-full"
                                         >
                                             <div className="flex flex-row gap-5 hover:scale-95 transition p-4 py-6">
-                                                <div className="lg:w-20 md:w-16 w-14 lg:h-20 md:h-16 h-14">
+                                                <div className="lg:w-20 bg-cover flex items-center justify-center md:w-16 w-14 lg:h-20 md:h-16 h-14 rounded-full overflow-hidden">
                                                     <img
                                                         id={person.$id}
-                                                        className="rounded-full lg:w-20 md:w-16 w-14 lg:h-20 md:h-16 h-14"
+                                                        className="w-full object-cover lg:h-20 md:h-16 h-14"
                                                         src={person.image ? getImageURL(person.image) : MalePlaceholder}
                                                         alt={person.name}
                                                     />
                                                 </div>
+
                                                 <div className="text-sm font-medium flex-1">
                                                     <p className="text-xl font-bold text-sky-500">{person.title} {person.name}</p>
                                                     <p className="font-medium text-base text-gray-300">
