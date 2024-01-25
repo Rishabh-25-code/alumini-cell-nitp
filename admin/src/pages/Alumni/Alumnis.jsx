@@ -22,7 +22,7 @@ const Alumnis = () => {
     const search = searchParams.get('search') || "";
     const status = searchParams.get('status') || "all"
     const type = searchParams.get('type') || "jobTitle";
-    const [itemsPerPage] = useState(42);
+    const [itemsPerPage] = useState(21);
     const [branch, setBranch] = useState(null);
 
     const [searchText, setSearchText] = useState(search);
