@@ -66,7 +66,7 @@ const AuthProvider = ({ children }) => {
 
     return (
         <AuthContext.Provider value={contextData}>
-            {loading ? <div className="flex flex-col gap-16 items-center justify-center h-screen">
+            {loading ? <div className="flex flex-col gap-16 items-center justify-center min-h-screen">
                 <div className="flex gap-3 items-center">
                     <img src="apple-icon.png" alt="Logo" className="w-16" />
                     <div className="flex divide-x divide-gray-600 gap-3">
