@@ -23,7 +23,7 @@ export const Input = ({ id, label, type, placeholder, title, reactHookForm, clas
     )
 }
 
-export const Select = ({ label, id, options, placeholder, reactHookForm, className, errors,...rest }) => {
+export const Select = ({ label, id, options, placeholder, reactHookForm, className, errors, ...rest }) => {
     return (
         <div>
             <label htmlFor={id} className='text-gray-300'>{label}</label>
@@ -33,7 +33,7 @@ export const Select = ({ label, id, options, placeholder, reactHookForm, classNa
                 placeholder={placeholder}
                 {...reactHookForm}
                 {...rest}
-                >
+            >
                 <option value="">{placeholder}</option>
                 {
                     options.map((option, idx) => (
@@ -61,7 +61,7 @@ export const TextArea = ({ id, label, placeholder, title, reactHookForm, classNa
     )
 }
 
-export const ProfileImage = ({ profileImage, setProfileImage, placeholder,...rest }) => {
+export const ProfileImage = ({ profileImage, setProfileImage, placeholder, ...rest }) => {
     const [overSize, setOverSize] = useState(false);
 
     const handleImageChange = (e) => {
@@ -161,7 +161,7 @@ export const MarkDownEditor = ({ id, label, placeholder, title, reactHookForm, e
 }
 
 
-export const UploadImage = ({ image, setImage, placeholder, label, maxSizeMB = 2, imgH = "h-28" }) => {
+export const UploadImage = ({ image, required = false, setImage, placeholder, label, maxSizeMB = 2, imgH = "h-28" }) => {
     const [overSize, setOverSize] = useState(false);
 
     const handleImageChange = (e) => {
@@ -181,7 +181,7 @@ export const UploadImage = ({ image, setImage, placeholder, label, maxSizeMB = 2
             </div>
             <label htmlFor="profileImage" className='text-gray-300'>{label} (max {maxSizeMB}MB)</label>
             <button className="relative bg-sky-500 hover:bg-sky-600 px-5 py-1 mt-2 rounded-full cursor-pointer text-white">Select
-                <input onChange={handleImageChange} type="file" accept="image/jpeg, image/jpg, image/png, image/img" placeholder="Import" className="absolute top-0 left-0 opacity-0 w-full h-full cursor-pointer" />
+                <input required={required} onChange={handleImageChange} type="file" accept="image/jpeg, image/jpg, image/png, image/img" placeholder="Import" className="absolute top-0 left-0 opacity-0 w-full h-full cursor-pointer" />
             </button>
             {overSize && <p className="text-rose-500">Image size must be less than {maxSizeMB}MB</p>}
         </div>)

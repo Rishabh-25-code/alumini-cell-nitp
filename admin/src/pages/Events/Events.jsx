@@ -1,13 +1,12 @@
-import React, { useRef } from 'react'
 import './Events.scss'
 import Heading from '../../components/Headings/Heading';
 import { useQuery } from '@tanstack/react-query';
 import { getDocuments, createDocument, deleteDocument } from '../../services/documents';
 import { compressedImageUpload, deleteFile } from '../../services/files';
-import { FaStar, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { getImageURL } from '../../services/files';
 import { useForm } from 'react-hook-form';
-import { Input, ProfileImage } from '../../components/FormComponents';
+import { Input, UploadImage } from '../../components/FormComponents';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Loading } from '../../../../client/src/components/Loader';
@@ -29,11 +28,6 @@ const Events = () => {
     queryFn: () => getDocuments("events", 4, 4 * (page - 1)),
     staleTime: 1000 * 60 * 3,
   });
-
-
-
-
-
 
   const onSubmit = async (data) => {
     if (!profileImage) return toast.error("Please select an event image!");
@@ -73,10 +67,11 @@ const Events = () => {
 
 
         <form className='lg:max-w-4xl lg:p-0 w-full px-6 py-6 m-auto flex flex-col gap-3' onSubmit={handleSubmit(onSubmit)}>
-          <ProfileImage
+          <UploadImage
+            label={"Upload event banner"}
             required={true}
-            profileImage={profileImage}
-            setProfileImage={setProfileImage}
+            image={profileImage}
+            setImage={setProfileImage}
             placeholder={'https://t4.ftcdn.net/jpg/03/32/59/65/360_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg'}
           />
 
@@ -169,16 +164,16 @@ const Events = () => {
         </form>
 
         <h1 className='lg:text-4xl md:text-3xl font-semibold text-center text-sky-500 pt-10'>Events</h1>
-        {isLoading ? <p>Loading...</p> :
-          isError ? <p>Error</p> :
-            data.length === 0 ? <p>No data</p> :
-          
+        {isLoading ? <p className='text-center py-16'>Loading...</p> :
+          isError ? <p className='text-center py-16'>Error</p> :
+            data.length === 0 ? <p className='text-center py-16'>No data</p> :
+
               <div className=' grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-10 md:px-5 px-5 lg:py-10 py-5'>
                 {data.map((item, index) => (
                   <EventCard refetch={refetch} key={index} item={item} />
                 ))}
               </div>
-              
+
         }
 
       </div>
@@ -221,8 +216,8 @@ const EventCard = ({ item, refetch }) => {
             </div>
             <div className='flex flex-col gap-2'>
               <div>
-                  <h3 className='text-gray-400 text-sm'>Venue</h3>
-                  <h3 className='text-xl'>{item.venue}</h3>
+                <h3 className='text-gray-400 text-sm'>Venue</h3>
+                <h3 className='text-xl'>{item.venue}</h3>
               </div>
               <div className='bg-gray-800 p-2 rounded-lg'>
                 <h2 className='text-gray-400 text-sm'>Date</h2>
