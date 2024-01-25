@@ -33,7 +33,7 @@ export const getDownloadURL = (fileId) => {
     return storage.getFileDownload(BUCKET_ID, fileId);
 }
 
-export async function compressedImageUpload(imageFile, maxSizeMB = 0.3, maxWidthOrHeight = 1920, useWebWorker = true) {
+export async function compressedImageUpload(imageFile, maxSizeMB = 0.15, maxWidthOrHeight = 1920, useWebWorker = true) {
         const options = {
             maxSizeMB,
             maxWidthOrHeight,
