@@ -116,7 +116,7 @@ const Events = () => {
                 {isPending && <Loader />}
                 {isError && <div className='text-center text-red-500'>Something went wrong!</div>}
 
-                {data && data.map((event) => (
+                {data && data.slice(0,3).map((event) => (
                     <EventCard data={event} key={event.$id} />
                 ))}
             </div>
