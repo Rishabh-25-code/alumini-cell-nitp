@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Heading1 from '../../components/Headings/Heading1'
 import { useQuery } from "@tanstack/react-query"
 import { getDocuments } from "../../services/documents"
+import Loader from '../../components/Loader'
 
 const Events = () => {
 
@@ -101,7 +102,7 @@ const Events = () => {
     //     },
     // ]
 
-    const { data } = useQuery({
+    const { data, isLoading, isError } = useQuery({
         queryKey: ["events"],
         queryFn: () => getDocuments("events"),
         staleTime: Infinity,
@@ -112,9 +113,19 @@ const Events = () => {
             <Heading1 details={"We host a variety of events throughout the year to engage and connect with our esteemed alumni, providing platforms for networking, professional development, and fostering a sense of continued community among our graduates."} text1={"Eventful Life at"} text2={" NIT Patna"} />
 
             <div className='flex flex-wrap m-auto mt-20 gap-y-5 gap-5 items-center justify-evenly mb-10'>
-                {data.slice(0, 3).map((event, id) => (
-                    <EventCard data={event} key={id} />
-                ))}
+            {isLoading ? (
+                        <div className="flex justify-center items-center h-[10rem] w-full">
+                            <Loader />
+                        </div>
+                    ) : isError ? (
+                        <p>Something went wrong.</p>
+                    ) : (
+                      <div className='flex flex-wrap m-auto px-5 gap-y-5 gap-8 items-center justify-center mb-10'>
+                      {data.slice(0, 3).map((event, index) => (
+                        <EventCard data={event} key={index} />
+                      ))}
+                    </div>
+                    )}
             </div>
 
             <Link data-aos="zoom-in" to="/events" className='bg-sky-400 absolute lg:right-20 md:right-16 right-12 hover:bg-sky-500 text-white font-semi-bold py-2 px-4 rounded-full flex items-center'>
