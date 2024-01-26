@@ -132,7 +132,7 @@ const Events = () => {
                     ) : (
                       <div className='flex flex-wrap m-auto px-5 gap-y-5 gap-8 items-center justify-center mb-10'>
                       {data.map((event, index) => (
-                        <EventCard data={event} key={index} />
+                        <EventCard data={event} key={event.$id} />
                       ))}
                     </div>
                     )}

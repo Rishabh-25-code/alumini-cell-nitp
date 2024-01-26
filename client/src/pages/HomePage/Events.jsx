@@ -102,7 +102,7 @@ const Events = () => {
     //     },
     // ]
 
-    const { data, isLoading, isError } = useQuery({
+    const { data, isPending, isError } = useQuery({
         queryKey: ["events"],
         queryFn: () => getDocuments("events"),
         staleTime: Infinity,
@@ -112,20 +112,13 @@ const Events = () => {
         <div className="my-10 mb-36 lg:px-24 md:px-16 px-6">
             <Heading1 details={"We host a variety of events throughout the year to engage and connect with our esteemed alumni, providing platforms for networking, professional development, and fostering a sense of continued community among our graduates."} text1={"Eventful Life at"} text2={" NIT Patna"} />
 
-            <div className='flex flex-wrap m-auto mt-20 gap-y-5 gap-5 items-center justify-evenly mb-10'>
-            {isLoading ? (
-                        <div className="flex justify-center items-center h-[10rem] w-full">
-                            <Loader />
-                        </div>
-                    ) : isError ? (
-                        <p>Something went wrong.</p>
-                    ) : (
-                      <div className='flex flex-wrap m-auto px-5 gap-y-5 gap-8 items-center justify-center mb-10'>
-                      {data.slice(0, 3).map((event, index) => (
-                        <EventCard data={event} key={index} />
-                      ))}
-                    </div>
-                    )}
+            <div className='flex flex-wrap m-auto items-center justify-evenly my-10 min-h-[16rem]'>
+                {isPending && <Loader />}
+                {isError && <div className='text-center text-red-500'>Something went wrong!</div>}
+
+                {data && data.map((event) => (
+                    <EventCard data={event} key={event.$id} />
+                ))}
             </div>
 
             <Link data-aos="zoom-in" to="/events" className='bg-sky-400 absolute lg:right-20 md:right-16 right-12 hover:bg-sky-500 text-white font-semi-bold py-2 px-4 rounded-full flex items-center'>
