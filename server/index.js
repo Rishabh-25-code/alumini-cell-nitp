@@ -5,16 +5,16 @@ const express = require('express');
 const cors = require('cors');
 const readGSheet = require('./src/readGoogleSheet');
 const connectDB = require('./src/config/db');
-const Member = require('./src/models/Member');
-const Years = require('./src/models/Years');
 const addAlumni = require('./src/controller/alumni.controller');
-const { users } = require('./src/config/appwrite');
+const webPush = require('web-push');
+const SubscriptionModel = require('./subscriptionModel');
 
 const app = express();
 
 // Middleware
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({ extended: false }));
 
 // DB Connection
 connectDB();
@@ -36,88 +36,56 @@ app.post('/readGSheet/:sheetID', async (req, res) => {
     }
 });
 
-app.post('/addrole', async (req, res) => {
+app.post('/subscribe', async (req, res, next) => {
+    const { subscription, uid } = req.body;
     try {
-        const { uid, labels } = req.body;
-        const response = await users.updateLabels(uid, labels);
-        res.json(response);
+        const newSubscription = await SubscriptionModel.create({ uid, ...subscription });
+        res.status(201).json(newSubscription);
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ msg: 'Server Error', error: error.message, stack: error.stack });
-    }
-})
-
-app.get('/years', async (req, res) => {
-    try {
-        const data = await Years.find();
-        res.status(200).json(data);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: error.message });
     }
 });
 
+app.post('/unsubscribe', async (req, res, next) => {
+    const { endpoint } = req.body;
+    try {
+        const deletedSubscription = await SubscriptionModel.findOneAndDelete({
+            endpoint
+        });
+        res.status(200).json(deletedSubscription);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+})
 
+app.post('/sendNotification', async (req, res, next) => {
+    const subscriptions = await SubscriptionModel.find({
+        uid: req.body.uid
+    });
 
-app.get('/members', async (req, res) => {
-    // Extract optional query parameters
-    const {
-        admission_year,
-        degree,
-        department,
-        category,
-        isPWD,
-        currently_employed,
-        gender,
-        academic_session,
-        itemsPerPage,
-        page = 1  // Default to page 1 if not provided
-    } = req.query;
-
-    // Create a filter object based on provided query parameters
-    let filter = {
-        admission_year,
-        degree,
-        department,
-        category,
-        isPWD,
-        currently_employed,
-        gender,
-        academic_session,
+    const options = {
+        vapidDetails: {
+            subject: 'mailto:myemail@example.com',
+            publicKey: process.env.VAPID_PUBLIC_KEY,
+            privateKey: process.env.VAPID_PRIVATE_KEY,
+        },
     };
 
-    // Remove undefined or null values from the filter object
-    for (let key in filter) {
-        if (filter[key] === undefined || filter[key] === null) {
-            delete filter[key];
-        }
-    }
-
-    const ITEMS_PER_PAGE = parseInt(itemsPerPage) || 25;
-
-    console.log(filter);
-
     try {
-        // Calculate skip value for pagination
-        const skip = (page - 1) * ITEMS_PER_PAGE;
-
-        // Query the database with the filter and pagination
-        const data = await Member.find(filter)
-            .skip(skip)
-            .limit(ITEMS_PER_PAGE);
-
-        res.status(200).json({
-            page: +page,
-            hasNextPage: data.length === ITEMS_PER_PAGE,
-            hasPreviousPage: +page > 1,
-            nextPage: +page + 1,
-            previousPage: page - 1,
-            dataPerPage: ITEMS_PER_PAGE,
-            data,
-        });
+        for (const subscription of subscriptions) {
+            await webPush.sendNotification(
+                subscription,
+                JSON.stringify({
+                    title: req.body.title,
+                    description: req.body.description,
+                    image: 'https://alumini-nitp.vercel.app/apple-icon.png',
+                }),
+                options
+            );
+        }
+        res.status(200).json({ success: true });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+        res.status(500).json({ error: error.message });
     }
 });
 

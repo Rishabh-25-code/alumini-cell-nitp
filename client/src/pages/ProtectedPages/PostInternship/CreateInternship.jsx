@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { uploadFile } from "../../../services/files";
 import { createDocument } from "../../../services/documents";
 import { Loading } from "../../../components/Loader";
@@ -69,7 +69,7 @@ const CreateIntern = () => {
             resetForm();
 
             // Show a toast
-            toast.success("Internship posted successfully!");
+            toast.success("Internship sent to admin for approval!");
         } catch (error) {
             toast.error(error.message);
         } finally {
@@ -513,11 +513,10 @@ const CreateIntern = () => {
                     <Input
                         label="Your Batch"
                         type="number"
-                        require={true}
                         placeholder="2002"
-                        title="batch"
+                        title="yourBatch"
+                        id="yourBatch"
                         reactHookForm={register('yourBatch', {
-                            required: 'Batch is required',
                             minLength: {
                                 value: 4,
                                 message: 'Batch must be at least 4 characters',
