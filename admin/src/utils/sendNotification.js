@@ -1,6 +1,6 @@
 const sendNotification = async (uid, title, description) => {
     try {
-        await fetch(`${import.meta.VITE_API_URL}/sendNotification`, {
+        await fetch(`https://alumini-nitp-api.vercel.app/sendNotification`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
