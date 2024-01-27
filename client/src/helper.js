@@ -1,6 +1,6 @@
 async function regSw() {
     if ('serviceWorker' in navigator) {
-        let url = 'http://localhost:5173/sw.js';
+        let url = 'https://alumini-nitp.vercel.app/sw.js';
         const reg = await navigator.serviceWorker.register(url, { scope: '/' });
         console.log('service config is', { reg });
         return reg;
@@ -16,7 +16,7 @@ async function subscribe(serviceWorkerReg, uid) {
             applicationServerKey: 'BB12svZvz9FhimAVNpibHZNOu91_JvBQRxewmDXq72xBSgrhs6Gu2tJ1qhRsaTvjk61XUhlPR59i8pO1JV81nS4',
         });
 
-        await fetch('http://localhost:5000' + '/subscribe', {
+        await fetch('https://alumini-nitp-api.vercel.app' + '/subscribe', {
             method: 'POST',
             body: JSON.stringify({
                 subscription,
