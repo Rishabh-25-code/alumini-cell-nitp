@@ -8,10 +8,10 @@ import { Input, Select } from '../../components/FormComponents';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
-import { FaEdit } from 'react-icons/fa';
 import { branches } from '../../utils/branches';
 import Heading from '../../components/Headings/Heading';
 import { FaLinkedin, FaFacebook, FaInstagram, FaGithub, FaGlobe, FaTwitter } from 'react-icons/fa';
+import sendNotification from '../../utils/sendNotification';
 
 const Alumni = () => {
 
@@ -44,6 +44,11 @@ const Alumni = () => {
 
             await updateDocument('alumni', alumniId, alumniData);
             await refetch();
+            if (data.status === 'approved') {
+                await sendNotification(alumni.uid, "Alumni Profile Approved", "Your alumni profile has been approved by the admin.");
+            } else if (data.status === 'rejected') {
+                await sendNotification(alumni.uid, "Alumni Profile Rejected", "Your alumni profile has been rejected by the admin.");
+            }
             toast.success(`Alumni Profile ${data.status} successful!`);
             reset();
         } catch (error) {
@@ -211,7 +216,7 @@ const Alumni = () => {
                                         value: alumni.statusDesc
                                     })}
                                     error={errors.reviewMsg?.message}
-                                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                    className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                 />
                             </div>
                             <Select
@@ -228,7 +233,7 @@ const Alumni = () => {
                                     { name: 'approved', value: 'approved' },
                                     { name: 'rejected', value: 'rejected' },
                                 ]}
-                                className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                             />
                             <button disabled={loading} onClick={handleSubmit(onSubmit)} className='bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 h-10 self-end px-5 py-2 mt-2 rounded-lg cursor-pointer text-white'>Submit</button>
                         </form>

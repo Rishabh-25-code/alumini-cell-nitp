@@ -11,6 +11,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import Heading from '../../components/Headings/Heading';
+import sendNotification from '../../utils/sendNotification';
 
 const Blog = () => {
     const { blogId } = useParams();
@@ -40,7 +41,12 @@ const Blog = () => {
 
             await updateDocument('blogs', blogId, blogData);
             await refetch();
-            toast.success(`Blog ${data.status} successful!`);
+            if (data.status === 'published') {
+                await sendNotification(blog.id, 'Blog Published', `Your blog "${blog.title}" has been published!`);
+            }else if(data.status === 'rejected'){
+                await sendNotification(blog.id, 'Blog Rejected', `Your blog "${blog.title}" has been rejected!`);
+            }
+            toast.success(`Blog ${data.status} successfully!`);
             reset();
         } catch (error) {
             toast.error(error.message);
@@ -104,7 +110,7 @@ const Blog = () => {
                                         value: blog.statusDesc
                                     })}
                                     error={errors.statusDesc?.message}
-                                    className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                    className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                 />
                             </div>
                             <Select
@@ -121,7 +127,7 @@ const Blog = () => {
                                     { name: 'published', value: 'published' },
                                     { name: 'rejected', value: 'rejected' },
                                 ]}
-                                className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                             />
                             <button disabled={loading} onClick={handleSubmit(onSubmit)} className='bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 h-10 self-end px-5 py-2 mt-2 rounded-lg cursor-pointer text-white'>Submit</button>
                         </form>
