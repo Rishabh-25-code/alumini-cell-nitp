@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy } from "react";
 import MalePlaceholder from "../../assets/man-placeholder.jpg";
 import Meta from "../../components/Meta/Meta";
 import { branches } from "../../utils/branches";
@@ -7,6 +7,7 @@ import { getAlumniData } from "../../services/documents";
 import { useSearchParams } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { getImageURL } from "../../services/files";
+import AlumniCard from "./AlumniCard";
 
 
 const AlumniDatabase = () => {
@@ -22,7 +23,7 @@ const AlumniDatabase = () => {
     const type = searchParams.get('type') || "jobTitle";
     const [itemsPerPage] = useState(21);
     const [branch, setBranch] = useState(null);
-
+    const [currentPopup, setCurrentPopup] = useState(null); // [id, type]
     const [searchText, setSearchText] = useState(search);
     const [searchType, setSearchType] = useState(type);
 
@@ -51,7 +52,7 @@ const AlumniDatabase = () => {
     }, [searchText]);
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen relative">
             <Meta name="Alumni Database" />
             <div className="flex relative bg-[url(https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/static-images%2F007d2522-8220-4d3d-b506-8fef870eb1df.jpg?alt=media&token=46a7d8e5-aa90-4461-bd2e-15df0204e7d5)] bg-no-repeat  w-full flex-col gap-3 items-center bg-cover justify-center py-20 text-center text-white h-[55vh]">
                 <div className="absolute w-full inset-0 text-left pt-28  bg-gradient-to-t  from-[rgba(0,0,0,1)] via-[rgba(0,0,0,0.5)] to-transparent">
@@ -118,13 +119,15 @@ const AlumniDatabase = () => {
                             No items.
                         </div>
                         : <>
+                            {currentPopup !== null && <AlumniCard person={alumni.documents[currentPopup]} close={() => setCurrentPopup(null)} />}
                             <div className="mt-24 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                                 {alumni.documents.map((person, idx) => {
                                     return (
                                         <div
+                                            onClick={() => setCurrentPopup(idx)}
                                             data-aos="fade-up"
                                             key={idx}
-                                            className="rounded-xl border hover:bg-[#101010] hover:border-gray-700 hover:border-l-sky-400  border-gray-900 bg-[#000000] border-l-sky-500 border-l-4 shadow-lg w-full"
+                                            className="rounded-xl border hover:bg-[#101010] hover:border-gray-700 hover:border-l-sky-400  border-gray-900 cursor-pointer bg-[#000000] border-l-sky-500 border-l-4 shadow-lg w-full"
                                         >
                                             <div className="flex flex-row gap-5 hover:scale-95 transition p-4 py-6">
                                                 <div className="lg:w-20 bg-cover flex items-center justify-center md:w-16 w-14 lg:h-20 md:h-16 h-14 rounded-full overflow-hidden">

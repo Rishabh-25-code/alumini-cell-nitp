@@ -39,7 +39,7 @@ const CreateJob = () => {
         try {
             // Upload the job company logo
             setMessage("Uploading files...");
-            data = { ...data, ...jobDetails, name: user.name, email: user.email, userID: user.$id }
+            data = { ...data, ...jobDetails, name: user.name, email: user.email, userID: user.$id, jobSalary: parseInt(data.jobSalary) }
 
             if (jobCompanyLogo) {
                 let res = await compressedImageUpload(jobCompanyLogo);
@@ -68,7 +68,7 @@ const CreateJob = () => {
             resetForm();
 
             // Show a toast
-            toast.success("Job posted successfully!");
+            toast.success("Job sent for approval!");
         } catch (error) {
             toast.error(error.message);
         } finally {
@@ -439,10 +439,9 @@ const CreateJob = () => {
                         label="Your Batch"
                         type="number"
                         placeholder="2002"
-                        require={true}
-                        title="batch"
+                        title="yourBatch"
+                        id="yourBatch"
                         reactHookForm={register('yourBatch', {
-                            required: 'Batch is required',
                             minLength: {
                                 value: 4,
                                 message: 'Batch must be at least 4 characters',

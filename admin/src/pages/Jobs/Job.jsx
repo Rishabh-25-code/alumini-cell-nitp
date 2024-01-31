@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import Heading from '../../components/Headings/Heading';
+import sendNotification from '../../utils/sendNotification';
 
 const Job = () => {
     const navigate = useNavigate();
@@ -44,6 +45,11 @@ const Job = () => {
             await updateDocument('job-opportunity', jobId, jobData);
             await refetch();
             reset();
+            if (data.status === 'published') {
+                await sendNotification(job.userID, 'Job Published', `Your job "${job.jobTitle}" has been published!`);
+            } else if (data.status === 'rejected') {
+                await sendNotification(job.userID, 'Job Rejected', `Your job "${job.jobTitle}" has been rejected!`);
+            }
             toast.success(`job ${data.status} successful!`);
             navigate(`/jobs?type=${data.status}&page=1`);
         } catch (error) {
@@ -146,7 +152,7 @@ const Job = () => {
                                                 value: job.statusDesc
                                             })}
                                             error={errors.statusDesc?.message}
-                                            className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                            className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                         />
                                     </div>
                                     <Select
@@ -163,7 +169,7 @@ const Job = () => {
                                             { name: 'published', value: 'published' },
                                             { name: 'rejected', value: 'rejected' },
                                         ]}
-                                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                        className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     />
                                     <button disabled={loading} onClick={handleSubmit(onSubmit)} className='bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 h-10 self-end px-5 py-2 mt-2 rounded-lg cursor-pointer text-white'>Submit</button>
                                 </form>
@@ -175,4 +181,4 @@ const Job = () => {
     )
 }
 
-export default Job
+export default Job;

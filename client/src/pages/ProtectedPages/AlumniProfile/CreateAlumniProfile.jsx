@@ -368,10 +368,14 @@ const CreateAlumniProfile = () => {
                                         title='phone'
                                         reactHookForm={register('phone', {
                                             required: 'Phone is required',
-                                            pattern: {
-                                                value: /^(?!(\d)\1{9})[6,7,8,9]\d{9}$/,
-                                                message: 'Please enter a valid phone no.',
+                                            minLength: {
+                                                value: 10,
+                                                message: 'Mobile no. must be 10 characters or more'
                                             },
+                                            maxLength: {
+                                                value: 14,
+                                                message: 'Mobile no. must not exceed 14 characters'
+                                            }
                                         })}
                                         className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                         errors={errors.phone}
@@ -397,7 +401,7 @@ const CreateAlumniProfile = () => {
                                     title='company'
                                     reactHookForm={register('company', {
                                         pattern: {
-                                            value: /^(?!\s)([a-z ,.'-]+)$/i,
+                                            value: /^(?!\s)([a-z ,.'\/+-]+)$/i,
                                             message: 'Please enter a valid company name',
                                         },
                                         maxLength: {

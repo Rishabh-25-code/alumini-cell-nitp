@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import Heading from '../../components/Headings/Heading';
+import sendNotification from '../../utils/sendNotification';
 
 const Internship = () => {
     const navigate = useNavigate();
@@ -40,6 +41,11 @@ const Internship = () => {
             await updateDocument('intern-opportunity', internshipId, internData);
             await refetch();
             reset();
+            if (data.status === 'published') {
+                await sendNotification(intern.userID, 'Internship Published', `Your internship "${intern.internTitle}" has been published!`);
+            } else if (data.status === 'rejected') {
+                await sendNotification(intern.userID, 'Internship Rejected', `Your internship "${intern.internTitle}" has been rejected!`);
+            }
             toast.success(`internship ${data.status} successful!`);
             navigate(`/internships?type=${data.status}&page=1`);
         } catch (error) {
@@ -142,7 +148,7 @@ const Internship = () => {
                                                 value: intern.statusDesc
                                             })}
                                             error={errors.statusDesc?.message}
-                                            className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                            className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                         />
                                     </div>
                                     <Select
@@ -159,7 +165,7 @@ const Internship = () => {
                                             { name: 'published', value: 'published' },
                                             { name: 'rejected', value: 'rejected' },
                                         ]}
-                                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                        className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     />
                                     <button disabled={loading} onClick={handleSubmit(onSubmit)} className='bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 h-10 self-end px-5 py-2 mt-2 rounded-lg cursor-pointer text-white'>Submit</button>
                                 </form>

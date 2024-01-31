@@ -34,18 +34,18 @@ export const getDownloadURL = (fileId) => {
 }
 
 export async function compressedImageUpload(imageFile, maxSizeMB = 0.15, maxWidthOrHeight = 1920, useWebWorker = true) {
-        const options = {
-            maxSizeMB,
-            maxWidthOrHeight,
-            useWebWorker,
-        }
-
-        try {
-            const compressedFile = await imageCompression(imageFile, options);
-            const newFile = new File([compressedFile], imageFile.name, { lastModified: new Date(), size: imageFile.size, type: imageFile.type });
-            const res = await uploadFile(newFile);
-            return res;
-        } catch (error) {
-            throw new Error(error.message);
-        }
+    const options = {
+        maxSizeMB,
+        maxWidthOrHeight,
+        useWebWorker,
     }
+
+    try {
+        const compressedFile = await imageCompression(imageFile, options);
+        const newFile = new File([compressedFile], imageFile.name, { lastModified: new Date(), size: imageFile.size, type: imageFile.type });
+        const res = await uploadFile(newFile);
+        return res;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
