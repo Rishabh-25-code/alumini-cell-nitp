@@ -22,6 +22,10 @@ const Job = () => {
         queryFn: () => getDocument('job-opportunity', jobId),
     });
 
+    const getDownloadURL = (jobDetailsLink) => {
+        return `https://jobs/downloads/${jobDetailsLink}`;
+    };
+
     const onSubmit = async (data) => {
         try {
             setLoading(true);
