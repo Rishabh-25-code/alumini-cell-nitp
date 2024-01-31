@@ -16,6 +16,10 @@ const Job = () => {
         queryFn: () => getDocument('job-opportunity', jobId),
     });
 
+    const getDownloadURL = (jobDetailsLink) => {
+        return `https://jobs/downloads/${jobDetailsLink}`;
+    };
+
     return (
         <div className='min-h-screen'>
             <Heading heading="Job Details" heading1={job && job.jobCompany && job.jobCompany}></Heading>
