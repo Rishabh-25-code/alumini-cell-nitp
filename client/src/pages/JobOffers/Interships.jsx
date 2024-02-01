@@ -135,7 +135,7 @@ const JobOffersCard2 = ({ data }) => {
           <p className=' text-gray-400'>Experience Required: <span className="text-white">
             {parseInt(data.internExperience) === 0 ? "Fresher" : data.internExperience + " years"}</span></p>
         </div>
-        {data.internSalary && <div>
+        {data.internSalary != 0 && data.internSalary && <div>
           <p className=' text-gray-400'>Expected Stipend: <span className="text-white">{new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(data.internSalary)} K</span></p>
         </div>}
         <p className='text-sm pt-2 text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(data.$createdAt))}</span></p>
