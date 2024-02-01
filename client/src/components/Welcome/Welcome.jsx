@@ -23,9 +23,9 @@ const Welcome = () => {
                 </p>
             </div>
 
-            <Link data-aos="fade-up" to="/about" className="w-fit m-auto">
+            <Link aria-label={"Know More about NIT Patna"} data-aos="fade-up" to="/about" className="w-fit m-auto">
                 <button className='bg-sky-600 hover:bg-sky-700 hover:scale-105 transition-all px-8 m-auto my-5 mt-8 py-2.5 text-white rounded-2xl'>
-                    Learn More
+                    Know more about NITP
                 </button>
             </Link>
         </div>
