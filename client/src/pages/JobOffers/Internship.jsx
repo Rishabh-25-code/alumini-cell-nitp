@@ -48,7 +48,10 @@ const Internship = () => {
                                     {intern.internDeadline && <p className='text-sm text-gray-400'>Expires: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(intern.internDeadline))}</span></p>}
                                 </div>
                             </div>
-                            <div className='mt-5'>
+                            {intern.internCompanyDescription && <div className='mt-3'>
+                                <p className=''><span className='font-medium text-gray-400'>About Company : </span>{intern.internCompanyDescription}</p>
+                            </div>}
+                            <div className='mt-2'>
                                 <p className=''>{intern.internDescription}</p>
                             </div>
                             <div>
