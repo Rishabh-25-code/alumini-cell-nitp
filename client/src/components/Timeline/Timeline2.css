@@ -1,16 +1,31 @@
 .timeline-container {
-  font-family: "Montserrat", sans-serif;
   font-size: 2rem;
   font-weight: 600;
   color: #fff;
 }
 
-.vertical-timeline-element-content {
-  padding: 0;
-  background-color: #111827 !important;
+.vertical-timeline::before {
+    background: #185aa1 !important;
 }
+
+.vertical-timeline-element-title {
+    color: #2e88e7;
+}
+
 .vertical-timeline-element-content-arrow {
-   color: aqua;
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 100%;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-right: 7px solid #101624 !important;
+}
+
+.vertical-timeline-element-icon {
+    -webkit-box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0,0,0,.08), 0 3px 0 4px rgba(0,0,0,.05) !important;
+    box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0,0,0,.08), 0 3px 0 4px rgba(0,0,0,.05) !important;
 }
 
 .date {
@@ -52,5 +67,27 @@
     float: none !important;
     color: rgb(44, 44, 44);
     margin-top: 1.5em;
+  }
+}
+
+.vertical-timeline-element-content {
+  padding: 2rem !important;
+  background-color: #101624 !important;
+  box-shadow: 0 3px 0 #00b3ff !important;
+}
+
+@media screen and (max-width:1000px) {
+  .vertical-timeline-element-content {
+    padding: 1.2rem 1.5rem !important;
+    background-color: #101624 !important;
+    box-shadow: 0 3px 0 #00b3ff !important;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .vertical-timeline-element-content {
+    padding: 1rem 1.5rem !important;
+    background-color: #101624 !important;
+    box-shadow: 0 3px 0 #00b3ff !important;
   }
 }

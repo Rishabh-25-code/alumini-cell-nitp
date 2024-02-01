@@ -5,6 +5,7 @@ import BackToTopButton from '../Scroll/BackToTopButton';
 const Footer = () => {
   const date = new Date;
   const year = date.getFullYear();
+  
   return (
     <div data-aos="fade-in" className="bg-[#09090b] text-sm w-[100%] mt-[10rem]">
       <div className="mb-10 w-[90%] grid gap-2 md:gap-4 lg:gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-[auto] items-start justify-items-center">
@@ -15,13 +16,13 @@ const Footer = () => {
 
           <p className='max-w-[17rem] py-3 text-base text-gray-200'>One-stop portal for alumni of the National Institute of Technology, Patna, Bihar.</p>
           <div className='flex gap-3 py-2 '>
-            <a href="https://facebook.com" style={{ color: 'blue' }} className='transition ease-in delay-50 text-blue-500 hover:text-blue-600 hover:scale-[110%]'>
+            <a aria-label={"FaceBook"} href="https://facebook.com" style={{ color: 'blue' }} className='transition ease-in delay-50 text-blue-500 hover:text-blue-600 hover:scale-[110%]'>
               <FaFacebook size={30} />
             </a>
-            <a href="https://web.whatsapp.com" style={{ color: '#00c000' }} className='transition ease-in delay-50 text-green-400 hover:text-green-500 hover:scale-[110%]'>
+            <a aria-label={"WhatsApp"} href="https://web.whatsapp.com" style={{ color: '#00c000' }} className='transition ease-in delay-50 text-green-400 hover:text-green-500 hover:scale-[110%]'>
               <IoLogoWhatsapp size={30} />
             </a>
-            <a href="https://instagram.com" style={{ color: "rgb(255, 105, 180)" }} className='transition ease-in delay-50 text-pink-500 hover:text-pink-600 hover:scale-[110%]'>
+            <a aria-label={"Instagram"} href="https://instagram.com" style={{ color: "rgb(255, 105, 180)" }} className='transition ease-in delay-50 text-pink-500 hover:text-pink-600 hover:scale-[110%]'>
               <FaInstagram size={30} />
             </a>
 
@@ -36,7 +37,7 @@ const Footer = () => {
             <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/jobs">Search Jobs</Link></li>
             <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/internships">Look for Internships</Link></li>
             <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/team">Web Team</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="https://alumini-nitp-admin.vercel.app/"  target="_blank">Admin Portal</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="https://alumini-nitp-admin.vercel.app/" target="_blank">Admin Portal</Link></li>
           </ul>
         </div>
 
