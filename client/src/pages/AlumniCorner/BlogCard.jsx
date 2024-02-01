@@ -6,10 +6,10 @@ import { toast } from 'react-toastify';
 
 const BlogCard = ({ data, type }) => {
     return (
-        <div className='lg:w-[24rem] md:w-[20rem] max-w-sm w-full p-4 border-2 hover:border-gray-800 bg-black  border-gray-900 rounded-2xl mt-5'>
+        <div className='max-w-sm w-full p-4 border-2 hover:border-gray-800 bg-black  border-gray-900 rounded-2xl mt-5'>
             <Link data-aos="fade-up" to={`/${type === "experience" ? "experience" : "blog"}/${data.$id}`}>
-                <div className='flex items-center h-44 overflow-hidden w-full rounded-lg border border-gray-900'>
-                    <img loading='lazy' className='w-full' src={getImageURL(data.imgUrl)} alt={data.name} />
+                <div className='flex items-center justify-center h-44 overflow-hidden bg-cover w-full rounded-lg border border-gray-900'>
+                    <img loading='lazy' className='w-full h-44 object-cover' src={getImageURL(data.imgUrl)} alt={data.name} />
                 </div>
                 <p className='text-gray-400 pt-2 pl-2'>{
                     data.tags.map((tag, id) => (
