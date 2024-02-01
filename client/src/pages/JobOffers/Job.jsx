@@ -77,6 +77,14 @@ const Job = () => {
                                     }
                                 </div>}
                                 {
+                                    job.jobCompanyEmail && (
+                                        <div>
+                                            <p className=' text-gray-400'>For applying:</p>
+                                            <a target='_blank' href={`mailto:${job.jobCompanyEmail}`} className='text-sky-500'>{job.jobCompanyEmail}</a>
+                                        </div>
+                                    )
+                                }
+                                {
                                     job.referralAvailable && (
                                         <div>
                                             <p className=' text-gray-400'>For refferals:</p>

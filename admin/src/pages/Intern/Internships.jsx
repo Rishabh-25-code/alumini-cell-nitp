@@ -8,85 +8,85 @@ import { getImageURL } from '../../services/files';
 import { useState } from 'react';
 
 const InternOffers = () => {
-    const [searchParams, setSearchParams] = useSearchParams({ page: 1, type: 'reviewing' });
-    const type = searchParams.get('type') || 'reviewing';
-    const page = parseInt(searchParams.get('page')) || 1;
-    const [itemsPerPage, setItemsPerPage] = useState(24);
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1, type: 'reviewing' });
+  const type = searchParams.get('type') || 'reviewing';
+  const page = parseInt(searchParams.get('page')) || 1;
+  const [itemsPerPage, setItemsPerPage] = useState(24);
 
-    const { data: internships, isLoading, isError, refetch } = useQuery({
-        queryKey: ['intern-posts', page, type],
-        queryFn: () => getPaginatedUnpublishedDocs('intern-opportunity', itemsPerPage, itemsPerPage * (page - 1), type),
-    })
+  const { data: internships, isLoading, isError, refetch } = useQuery({
+    queryKey: ['intern-posts', page, type],
+    queryFn: () => getPaginatedUnpublishedDocs('intern-opportunity', itemsPerPage, itemsPerPage * (page - 1), type),
+  })
 
-    const changeParams = async (key, value) => {
-        setSearchParams((prev) => {
-            prev.set(key, value);
-            return prev;
-        }, { replace: true });
-        window.scrollTo(0, 0);
-        refetch();
-    }
+  const changeParams = async (key, value) => {
+    setSearchParams((prev) => {
+      prev.set(key, value);
+      return prev;
+    }, { replace: true });
+    window.scrollTo(0, 0);
+    refetch();
+  }
 
-    const changeType = (newType) => {
-        changeParams('type', newType);
-        changeParams('page', 1);
-    }
+  const changeType = (newType) => {
+    changeParams('type', newType);
+    changeParams('page', 1);
+  }
 
-    return (
-        <div className='pt-24'>
-            <Meta name="Intern Openings" />
-            <Heading heading="Intern Openings" heading1="via our Alumni"></Heading>
+  return (
+    <div className='pt-24'>
+      <Meta name="Intern Openings" />
+      <Heading heading="Intern Openings" heading1="via our Alumni"></Heading>
 
-            <div className='px-10 flex mt-6 gap-4'>
-                <button onClick={() => {
-                    changeType('reviewing')
-                }} className={`border-[#e9e1e1] border font-semibold  px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${type === "reviewing" ? 'bg-[#e9e1e1] text-gray-900' : 'text-[#e9e1e1]'}`}>
-                    Reviewing
-                </button>
-                <button onClick={() => changeType('published')} className={`border-[#e9e1e1] border font-semibold  px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${type === "published" ? 'bg-[#e9e1e1] text-gray-900' : 'text-[#e9e1e1]'}`}>
-                    Published
-                </button>
-                <button onClick={() => changeType('rejected')} className={`border-[#e9e1e1] border font-semibold  px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${type === "rejected" ? 'bg-[#e9e1e1] text-gray-900' : 'text-[#e9e1e1]'}`}>
-                    Rejected
-                </button>
+      <div className='px-10 flex mt-6 gap-4'>
+        <button onClick={() => {
+          changeType('reviewing')
+        }} className={`border-[#e9e1e1] border font-semibold  px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${type === "reviewing" ? 'bg-[#e9e1e1] text-gray-900' : 'text-[#e9e1e1]'}`}>
+          Reviewing
+        </button>
+        <button onClick={() => changeType('published')} className={`border-[#e9e1e1] border font-semibold  px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${type === "published" ? 'bg-[#e9e1e1] text-gray-900' : 'text-[#e9e1e1]'}`}>
+          Published
+        </button>
+        <button onClick={() => changeType('rejected')} className={`border-[#e9e1e1] border font-semibold  px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${type === "rejected" ? 'bg-[#e9e1e1] text-gray-900' : 'text-[#e9e1e1]'}`}>
+          Rejected
+        </button>
+      </div>
+
+      {isLoading ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
+        isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
+          internships && internships.length === 0 ? <div className='text-center py-16 text-sky-500'>No items found!</div> :
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:w-[85%] md:w-[95%] w-full px-5 gap-6 m-auto my-24'>
+              {internships.map((intern) => (
+                <JobOffersCard2 data={intern} key={intern.$id} />
+              ))}
             </div>
+      }
 
-            {isLoading ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
-                isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
-                    internships && internships.length === 0 ? <div className='text-center py-16 text-sky-500'>No items found!</div> :
-                        <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:w-[85%] md:w-[95%] w-full px-5 gap-6 m-auto my-24'>
-                            {internships.map((intern) => (
-                                <JobOffersCard2 data={intern} key={intern.$id} />
-                            ))}
-                        </div>
-            }
+      {internships && internships.length !== 0 && (
+        <>
+          <div data-aos="fade-up" className="text-center px-3 pt-16">
+            Showing <span className="text-sky-500">{internships.length}</span> results of page <span className="text-sky-500">{page}</span>.
+          </div>
 
-            {internships && internships.length !== 0 && (
-                <>
-                    <div data-aos="fade-up" className="text-center px-3 pt-16">
-                        Showing <span className="text-sky-500">{internships.length}</span> results of page <span className="text-sky-500">{page}</span>.
-                    </div>
-
-                    <div data-aos="fade-up" className="flex items-center justify-center pt-5 gap-10 px-6">
-                        <button
-                            disabled={page <= 1}
-                            onClick={() => changeParams('page', page - 1)}
-                            className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold"
-                        >
-                            Prev
-                        </button>
-                        <button
-                            disabled={itemsPerPage > internships.length}
-                            onClick={() => changeParams('page', page + 1)}
-                            className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold"
-                        >
-                            Next
-                        </button>
-                    </div>
-                </>
-            )}
-        </div>
-    )
+          <div data-aos="fade-up" className="flex items-center justify-center pt-5 gap-10 px-6">
+            <button
+              disabled={page <= 1}
+              onClick={() => changeParams('page', page - 1)}
+              className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold"
+            >
+              Prev
+            </button>
+            <button
+              disabled={itemsPerPage > internships.length}
+              onClick={() => changeParams('page', page + 1)}
+              className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold"
+            >
+              Next
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  )
 }
 
 export default InternOffers;
@@ -119,7 +119,7 @@ const JobOffersCard2 = ({ data }) => {
           <p className=' text-gray-400'>Experience Required: <span className="text-white">
             {parseInt(data.internExperience) === 0 ? "Fresher" : data.internExperience + " years"}</span></p>
         </div>
-        {data.internSalary && <div>
+        {data.internSalary != 0 && data.internSalary && <div>
           <p className=' text-gray-400'>Expected Stipend: <span className="text-white">{new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(data.internSalary)} K</span></p>
         </div>}
         <p className='text-sm pt-2 text-gray-400'>Posted: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(data.$createdAt))}</span></p>
