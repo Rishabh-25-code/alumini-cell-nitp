@@ -61,7 +61,7 @@ const Internship = () => {
                                 <p className=' text-gray-400'>Experience Required: <span className="text-white">
                                     {parseInt(intern.internExperience) === 0 ? "Fresher" : intern.internExperience + " years"}</span></p>
                             </div>
-                            {intern.internSalary && <div>
+                            {intern.internSalary != 0 && intern.internSalary && <div>
                                 <p className=' text-gray-400'>Expected Stipend: <span className="text-white">{new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(intern.internSalary)} K</span></p>
                             </div>}
                             {intern.internDetailsLink && <div className='flex gap-2'>
@@ -76,6 +76,14 @@ const Internship = () => {
                                     ))
                                 }
                             </div>}
+                            {
+                                intern.internCompanyEmail && (
+                                    <div>
+                                        <p className=' text-gray-400'>For applying:</p>
+                                        <a target='_blank' href={`mailto:${intern.internCompanyEmail}`} className='text-sky-500'>{intern.internCompanyEmail}</a>
+                                    </div>
+                                )
+                            }
                             {
                                 intern.referralAvailable && (
                                     <div>
