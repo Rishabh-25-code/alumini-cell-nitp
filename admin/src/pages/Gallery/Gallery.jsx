@@ -5,7 +5,7 @@ import { deleteFile, compressedImageUpload, getImageURL } from "../../services/f
 import { MdClose, MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import Heading from "../../components/Headings/Heading"
 import Meta from "../../components/Meta/Meta";
-import Loader from "../../components/Loader";
+import Loader, { Loading } from "../../components/Loader";
 import { useQuery } from "@tanstack/react-query"
 import { FaTrash } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -17,6 +17,8 @@ const Gallery = memo(() => {
     const [image, setImage] = useState(null);
     const [showForm, setShowForm] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [bulkLoading, setBulkLoading] = useState(false);
+    const [bulkImages, setBulkImages] = useState([]);
 
     const { data, isLoading, isError, refetch } = useQuery({
         queryKey: ["gallery"],
@@ -96,14 +98,45 @@ const Gallery = memo(() => {
         }
     }
 
+    const handleBulkImageChange = async (e) => {
+        e.preventDefault();
+        const files = e.target.files;
+        if (files.length === 0) return toast.error("Please select an image.");
+        setBulkImages([...files]);
+    }
+
+    const handleBulkUpload = async (e) => {
+        e.preventDefault();
+
+        if (bulkImages.length === 0) return toast.error("Please select an image.");
+
+        try {
+            setBulkLoading(true);
+            const img = await Promise.allSettled(bulkImages.map(async (file) => {
+                const img = await compressedImageUpload(file, 0.25);
+                await createDocument("gallery", { imgId: img.$id, url: getImageURL(img.$id), name: file.name });
+                return { imgId: img.$id, url: getImageURL(img.$id), name: file.name };
+            }));
+            await refetch();
+            setBulkImages([]);
+            setShowForm(false);
+            toast.success("Images uploaded successfully.");
+        } catch (error) {
+            toast.error(error.message);
+        } finally {
+            setBulkLoading(false);
+        }
+    }
+
     return (
         <div className="pt-24">
             <Meta title="Gallery | NITP Alumni" />
             <Heading heading="PHOTOS" heading1="Our Photo Gallery" />
+            {bulkLoading && <Loading message={"Uploading Images"} />}
 
 
 
-            <div className="flex justify-center items-center my-6 relative">
+            <div className="flex flex-col gap-10 justify-center items-center my-6 relative">
                 {!showForm && <button className="absolute mr-10 right-5 bg-sky-600 px-8 py-2.5 rounded-xl" onClick={() => setShowForm(!showForm)}>
                     + Upload Image
                 </button>}
@@ -122,6 +155,27 @@ const Gallery = memo(() => {
                         </button>
                     </div>
                 </form>}
+
+                {
+                    showForm && <form onSubmit={handleBulkUpload} className="flex flex-col items-center justify-center gap-10">
+                        <label htmlFor="bulkImage" className="text-2xl font-semibold">
+                            Upload Bulk Images
+                        </label>
+                        <input type="file" accept="image/*" multiple onChange={handleBulkImageChange} />
+                        <div className="flex gap-5">
+                            <button onClick={(e) => {
+                                e.preventDefault();
+                                setImage(null);
+                                setShowForm(false);
+                            }} disabled={loading} className="bg-blue-500 disabled:bg-blue-600 py-2.5 px-10 rounded-2xl" type="submit">
+                                Cancel
+                            </button>
+                            <button disabled={loading} className="bg-rose-500 disabled:bg-rose-700 py-2.5 px-10 rounded-2xl" type="submit">
+                                Upload
+                            </button>
+                        </div>
+                    </form>
+                }
             </div>
 
 
@@ -176,7 +230,7 @@ const Gallery = memo(() => {
                     <div className="slide">
                         <div className="img-display">
                             <img
-                                src={data[currentImg].url}
+                                src={data.slice().reverse()[currentImg].url}
                                 alt="gallery-photo"
                             />
                         </div>
