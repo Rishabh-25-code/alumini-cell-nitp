@@ -6,8 +6,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Layout1, Layout2, Layout3 } from "./utils/Layout";
 import {
   Team,
-  TeamCard,
-  TeamCard2,
   HomePage,
   Gallery,
   Events,
@@ -16,11 +14,14 @@ import {
   Donate,
   Resources,
   About,
+  Blog,
   Blogs,
-  History,
   BihtaCampus,
-  AlumniDatabase,
   Error,
+  AlumniDatabase,
+  History,
+  JobOffers,
+  Job,
   SuccessStories,
   PreviousMeets,
   SignIn,
@@ -40,15 +41,12 @@ import {
   Experiences,
   Experience,
   VerifyEmail,
-  Job,
   Internship,
   ShareFeedback,
   EditAlumniProfile,
-} from "./pages/index";
-import JobOffers from "./pages/JobOffers/JobOffers";
-import Interships from "./pages/JobOffers/Interships";
-import Meet from "./pages/AlumniMeet/Meet";
-import Blog from "./pages/AlumniCorner/Blog";
+  Meet,
+  Internships
+} from "./pages";
 import ScrollToTop from "./hooks/useScrollToTop";
 import {
   QueryClient,
@@ -156,14 +154,9 @@ function App() {
       id: 18,
     },
     {
-      path: "/teamcard",
-      element: <TeamCard />,
+      path: "/jobs",
+      element: <JobOffers />,
       id: 19,
-    },
-    {
-      path: "/teamcard2",
-      element: <TeamCard2 />,
-      id: 20,
     },
     {
       path: "/bihtacampus",
@@ -181,13 +174,8 @@ function App() {
       id: 23,
     },
     {
-      path: "/jobs",
-      element: <JobOffers />,
-      id: 24,
-    },
-    {
       path: "/internships",
-      element: <Interships />,
+      element: <Internships />,
       id: 25,
     },
     {
