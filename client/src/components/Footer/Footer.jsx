@@ -15,7 +15,7 @@ const Footer = () => {
           </Link>
 
           <p className='max-w-[17rem] py-3 text-base text-gray-200'>One-stop portal for alumni of the National Institute of Technology, Patna, Bihar.</p>
-          <div className='flex gap-3 py-2 '>
+          {/* <div className='flex gap-3 py-2 '>
             <a aria-label={"FaceBook"} href="https://facebook.com" style={{ color: 'blue' }} className='transition ease-in delay-50 text-blue-500 hover:text-blue-600 hover:scale-[110%]'>
               <FaFacebook size={30} />
             </a>
@@ -26,7 +26,7 @@ const Footer = () => {
               <FaInstagram size={30} />
             </a>
 
-          </div>
+          </div> */}
         </div>
 
         <div className='mt-10 w-[100%] md:w-[100%] lg:w-[100%] order-2 md:order-2 lg:order-2'>
