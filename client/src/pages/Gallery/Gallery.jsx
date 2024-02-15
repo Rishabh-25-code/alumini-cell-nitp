@@ -73,7 +73,7 @@ const Gallery = memo(() => {
                         <p>Something went wrong.</p>
                     ) : (
                         <div className="grid w-full text-center lg:grid-cols-[minmax(100px,_1fr),minmax(100px,_1fr),minmax(100px,_1fr),minmax(100px,_1fr)] md:grid-cols-[minmax(100px,_1fr),minmax(100px,_1fr),minmax(100px,_1fr)] grid-cols-[minmax(100px,_1fr)] gap-6">
-                            {data.map((img, index) => {
+                            {data.slice().reverse().map((img, index) => {
                                 return (
                                     <div
                                         key={index}

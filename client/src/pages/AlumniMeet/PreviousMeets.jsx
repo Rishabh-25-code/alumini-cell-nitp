@@ -7,6 +7,16 @@ const PreviousMeets = () => {
 
     const meets = [
         {
+            img: "/images/Meet 2024/IMG-20240209-WA0018.jpg",
+            name: "Alumni Meet 2024",
+            date: "4, February 2024",
+            description: [
+                "The Bihar College of Engineering (BCE), now National Institute of Technology Patna (NIT-P), celebrated its centenary on February 4, 2024, with Chief Minister Nitish Kumar in attendance. Kumar, an alumnus, shared memories and announced plans for an on-campus incubation center. Hundreds of alumni, including international attendees, participated in cultural events and discussions, reaffirming their commitment to their alma mater and Bihar's development",
+
+                "The alumni gathering showcased BCE-NIT Patna's rich heritage through cultural programs and the recognition of distinguished alumni. BCE-NIT Patna's stellar reputation in engineering education is evident in its top rankings and contributions to research and industry collaborations. As it enters its next century, BCE-NIT Patna remains dedicated to academic excellence, innovation, and shaping the future of engineering education nationally and internationally."
+            ],
+        },
+        {
             img: "alumni-meet.jfif",
             name: "3rd Alumni Meet 2023",
             date: "24, December 2023",
@@ -27,6 +37,77 @@ const PreviousMeets = () => {
     ]
 
     const data = [
+
+        
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0018.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0019.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0020.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0021.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0022.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0023.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0024.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0025.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0026.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0027.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0028.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0029.jpg",
+            caption: "Alumni Meet 2024"
+        },
+        {
+            image: "/images/Meet 2024/IMG-20240209-WA0030.jpg",
+            caption: "Alumni Meet 2024"
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         {
             image: "/images/Meet5600/DSC_0645-min.jpg",
             caption: "Alumni Meet 2023"
