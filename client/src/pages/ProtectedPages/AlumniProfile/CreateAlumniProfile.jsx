@@ -93,9 +93,7 @@ const CreateAlumniProfile = () => {
 
                             <div className="flex md:flex-row flex-col gap-5 py-3">
                                 <Input
-                                    label={<>
-                                        Username <span className="text-red-500">*</span>
-                                    </>}
+                                    label="Username"
                                     type='text'
                                     require={true}
                                     placeholder='DoeJohn@73'
@@ -120,9 +118,7 @@ const CreateAlumniProfile = () => {
                                 />
 
                                 <Select
-                                    label={<>
-                                        What describes you best? <span className="text-red-500">*</span>
-                                    </>}
+                                    label="What describes you best?"
                                     id='role'
                                     require={true}
                                     options={[
@@ -175,9 +171,7 @@ const CreateAlumniProfile = () => {
 
                             <div className="flex md:flex-row flex-col gap-5">
                                 <Select
-                                    label={<>
-                                        Title <span className="text-red-500">*</span>
-                                    </>}
+                                    label="Title"
                                     require={true}
                                     placeholder="Select Title"
                                     title='title'
@@ -197,9 +191,7 @@ const CreateAlumniProfile = () => {
                                 />
 
                                 <Input
-                                    label={<>
-                                        Name <span className="text-red-500">*</span>
-                                    </>}
+                                    label="Name"
                                     type='text'
                                     require={true}
                                     placeholder='John Doe'
@@ -224,9 +216,7 @@ const CreateAlumniProfile = () => {
                                 />
 
                                 <Select
-                                    label={<>
-                                        Gender <span className="text-red-500">*</span>
-                                    </>}
+                                    label="Gender"
                                     id='Gender'
                                     require={true}
                                     options={[
@@ -254,9 +244,7 @@ const CreateAlumniProfile = () => {
 
                             <div className="flex md:flex-row flex-col gap-5">
                                 <Input
-                                    label={<>
-                                        Batch/Tenure start <span className="text-red-500">*</span>
-                                    </>}
+                                    label="Batch/Tenure start"
                                     type='number'
                                     require={true}
                                     min={1800}
@@ -326,9 +314,7 @@ const CreateAlumniProfile = () => {
                                 />
 
                                 <Select
-                                    label={<>
-                                        Department <span className="text-red-500">*</span>
-                                    </>}
+                                    label="Department"
                                     id='branch'
                                     require={true}
                                     options={branches}
@@ -375,9 +361,7 @@ const CreateAlumniProfile = () => {
                                 </div>
                                 <div className="flex-1">
                                     <Input
-                                        label={<>
-                                            Mobile No. <span className="text-red-500">*</span>
-                                        </>}
+                                        label="Mobile No."
                                         type='text'
                                         require={true}
                                         placeholder='Phone'

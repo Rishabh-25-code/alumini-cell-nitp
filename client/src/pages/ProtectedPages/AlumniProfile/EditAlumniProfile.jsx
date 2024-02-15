@@ -98,9 +98,7 @@ const EditAlumniProfile = () => {
                             <div className="flex md:flex-row flex-col gap-5 py-3">
                                 <Input
                                     require={true}
-                                    label={<>
-                                        Username <span className="text-red-500">*</span>
-                                    </>}
+                                    label="Username"
                                     type='text'
                                     placeholder='DoeJohn@73'
                                     title='username'
@@ -127,9 +125,7 @@ const EditAlumniProfile = () => {
 
 
                                 <Select
-                                    label={<>
-                                        What describes you best? <span className="text-red-500">*</span>
-                                    </>}
+                                    label="What describes you best?"
                                     id='role'
                                     require={true}
                                     options={[
@@ -186,9 +182,7 @@ const EditAlumniProfile = () => {
                             <div className="flex md:flex-row flex-col gap-5">
                                 <Select
                                     require={true}
-                                    label={<>
-                                        Title <span className="text-red-500">*</span>
-                                    </>}
+                                    label="Title"
                                     placeholder="Select Title"
                                     title='title'
                                     reactHookForm={register('title', {
@@ -333,9 +327,7 @@ const EditAlumniProfile = () => {
                                 />
 
                                 <Select
-                                    label={<>
-                                        Department <span className="text-red-500">*</span>
-                                    </>}
+                                    label="Department"
                                     id='branch'
                                     require={true}
                                     options={branches}
@@ -399,9 +391,7 @@ const EditAlumniProfile = () => {
 
                                 <div className="flex-1">
                                     <Input
-                                        label={<>
-                                            Mobile No. <span className="text-red-500">*</span>
-                                        </>}
+                                        label="Mobile No."
                                         type='text'
                                         placeholder='Phone'
                                         title='phone'
