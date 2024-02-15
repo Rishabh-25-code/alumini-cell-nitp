@@ -11,7 +11,7 @@ const NavBar = () => {
     const navLinks = [
         {
             name: "Home",
-            path: "/",
+            path: "https://alumini-nitp.vercel.app/",
             id: 0,
         },
         {
