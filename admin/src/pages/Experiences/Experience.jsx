@@ -51,14 +51,14 @@ const Experience = () => {
 
     return (
         <div className='pt-24 min-h-screen'>
-            <Meta name={experience ? experience.title : "Experience - NIT Patna"} />
-            <Heading heading={"Review Experiences"} />
+            <Meta name={experience ? experience.title : "News - NIT Patna"} />
+            <Heading heading={"Review News"} />
 
             {isPending ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
                 isError ? <div className='text-center py-48 text-red-500'>Something went wrong!</div> :
                     experience &&
                     <div className='m-auto mt-10 flex flex-col items-center justify-center'>
-                        <h1 className='lg:text-4xl md:text-3xl text-2xl font-bold lg:max-w-3xl md:max-w-2xl px-6 text-center m-auto text-sky-500 my-10 mt-6'>{experience.title}</h1>
+                        <h1 className='lg:text-4xl md:text-3xl text-2xl font-bold lg:max-w-3xl md:max-w-2xl px-6 text-center m-auto text-sky-500 my-10 mt-6'>{experience.title==="Experiences"?"News":experience.title}</h1>
 
                         <div className='flex items-center  lg:h-96 md:h-72 h-64 overflow-hidden lg:w-[70%] md:w-[80%] w-[85%] rounded-lg border border-gray-900'>
                             <img className='w-full' src={getImageURL(experience.imgUrl)} alt={experience.title} />
@@ -88,7 +88,7 @@ const Experience = () => {
                             <MarkDown content={experience.message}></MarkDown>
 
                             <div className='bg-gray-800 p-5 pb-8 rounded-xl mt-10'>
-                                <h2 className='text-center mb-5 text-2xl font-semibold text-rose-500'>Review Experience</h2>
+                                <h2 className='text-center mb-5 text-2xl font-semibold text-rose-500'>Review News</h2>
                                 <form onSubmit={handleSubmit(onSubmit)} className='flex md:flex-row flex-col gap-5'>
                                     <div className='flex-1'>
                                         <Input

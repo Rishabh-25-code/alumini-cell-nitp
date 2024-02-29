@@ -4,9 +4,9 @@ import { getImageURL } from '../../services/files';
 
 const BlogCard = ({ data, type }) => {
     return (
-        <Link data-aos="fade-up" to={`/${type === "experience" ? "experience" : "blog"}/${data.$id}`}>
+        <Link data-aos="fade-up" to={`/${type === "experience" ? "News" : "blog"}/${data.$id}`}>
             <div className='w-[23rem] p-4 border-2 hover:border-gray-800 bg-black  border-gray-900 rounded-2xl mt-5'>
-                <Link data-aos="fade-up" to={`/${type === "experience" ? "experience" : "blog"}/${data.$id}`}>
+                <Link data-aos="fade-up" to={`/${type === "experience" ? "News" : "blog"}/${data.$id}`}>
                     <div className='flex items-center h-44 overflow-hidden w-full rounded-lg border border-gray-900'>
                         <img loading='lazy' className='w-full' src={getImageURL(data.imgUrl)} alt={data.name} />
                     </div>
@@ -32,7 +32,7 @@ const BlogCard = ({ data, type }) => {
                             const shareItem = {
                                 title: "Check out this blog by NITP Alumni.",
                                 text: data.title + " by " + data.name,
-                                url: `https://alumni.nitp.ac.in/${type === "experience" ? "experience" : "blog"}/${data.$id}`,
+                                url: `https://alumni.nitp.ac.in/${type === "experience" ? "News" : "blog"}/${data.$id}`,
                             }
 
                             if (navigator.share) {

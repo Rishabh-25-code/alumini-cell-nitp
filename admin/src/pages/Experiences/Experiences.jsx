@@ -34,8 +34,8 @@ const Experiences = () => {
 
   return (
     <div className='pt-24'>
-      <Meta name="Experiences" />
-      <Heading heading="Experiences"></Heading>
+      <Meta name="News" />
+      <Heading heading="News"></Heading>
       <div className='px-10 flex mt-6 gap-4'>
         <button onClick={() => {
           changeType('reviewing')
@@ -53,7 +53,7 @@ const Experiences = () => {
       <div className='flex flex-wrap gap-6 m-auto px-5 items-center justify-center mb-32 mt-10'>
         {isPending ? <Loader /> :
           isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
-            experiences.length === 0 ? <div className='text-center py-16 font-medium text-sky-500'>No experiences found!</div> :
+            experiences.length === 0 ? <div className='text-center py-16 font-medium text-sky-500'>No News found!</div> :
               experiences.map((blog) => (
                 <BlogCard type={"experience"} data={blog} key={blog.$id} />
               ))}
