@@ -40,11 +40,7 @@ const HomePage = () => {
               </h6>
 
               <h6 className="mb-4 font-medium">
-                Prof. Pradip K. Jain joined as a Lecturer of Electronics
-                Engineering at Institute of Technology, Banaras Hindu University
-                in 1981, and became Professor in the Year 2001. He has made
-                significant contribution in the areas of analysis, modeling and
-                development of high power microwave tubes and gyrotron devices.
+              Prof. Pradip K. Jain joined as a Lecturer of Electronics Engineering at Banaras Hindu University's Institute of Technology in 1981, becoming a Professor in 2001. Currently, he serves as Director of the National Institute of Technology, Patna. He has held various roles at IIT (BHU), Varanasi, including Dean of Research and Development and Head of the Department of Electronics Engineering. Prof. Jain has extensive collaborative research experience with laboratories like CEERI, DRDO, and IPR. He was a Visiting Scientist at MIT and Penn State University in 2008 and 2007, respectively. With over 20 guided doctoral theses, 100 SCI journal papers, and 200 conference proceedings, he's a senior member of IEEE and a fellow of several prestigious engineering societies.
               </h6>
             </ul>
           </div>
@@ -52,7 +48,7 @@ const HomePage = () => {
             <div className="m-auto my-12 flex justify-center items-center lg:h-80 h-64 lg:w-80 w-64 rounded-full overflow-hidden">
               <img
                 src="/images/PKJ_Desk_Photo.jpg"
-                className="shadow-lg h-full dark:shadow-black/30"
+                className="shadow-lg h-full dark:shadow-black/30  "
                 alt="Director's Desk"
               />
             </div>
