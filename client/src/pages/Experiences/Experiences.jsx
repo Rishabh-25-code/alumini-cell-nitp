@@ -42,7 +42,7 @@ const Experiences = () => {
   return (
     <div>
       <Meta name="Experiences" />
-      <Heading heading="Experiences by our Alumni"></Heading>
+      <Heading heading="News by our Alumni"></Heading>
 
       <div className='lg:w-[80%] w-full md:px-6 px-3 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
         <div className='flex-1 relative w-full'>
