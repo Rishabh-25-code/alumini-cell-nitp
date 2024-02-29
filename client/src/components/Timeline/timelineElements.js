@@ -55,6 +55,14 @@ const timelineElements = [
     date: "",
     icon: "school",
   },
+  {
+    id: 8,
+    title: "Future (2024-25)",
+    description:
+       "The future of NIT Patna includes the inauguration of a state-of-the-art campus in Sikandarpur, near Bihta, covering an expansive area of 125 acres. This ambitious project is poised to significantly enhance the institute's infrastructure and facilities. The commencement of the shifting process is anticipated to coincide with the academic session of 2024-25",
+    date: "",
+    icon: "school",
+  },
 ];
 
 export default timelineElements;
