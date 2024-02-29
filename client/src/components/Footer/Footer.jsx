@@ -47,7 +47,7 @@ const Footer = () => {
             <li className='hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/notableAlumni">Notable Alumni</Link></li>
             <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/events">Upcoming Events</Link></li>
             <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/success-stories">Success Stories</Link></li>
-            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/experiences">Experiences</Link></li>
+            <li className=' hover:text-blue-600'><Link style={{ color: "#aaa" }} to="/News">News</Link></li>
           </ul>
         </div>
 

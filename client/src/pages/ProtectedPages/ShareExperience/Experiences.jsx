@@ -35,7 +35,7 @@ const Experiences = ({ user }) => {
             }
 
             await refetch();
-            toast.success('Experience deleted successfully');
+            toast.success('News deleted successfully');
         } catch (error) {
             toast.error(error.message);
         }
@@ -49,7 +49,7 @@ const Experiences = ({ user }) => {
                         : experiences.map((experience, index) => (
                             <div key={index} className="relative border border-gray-800 w-full rounded-2xl p-5">
                                 <button onClick={() => {
-                                    const ans = confirm('Are you sure you want to delete this experience?');
+                                    const ans = confirm('Are you sure you want to delete this News?');
                                     if (ans) {
                                         deleteExperience(experience.$id);
                                     }

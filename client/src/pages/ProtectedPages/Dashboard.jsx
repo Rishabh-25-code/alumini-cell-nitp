@@ -22,9 +22,9 @@ const Dashboard = () => {
       link: '/blogs',
     },
     {
-      name: 'Read Experiences',
+      name: 'Read News',
       desc: 'Experiences',
-      link: '/experiences',
+      link: '/News',
     },
     {
       name: 'Explore Internships',
@@ -57,9 +57,9 @@ const Dashboard = () => {
       link: '/write-a-blog?tab=new-post',
     },
     {
-      name: 'Share Experience',
+      name: 'Share News',
       desc: 'Experiences',
-      link: '/share-experience?tab=new-posts',
+      link: '/share-News?tab=new-posts',
     },
     {
       name: 'Report Bugs',
@@ -67,7 +67,6 @@ const Dashboard = () => {
       link: '/report-bug',
     }
   ]
-
 
   return (
     <div className='lg:px-9 px-4'>
@@ -80,7 +79,7 @@ const Dashboard = () => {
             <div className="flex md:flex-row flex-col group p-6 md:items-center items-start gap-y-3 hover:scale-[98%] transition-all justify-between">
               <div>
                 <div className="text-lg group-hover:text-sky-500 font-medium">{item.name}</div>
-                <div className="text-gray-400 text-sm">{item.desc}</div>
+                <div className="text-gray-400 text-sm">{item.desc==="Experiences"?"News":item.desc}</div>
               </div>
               <FaArrowRight className="md:text-2xl md:self-center self-end text-xl text-gray-400 group-hover:text-sky-500" />
             </div>

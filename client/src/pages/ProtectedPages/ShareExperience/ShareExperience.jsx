@@ -13,8 +13,8 @@ const ShareExperience = () => {
 
   return (
     <div className='lg:px-9 px-4'>
-      <Meta title="Share Experience | Alumni NITP" />
-      <PageHeading heading='Share' heading1='Experience' />
+      <Meta title="Share News | Alumni NITP" />
+      <PageHeading heading='Share' heading1='News' />
 
       <div className='border-b border-gray-800 w-fit flex gap-5 text-base'>
         <button
@@ -26,7 +26,7 @@ const ShareExperience = () => {
             : 'text-gray-400 border-b-black'
             }`}
         >
-          Your Posted Experiences
+          Your Posted News
         </button>
         <button
           onClick={() => {
@@ -37,7 +37,7 @@ const ShareExperience = () => {
             : ' text-gray-400 border-b-black'
             }`}
         >
-          Post an Experience
+          Post an News
         </button>
       </div>
 

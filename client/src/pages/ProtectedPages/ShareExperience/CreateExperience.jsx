@@ -40,7 +40,7 @@ const CreateExperience = ({ user }) => {
             }
 
             const res = await createDocument('experiences', data);
-            toast.success("Experience shared successfully!");
+            toast.success("News shared successfully!");
             resetForm();
         } catch (err) {
             toast.error(err.message);

@@ -26,9 +26,9 @@ const SideNav = () => {
       path: "/alumni-profile",
     },
     {
-      name: "Share Experience",
+      name: "Share News",
       icon: <GiGiftOfKnowledge className="inline-block" />,
-      path: "/share-experience",
+      path: "/share-News",
     },
     {
       name: "Write a Blog",

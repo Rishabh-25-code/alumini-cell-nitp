@@ -121,12 +121,12 @@ function App() {
       id: 10,
     },
     {
-      path: "/experiences",
+      path: "/News",
       element: <Experiences />,
       id: 11,
     },
     {
-      path: "/experience/:experienceId",
+      path: "/News/:experienceId",
       element: <Experience />,
       id: 12,
     },
@@ -234,7 +234,7 @@ function App() {
       id: 5
     },
     {
-      path: "/share-experience",
+      path: "/share-News",
       component: <ShareExperience />,
       id: 6
     },

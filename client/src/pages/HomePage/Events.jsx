@@ -112,7 +112,7 @@ const Events = () => {
             <Heading1 details={"We host a variety of events throughout the year to engage and connect with our esteemed alumni, providing platforms for networking, professional development, and fostering a sense of continued community among our graduates."} text1={"Eventful Life at"} text2={" NIT Patna"} />
 
             <div className='flex flex-wrap m-auto mt-20 gap-y-5 gap-5 items-center justify-evenly mb-10'>
-                {data.slice(0, 3).map((event, id) => (
+                {data?.slice(0, 3).map((event, id) => (
                     <EventCard data={event} key={id} />
                 ))}
             </div>

@@ -21,11 +21,11 @@ const Experience = () => {
 
     return (
         <div className='pt-36 min-h-screen'>
-            <Meta name={experience ? experience.title : "Experience - NIT Patna"} />
+            <Meta name={experience ? experience.title : "News - NIT Patna"} />
 
             {isPending ? <div className='w-full h-[10rem] flex items-center justify-center'><Loader /></div> :
                 isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
-                    experience && experience.status !== "published" ? <div className='text-center py-24 text-red-500'>Experience not found!</div> :
+                    experience && experience.status !== "published" ? <div className='text-center py-24 text-red-500'>News not found!</div> :
                         experience &&
                         <div className='m-auto flex flex-col items-center justify-center'>
                             <h1 className='lg:text-4xl md:text-3xl text-2xl font-bold lg:max-w-3xl md:max-w-2xl px-6 text-center m-auto text-sky-500 my-10 mt-6'>{experience.title}</h1>
@@ -58,7 +58,7 @@ const Experience = () => {
                                     className="text-lg font-medium text-sky-400 hover:scale-105 mt-5 self-end"
                                     onClick={() => {
                                         const shareItem = {
-                                            title: "Check out this college experience by NITP Alumni.",
+                                            title: "Check out this college News by NITP Alumni.",
                                             text: experience.title + " by " + experience.name,
                                             url: `https://alumini.nitp.vercel.app/blogs/${experience.$id}`,
                                         }

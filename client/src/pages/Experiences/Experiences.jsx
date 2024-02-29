@@ -41,12 +41,12 @@ const Experiences = () => {
 
   return (
     <div>
-      <Meta name="Experiences" />
-      <Heading heading="Experiences by our Alumni"></Heading>
+      <Meta name="News" />
+      <Heading heading="News by our Alumni"></Heading>
 
       <div className='lg:w-[80%] w-full md:px-6 px-3 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
         <div className='flex-1 relative w-full'>
-          <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search experience by title.." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
+          <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search News by title.." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
           <FiSearch className="absolute md:top-4 top-3 text-xl left-3.5 text-gray-400" />
         </div>
       </div>
@@ -54,7 +54,7 @@ const Experiences = () => {
       <div className='flex flex-wrap gap-6 m-auto px-5 items-center justify-center mb-32 mt-16'>
         {isLoading ? <Loader /> :
           isError ? <div className='text-center text-red-500'>Something went wrong!</div> :
-            experiences && experiences.length === 0 ? <div className='text-center py-16 font-medium text-sky-500'>No experiences found!</div> :
+            experiences && experiences.length === 0 ? <div className='text-center py-16 font-medium text-sky-500'>No News found!</div> :
               experiences.map((experience) => (
                 <BlogCard type="experience" data={experience} key={experience.$id} />
               ))}
