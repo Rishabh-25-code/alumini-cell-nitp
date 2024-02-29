@@ -7,8 +7,6 @@ import AlumniCorner from "./AlumniCorner/AlumniCorner";
 import Donate from "./Donate/Donate";
 import Resources from "./Resources/Resources";
 import About from "./About/About";
-import TeamCard from "./Team/TeamCard";
-import TeamCard2 from "./Team/TeamCard2";
 import Blogs from "./Blogs/Blogs";
 import BihtaCampus from "./Bihta-Campus/BihtaCampus";
 import Error from "./Error/Error";
@@ -17,6 +15,7 @@ import History from "./History/History"
 import JobOffers from "./JobOffers/JobOffers";
 import Job from "./JobOffers/Job";
 import Internship from "./JobOffers/Internship";
+import Internships from "./JobOffers/Internships";
 import SuccessStories from "./SuccessStories/SuccessStories";
 import PreviousMeets from "./AlumniMeet/PreviousMeets";
 import Experiences from "./Experiences/Experiences";
@@ -39,5 +38,7 @@ import ReportBug from "./ProtectedPages/ReportBug/ReportBug";
 import VerifyEmail from "./Auth/VerifyEmail";
 import ShareFeedback from "./ProtectedPages/ShareFeedback/ShareFeedback";
 import EditAlumniProfile from "./ProtectedPages/AlumniProfile/EditAlumniProfile";
+import Blog from "./AlumniCorner/Blog";
+import Meet from "./AlumniMeet/Meet";
 
-export { Team, HomePage, Gallery, Events, NotableAlumni, AlumniCorner, Donate, Resources, About, TeamCard, TeamCard2, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers,Job, SuccessStories, PreviousMeets, SignIn, SignUp, Verify, ForgotPassword, ResetPassword, Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard, ReportBug, Experiences, Experience, VerifyEmail, Internship, ShareFeedback, EditAlumniProfile };
+export { Team, HomePage, Gallery, Events, NotableAlumni, AlumniCorner, Donate, Resources, About, Blogs, BihtaCampus, Error, AlumniDatabase, History, JobOffers,Job, SuccessStories, PreviousMeets, SignIn, SignUp, Verify, ForgotPassword, ResetPassword, Profile, AlumniProfile, GiveTestimonial, PostInernship, PostJob, ShareExperience, WriteBlog, Dashboard, ReportBug, Experiences, Experience, VerifyEmail, Internship, ShareFeedback, EditAlumniProfile, Blog, Meet, Internships };

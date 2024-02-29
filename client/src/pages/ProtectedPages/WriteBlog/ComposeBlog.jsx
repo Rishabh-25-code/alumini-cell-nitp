@@ -40,7 +40,7 @@ const ComposeBlog = ({ user }) => {
             }
 
             const res = await createDocument('blogs', data);
-            toast.success("Blog published successfully!");
+            toast.success("Blog sent for review to admin!");
             resetForm();
         } catch (err) {
             toast.error(err.message);
@@ -157,9 +157,7 @@ const ComposeBlog = ({ user }) => {
                         type="number"
                         placeholder="2002"
                         title="batch"
-                        require={true}
                         reactHookForm={register('batch', {
-                            required: 'Batch is required',
                             minLength: {
                                 value: 4,
                                 message: 'Batch must be at least 4 characters',

@@ -5,6 +5,8 @@ import Marquee from "react-fast-marquee";
 import AlumniCard from "../../pages/NotableAlumni/AlumniCard";
 
 const NotableAlumniMarquee = () => {
+    const [screenWidth, setScreenWidth] = React.useState(getScreenWidth());
+
     const notableAlums = [
         {
             name: "Manas Bihari Verma",
@@ -64,13 +66,35 @@ const NotableAlumniMarquee = () => {
         }
     ]
 
+    React.useEffect(() => {
+        window.addEventListener("resize", () => {
+            setScreenWidth(getScreenWidth());
+        });
+
+        return () => {
+            window.removeEventListener("resize", () => {
+                setScreenWidth(getScreenWidth());
+            });
+        };
+    }, [screenWidth]);
+
+    function getScreenWidth (){
+        const width = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+
+        return width;
+    }
+
 
     return (
         <div className="bg-gray-900 pt-16 pb-10">
             <div className='flex items-center justify-center text-center gap-3 flex-col'>
                 <p data-aos="fade-up" className='lg:text-5xl text-4xl font-semibold pb-10'>Our Notable <span className='text-sky-500'>Alumni</span></p>
 
-                <Marquee speed={70} autoFill={true} className="lg:mb-12 md:mb-10 mb-6" pauseOnHover={true}>
+                <Marquee speed={70} autoFill={true} className="mb-5" pauseOnHover={
+                    screenWidth > 768 ? true : false
+                }>
                     {
                         notableAlums.map((alum, i) => (
                             <div key={i} className="lg:max-w-lg max-w-md px-5">

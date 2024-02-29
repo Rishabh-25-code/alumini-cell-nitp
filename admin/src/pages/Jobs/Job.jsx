@@ -3,12 +3,13 @@ import { getDocument, updateDocument } from '../../services/documents';
 import { useParams, useNavigate } from 'react-router-dom'
 import Meta from '../../components/Meta/Meta';
 import Loader from '../../components/Loader';
-import { getImageURL } from '../../services/files';
+import { getImageURL, getDownloadURL } from '../../services/files';
 import { Input, Select } from '../../components/FormComponents';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import Heading from '../../components/Headings/Heading';
+import sendNotification from '../../utils/sendNotification';
 
 const Job = () => {
     const navigate = useNavigate();
@@ -40,6 +41,11 @@ const Job = () => {
             await updateDocument('job-opportunity', jobId, jobData);
             await refetch();
             reset();
+            if (data.status === 'published') {
+                await sendNotification(job.userID, 'Job Published', `Your job "${job.jobTitle}" has been published!`);
+            } else if (data.status === 'rejected') {
+                await sendNotification(job.userID, 'Job Rejected', `Your job "${job.jobTitle}" has been rejected!`);
+            }
             toast.success(`job ${data.status} successful!`);
             navigate(`/jobs?type=${data.status}&page=1`);
         } catch (error) {
@@ -81,7 +87,10 @@ const Job = () => {
                                     <p className='text-sm text-gray-400'>Expires: <span className="text-white">{new Intl.DateTimeFormat('en-IN', { year: 'numeric', month: '2-digit', day: '2-digit', weekday: 'short' }).format(new Date(job.jobDeadline))}</span></p>
                                 </div>
                             </div>
-                            <div className='mt-5'>
+                            {job.jobCompanyDescription && <div className='mt-3'>
+                                <p className=''><span className='font-medium text-gray-400'>About Company : </span>{job.jobCompanyDescription}</p>
+                            </div>}
+                            <div className='mt-2'>
                                 <p className=''>{job.jobDescription}</p>
                             </div>
                             <div>
@@ -91,9 +100,9 @@ const Job = () => {
                                 <p className=' text-gray-400'>Experience Required: <span className="text-white">
                                     {parseInt(job.jobExperience) === 0 ? "Fresher" : job.jobExperience + " years"}</span></p>
                             </div>
-                            <div>
+                            {job.jobSalary != 0 && <div>
                                 <p className=' text-gray-400'>Expected Salary: <span className="text-white">{job.jobSalary} LPA</span></p>
-                            </div>
+                            </div>}
                             {job.jobDetailsLink && <div className='flex gap-2'>
                                 <p className=' text-gray-400'>Job Info Doc:</p>
                                 <a href={getDownloadURL(job.jobDetailsLink)} target='_blank' rel='noreferrer'><button className='text-sm text-sky-500'>download</button></a>
@@ -106,6 +115,14 @@ const Job = () => {
                                     ))
                                 }
                             </div>}
+                            {
+                                job.jobCompanyEmail && (
+                                    <div>
+                                        <p className=' text-gray-400'>For applying:</p>
+                                        <a target='_blank' href={`mailto:${job.jobCompanyEmail}`} className='text-sky-500'>{job.jobCompanyEmail}</a>
+                                    </div>
+                                )
+                            }
                             {
                                 job.referralAvailable && (
                                     <div>
@@ -142,7 +159,7 @@ const Job = () => {
                                                 value: job.statusDesc
                                             })}
                                             error={errors.statusDesc?.message}
-                                            className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                            className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                         />
                                     </div>
                                     <Select
@@ -159,7 +176,7 @@ const Job = () => {
                                             { name: 'published', value: 'published' },
                                             { name: 'rejected', value: 'rejected' },
                                         ]}
-                                        className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300 bg-gray-900'
+                                        className='bg-gray-900 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                     />
                                     <button disabled={loading} onClick={handleSubmit(onSubmit)} className='bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 h-10 self-end px-5 py-2 mt-2 rounded-lg cursor-pointer text-white'>Submit</button>
                                 </form>
@@ -171,4 +188,4 @@ const Job = () => {
     )
 }
 
-export default Job
+export default Job;

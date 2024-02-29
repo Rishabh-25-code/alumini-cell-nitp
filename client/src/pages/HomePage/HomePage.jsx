@@ -53,6 +53,7 @@ const HomePage = () => {
               <img
                 src="/images/PKJ_Desk_Photo.jpg"
                 className="shadow-lg h-full dark:shadow-black/30"
+                alt="Director's Desk"
               />
             </div>
           </div>
@@ -69,7 +70,7 @@ const HomePage = () => {
               </p>
             </div>
 
-            <Link data-aos="fade-up" to="/history"><button
+            <Link aria-label={"Know More about NIT Patna"} data-aos="fade-up" to="/history"><button
               type="button"
               style={{
                 textDecoration: "none",
@@ -78,7 +79,7 @@ const HomePage = () => {
                 alignItems: "start",
               }}
             >
-              <p className="flex text-left items-center text-lg text-sky-400 hover:text-sky-600">READ MORE <BsArrowUpRight size={23} className="ml-1" /></p>
+              <p className="flex text-left items-center text-lg text-sky-400 hover:text-sky-600">History on NIT, Patna<BsArrowUpRight size={23} className="ml-1" /></p>
             </button></Link>
           </div>
         </div>

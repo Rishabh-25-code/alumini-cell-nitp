@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect, lazy } from "react";
+import { useState, useEffect } from "react";
 import MalePlaceholder from "../../assets/man-placeholder.jpg";
 import Meta from "../../components/Meta/Meta";
 import { branches } from "../../utils/branches";
@@ -114,11 +114,12 @@ const AlumniDatabase = () => {
                     An error has occurred! Please try again later.
                 </div> :
 
-                    alumni?.documents.length === 0 ?
+                    alumni && alumni.documents.length === 0 ?
                         <div className="pt-32 px-8 text-center text-base font-medium text-white">
                             No items.
                         </div>
-                        : <>
+                        :
+                        <>
                             {currentPopup !== null && <AlumniCard person={alumni.documents[currentPopup]} close={() => setCurrentPopup(null)} />}
                             <div className="mt-24 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                                 {alumni.documents.map((person, idx) => {
@@ -169,7 +170,7 @@ const AlumniDatabase = () => {
                                 })}
                             </div>
 
-                            {alumni && <>
+                            <>
                                 <div data-aos="fade-up" className="text-center px-3 pt-16">
                                     <p>Showing <span className="text-sky-500">{itemsPerPage * (page - 1) + 1}-{Math.min(
                                         itemsPerPage * page,
@@ -186,7 +187,6 @@ const AlumniDatabase = () => {
                                     }} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Next</button>
                                 </div>
                             </>
-                            }
                         </>
             }
         </div>

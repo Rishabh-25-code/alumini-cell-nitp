@@ -198,6 +198,7 @@ const NavBar = () => {
 
             <button
               type="button"
+              aria-label={menu ? "Close Menu" : "Open Menu"}
               onClick={() => {
                 if (menu == false) {
                   setMenu(true);
@@ -217,6 +218,7 @@ const NavBar = () => {
       <div className={`lg:hidden xl:hidden fixed flex flex-col items-start text-base px-7 py-2 justify-center gap-2 inset-0 w-full h-full z-[100] shadow-md text-white bg-gray-950 transition-all ease-in-out delay-150 ${menu ? "translate-x-0" : "translate-x-[100%]"}`}>
         <button
           type="button"
+          aria-label={menu ? "Close Menu" : "Open Menu"}
           onClick={() => setMenu(!menu)}
           className="animate-pulse lg:hidden top-3 right-6 border focus:ring-[2.5px] focus:outline-none font-medium rounded-lg text-lg px-2.5 py-2.5 mt-2 text-center items-center focus:ring-gray-400 bg-gray-800 border-gray-900 text-white hover:bg-gray-700 absolute"
         >

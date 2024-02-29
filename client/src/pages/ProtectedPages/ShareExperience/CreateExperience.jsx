@@ -40,7 +40,11 @@ const CreateExperience = ({ user }) => {
             }
 
             const res = await createDocument('experiences', data);
+<<<<<<< HEAD
             toast.success("News shared successfully!");
+=======
+            toast.success("Experience sent to admin for approval!");
+>>>>>>> b8500e0a0ee2127eff2bbcb19c06e6b687fd8f33
             resetForm();
         } catch (err) {
             toast.error(err.message);
@@ -159,9 +163,8 @@ const CreateExperience = ({ user }) => {
                         type="number"
                         placeholder="2002"
                         title="batch"
-                        require={true}
+                        id="batch"
                         reactHookForm={register('batch', {
-                            required: 'Batch is required',
                             minLength: {
                                 value: 4,
                                 message: 'Batch must be at least 4 characters',
