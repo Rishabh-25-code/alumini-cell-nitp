@@ -28,7 +28,7 @@ const HomePage = () => {
         {/* Director section starts here */}
         <div className="grid bg-gray-900 text-white px-10 pt-20 pb-10 gap-6 text-center md:grid-cols-3 lg:gap-12">
           <div data-aos="fade-right">
-            <h1 className="mb-2.5 lg:text-left md:text-left text-center text-sky-400 lg:text-5xl md:text-4xl text-4xl font-bold leading-tight">
+            <h1 className="mb-1 lg:text-left md:text-left text-center text-sky-400 lg:text-4xl md:text-3xl text-3xl font-bold leading-tight">
               From Director's Desk
             </h1>
             <h5 className="text-3xl font-semibold text-center md:text-left mt-10">
@@ -40,7 +40,7 @@ const HomePage = () => {
               </h6>
 
               <h6 className="mb-4 font-medium">
-              Prof. Pradip K. Jain joined as a Lecturer of Electronics Engineering at Banaras Hindu University's Institute of Technology in 1981, becoming a Professor in 2001. Currently, he serves as Director of the National Institute of Technology, Patna. He has held various roles at IIT (BHU), Varanasi, including Dean of Research and Development and Head of the Department of Electronics Engineering. Prof. Jain has extensive collaborative research experience with laboratories like CEERI, DRDO, and IPR. He was a Visiting Scientist at MIT and Penn State University in 2008 and 2007, respectively. With over 20 guided doctoral theses, 100 SCI journal papers, and 200 conference proceedings, he's a senior member of IEEE and a fellow of several prestigious engineering societies.
+              Prof. Pradip K. Jain joined as a Lecturer of Electronics Engineering at BHU's Institute of Technology in 1981, becoming a Professor in 2001. Currently, he serves as Director of the NIT, Patna. He has held various roles at IIT (BHU), Varanasi, including Dean of Research and Development and Head of the Department of Electronics Engineering. Prof. Jain has extensive collaborative research experience with laboratories like CEERI, DRDO, and IPR. He was a Visiting Scientist at MIT and Penn State University in 2008 and 2007, respectively. With over 20 guided doctoral theses, 100 SCI journal papers, and 200 conference proceedings, he's a senior member of IEEE and a fellow of several prestigious engineering societies.
               </h6>
             </ul>
           </div>
