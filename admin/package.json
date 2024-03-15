@@ -13,7 +13,9 @@
     "@tanstack/react-query": "^5.17.12",
     "aos": "^2.3.4",
     "appwrite": "^13.0.1",
+    "axios": "^1.6.7",
     "browser-image-compression": "^2.0.2",
+    "file-saver": "^2.0.5",
     "react": "^18.2.0",
     "react-datepicker": "^5.0.0",
     "react-dom": "^18.2.0",
@@ -29,7 +31,8 @@
     "remark-gfm": "^4.0.0",
     "remark-rehype": "^11.1.0",
     "sass": "^1.60.0",
-    "shortid": "^2.2.16"
+    "shortid": "^2.2.16",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
