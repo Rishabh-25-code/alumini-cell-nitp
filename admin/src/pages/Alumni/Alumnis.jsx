@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import { branches } from "../../utils/branches";
 import { FiSearch } from "react-icons/fi";
 import { toast } from "react-toastify";
+import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
 
 const Alumnis = () => {
     const [searchParams, setSearchParams] = useSearchParams({
@@ -31,8 +33,13 @@ const Alumnis = () => {
 
     const { isLoading, isError, data: alumni, refetch, error } = useQuery({
         queryKey: ["members", role, page, search, branch, status],
-        queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch, status),
-    });
+        queryFn: () =>  getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch, status),
+        },
+    );
+    
+    // console.log(Array.isArray(alumni) );
+    // console.log((alumni) );
+    // console.log(page);
 
     const changeParams = (key, value) => {
         setSearchParams(prev => {
@@ -88,6 +95,68 @@ const Alumnis = () => {
         }
     }
 
+    const [alumniData, setAlumniData] = useState([]);
+    const [isLoadingAllData, setIsLoadingAllData] = useState(false);
+    // const axios = require('axios');
+
+    const fetchData = async (fileName) => {
+        let res = [];
+        // console.log(res);
+        let page = 1;
+        let totalPages = 1;
+       
+        setIsLoadingAllData(true);
+        try {
+            // console.log(member);
+            let { data:member } = alumni;
+            
+            res=[...alumni.documents];
+            // calculating total pages
+            totalPages = Math.ceil(alumni.total / itemsPerPage);
+            // console.log(totalPages);
+
+            // Fetch all pages of data
+                while (page<=totalPages) {
+                    member = await getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch, status);
+                    // updating the array in every iteration
+                    res=[...res,...member.documents];
+                    console.log(res);
+                    page++; 
+                }
+               
+            setAlumniData(res);
+            console.log("Data fetching completed");
+        } catch (error) {
+            console.error('Error fetching alumni data:', error);
+        } 
+        finally {
+            setIsLoadingAllData(false);
+        }
+        // console.log(res);
+
+        //code to convert data to excel sheet
+        const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+        const fileExtension = '.xlsx';
+
+        const filteredData = res.map(item => ({
+            name: item.name,
+            email: item.email,
+            role: item.role,
+            degree: item.degree,
+        }));
+
+        const ws = XLSX.utils.json_to_sheet(filteredData);
+        const wb = { Sheets: { 'data': ws }, SheetNames: ['data'] };
+        const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+        const data = new Blob([excelBuffer], {type: fileType});
+        FileSaver.saveAs(data, fileName + fileExtension);
+
+        // console.log(filteredData);
+    };
+    
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <div className="pt-24">
@@ -120,6 +189,11 @@ const Alumnis = () => {
                 }} className={`border-blue-500 border font-semibold  px-4 py-1.5 text-base rounded-xl hover:bg-blue-500 hover:text-gray-900 ${status === "uploaded" ? 'bg-blue-500 text-gray-900' : 'text-blue-500'}`}>
                     Uploaded
                 </button>
+
+                <button  className={`border-orange-500 border font-semibold left px-4 py-1.5 text-base rounded-xl hover:bg-orange-500 hover:text-gray-900`} variant="warning" onClick={(e) => fetchData("Alumni Data")}>
+                    Download Data
+                </button>
+
             </div>
 
             <div className='lg:w-[80%] w-full md:px-6 px-3 mt-16  m-auto relative flex md:flex-row flex-col md:gap-3 gap-2 items-center'>
@@ -185,8 +259,12 @@ const Alumnis = () => {
                         <div className="pt-32 px-8 text-center text-base font-medium text-white">
                             No items.
                         </div>
-                        : <>
+                        : <> 
                             <div className="mt-16 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+                            {/* {console.log(alumni)} */}
+
+
+
                                 {alumni.documents.map((person, idx) => {
                                     return (
                                         <Link
