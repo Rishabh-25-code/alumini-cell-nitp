@@ -407,7 +407,8 @@ const EditAlumniProfile = () => {
                                                 maxLength: {
                                                     value: 14,
                                                     message: 'Mobile no. must not exceed 14 characters'
-                                                }
+                                                },
+                                                value: alumni.phone
                                             })}
                                             className='bg-gray-950 rounded-lg px-3 py-2 mt-1 w-full text-gray-300'
                                             errors={errors.phone}
