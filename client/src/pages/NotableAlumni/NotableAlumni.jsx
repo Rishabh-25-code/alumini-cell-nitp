@@ -1,9 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Heading from '../../components/Headings/Heading'
+import { getDocuments, createDocument, deleteDocument } from '../../services/documents';
 import AlumniCard from './AlumniCard'
+import { useQuery } from '@tanstack/react-query';
 import Meta from '../../components/Meta/Meta'
 
 const NotableAlumni = () => {
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const { isLoading, data, isError } = useQuery({
+    queryKey: ['notable-alumni', page],
+    queryFn: () => getDocuments('notable-alumni', 25, 25 * (page - 1)),
+    staleTime: 1000 * 60 * 3,
+  });
+
 
   const notableAlums = [
     {
@@ -70,10 +80,10 @@ const NotableAlumni = () => {
       <Meta name="Notable Alumni" />
       <Heading heading="Notable Alumni" heading1="of NIT Patna"></Heading>
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 px-6 lg:gap-6 gap-8 py-16'>
-        {
-          notableAlums.map((alum, i) => (
+        {data && data.length > 0?
+          data.map((alum, i) => (
             <AlumniCard key={i} alum={alum} />
-          ))
+          )):""
         }
       </div>
     </div>

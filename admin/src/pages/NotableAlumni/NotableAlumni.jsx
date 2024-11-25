@@ -19,9 +19,10 @@ const NotableAlumni = () => {
 
   const { isLoading, data, isError, refetch } = useQuery({
     queryKey: ["notable-alumni"],
-    queryFn: () => getDocuments("notable-alumni", 4, 4 * (page - 1)),
+    queryFn: () => getDocuments("notable-alumni", 25, 25 * (page - 1)),
     staleTime: 1000 * 60 * 3,
   });
+
 
   const onSubmit = async (data) => {
     if (!profileImage) return toast.error("Please select a profile image!");
@@ -171,6 +172,7 @@ const AlumniCard = ({ alum, refetch }) => {
           <h3 className='mb-2'>({alum.designation})</h3>
           <p className='lg:text-base text-sm text-justify text-gray-400 md:block'>{alum.about}</p>
         </div>
+        <button onClick={(handleDelete)}> Delete </button>
       </div>
     </div>
   )
