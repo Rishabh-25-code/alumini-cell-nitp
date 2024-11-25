@@ -80,7 +80,9 @@ const NotableAlumni = () => {
       <Meta name="Notable Alumni" />
       <Heading heading="Notable Alumni" heading1="of NIT Patna"></Heading>
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 px-6 lg:gap-6 gap-8 py-16'>
-        {data && data.length > 0?
+        {isLoading ? <p>Loading...</p> :
+        isError ? <p>Error</p> :
+        data && data.length > 0?
           data.map((alum, i) => (
             <AlumniCard key={i} alum={alum} />
           )):""

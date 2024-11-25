@@ -104,7 +104,8 @@ const NotableAlumniMarquee = () => {
                 <Marquee speed={70} autoFill={true} className="mb-5" pauseOnHover={
                     screenWidth > 768 ? true : false
                 }>
-                    {
+                    {isLoading ? <p>Loading...</p> :
+                        isError ? <p>Error</p> :
                         data.map((alum, i) => (
                             <div key={i} className="lg:max-w-lg max-w-md px-5">
                                 <AlumniCard key={i} alum={alum} />
