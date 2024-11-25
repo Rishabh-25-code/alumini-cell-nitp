@@ -1,12 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { RxArrowRight } from 'react-icons/rx'
 import { Link } from 'react-router-dom'
+import { getDocuments, createDocument, deleteDocument } from '../../services/documents';
 import Marquee from "react-fast-marquee";
+import { useQuery } from '@tanstack/react-query';
 import AlumniCard from "../../pages/NotableAlumni/AlumniCard";
 
 const NotableAlumniMarquee = () => {
     const [screenWidth, setScreenWidth] = React.useState(getScreenWidth());
-
+    const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const { isLoading, data, isError } = useQuery({
+      queryKey: ['notable-alumni', page],
+      queryFn: () => getDocuments('notable-alumni', 25, 25 * (page - 1)),
+      staleTime: 1000 * 60 * 3,
+    });
+    
     const notableAlums = [
         {
             name: "Manas Bihari Verma",
@@ -96,7 +105,7 @@ const NotableAlumniMarquee = () => {
                     screenWidth > 768 ? true : false
                 }>
                     {
-                        notableAlums.map((alum, i) => (
+                        data.map((alum, i) => (
                             <div key={i} className="lg:max-w-lg max-w-md px-5">
                                 <AlumniCard key={i} alum={alum} />
                             </div>
