@@ -1,17 +1,84 @@
 import React from 'react'
 import Heading from '../../components/Headings/Heading'
+import { FaShare } from "react-icons/fa";
 import { MdDateRange, MdLocationPin } from "react-icons/md";
 import Meta from '../../components/Meta/Meta';
+const meets = [
+  {
+      img: "/images/Meet 2024/poster.jpg",
+      name: "Alumni Meet 2024",
+      date: "29, December 2024",
+      description: [
+          "Alumni Meet 2024 - A Celebration of Memories and Bonds",
 
+          "We are excited to announce Alumni Meet 2024, a special occasion dedicated to celebrating the cherished memories, lifelong friendships, and the unbreakable bond shared with our Alma Mater, NIT Patna.",
+
+          "🗓 Date: 29th December 2024",
+"📍 Venue: NIT Patna, Ashok Rajpath (Old Campus)",
+"Join us for this heartwarming event to reconnect with your batchmates, relive the golden days, and witness how far our institution has evolved.",
+
+          "As the New Year approaches, take a moment to celebrate with us and kickstart your festivities in the most meaningful way. Whether you already have plans or are yet to make them, this is one gathering you simply cannot miss!",
+          "Let's come together to share stories, smiles, and create new memories as we celebrate the past and step into the future, united by our shared legacy.",
+
+"We can't wait to welcome you back to campus!",
+      ],
+  },
+ 
+]
 const Meet = () => {
   return (
     <div>
       <Meta name="Alumni Meet" />
       <Heading heading="Alumni Meet"></Heading>
       <div className='flex justify-center'>
-      <h1 className='text-4xl'>
-        Details of Alumni Meet 2024 will be updated soon...
-      </h1>
+      <div className="flex flex-col gap-10 pt-12 pb-32">
+                {
+                    meets.map((meet, index) => (
+                        <div key={index} className='bg-gray-900 lg:w-[50rem] md:w-[90%] w-[95%] m-auto shadow rounded-2xl p-6'>
+                            <div className='border-b border-b-gray-700 text-2xl px-2 py-2 pt-0 text-sky-500 font-bold'>
+                                {meet.name}
+                            </div>
+
+                            <div className='pt-5'>
+                                <img height={720} loading="lazy" className='w-full' src={meet.img} alt="alumni meet" />
+
+                                <div className='flex flex-col text-justify gap-5 pt-5'>
+                                    {
+                                        meet.description.map((desc, index) => (
+                                            <p key={index}>
+                                                {desc}
+                                            </p>
+                                        ))
+                                    }
+                                </div>
+
+                                <button
+                                    type="button"
+                                    className="text-lg font-medium text-sky-400 hover:scale-105 mt-5"
+                                    onClick={() => {
+                                        const shareItem = {
+                                            title: meet.name,
+                                            text: meet.description[0],
+                                            url: "https://alumni.nitp.ac.in/prev-alumni-meets",
+                                        }
+
+                                        if (navigator.share) {
+                                            navigator.share(shareItem)
+                                                .then(() => console.log('Successful share'))
+                                                .catch((error) => console.log('Error sharing', error));
+                                        } else {
+                                            console.log("Your browser does not support Web Share API");
+                                        }
+                                    }}
+
+                                >
+                                    Share <FaShare className='inline-block ml-2' />
+                                </button>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
       </div>
       
 
