@@ -57,6 +57,7 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import PrivateComponent from "./components/PrivateComponent/PrivateComponent"
+import Loader from "./components/Loader";
 
 const queryClient = new QueryClient()
 

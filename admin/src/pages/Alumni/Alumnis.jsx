@@ -37,10 +37,6 @@ const Alumnis = () => {
     },
     );
 
-    // console.log(Array.isArray(alumni) );
-    // console.log((alumni) );
-    // console.log(page);
-
     const changeParams = (key, value) => {
         setSearchParams(prev => {
             prev.set(key, value);
@@ -65,7 +61,6 @@ const Alumnis = () => {
             for (let i = 0; i < alumnis.length; i++) {
                 await approveAlumni(alumnis[i]);
             }
-            // toast.success("Alumni approved successfully");
             refetch();
         } catch (error) {
             toast.error(error.message);
@@ -97,18 +92,14 @@ const Alumnis = () => {
 
     const fetchData = async (fileName) => {
         let res = [];
-        // console.log(res);
         let page = 1;
         let totalPages = 1;
 
         try {
-            // console.log(member);
             let { data: member } = alumni;
 
             res = [...alumni.documents];
-            // calculating total pages
             totalPages = Math.ceil(alumni.total / itemsPerPage);
-            // console.log(totalPages);
 
             // Fetch all pages of data
             while (page <= totalPages) {
@@ -254,10 +245,6 @@ const Alumnis = () => {
                         </div>
                         : <>
                             <div className="mt-16 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
-                                {/* {console.log(alumni)} */}
-
-
-
                                 {alumni.documents.map((person, idx) => {
                                     return (
                                         <Link
