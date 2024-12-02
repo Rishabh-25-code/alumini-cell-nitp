@@ -10,6 +10,7 @@ import { FiSearch } from "react-icons/fi";
 import { toast } from "react-toastify";
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
+import ManPlaceholder from "../../assets/man-placeholder.jpg"
 
 const Alumnis = () => {
     const [searchParams, setSearchParams] = useSearchParams({
@@ -180,38 +181,48 @@ const Alumnis = () => {
 
             </div>
 
-            <div className='lg:w-[80%] w-full md:px-6 px-3 mt-16  m-auto relative flex md:flex-row flex-col md:gap-3 gap-2 items-center'>
+            <div className='lg:w-[80%] flex-col w-full md:px-6 px-3 mt-16  m-auto relative flex  md:gap-3 gap-2 items-center'>
                 <div className='flex-1 relative w-full'>
                     <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by title, company, skills.." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-[#101010] text-gray-200 font-normal" />
                     <FiSearch className="absolute md:top-3 top-3 text-xl left-3.5 text-gray-400" />
                 </div>
 
-                <div className="flex gap-2">
-                    <select value={role} onChange={(e) => {
-                        changeParams('role', e.target.value);
-                    }} className='bg-[#101010] rounded-xl lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal text-gray-300'>
-                        <option value="">Select Type</option>
-                        <option value="all">All Roles</option>
-                        <option value="ug">UG</option>
-                        <option value="pg">PG</option>
-                        <option value="phd">Ph.D</option>
-                        <option value="faculty-staff">Faculty/Staff</option>
-                    </select>
+                <div className="flex md:gap-4 gap-2">
+                    <div className="flex items-center gap-3">
+                        <p>
+                            <span className="md:text-lg text-base font-medium text-sky-500">Role:</span>
+                        </p>
+                        <select value={role} onChange={(e) => {
+                            changeParams('role', e.target.value);
+                        }} className='bg-transparent lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal border-l-0 border-r-0 border-t-0 md:w-[14rem] w-[8rem] text-gray-300 border-b'>
+                            <option className="bg-gray-900" value="">Select Type</option>
+                            <option className="bg-gray-900" value="all">All Roles</option>
+                            <option className="bg-gray-900" value="ug">UG</option>
+                            <option className="bg-gray-900" value="pg">PG</option>
+                            <option className="bg-gray-900" value="phd">Ph.D</option>
+                            <option className="bg-gray-900" value="faculty-staff">Faculty/Staff</option>
+                        </select>
+                    </div>
 
-                    <select value={searchType} onChange={(e) => {
-                        setSearchType(e.target.value);
-                        changeParams('type', e.target.value);
-                    }} className='bg-[#101010] rounded-xl lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal text-gray-300'>
-                        <option value="">Search By</option>
-                        <option value="name">Name</option>
-                        <option value="batchEnd">Batch</option>
-                        <option value="company">Company</option>
-                        <option value="designation">Designation</option>
-                    </select>
+                    <div className="flex items-center gap-3">
+                        <p>
+                            <span className="md:text-lg text-base font-medium text-sky-500">Search by:</span>
+                        </p>
+                        <select value={searchType} onChange={(e) => {
+                            setSearchType(e.target.value);
+                            changeParams('type', e.target.value);
+                        }} className='bg-transparent lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal border-l-0 border-r-0 border-t-0 md:w-[14rem] w-[8rem] text-gray-300 border-b'>
+                            <option className="bg-gray-900" value="">Search By</option>
+                            <option className="bg-gray-900" value="name">Name</option>
+                            <option className="bg-gray-900" value="batchEnd">Batch</option>
+                            <option className="bg-gray-900" value="company">Company</option>
+                            <option className="bg-gray-900" value="designation">Designation</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
-            <div className="lg:max-w-3xl md:max-w-2xl w-full md:px-6 px-4 m-auto pt-5">
+            <div className="lg:max-w-3xl md:max-w-2xl w-full md:px-6 px-4 m-auto pt-10">
                 <div className="flex flex-wrap items-center gap-3 justify-center pt-6">
                     <button onClick={() => {
                         setBranch(null);
@@ -253,12 +264,12 @@ const Alumnis = () => {
                                             key={idx}
                                             className="rounded-xl border hover:bg-[#101010] hover:border-gray-700 hover:border-l-sky-400  border-gray-900 bg-[#000000] border-l-sky-500 border-l-4 shadow-lg w-full"
                                         >
-                                            <div className="flex flex-row gap-5 hover:scale-95 transition p-4 py-6">
-                                                <div className="lg:w-20 bg-cover flex items-center justify-center md:w-16 w-14 lg:h-20 md:h-16 h-14 rounded-full overflow-hidden">
+                                            <div className="flex flex-col gap-5 hover:scale-95 transition p-4 py-6">
+                                                <div className="bg-cover flex items-center justify-center lg:h-32 md:h-24 h-20 lg:w-32 md:w-24 w-20 rounded-3xl overflow-hidden">
                                                     <img
                                                         id={person.$id}
-                                                        className="w-full object-cover lg:h-20 md:h-16 h-14"
-                                                        src={person.image ? getImageURL(person.image) : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw-1B2f_Lrb6WkenAVQw206_ZKeFRfYSm1MqMh8ckJdg&s'}
+                                                        className="w-full object-cover lg:h-32 md:h-24 h-20"
+                                                        src={person.image ? getImageURL(person.image) : ManPlaceholder}
                                                         alt={person.name}
                                                     />
                                                 </div>

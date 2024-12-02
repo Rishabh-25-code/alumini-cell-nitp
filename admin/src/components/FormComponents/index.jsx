@@ -61,7 +61,7 @@ export const TextArea = ({ id, label, placeholder, title, reactHookForm, classNa
     )
 }
 
-export const ProfileImage = ({ profileImage, setProfileImage, placeholder, ...rest }) => {
+export const ProfileImage = ({ profileImage, setProfileImage, placeholder, isedit, ...rest }) => {
     const [overSize, setOverSize] = useState(false);
 
     const handleImageChange = (e) => {
@@ -77,7 +77,7 @@ export const ProfileImage = ({ profileImage, setProfileImage, placeholder, ...re
     return (
         <div className="flex-1 flex flex-col items-center justify-center gap-1">
             <div className="h-28 w-28 rounded-full overflow-hidden flex items-center justify-center">
-                <img className="w-28 h-auto" src={profileImage ? URL.createObjectURL(profileImage) : placeholder} alt="placeholder" />
+                <img className="w-28 h-auto" src={profileImage ? isedit && profileImage.startsWith('https') ? profileImage : URL.createObjectURL(profileImage) : placeholder} alt="placeholder" />
             </div>
             <label htmlFor="profileImage" className='text-gray-300'>Profile Image (max 2MB)</label>
             <button className="relative bg-sky-500 hover:bg-sky-600 px-5 py-1 mt-2 rounded-full cursor-pointer text-white">Select

@@ -1,8 +1,8 @@
 import Heading from '../../components/Headings/Heading';
 import { useQuery } from '@tanstack/react-query';
-import { getDocuments, createDocument, deleteDocument } from '../../services/documents';
+import { getDocuments, createDocument, deleteDocument, updateDocument } from '../../services/documents';
 import { compressedImageUpload, deleteFile } from '../../services/files';
-import { FaStar, FaTrash } from "react-icons/fa";
+import { FaStar, FaTrash, FaEdit } from "react-icons/fa";
 import { getImageURL } from '../../services/files';
 import { useForm } from 'react-hook-form';
 import { Input, TextArea, ProfileImage } from '../../components/FormComponents';
@@ -11,20 +11,46 @@ import { toast } from 'react-toastify';
 import { Loading } from '../../../../client/src/components/Loader';
 
 const NotableAlumni = () => {
-  const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [profileImage, setProfileImage] = useState(null);
-  const { register, reset, handleSubmit, formState: { errors } } = useForm({ trim: true });
+  const [isUpdate, setIsUpdate] = useState(null);
+  const { register, reset, handleSubmit, formState: { errors }, setValue } = useForm({ trim: true });
 
   const { isLoading, data, isError, refetch } = useQuery({
     queryKey: ["notable-alumni"],
-    queryFn: () => getDocuments("notable-alumni", 25, 25 * (page - 1)),
+    queryFn: () => getDocuments("notable-alumni"),
     staleTime: 1000 * 60 * 3,
   });
 
 
   const onSubmit = async (data) => {
+    if (isUpdate) {
+      try {
+        setLoading(true);
+        data = { ...data, image: isUpdate.image, $id: isUpdate.$id };
+        if (profileImage && !profileImage.startsWith('https')) {
+          await deleteFile(isUpdate.image);
+          setMessage('Uploading Image....');
+          let res = await compressedImageUpload(profileImage);
+          data.image = res.$id;
+        }
+
+        setMessage('Updating Data....');
+        await updateDocument("notable-alumni", data.$id, data);
+        toast.success("Alumni updated successfully!");
+        refetch();
+        reset();
+        setProfileImage(null);
+        setIsUpdate(null);
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
     if (!profileImage) return toast.error("Please select a profile image!");
 
     try {
@@ -39,6 +65,7 @@ const NotableAlumni = () => {
       setMessage('Uploading Data....');
       await createDocument("notable-alumni", data);
       toast.success("Alumni added successfully!");
+      setProfileImage(null);
       refetch();
       reset();
     } catch (error) {
@@ -47,6 +74,16 @@ const NotableAlumni = () => {
       setLoading(false);
     }
   }
+
+  const handleEdit = (alum) => {
+    setValue('name', alum.name);
+    setValue('designation', alum.designation);
+    setValue('about', alum.about);
+    setProfileImage(getImageURL(alum.image).href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsUpdate(alum);
+  }
+
 
   return (
     <div className='pt-24 relative'>
@@ -57,9 +94,9 @@ const NotableAlumni = () => {
 
       <form className='lg:max-w-4xl lg:p-0 w-full px-6 py-6 m-auto flex flex-col gap-3' onSubmit={handleSubmit(onSubmit)}>
         <ProfileImage
-          required={true}
           profileImage={profileImage}
           setProfileImage={setProfileImage}
+          isedit={isUpdate}
           placeholder={'https://t4.ftcdn.net/jpg/03/32/59/65/360_F_332596535_lAdLhf6KzbW6PWXBWeIFTovTii1drkbT.jpg'}
         />
 
@@ -136,7 +173,7 @@ const NotableAlumni = () => {
           data.length === 0 ? <p>No data</p> :
             <div className='grid gap-6 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-10 md:px-5 px-5 lg:py-10 py-5'>
               {data.map((alum, index) => (
-                <AlumniCard refetch={refetch} key={index} alum={alum} />
+                <AlumniCard refetch={refetch} key={index} alum={alum} handleEdit={handleEdit} />
               ))}
             </div>
       }
@@ -147,9 +184,10 @@ const NotableAlumni = () => {
 export default NotableAlumni;
 
 
-const AlumniCard = ({ alum, refetch }) => {
+const AlumniCard = ({ alum, refetch, handleEdit }) => {
 
   const handleDelete = async () => {
+    if (!confirm("Are you sure you want to delete this alumni?")) return;
     try {
       await Promise.all([deleteFile(alum.image), deleteDocument("notable-alumni", alum.$id)]);
       refetch();
@@ -159,12 +197,20 @@ const AlumniCard = ({ alum, refetch }) => {
     }
   }
 
-
   return (
-    <div data-aos="fade-in" className='rounded-3xl shadow-lg bg-[#000000] hover:bg-gray-950 border border-gray-900'>
-      <div className='relative flex hover:scale-[98%] transition lg:flex-row md:flex-col flex-col lg:items-start items-center justify-start  lg:py-6 py-10 lg:gap-3 md:gap-3 gap-6 px-5 lg:max-w-full max-w-[24rem] m-auto'>
-        <div className='relative lg:h-24 md:h-32 h-36 lg:w-24 md:w-32 w-36 rounded-full flex items-center justify-center lg:min-w-[6rem]'>
-          <img loading='lazy' className=' lg:h-24 md:h-32 h-36 lg:w-24 md:w-32 w-36 rounded-full' src={getImageURL(alum.image)} alt="project" />
+    <div className='rounded-3xl relative shadow-lg bg-[#1c1c1c] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:20px_24px] hover:bg-[#101010] border border-gray-900'>
+      <div className='absolute top-4 right-4 flex gap-2 z-50'>
+        <button className='text-green-500 text-2xl p-1 cursor-pointer'>
+          <FaEdit onClick={() => handleEdit(alum)} />
+        </button>
+
+        <button className='text-red-500 text-2xl p-1 cursor-pointer'>
+          <FaTrash onClick={handleDelete} />
+        </button>
+      </div>
+      <div className='relative flex hover:scale-[98%] transition flex-col lg:items-start items-center justify-start  lg:py-6 py-10 lg:gap-3 md:gap-3 gap-6 px-5 lg:max-w-full max-w-[22rem] m-auto'>
+        <div className='relative lg:h-28 md:h-32 h-36 lg:w-28 md:w-32 w-36 rounded-full flex items-center justify-center lg:min-w-[6rem]'>
+          <img loading='lazy' className=' lg:h-28 md:h-32 h-36 lg:w-28 md:w-32 w-36 rounded-full' src={getImageURL(alum.image)} alt="project" />
           <FaStar className='absolute bottom-0 lg:text-3xl text-5xl right-0 text-[#ffc547]' />
         </div>
         <div className='w-full flex flex-col lg:text-left text-center'>
@@ -172,7 +218,6 @@ const AlumniCard = ({ alum, refetch }) => {
           <h3 className='mb-2'>({alum.designation})</h3>
           <p className='lg:text-base text-sm text-justify text-gray-400 md:block'>{alum.about}</p>
         </div>
-        <button onClick={(handleDelete)}> Delete </button>
       </div>
     </div>
   )

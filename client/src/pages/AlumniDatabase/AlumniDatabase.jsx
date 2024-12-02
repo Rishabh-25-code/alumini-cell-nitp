@@ -47,7 +47,6 @@ const AlumniDatabase = () => {
             changeParams('search', searchText);
         }, 500);
 
-        // Cleanup the timer on component unmount
         return () => clearTimeout(debounceTimer);
     }, [searchText]);
 
@@ -68,22 +67,27 @@ const AlumniDatabase = () => {
                         </h5>
                     </div>
 
-                    <div className='lg:w-[80%] w-full md:px-6 px-3 mt-5  m-auto relative flex md:gap-3 gap-2 items-center'>
+                    <div className='lg:w-[80%] w-full md:px-6 px-3 mt-5  m-auto relative flex flex-col md:gap-3 gap-2 items-center'>
                         <div className='flex-1 relative w-full'>
-                            <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by title, company, skills.." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
+                            <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by name, company, batch or designation." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
                             <FiSearch className="absolute md:top-4 top-3 text-xl left-3.5 text-gray-400" />
                         </div>
 
-                        <select value={searchType} onChange={(e) => {
-                            setSearchType(e.target.value);
-                            changeParams('type', e.target.value);
-                        }} className='bg-gray-950 rounded-xl lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal text-gray-300'>
-                            <option value="">Search By</option>
-                            <option value="name">Name</option>
-                            <option value="batchEnd">Batch</option>
-                            <option value="company">Company</option>
-                            <option value="designation">Designation</option>
-                        </select>
+                        <div className="flex items-center gap-3">
+                            <p>
+                                <span className="text-lg font-medium text-sky-500">Search by:</span>
+                            </p>
+                            <select value={searchType} onChange={(e) => {
+                                setSearchType(e.target.value);
+                                changeParams('type', e.target.value);
+                            }} className='bg-transparent lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal border-l-0 border-r-0 border-t-0 md:w-[16rem] w-[12rem] text-gray-300 border-b'>
+                                <option className="bg-gray-900" value="">Search By</option>
+                                <option className="bg-gray-900" value="name">Name</option>
+                                <option className="bg-gray-900" value="batchEnd">Batch</option>
+                                <option className="bg-gray-900" value="company">Company</option>
+                                <option className="bg-gray-900" value="designation">Designation</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div className="lg:max-w-3xl md:max-w-2xl w-full md:px-6 px-4 m-auto py-10 pt-5">
@@ -130,11 +134,11 @@ const AlumniDatabase = () => {
                                             key={idx}
                                             className="rounded-xl border hover:bg-[#101010] hover:border-gray-700 hover:border-l-sky-400  border-gray-900 cursor-pointer bg-[#000000] border-l-sky-500 border-l-4 shadow-lg w-full"
                                         >
-                                            <div className="flex flex-row gap-5 hover:scale-95 transition p-4 py-6">
-                                                <div className="lg:w-20 bg-cover flex items-center justify-center md:w-16 w-14 lg:h-20 md:h-16 h-14 rounded-full overflow-hidden">
+                                            <div className="flex flex-col gap-5 hover:scale-95 transition p-4 py-6">
+                                                <div className="bg-cover flex items-center justify-center lg:h-32 md:h-24 h-20 lg:w-32 md:w-24 w-20 rounded-3xl overflow-hidden">
                                                     <img
                                                         id={person.$id}
-                                                        className="w-full object-cover lg:h-20 md:h-16 h-14"
+                                                        className="w-full object-cover lg:h-32 md:h-24 h-20"
                                                         src={person.image ? getImageURL(person.image) : MalePlaceholder}
                                                         alt={person.name}
                                                     />
