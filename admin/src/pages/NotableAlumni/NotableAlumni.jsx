@@ -131,7 +131,7 @@ const NotableAlumni = () => {
             })
           }}
           className='border border-gray-800 bg-[#101010] rounded-lg p-2 w-full'
-          errors={errors.name}
+          errors={errors.designation}
         />
 
         <TextArea
@@ -148,7 +148,7 @@ const NotableAlumni = () => {
             })
           }}
           className='border border-gray-800 bg-[#101010] rounded-lg p-2 w-full'
-          errors={errors.name}
+          errors={errors.about}
         />
 
         <div className='text-white self-end w-fit flex gap-3 pt-6 pb-4'>

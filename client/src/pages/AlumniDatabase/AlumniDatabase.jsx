@@ -81,7 +81,6 @@ const AlumniDatabase = () => {
                                 setSearchType(e.target.value);
                                 changeParams('type', e.target.value);
                             }} className='bg-transparent lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal border-l-0 border-r-0 border-t-0 md:w-[16rem] w-[12rem] text-gray-300 border-b'>
-                                <option className="bg-gray-900" value="">Search By</option>
                                 <option className="bg-gray-900" value="name">Name</option>
                                 <option className="bg-gray-900" value="batchEnd">Batch</option>
                                 <option className="bg-gray-900" value="company">Company</option>
