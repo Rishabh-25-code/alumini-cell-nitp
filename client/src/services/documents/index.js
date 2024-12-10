@@ -157,7 +157,7 @@ export const getAlumniData = async (limit = 24, offset = 0, role, search, type, 
         Query.offset(offset),
         Query.equal('role', [role]),
         Query.equal('status', ["approved"]),
-        Query.orderDesc('$createdAt'),
+        Query.orderAsc('$createdAt'),
     ];
 
     if (branch) queries.push(Query.equal('branch', [branch]));
