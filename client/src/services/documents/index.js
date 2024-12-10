@@ -153,11 +153,11 @@ export const getPaginatedPublishedDocs = async (COLLECTION_ID, limit = 24, offse
 export const getAlumniData = async (limit = 24, offset = 0, role, search, type, branch) => {
     // only fetch alumni with no status or status is approved
     const queries = [
-        Query.orderDesc('$updatedAt'),
         Query.limit(limit),
         Query.offset(offset),
         Query.equal('role', [role]),
         Query.equal('status', ["approved"]),
+        Query.orderDesc('$createdAt'),
     ];
 
     if (branch) queries.push(Query.equal('branch', [branch]));
