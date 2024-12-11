@@ -59,7 +59,7 @@ const Meet = () => {
                                         const shareItem = {
                                             title: meet.name,
                                             text: meet.description[0],
-                                            url: "https://alumni.nitp.ac.in/prev-alumni-meets",
+                                            url: "https://alumini-nitp.vercel.app/alumni-meet",
                                         }
 
                                         if (navigator.share) {
