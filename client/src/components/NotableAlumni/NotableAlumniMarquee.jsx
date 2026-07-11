@@ -2,11 +2,9 @@ import { useState, useEffect } from 'react'
 import { RxArrowRight } from 'react-icons/rx'
 import { Link } from 'react-router-dom'
 import { getDocuments } from '../../services/documents';
-import MarqueeModule from "react-fast-marquee";
+import Marquee from "react-fast-marquee";
 import { useQuery } from '@tanstack/react-query';
 import AlumniCard from "../../pages/NotableAlumni/AlumniCard";
-
-const Marquee = MarqueeModule.default?.default || MarqueeModule.default || MarqueeModule;
 
 const NotableAlumniMarquee = () => {
     const [screenWidth, setScreenWidth] = useState(getScreenWidth());
