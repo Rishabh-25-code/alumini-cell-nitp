@@ -1,7 +1,7 @@
 import { useState, useEffect, memo, useCallback } from "react"
 import './Gallery.scss'
 import { getDocuments, deleteDocument, createDocument } from "../../services/documents";
-import { deleteFile, compressedImageUpload, getImageURL } from "../../services/files";
+import { deleteFile, compressedImageUpload, getImageURL, normalizeImageURL } from "../../services/files";
 import { MdClose, MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import Heading from "../../components/Headings/Heading"
 import Meta from "../../components/Meta/Meta";
@@ -205,7 +205,7 @@ const Gallery = memo(() => {
                                             height={1080}
                                             width={1920}
                                             loading="lazy"
-                                            src={img.url}
+                                            src={normalizeImageURL(img.url)}
                                             alt="gallery-photo"
                                             onClick={() => {
                                                 setCurrentImg(index);
@@ -230,7 +230,7 @@ const Gallery = memo(() => {
                     <div className="slide">
                         <div className="img-display">
                             <img
-                                src={data.slice().reverse()[currentImg].url}
+                                src={normalizeImageURL(data.slice().reverse()[currentImg].url)}
                                 alt="gallery-photo"
                             />
                         </div>

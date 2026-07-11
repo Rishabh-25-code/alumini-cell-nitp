@@ -1,4 +1,4 @@
-import { storage, BUCKET_ID } from "../../config/appwrite";
+import { storage, BUCKET_ID, PROJECT_ID } from "../../config/appwrite";
 import { ID } from "appwrite";
 import imageCompression from "browser-image-compression";
 
@@ -25,8 +25,18 @@ export const deleteFile = async (fileId) => {
     }
 }
 
-export const getImageURL = (fileId, width = 0, height = 0, gravity = "center", quality = "90") => {
-    return storage.getFilePreview(BUCKET_ID, fileId, width, height, gravity, quality);
+export const normalizeImageURL = (url) => {
+    if (!url) return url;
+
+    const legacyEndpoint = `https://${"cloud.appwrite.io"}/v1`;
+
+    return url
+        .replace(legacyEndpoint, "https://fra.cloud.appwrite.io/v1")
+        .replace(/\/preview(\?.*)?$/, (match) => match.replace("/preview", "/view").replace(/\?.*/, `?project=${PROJECT_ID}`));
+}
+
+export const getImageURL = (fileId) => {
+    return storage.getFileView(BUCKET_ID, fileId);
 }
 
 export const getDownloadURL = (fileId) => {

@@ -148,7 +148,7 @@ const PreviousPosts = () => {
                         <p className='text-sm text-gray-400 pb-1'>Posted By: </p>
                         <div className='flex gap-2 items-center'>
                             <div className='w-10 h-10 rounded-full overflow-hidden flex items-center justify-center'>
-                                <img src={`https://cloud.appwrite.io/v1/avatars/initials?name=${post.name.split(" ").join("+")}&width=80&height=80`} alt='User Profile' />
+                                <img src={`https://fra.cloud.appwrite.io/v1/avatars/initials?name=${post.name.split(" ").join("+")}&width=80&height=80`} alt='User Profile' />
                             </div>
                             <div className='flex flex-col'>
                                 <p className='font-medium'>{post.name} ({post.yourBatchyourBatch} {post.yourDepartment})</p>

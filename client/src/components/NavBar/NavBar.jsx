@@ -187,7 +187,7 @@ const NavBar = () => {
             {
               user ?
                 <Link to="/profile">
-                  <img title="profile" src={`https://cloud.appwrite.io/v1/avatars/initials?name=${user.name.split(" ").join("+")}&width=80&height=80`} alt="profile" className="h-11 w-11 hover:scale-105 transition-all rounded-full" />
+                  <img title="profile" src={`https://fra.cloud.appwrite.io/v1/avatars/initials?name=${user.name.split(" ").join("+")}&width=80&height=80`} alt="profile" className="h-11 w-11 hover:scale-105 transition-all rounded-full" />
                 </Link> :
                 <Link to="/signin">
                   <button className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-xl">
