@@ -3,6 +3,7 @@ import { getDocuments } from '../../services/documents';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import Heading1 from '../../components/Headings/Heading1';
+import { normalizeImageURL } from '../../services/files';
 
 const Gallery = () => {
     const { data, isLoading, isError } = useQuery({
@@ -26,7 +27,7 @@ const Gallery = () => {
                                 <div className="grid md:grid-cols-5 grid-cols-4 lg:gap-10 md:gap-6 gap-3">
                                     {data.map((image, id) => (
                                         <div data-aos="fade-up" className="overflow-hidden aspect-square rounded-2xl flex items-center justify-center" key={id}>
-                                            <img loading="lazy" className="border-black h-full w-auto hover:scale-125 duration-200" src={image.url} alt="gallery-photo" />
+                                            <img loading="lazy" className="border-black h-full w-auto hover:scale-125 duration-200" src={normalizeImageURL(image.url)} alt="gallery-photo" />
                                         </div>
                                     ))}
 

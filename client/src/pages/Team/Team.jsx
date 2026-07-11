@@ -54,7 +54,7 @@ const Team = () => {
       ]
     },
     {
-      img2: "https://cloud.appwrite.io/v1/storage/buckets/photos/files/6511acf5b7d542b7f9a8/view?project=tesla-official-web&mode=admin",
+      img2: "https://fra.cloud.appwrite.io/v1/storage/buckets/photos/files/6511acf5b7d542b7f9a8/view?project=tesla-official-web&mode=admin",
       name2: "Suraj Kumar",
       detail2: "Team Member",
       academics: "BTech. EE 2021-25",
@@ -78,7 +78,7 @@ const Team = () => {
       ]
     },
     {
-      img2: "https://cloud.appwrite.io/v1/storage/buckets/photos/files/6511dd92b3788d8e6199/view?project=tesla-official-web&mode=admin",
+      img2: "https://fra.cloud.appwrite.io/v1/storage/buckets/photos/files/6511dd92b3788d8e6199/view?project=tesla-official-web&mode=admin",
       name2: "Lipi Aditi",
       detail2: "Team Member",
       academics: "BTech. ME 2021-25",

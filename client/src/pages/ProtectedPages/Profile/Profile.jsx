@@ -14,7 +14,7 @@ const Profile = () => {
                 </h2>
                 <div className="flex justify-between lg:flex-row md:flex-row flex-col gap-4 items-start">
                     <div>
-                        <img className="h-20 w-20 rounded-full" src={`https://cloud.appwrite.io/v1/avatars/initials?name=${user.name.split(" ").join("+")}&width=80&height=80`} alt={user.name} />
+                        <img className="h-20 w-20 rounded-full" src={`https://fra.cloud.appwrite.io/v1/avatars/initials?name=${user.name.split(" ").join("+")}&width=80&height=80`} alt={user.name} />
                     </div>
                     <button onClick={handleLogout} className="bg-rose-500 hover:bg-rose-600 hover:scale-105 transition-all focus:bg-pink-500 text-white py-2 px-6 rounded-full">
                         LogOut

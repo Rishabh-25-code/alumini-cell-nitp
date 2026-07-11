@@ -6,6 +6,7 @@ import Heading from "../../components/Headings/Heading"
 import Meta from "../../components/Meta/Meta";
 import Loader from "../../components/Loader";
 import { useQuery } from "@tanstack/react-query"
+import { normalizeImageURL } from "../../services/files";
 
 const Gallery = memo(() => {
     const [currentImg, setCurrentImg] = useState(0);
@@ -85,7 +86,7 @@ const Gallery = memo(() => {
                                             height={1080}
                                             width={1920}
                                             loading="lazy"
-                                            src={img.url}
+                                            src={normalizeImageURL(img.url)}
                                             alt="gallery-photo"
                                             onClick={() => {
                                                 setCurrentImg(index);
@@ -110,7 +111,7 @@ const Gallery = memo(() => {
                     <div className="slide">
                         <div className="img-display">
                             <img
-                                src={data.slice().reverse()[currentImg].url}
+                                src={normalizeImageURL(data.slice().reverse()[currentImg].url)}
                                 alt="gallery-photo"
                             />
                         </div>
