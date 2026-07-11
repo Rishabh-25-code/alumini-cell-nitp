@@ -98,7 +98,7 @@ function ImageSlider() {
                                                 {cta.label}
                                             </button>
                                         </Link>
-                                        <Link to="/alumni-database?role=ug&page=1&type=name&search=">
+                                        <Link to="/alumni-database?role=all&page=1&type=name&search=">
                                             <button className="rounded-full border border-white/35 bg-white/10 px-6 py-3 text-base font-semibold text-white backdrop-blur transition hover:bg-white/20">
                                                 Explore alumni
                                             </button>
