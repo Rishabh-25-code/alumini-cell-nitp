@@ -18,13 +18,17 @@ const Alumnis = () => {
         page: 1,
         type: "name",
         search: "",
-        status: "all"
+        status: "all",
+        batchStart:"all",
+        batchEnd:"all"
     });
     const role = searchParams.get("role") || "all";
     const page = parseInt(searchParams.get('page')) || 1;
     const search = searchParams.get('search') || "";
     const status = searchParams.get('status') || "all"
     const type = searchParams.get('type') || "jobTitle";
+    const batchStart = searchParams.get('batchStart') || "all";
+    const batchEnd = searchParams.get('batchEnd') || "all";
     const [itemsPerPage] = useState(21);
     const [branch, setBranch] = useState(null);
 
@@ -34,7 +38,7 @@ const Alumnis = () => {
 
     const { isLoading, isError, data: alumni, refetch, error } = useQuery({
         queryKey: ["members", role, page, search, branch, status],
-        queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch, status),
+        queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch, status,batchStart,batchEnd),
     },
     );
 
@@ -104,7 +108,7 @@ const Alumnis = () => {
 
             // Fetch all pages of data
             while (page <= totalPages) {
-                member = await getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch, status);
+                member = await getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch, status,batchStart,batchEnd);
                 // updating the array in every iteration
                 res = [...res, ...member.documents];
                 page++;
@@ -125,7 +129,9 @@ const Alumnis = () => {
             branch: item.branch,
             company: item.company,
             designation: item.designation,
-            phone: item.phone
+            phone: item.phone,
+            batchStart: item.batchStart,
+            batchEnd: item.batchEnd
         }));
 
         const ws = XLSX.utils.json_to_sheet(filteredData);
