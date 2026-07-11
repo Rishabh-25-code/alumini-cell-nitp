@@ -12,12 +12,12 @@ import AlumniCard from "./AlumniCard";
 
 const AlumniDatabase = () => {
     const [searchParams, setSearchParams] = useSearchParams({
-        role: null,
+        role: "all",
         page: 1,
         type: "name",
         search: "",
     });
-    const role = searchParams.get("role") || null;
+    const role = searchParams.get("role") || "all";
     const page = parseInt(searchParams.get('page')) || 1;
     const search = searchParams.get('search') || "";
     const type = searchParams.get('type') || "jobTitle";
