@@ -70,7 +70,7 @@ const AuthProvider = ({ children }) => {
                 <div className="flex gap-3 items-center">
                     <img src="apple-icon.png" alt="Logo" className="w-16" />
                     <div className="flex divide-x divide-gray-600 gap-3">
-                        <p className="text-white text-xl font-semibold">NIT,<br /> Patna</p>
+                        <p className="text-sky-500 text-xl font-semibold">NIT,<br /> Patna</p>
                         <p className="text-xl font-semibold text-sky-500 pl-2">ALUMNI<br /> ASSOCIATION</p>
                     </div>
                 </div>
