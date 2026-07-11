@@ -123,42 +123,42 @@ const NavBar = () => {
             {navLinks.map((link, index) => {
               if (link.children) {
                 return (
-                  <div key={index} className="nav-link">
+                  <div
+                    key={index}
+                    className="nav-link relative"
+                    onMouseEnter={() => setPopup(index)}
+                    onMouseLeave={() => setPopup(-1)}
+                  >
                     <button
-                      onClick={() => setPopup(index)}
-                      onMouseOver={() => {
-                        if (popup > -1) {
-                          setPopup(-1);
-                        } else {
-                          setPopup(index);
-                        }
-                      }}
-                      onMouseLeave={() => setPopup(-1)}
+                      type="button"
+                      onClick={() => setPopup(popup === index ? -1 : index)}
+                      aria-haspopup="menu"
+                      aria-expanded={popup === index}
                       style={{ textDecoration: "none" }}
-                      className="flex items-center rounded-full px-3 py-2 text-slate-700 hover:bg-sky-50 hover:text-sky-700"
+                      className="flex items-center rounded-full px-3 py-2 text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
                     >
                       <p className="">{link.name}</p>
-                      <MdKeyboardArrowDown className={`${popup === index && "mt-1 transition-all"}`} size={24} />
+                      <MdKeyboardArrowDown
+                        className={`transition-transform duration-200 ${popup === index ? "rotate-180" : ""}`}
+                        size={24}
+                      />
                     </button>
 
-                    <div onMouseLeave={() => setPopup(-1)} onMouseOver={() => {
-                      setPopup(index);
-                    }}>
+                    <div className={`absolute left-0 top-full pt-3 ${popup === index ? "block" : "hidden"}`}>
                       <div
-                        className={`bg-white shadow-xl -ml-1 border border-slate-200 px-5 w-52 py-5 rounded-2xl absolute flex-col ${popup === index ? "flex" : "hidden"}`}>
-                        <ul className="dropdown flex flex-col gap-1.5">
+                        className="flex w-60 flex-col rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-slate-900/10">
+                        <ul className="dropdown flex flex-col gap-1" role="menu">
                           {
                             link.children.map((child, i) => (
                               <Link
                                 onClick={() => setPopup(-1)}
                                 style={{ textDecoration: "none" }}
                                 to={child.link}
-                                className="dropdown-link mb-2"
+                                className="dropdown-link rounded-xl px-4 py-3 text-slate-600 transition-colors hover:bg-sky-50 hover:text-sky-700"
                                 key={i + "child"}
+                                role="menuitem"
                               >
-                                <p className="text-slate-600 hover:text-sky-700 w-full">
-                                  {child.name}
-                                </p>
+                                {child.name}
                               </Link>
                             ))
                           }
