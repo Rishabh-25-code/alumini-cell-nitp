@@ -137,6 +137,25 @@ select:focus {
 
 .hover\:bg-sky-500:hover,
 .hover\:bg-sky-600:hover,
-.hover\:bg-sky-700:hover {
+  .hover\:bg-sky-700:hover {
   background-color: #075985 !important;
+}
+
+.slide-container .indicators {
+  bottom: 1.5rem;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  z-index: 20;
+}
+
+.slide-container .indicators li {
+  height: auto;
+  width: auto;
+}
+
+.slide-container .indicators .active span {
+  background-color: #ffffff;
+  transform: scaleX(1.75);
 }
