@@ -40,6 +40,10 @@ const NavBar = () => {
       name: "Alumni Database",
       children: [
         {
+          name: "All",
+          link: "/alumni-database?role=all",
+        },
+        {
           name: "UG",
           link: "/alumni-database?role=ug",
         },
