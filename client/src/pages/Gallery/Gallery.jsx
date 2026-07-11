@@ -78,11 +78,11 @@ const Gallery = memo(() => {
                                 return (
                                     <div
                                         key={index}
-                                        className="bg-gray-900 bg-opacity-40 rounded-[1rem] cursor-pointer"
+                                        className="surface-card rounded-2xl cursor-pointer overflow-hidden p-1"
                                     >
                                         <img
                                             data-aos="zoom-in"
-                                            className="rounded-[1rem]"
+                                            className="rounded-xl transition duration-300 hover:scale-[1.02]"
                                             height={1080}
                                             width={1920}
                                             loading="lazy"

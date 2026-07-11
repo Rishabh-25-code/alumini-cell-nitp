@@ -31,13 +31,13 @@ const AlumniCard = ({ person, close }) => {
   }, [close]);
 
   return (
-    <div className="fixed z-[25] inset-0 bg-black bg-opacity-30 backdrop-blur-sm w-full flex justify-center items-center">
+    <div className="fixed z-[25] inset-0 bg-slate-950/30 backdrop-blur-sm w-full flex justify-center items-center">
       <div
         ref={popupRef} // Attach ref to the popup container
-        className="flex lg:w-[32rem] md:w-[28rem] w-full mx-6 flex-col gap-3 p-6 py-6 bg-black border border-gray-900 max-w-lg rounded-2xl relative shadow-lg"
+        className="surface-card flex lg:w-[32rem] md:w-[28rem] w-full mx-6 flex-col gap-3 p-6 py-6 max-w-lg rounded-2xl relative"
       >
         <button className="absolute top-6 right-6" onClick={close}>
-          <FiX size={24} className="hover:scale-105 transition hover:text-gray-400" />
+          <FiX size={24} className="hover:scale-105 transition hover:text-sky-700" />
         </button>
         <div className="lg:w-24 bg-cover flex items-center justify-center md:w-20 w-16 lg:h-24 md:h-20 h-16 rounded-2xl overflow-hidden">
           <img
@@ -49,10 +49,10 @@ const AlumniCard = ({ person, close }) => {
         </div>
 
         <div className="text-sm font-medium flex-1">
-          <p className="text-xl font-bold text-sky-500">
+          <p className="text-xl font-bold text-sky-800">
             {person.title} {person.name}
           </p>
-          <p className="font-medium text-base text-gray-300">
+          <p className="font-medium text-base text-slate-700">
             {person.branch} ({person.degree})
           </p>
 
@@ -89,33 +89,33 @@ const AlumniCard = ({ person, close }) => {
             )}
           </div>
 
-          <p className="font-medium text-sm text-gray-300 py-2">
+          <p className="font-medium text-sm text-slate-600 py-2 leading-6">
             {person.bio ? person.bio : person.work_info}
           </p>
 
           {person.batchEnd && (
             <p>
-              <span className="text-gray-400">Batch:</span>{" "}
+              <span className="text-slate-500">Batch:</span>{" "}
               {person.batchStart ? person.batchStart + "-" + person.batchEnd : person.batchEnd}
             </p>
           )}
           {person.company && (
             <p>
-              <span className="text-gray-400">Company:</span> {person.company}
+              <span className="text-slate-500">Company:</span> {person.company}
             </p>
           )}
           {person.designation && (
             <p>
-              <span className="text-gray-400">Designation:</span>{" "}
+              <span className="text-slate-500">Designation:</span>{" "}
               {person.designation}
             </p>
           )}
           {person.showPhone && (
             <p>
-              <span className="text-gray-400">Phone:</span>{" "}
+              <span className="text-slate-500">Phone:</span>{" "}
               <a
                 target="_blank"
-                className="text-sky-500"
+                className="text-sky-700"
                 href={`tel:${person.phone}`}
               >
                 {person.phone}
@@ -124,10 +124,10 @@ const AlumniCard = ({ person, close }) => {
           )}
           {person.showEmail && (
             <p>
-              <span className="text-gray-400">EmailId:</span>{" "}
+              <span className="text-slate-500">EmailId:</span>{" "}
               <a
                 target="_blank"
-                className="text-sky-500"
+                className="text-sky-700"
                 href={`mailto:${person.email}`}
               >
                 {person.email}
@@ -136,13 +136,13 @@ const AlumniCard = ({ person, close }) => {
           )}
           {person.interests && (
             <p>
-              <span className="text-gray-400">Interests:</span>{" "}
+              <span className="text-slate-500">Interests:</span>{" "}
               {person.interests}
             </p>
           )}
           {person.hobbies.length !== 0 && (
             <p>
-              <span className="text-gray-400">Hobbies:</span>{" "}
+              <span className="text-slate-500">Hobbies:</span>{" "}
               {person.hobbies.join(", ")}
             </p>
           )}

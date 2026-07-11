@@ -1,4 +1,4 @@
-import { storage, BUCKET_ID, PROJECT_ID } from "../../config/appwrite";
+import { storage, BUCKET_ID, PROJECT_ID, APPWRITE_ENDPOINT } from "../../config/appwrite";
 import { ID } from "appwrite";
 import imageCompression from "browser-image-compression";
 
@@ -30,8 +30,8 @@ export const normalizeImageURL = (url) => {
 
     const legacyEndpoint = `https://${"cloud.appwrite.io"}/v1`;
 
-    return url
-        .replace(legacyEndpoint, "https://fra.cloud.appwrite.io/v1")
+    return String(url)
+        .replace(legacyEndpoint, APPWRITE_ENDPOINT)
         .replace(/\/preview(\?.*)?$/, (match) => match.replace("/preview", "/view").replace(/\?.*/, `?project=${PROJECT_ID}`));
 }
 

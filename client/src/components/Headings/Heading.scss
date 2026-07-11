@@ -1,6 +1,7 @@
 .heading-banner {
     background: url('/images/bihtacampus/Maingate.jpeg');
-    height: 45vh;
+    height: 42vh;
+    min-height: 320px;
     background-position: 0 55%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,9 +16,10 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url("https://ragam.co.in/noise_big.svg");
-    mix-blend-mode: screen;
-    opacity: 18%;
+    background:
+        linear-gradient(120deg, rgba(7, 89, 133, 0.82), rgba(15, 23, 42, 0.36) 52%, rgba(255, 255, 255, 0.08)),
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.3), transparent 15rem);
+    opacity: 1;
     z-index: 5;
     top: 0;
 }
@@ -28,7 +30,7 @@
     height: 100%;
     width: 100%;
     top: 0;
-    background: linear-gradient(180deg, transparent, #000);
+    background: linear-gradient(180deg, rgba(246, 248, 251, 0), #f6f8fb);
     background-size: 120% 100%;
     z-index: 7;
 }
@@ -37,11 +39,12 @@
 .heading-head-text {
     padding-top: 2rem;
     font-size: 5.6rem;
-    font-weight: 600;
+    font-weight: 700;
     text-align: center;
-    color: #ebe6d0;
+    color: #ffffff;
     z-index: 8;
     line-height: 6rem;
+    text-shadow: 0 18px 50px rgba(15, 23, 42, 0.35);
 }
 
 .heading-head-text::after {

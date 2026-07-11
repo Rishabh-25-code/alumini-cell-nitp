@@ -12,7 +12,7 @@ import { getImageURL } from "../../services/files"
 export const Input = ({ id, require, label, type, placeholder, title, reactHookForm, className, errors, ...rest }) => {
     return (
         <div className='flex-1'>
-            <label htmlFor={id} className='text-gray-300'>{label}</label> {require && <span className='text-rose-500 text-xl'>*</span>}
+            <label htmlFor={id} className='text-slate-700 font-medium'>{label}</label> {require && <span className='text-rose-500 text-xl'>*</span>}
             <input
                 {...rest}
                 id={id}
@@ -29,7 +29,7 @@ export const Input = ({ id, require, label, type, placeholder, title, reactHookF
 export const Select = ({ label, require, id, options, placeholder, reactHookForm, className, errors }) => {
     return (
         <div className="flex-1">
-            <label htmlFor={id} className='text-gray-300'>{label}</label>{require && <span className='text-rose-500 text-xl'>*</span>}
+            <label htmlFor={id} className='text-slate-700 font-medium'>{label}</label>{require && <span className='text-rose-500 text-xl'>*</span>}
             <select
                 id={id}
                 name={id}
@@ -51,7 +51,7 @@ export const Select = ({ label, require, id, options, placeholder, reactHookForm
 export const TextArea = ({ id, require, label, placeholder, title, reactHookForm, className, errors, ...rest }) => {
     return (
         <div className='flex-1'>
-            <label htmlFor={title} className='text-gray-300'>{label}</label> {require && <span className='text-rose-500 text-xl'>*</span>}
+            <label htmlFor={title} className='text-slate-700 font-medium'>{label}</label> {require && <span className='text-rose-500 text-xl'>*</span>}
             <textarea
                 {...rest}
                 id={title}
@@ -83,7 +83,7 @@ export const ProfileImage = ({ require, profileImage, setProfileImage, placehold
             <div className="h-28 w-28 rounded-full overflow-hidden flex items-center justify-center">
                 <img className="w-28 h-auto" src={profileImage ? URL.createObjectURL(profileImage) : prevImage ? getImageURL(prevImage) : placeholder} alt="placeholder" />
             </div>
-            <label htmlFor="profileImage" className='text-gray-300'>Profile Image (max 2MB)</label> {require && <span className='text-rose-500 text-xl'>*</span>}
+            <label htmlFor="profileImage" className='text-slate-700 font-medium'>Profile Image (max 2MB)</label> {require && <span className='text-rose-500 text-xl'>*</span>}
             <button className="relative bg-sky-500 hover:bg-sky-600 px-5 py-1 mt-2 rounded-full cursor-pointer text-white">Select
                 <input onChange={handleImageChange} type="file" accept="image/jpeg, image/jpg, image/png, image/img" placeholder="Import" className="absolute top-0 left-0 opacity-0 w-full h-full cursor-pointer" />
             </button>
@@ -103,8 +103,8 @@ export const MarkDownEditor = ({ id, require = true, label, placeholder, title, 
 
     return (
         <div>
-            <label htmlFor={title} className='text-gray-300'>{label}</label>{require && <span className='text-rose-500 text-xl'>*</span>}
-            <div className="w-full border-2 border-gray-800 bg-gray-950 my-3 rounded-2xl">
+            <label htmlFor={title} className='text-slate-700 font-medium'>{label}</label>{require && <span className='text-rose-500 text-xl'>*</span>}
+            <div className="w-full border border-slate-200 bg-white my-3 rounded-2xl shadow-sm">
                 <div className='pl-4 pt-2.5'>
                     <button
                         type='none'
@@ -113,7 +113,7 @@ export const MarkDownEditor = ({ id, require = true, label, placeholder, title, 
                             e.preventDefault();
                             setActive(e.target.name);
                         }}
-                        className={`px-6 py-2 -mb-[1px] ${active === "write" && "border rounded-t-xl border-gray-800 bg-black  border-b-black"}`}>Edit</button>
+                        className={`px-6 py-2 -mb-[1px] ${active === "write" && "border rounded-t-xl border-slate-200 bg-sky-50 text-sky-900 border-b-sky-50"}`}>Edit</button>
                     <button
                         type='none'
                         name="preview"
@@ -121,9 +121,9 @@ export const MarkDownEditor = ({ id, require = true, label, placeholder, title, 
                             e.preventDefault();
                             setActive(e.target.name);
                         }}
-                        className={`px-6 py-2 -mb-[1px] ${active === "preview" && "border rounded-t-xl border-gray-800 bg-black  border-b-black"}`}>Preview</button>
+                        className={`px-6 py-2 -mb-[1px] ${active === "preview" && "border rounded-t-xl border-slate-200 bg-sky-50 text-sky-900 border-b-sky-50"}`}>Preview</button>
                 </div>
-                <div className='p-2.5 pb-0 border-t border-gray-800'>
+                <div className='p-2.5 pb-0 border-t border-slate-200'>
                     {active === "write" ?
                         <textarea
                             {...reactHookForm}
@@ -131,11 +131,11 @@ export const MarkDownEditor = ({ id, require = true, label, placeholder, title, 
                             onChange={(e) => {
                                 setEditorState(e.target.value);
                             }}
-                            className='w-full border border-gray-800 rounded-lg lg:min-h-[24rem] md:min-h-[24rem] min-h-[35rem] outline-none p-2 bg-gray-950'
+                            className='w-full border border-slate-200 rounded-lg lg:min-h-[24rem] md:min-h-[24rem] min-h-[35rem] outline-none p-3 bg-white text-slate-900'
                             name={title}
                             placeholder={placeholder}
                         ></textarea>
-                        : <div className='unreset px-2 min-h-[5rem] border border-gray-800 rounded-md'>
+                        : <div className='unreset px-2 min-h-[5rem] border border-slate-200 rounded-md bg-white'>
                             <ReactMarkdown children={editorState} components={{
                                 code({ node, inline, className, children, ...props }) {
                                     const match = /language-(\w+)/.exec(className || '')
@@ -183,7 +183,7 @@ export const UploadImage = ({ image,require, setImage, placeholder, label }) => 
             <div className="h-28 overflow-hidden flex items-center justify-center">
                 <img className="h-28 w-auto" src={image ? URL.createObjectURL(image) : placeholder} alt="placeholder" />
             </div>
-            <label htmlFor="profileImage" className='text-gray-300'>{label} (max 2MB)</label> {require && <span className='text-rose-500 text-xl'>*</span>}
+            <label htmlFor="profileImage" className='text-slate-700 font-medium'>{label} (max 2MB)</label> {require && <span className='text-rose-500 text-xl'>*</span>}
             <button className="relative bg-sky-500 hover:bg-sky-600 px-5 py-1 mt-2 rounded-full cursor-pointer text-white">Select
                 <input onChange={handleImageChange} type="file" accept="image/jpeg, image/jpg, image/png, image/img" placeholder="Import" className="absolute top-0 left-0 opacity-0 w-full h-full cursor-pointer" />
             </button>

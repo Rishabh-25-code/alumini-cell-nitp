@@ -45,7 +45,7 @@ const Register = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen">
+        <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(14,165,233,0.16),transparent_26rem),linear-gradient(180deg,#f8fbff,#eef4f8)] px-4 py-10 flex justify-center items-center">
             <Meta title="Sign Up | Alumni NITP" />
             {
                 accAlreadyExist &&
@@ -102,17 +102,33 @@ const Register = () => {
                     </Link>
                 </div>
                 :
-                !accAlreadyExist && <div className="lg:w-[28rem] md:w-[28rem] sm:w-[90%] w-[95%] border-gray-700 border py-8 lg:px-8 md:px-7 px-4 rounded-3xl bg-[#0c0c0c]">
-                    <h1 className="text-3xl font-bold mb-3 px-3">Sign Up</h1>
+                !accAlreadyExist && <div className="grid w-full max-w-5xl overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-2xl shadow-slate-200/80 lg:grid-cols-[0.95fr_1.05fr]">
+                    <div className="relative hidden min-h-[40rem] overflow-hidden bg-slate-900 lg:block">
+                        <img src="/images/homePageImg.jpg" alt="NIT Patna campus" className="absolute inset-0 h-full w-full object-cover opacity-75" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-sky-950/85 via-slate-900/52 to-slate-950/75" />
+                        <div className="relative z-10 flex h-full flex-col justify-between p-10 text-white">
+                            <Link to="/" className="w-fit">
+                                <img src="logo.jfif" alt="logo" className="h-16 w-16 rounded-full border border-white/30 shadow-lg" />
+                            </Link>
+                            <div>
+                                <p className="mb-4 w-fit rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur">Join the alumni network</p>
+                                <h1 className="max-w-md text-5xl font-bold leading-tight">Create your NITP alumni account.</h1>
+                                <p className="mt-5 max-w-md text-base leading-7 text-slate-100">Share your journey, discover opportunities, and stay connected with the institute community.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="px-6 py-10 sm:px-10 lg:px-12">
+                    <h1 className="text-3xl font-bold mb-2 px-3 text-slate-950">Sign Up</h1>
+                    <p className="mb-6 px-3 text-slate-600">Create an account to access alumni services.</p>
                     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2 px-3">
                         <div className="flex flex-col gap-1">
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email" className="text-sm font-semibold text-slate-700">Email</label>
                             <input
                                 autoComplete="email"
                                 autoFocus={true}
                                 type="email"
                                 id="email"
-                                className="py-2 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
+                                className="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 text-slate-950 shadow-sm transition placeholder:text-slate-400 focus:bg-white"
                                 placeholder="abc@tesla.co.in"
                                 {...register("email", {
                                     required: "Email is required",
@@ -126,12 +142,12 @@ const Register = () => {
                         </div>
 
                         <div className="flex flex-col gap-1">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name" className="text-sm font-semibold text-slate-700">Name</label>
                             <input
                                 autoComplete="name"
                                 type="text"
                                 id="name"
-                                className="py-2 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
+                                className="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 text-slate-950 shadow-sm transition placeholder:text-slate-400 focus:bg-white"
                                 placeholder="John Doe"
                                 {
                                 ...register("name", {
@@ -149,12 +165,12 @@ const Register = () => {
                         </div>
 
                         <div className="flex relative flex-col gap-1">
-                            <label htmlFor="password">Password</label>
+                            <label htmlFor="password" className="text-sm font-semibold text-slate-700">Password</label>
                             <input
                                 autoComplete="password"
                                 type={showPassword ? "text" : "password"}
                                 id="password"
-                                className="py-2 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
+                                className="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 pr-12 text-slate-950 shadow-sm transition placeholder:text-slate-400 focus:bg-white"
                                 placeholder="Enter Password"
                                 {
                                 ...register("password", {
@@ -177,13 +193,13 @@ const Register = () => {
                                 {showPassword ? (
                                     <FaEye
                                         size={22}
-                                        className="text-gray-400 cursor-pointer"
+                                        className="text-slate-500 cursor-pointer"
                                         onClick={() => setShowPassword(!showPassword)}
                                     />
                                 ) : (
                                     <FaEyeSlash
                                         size={22}
-                                        className="text-gray-400 cursor-pointer"
+                                        className="text-slate-500 cursor-pointer"
                                         onClick={() => setShowPassword(!showPassword)}
                                     />
                                 )}
@@ -191,12 +207,12 @@ const Register = () => {
                         </div>
 
                         <div className="flex relative flex-col gap-1">
-                            <label htmlFor="confirmPassword">Confirm Password</label>
+                            <label htmlFor="confirmPassword" className="text-sm font-semibold text-slate-700">Confirm Password</label>
                             <input
                                 autoComplete="password"
                                 type={showConfirmPassword ? "text" : "password"}
                                 id="confirmPassword"
-                                className="py-2 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
+                                className="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 pr-12 text-slate-950 shadow-sm transition placeholder:text-slate-400 focus:bg-white"
                                 placeholder="Confirm Password"
                                 {
                                 ...register("confirmPassword", {
@@ -219,13 +235,13 @@ const Register = () => {
                                 {showConfirmPassword ? (
                                     <FaEye
                                         size={22}
-                                        className="text-gray-400 cursor-pointer"
+                                        className="text-slate-500 cursor-pointer"
                                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                     />
                                 ) : (
                                     <FaEyeSlash
                                         size={22}
-                                        className="text-gray-400 cursor-pointer"
+                                        className="text-slate-500 cursor-pointer"
                                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                     />
                                 )}
@@ -234,13 +250,13 @@ const Register = () => {
 
                         <button
                             disabled={loading}
-                            className="py-2.5 mt-3 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-gray-600 disabled:bg-gray-600 text-white font-semibold"
+                            className="mt-3 rounded-2xl bg-sky-700 px-5 py-3 font-semibold text-white shadow-lg shadow-sky-900/10 transition hover:bg-sky-800 disabled:bg-slate-400"
                             type="submit"
                         >
                             {loading ? "Creating Account..." : "Sign Up"}
                         </button>
 
-                        <p className="text-center mt-5">
+                        <p className="text-center mt-5 text-slate-600">
                             Already have an account?{" "}
                             <Link to="/signin" style={{ textDecoration: "none", color: "skyblue" }} className="text-sky-500">
                                 Login
@@ -248,11 +264,12 @@ const Register = () => {
                         </p>
 
                         <Link to="/" className="flex items-center justify-center -mt-3">
-                            <button className="text-rose-500">
+                            <button className="text-rose-600 font-medium">
                                 Skip for now
                             </button>
                         </Link>
                     </form>
+                    </div>
                 </div>}
         </div>
     );

@@ -42,24 +42,41 @@ const Login = () => {
     }, [])
 
     return (
-        <div className="flex items-center justify-center h-screen w-full">
+        <div className="min-h-screen w-full bg-[radial-gradient(circle_at_top_left,rgba(14,165,233,0.16),transparent_26rem),linear-gradient(180deg,#f8fbff,#eef4f8)] px-4 py-10 flex items-center justify-center">
             <Meta title="Login | Alumni NITP" />
-            <div className="lg:w-[28rem] md:w-[28rem] sm:w-[90%] w-[95%] border-gray-700 border py-8 lg:px-8 md:px-7 px-4 rounded-3xl bg-[#050505]">
-                <div className="flex items-center justify-center">
-                    <img src="logo.jfif"  height={200} width={200} alt="logo" className="lg:h-20 h-14 lg:w-20 w-14 rounded-full" />
-                   
+            <div className="grid w-full max-w-5xl overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-2xl shadow-slate-200/80 lg:grid-cols-[1.05fr_0.95fr]">
+                <div className="relative hidden min-h-[38rem] overflow-hidden bg-slate-900 lg:block">
+                    <img src="/images/homePageImg.jpg" alt="NIT Patna campus" className="absolute inset-0 h-full w-full object-cover opacity-75" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-sky-950/85 via-slate-900/52 to-slate-950/75" />
+                    <div className="relative z-10 flex h-full flex-col justify-between p-10 text-white">
+                        <Link to="/" className="w-fit">
+                            <img src="logo.jfif" height={200} width={200} alt="logo" className="h-16 w-16 rounded-full border border-white/30 shadow-lg" />
+                        </Link>
+                        <div>
+                            <p className="mb-4 w-fit rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur">NIT Patna Alumni Cell</p>
+                            <h1 className="max-w-md text-5xl font-bold leading-tight">Reconnect with your NITP network.</h1>
+                            <p className="mt-5 max-w-md text-base leading-7 text-slate-100">Access alumni profiles, opportunities, stories, and updates from the community.</p>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <h1 className="text-center text-xl font-semibold leading-normal py-6">
-                        Welcome to <br /><span className="text-sky-500">NITP Alumni Portal!</span>
+
+                <div className="flex flex-col justify-center px-6 py-10 sm:px-10 lg:px-12">
+                <div className="flex items-center justify-center lg:hidden">
+                    <img src="logo.jfif" height={200} width={200} alt="logo" className="h-16 w-16 rounded-full" />
+                </div>
+                <div className="mb-8 text-center lg:text-left">
+                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">Welcome back</p>
+                    <h1 className="mt-3 text-3xl font-bold leading-tight text-slate-950">
+                        Sign in to your account
                     </h1>
+                    <p className="mt-2 text-slate-600">Continue to the NITP Alumni Portal.</p>
                 </div>
 
                 <form onSubmit={handleSubmit(Login)} className="flex flex-col gap-4 px-3 w-full">
                     <div className="flex flex-col space-y-2">
-                        <label className="text-lg">E-mail <span className="text-red-500">*</span></label>
+                        <label className="text-sm font-semibold text-slate-700">E-mail <span className="text-red-500">*</span></label>
                         <input
-                            className="py-2.5 px-5 rounded-xl bg-[#1b1b1b] text-gray-200 w-full"
+                            className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 text-slate-950 shadow-sm transition placeholder:text-slate-400 focus:bg-white"
                             type="email"
                             name="email"
                             placeholder="abc@tesla.co.in"
@@ -74,9 +91,9 @@ const Login = () => {
                         {errors.email && <p className="text-rose-500">{errors.email.message}</p>}
                     </div>
                     <div className="flex relative flex-col space-y-2">
-                        <label className="text-lg">Password <span className="text-red-500">*</span></label>
+                        <label className="text-sm font-semibold text-slate-700">Password <span className="text-red-500">*</span></label>
                         <input
-                            className="py-2.5 px-5 rounded-xl bg-[#1b1b1b] text-gray-200"
+                            className="rounded-2xl border border-slate-200 bg-slate-50 px-5 py-3 pr-12 text-slate-950 shadow-sm transition placeholder:text-slate-400 focus:bg-white"
                             type={showPassword ? "text" : "password"}
                             name="password"
                             autoComplete="password"
@@ -101,27 +118,27 @@ const Login = () => {
                             {showPassword ? (
                                 <FaEye
                                     size={22}
-                                    className="text-gray-400 cursor-pointer"
+                                    className="text-slate-500 cursor-pointer"
                                     onClick={() => setShowPassword((prev) => !prev)}
                                 />
                             ) : (
                                 <FaEyeSlash
                                     size={22}
-                                    className="text-gray-400 cursor-pointer"
+                                    className="text-slate-500 cursor-pointer"
                                     onClick={() => setShowPassword((prev) => !prev)}
                                 />
                             )}
                         </div>
                     </div>
 
-                    <button disabled={loading} type="submit" className="py-2.5 mt-3 px-5 rounded-xl bg-sky-500 hover:bg-sky-600 disabled:bg-gray-600 focus:bg-gray-600 text-white font-bold">
+                    <button disabled={loading} type="submit" className="mt-3 rounded-2xl bg-sky-700 px-5 py-3 font-bold text-white shadow-lg shadow-sky-900/10 transition hover:bg-sky-800 disabled:bg-slate-400">
                         {loading ? "Logging in..." : "Login"}
                     </button>
 
-                    <p className="text-center">
+                    <p className="text-center text-slate-600">
                         Don't have an account?{" "}
-                        <Link to="/signup" className="text-sky-500">
-                            <button className="text-sky-500">
+                        <Link to="/signup" className="text-sky-700">
+                            <button className="text-sky-700 font-semibold">
                                 SignUp
                             </button>
                         </Link>
@@ -129,16 +146,17 @@ const Login = () => {
 
                     <div className="flex items-center justify-center gap-2">
                         <Link to="/forgot-password" className="pt-0 -mt-3">
-                            <p className="text-sky-500">Forgot Password?</p>
+                            <p className="text-sky-700 font-medium">Forgot Password?</p>
                         </Link>
 
                         <Link to="/" className="flex items-center justify-center -mt-3">
-                            <button className="text-rose-500">
+                            <button className="text-rose-600 font-medium">
                                 Skip for now
                             </button>
                         </Link>
                     </div>
                 </form>
+                </div>
             </div>
         </div>
     );

@@ -26,26 +26,27 @@ const HomePage = () => {
 
 
       {/* Director section starts here */}
-      <div className="grid bg-gray-900 text-white px-10 pt-20 pb-10 gap-6 text-center md:grid-cols-3 lg:gap-12">
+      <div className="page-shell">
+      <div className="surface-card grid text-slate-800 px-6 md:px-10 pt-12 pb-10 gap-8 text-center md:grid-cols-3 lg:gap-12 rounded-3xl">
         <div data-aos="fade-right">
-          <h1 className="mb-1 lg:text-left md:text-left text-center text-sky-400 lg:text-4xl md:text-3xl text-3xl font-bold leading-tight">
+          <h1 className="mb-1 lg:text-left md:text-left text-center text-sky-800 lg:text-4xl md:text-3xl text-3xl font-bold leading-tight">
             From Director's Desk
           </h1>
-          <h5 className="text-3xl font-semibold text-center md:text-left mt-10">
+          <h5 className="text-3xl font-semibold text-center md:text-left mt-10 text-slate-950">
             Prof. P. K. Jain
           </h5>
           <ul className="text-center md:text-left">
-            <h6 className="mb-4 text-sky-400 font-semibold">
+            <h6 className="mb-4 text-sky-700 font-semibold">
               Director of NIT Patna
             </h6>
 
-            <h6 className="mb-4 font-medium">
+            <h6 className="mb-4 font-medium text-slate-600 leading-7">
               Prof. Pradip K. Jain joined as a Lecturer of Electronics Engineering at BHU's Institute of Technology in 1981, becoming a Professor in 2001. Currently, he serves as Director of the NIT, Patna.
             </h6>
           </ul>
         </div>
         <div data-aos="zoom-in">
-          <div className="m-auto my-12 flex justify-center items-center lg:h-80 h-64 lg:w-80 w-64 rounded-full overflow-hidden">
+          <div className="m-auto my-12 flex justify-center items-center lg:h-80 h-64 lg:w-80 w-64 rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-300">
             <img
               src="/images/PKJ_Desk_Photo.jpg"
               className="shadow-lg h-full dark:shadow-black/30  "
@@ -54,9 +55,9 @@ const HomePage = () => {
           </div>
         </div>
         <div>
-          <FaQuoteLeft data-aos="fade-up" size={38} className="text-sky-400 mb-6" />
-          <h4 data-aos="fade-up" className="lg:text-2xl text-xl lg:text-left md:text-left text-justify font-semibold text-sky-500 pb-4">Celebrating <span className="text-pink-500">100 Years</span> of NIT, Patna</h4>
-          <div className="mb-10 lg:text-left md:text-left text-justify">
+          <FaQuoteLeft data-aos="fade-up" size={38} className="text-sky-700 mb-6" />
+          <h4 data-aos="fade-up" className="lg:text-2xl text-xl lg:text-left md:text-left text-justify font-semibold text-sky-800 pb-4">Celebrating <span className="text-rose-600">100 Years</span> of NIT, Patna</h4>
+          <div className="mb-10 lg:text-left md:text-left text-justify text-slate-600 leading-7">
             <p data-aos="fade-up">We are celebrating the 100 years of the glorious history of
               Engineering Education in Bihar, which started with the establishment
               of Bihar College of Engineering (BCE), Patna in 1924. </p>
@@ -75,9 +76,10 @@ const HomePage = () => {
               alignItems: "start",
             }}
           >
-            <p className="flex text-left items-center text-lg text-sky-400 hover:text-sky-600">History on NIT, Patna<BsArrowUpRight size={23} className="ml-1" /></p>
+            <p className="flex text-left items-center text-lg text-sky-700 hover:text-sky-900 font-semibold">History on NIT, Patna<BsArrowUpRight size={23} className="ml-1" /></p>
           </button></Link>
         </div>
+      </div>
       </div>
 
       {/* Events Section */}
