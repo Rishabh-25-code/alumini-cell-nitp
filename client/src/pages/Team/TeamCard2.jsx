@@ -6,17 +6,17 @@ const TeamCard2 = ({ img2, name2, detail2, academics, socials }) => {
     <>
       <div
         data-aos="fade-up"
-        className="text-center text-gray-400"
+        className="surface-card text-center text-slate-600 rounded-2xl p-6"
       >
         <img
-          className="mx-auto mb-4 w-36 h-36 rounded-full hover:scale-105 transition-all delay-75 ease-in"
+          className="mx-auto mb-4 w-36 h-36 rounded-2xl object-cover hover:scale-105 transition-all delay-75 ease-in shadow-lg shadow-slate-200"
           src={img2}
           alt="Bonnie Avatar"
         />
-        <h3 className="mb-1 text-2xl font-bold tracking-tight text-white">
+        <h3 className="mb-1 text-2xl font-bold tracking-tight text-slate-950">
           <div>{name2}</div>
         </h3>
-        <p className="text-sky-500 font-medium text-sm">{academics}</p>
+        <p className="text-sky-700 font-medium text-sm">{academics}</p>
         <p>{detail2}</p>
         <ul className="flex justify-center mt-4 space-x-4">
           {socials[0].link && <li>
@@ -24,7 +24,7 @@ const TeamCard2 = ({ img2, name2, detail2, academics, socials }) => {
               href={socials[0].link}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition text-white ease-in delay-50  hover:text-gray-400 hover:scale-[110%]"              
+              className="transition text-slate-800 ease-in delay-50 hover:text-sky-700 hover:scale-[110%]"              
             >
               <FaGithub size={22} />
             </a>

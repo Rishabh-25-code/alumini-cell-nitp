@@ -1,6 +1,6 @@
 .photo-gallery-cont {
   width: 90%;
-  margin: 6rem auto;
+  margin: 4rem auto 6rem;
 }
 
 .photo-gallery {
@@ -48,7 +48,7 @@
   position: fixed;
   overflow: hidden;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(15, 23, 42, 0.92);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -91,14 +91,15 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: rgb(84, 84, 84);
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        color: #0f172a;
+        background: #ffffff;
+        box-shadow: rgba(15, 23, 42, 0.22) 0px 12px 30px 0px;
         border: none;
         cursor: pointer;
       }
 
       button:hover {
-        background-color: rgb(54, 54, 54);
+        background-color: #e0f2fe;
       }
     }
 
@@ -135,11 +136,11 @@
     border-radius: 1rem;
     width: 100%;
     cursor: pointer;
-    filter: brightness(0.9);
+    filter: saturate(0.96);
     // transition: ease-in-out 0.3s;
   }
 
   img:hover {
-    filter: brightness(1);
+    filter: saturate(1.05);
   }
 }

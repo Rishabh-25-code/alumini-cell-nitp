@@ -39,9 +39,9 @@ const NotableAlumniMarquee = () => {
 
 
     return (
-        <div className="bg-gray-900 pt-16 pb-10 overflow-hidden">
+        <div className="pt-16 pb-16 overflow-hidden">
             <div className='flex items-center justify-center text-center gap-3 flex-col'>
-                <p data-aos="fade-up" className='lg:text-5xl text-4xl font-semibold pb-10'>Our Notable <span className='text-sky-500'>Alumni</span></p>
+                <p data-aos="fade-up" className='lg:text-5xl text-4xl font-semibold pb-10 text-slate-950'>Our Notable <span className='text-sky-700'>Alumni</span></p>
 
                 <div className='my-5 w-full'>
                     {isLoading ? <p className='text-center w-full text-sky-500 my-16'>Loading...</p> :
@@ -53,7 +53,7 @@ const NotableAlumniMarquee = () => {
                                 screenWidth > 768 ? true : false
                             }>
                                 {data && data.map((alum, i) => (
-                                    <div key={i} className="lg:max-w-lg max-w-md px-5">
+                                    <div key={i} className="lg:w-[30rem] w-[26rem] max-w-[88vw] px-4">
                                         <AlumniCard key={i} alum={alum} />
                                     </div>
                                 ))
@@ -62,7 +62,7 @@ const NotableAlumniMarquee = () => {
                     }
                 </div>
 
-                <Link to="/notableAlumni" className="flex gap-1 py-3 mt-3 px-8 rounded-xl bg-sky-500 hover:bg-sky-600 hover:scale-105 transition focus:bg-gray-600 text-white font-medium">
+                <Link to="/notableAlumni" className="modern-button flex gap-1 mt-5 px-8">
                     <button >
                         Explore
                     </button>

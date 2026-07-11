@@ -104,7 +104,7 @@ const NavBar = () => {
   return (
     <div className="relative">
       <nav
-        className={`fixed w-[100%] items-center justify-center border-b bg-black transition-all delay-100 z-50  ease-in-out bg-opacity-50 backdrop-blur-sm border-gray-800 shadow-md`}
+        className={`fixed w-[100%] items-center justify-center border-b border-slate-200/80 bg-white/95 transition-all delay-100 z-50 ease-in-out backdrop-blur-xl shadow-sm`}
       >
         <div className="flex items-center justify-between w-full lg:px-10 md:w-[96%] px-4 md:px-3 py-3 m-auto text-lg">
           <div className="flex items-center">
@@ -119,7 +119,7 @@ const NavBar = () => {
             </Link>
           </div>
 
-          <div className="lg:flex gap-3.5 hidden items-center text-[0.92rem]">
+          <div className="lg:flex gap-3.5 hidden items-center text-[0.92rem] font-medium">
             {navLinks.map((link, index) => {
               if (link.children) {
                 return (
@@ -135,7 +135,7 @@ const NavBar = () => {
                       }}
                       onMouseLeave={() => setPopup(-1)}
                       style={{ textDecoration: "none" }}
-                      className="flex items-center text-white hover:text-sky-400"
+                      className="flex items-center rounded-full px-3 py-2 text-slate-700 hover:bg-sky-50 hover:text-sky-700"
                     >
                       <p className="">{link.name}</p>
                       <MdKeyboardArrowDown className={`${popup === index && "mt-1 transition-all"}`} size={24} />
@@ -145,7 +145,7 @@ const NavBar = () => {
                       setPopup(index);
                     }}>
                       <div
-                        className={`bg-gray-950 shadow-lg -ml-1 border border-gray-800 px-5 w-48 py-5 rounded-xl absolute flex-col  ${popup === index ? "flex" : "hidden"}`}>
+                        className={`bg-white shadow-xl -ml-1 border border-slate-200 px-5 w-52 py-5 rounded-2xl absolute flex-col ${popup === index ? "flex" : "hidden"}`}>
                         <ul className="dropdown flex flex-col gap-1.5">
                           {
                             link.children.map((child, i) => (
@@ -156,7 +156,7 @@ const NavBar = () => {
                                 className="dropdown-link mb-2"
                                 key={i + "child"}
                               >
-                                <p className="text-gray-400 hover:text-blue-400 w-full">
+                                <p className="text-slate-600 hover:text-sky-700 w-full">
                                   {child.name}
                                 </p>
                               </Link>
@@ -172,7 +172,7 @@ const NavBar = () => {
                 return (
                   <Link key={index + "other"} style={{ textDecoration: "none" }} to={link.link}>
                     <p
-                      className="text-white hover:text-blue-400"
+                      className="rounded-full px-3 py-2 text-slate-700 hover:bg-sky-50 hover:text-sky-700"
                     >
                       {link.name}
                     </p>
@@ -190,7 +190,7 @@ const NavBar = () => {
                   <img title="profile" src={`https://fra.cloud.appwrite.io/v1/avatars/initials?name=${user.name.split(" ").join("+")}&width=80&height=80`} alt="profile" className="h-11 w-11 hover:scale-105 transition-all rounded-full" />
                 </Link> :
                 <Link to="/signin">
-                  <button className="bg-sky-500 text-white shadow hover:bg-sky-600 text-sm w-fit px-6 py-2.5 rounded-xl">
+                  <button className="bg-sky-700 text-white shadow-sm hover:bg-sky-800 text-sm w-fit px-6 py-2.5 rounded-full">
                     SignIn
                   </button>
                 </Link>
@@ -206,7 +206,7 @@ const NavBar = () => {
                   setMenu(false);
                 }
               }}
-              className="lg:hidden z-[100000] border focus:ring-[2.5px] focus:outline-none font-medium rounded-lg text-lg px-2.5 py-2.5 text-center items-center focus:ring-gray-400 bg-gray-800 border-gray-900 text-white hover:bg-gray-700 mr-2"
+              className="lg:hidden z-[100000] border focus:ring-[2.5px] focus:outline-none font-medium rounded-full text-lg px-2.5 py-2.5 text-center items-center focus:ring-sky-300 bg-white border-slate-200 text-slate-900 hover:bg-slate-100 mr-2"
             >
               {!menu ? <HiMenuAlt3 /> : <FiX />}
             </button>
@@ -215,12 +215,12 @@ const NavBar = () => {
       </nav>
 
 
-      <div className={`lg:hidden xl:hidden fixed flex flex-col items-start text-base px-7 py-2 justify-center gap-2 inset-0 w-full h-full z-[100] shadow-md text-white bg-gray-950 transition-all ease-in-out delay-150 ${menu ? "translate-x-0" : "translate-x-[100%]"}`}>
+      <div className={`lg:hidden xl:hidden fixed flex flex-col items-start text-base px-7 py-2 justify-center gap-2 inset-0 w-full h-full z-[100] shadow-md text-slate-900 bg-white transition-all ease-in-out delay-150 ${menu ? "translate-x-0" : "translate-x-[100%]"}`}>
         <button
           type="button"
           aria-label={menu ? "Close Menu" : "Open Menu"}
           onClick={() => setMenu(!menu)}
-          className="animate-pulse lg:hidden top-3 right-6 border focus:ring-[2.5px] focus:outline-none font-medium rounded-lg text-lg px-2.5 py-2.5 mt-2 text-center items-center focus:ring-gray-400 bg-gray-800 border-gray-900 text-white hover:bg-gray-700 absolute"
+          className="lg:hidden top-3 right-6 border focus:ring-[2.5px] focus:outline-none font-medium rounded-full text-lg px-2.5 py-2.5 mt-2 text-center items-center focus:ring-sky-300 bg-white border-slate-200 text-slate-900 hover:bg-slate-100 absolute"
         >
           {!menu ? <HiMenuAlt3 /> : <FiX />}
         </button>
@@ -228,7 +228,7 @@ const NavBar = () => {
           if (link.children) {
             return (
               <div key={index} className="flex flex-col sm:gap-0 gap-1">
-                <div className="text-sky-500">
+                <div className="text-sky-700 font-semibold">
                   {link.name}
                 </div>
                 <div>
@@ -240,7 +240,7 @@ const NavBar = () => {
                       key={i + "child"}
                       onClick={() => setMenu(!menu)}
                     >
-                      <p className="text-gray-400 sm:py-0 py-0.5 hover:text-blue-400">
+                      <p className="text-slate-600 sm:py-0 py-0.5 hover:text-sky-700">
                         {child.name}
                       </p>
                     </Link>
@@ -257,7 +257,7 @@ const NavBar = () => {
                 key={index}
                 onClick={() => setMenu(!menu)}
               >
-                <p className="text-sky-500 hover:text-blue-400">
+                <p className="text-sky-700 hover:text-sky-900 font-semibold">
                   {link.name}
                 </p>
               </Link>

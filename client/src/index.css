@@ -6,8 +6,18 @@
   font-family: Outfit, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
+  color-scheme: light;
+  color: #18212f;
+  --surface: #f6f8fb;
+  --surface-soft: #eef4f8;
+  --ink: #18212f;
+  --muted: #617083;
+  --line: #d8e2ea;
+  --brand: #0369a1;
+  --brand-soft: #e0f2fe;
+  --accent: #be123c;
+  --card: rgba(255, 255, 255, 0.88);
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,8 +26,30 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html {
+  background: var(--surface);
+}
+
 body {
-  background-color: #000000;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.12), transparent 28rem),
+    radial-gradient(circle at 85% 8%, rgba(244, 114, 182, 0.09), transparent 22rem),
+    linear-gradient(180deg, #fbfdff 0%, #f4f7fb 48%, #eef4f8 100%);
+  color: var(--ink);
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: #bae6fd;
+  color: #0f172a;
+}
+
+img {
+  max-width: 100%;
 }
 
 textarea,
@@ -30,11 +62,81 @@ input[type="tel"],
 input[type="search"],
 input[type="date"],
 input[type="url"] {
-  @apply border-2 border-gray-700;
+  @apply border border-slate-300 bg-white text-slate-900 shadow-sm;
 }
 
 textarea:focus,
 input:focus,
 select:focus {
-  @apply outline outline-2 outline-blue-500;
+  @apply outline outline-2 outline-sky-500;
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .surface-card {
+    @apply border border-slate-200 bg-white/90 shadow-sm backdrop-blur;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .modern-button {
+    @apply inline-flex items-center justify-center rounded-full bg-sky-700 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2;
+  }
+
+  .modern-button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-sky-300 hover:text-sky-800 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold tracking-normal text-slate-950 md:text-4xl;
+  }
+
+  .section-copy {
+    @apply text-base leading-7 text-slate-600;
+  }
+
+  .glass-panel {
+    @apply border border-white/70 bg-white/75 shadow-lg shadow-slate-200/70 backdrop-blur-xl;
+  }
+}
+
+/* Compatibility pass for older dark Tailwind utilities still present across pages. */
+.bg-black,
+.bg-\[\#0a0a0a\],
+.bg-\[\#0b0b0f\],
+.bg-\[\#0d0d12\],
+.bg-\[\#0e0f14\],
+.bg-gray-900,
+.bg-gray-950 {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.border-gray-800,
+.border-gray-900 {
+  border-color: var(--line) !important;
+}
+
+.text-gray-200,
+.text-gray-300,
+.text-gray-400 {
+  color: var(--muted) !important;
+}
+
+.text-sky-400,
+.text-sky-500 {
+  color: var(--brand) !important;
+}
+
+.bg-sky-400,
+.bg-sky-500,
+.bg-sky-600 {
+  background-color: var(--brand) !important;
+}
+
+.hover\:bg-sky-500:hover,
+.hover\:bg-sky-600:hover,
+.hover\:bg-sky-700:hover {
+  background-color: #075985 !important;
 }

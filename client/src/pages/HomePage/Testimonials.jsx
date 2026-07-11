@@ -52,12 +52,12 @@ const Testimonials = () => {
     ]
 
     return (
-        <div className=' bg-gray-900 py-16'>
+        <div className='py-16 overflow-hidden'>
             <h1
                 data-aos="fade-up"
-                className="font-semibold lg:text-5xl md:text-4xl text-3xl text-center  items-center  "
+                className="font-semibold lg:text-5xl md:text-4xl text-3xl text-center items-center text-slate-950"
             >
-                Testimonials from our <span className="text-sky-500">Alumni</span>
+                Testimonials from our <span className="text-sky-700">Alumni</span>
             </h1>
 
             <div className="mt-20 lg:px-16 md:px-10 px-5 relative">
@@ -104,8 +104,8 @@ const Testimonials = () => {
                     </div>
                 </Swiper>
 
-                <div className="swiper-button-prev bg-black hover:bg-black bg-opacity-50 hover:bg-opacity-40 text-white p-6 rounded-full"></div>
-                <div className="swiper-button-next bg-black hover:bg-black bg-opacity-50 hover:bg-opacity-40 text-white p-6 rounded-full"></div>
+                <div className="swiper-button-prev bg-white hover:bg-sky-50 text-sky-800 p-6 rounded-full shadow-lg shadow-slate-200"></div>
+                <div className="swiper-button-next bg-white hover:bg-sky-50 text-sky-800 p-6 rounded-full shadow-lg shadow-slate-200"></div>
             </div>
         </div>
     )
@@ -114,19 +114,19 @@ const Testimonials = () => {
 const TestimonialCard = ({ data }) => {
     return (
         <div data-aos="fade-up" className='flex' >
-            <div className='border-[1px] border-gray-500 border-b-cyan-500 hover:border-b-cyan-600 border-b-8 rounded-2xl w-full p-3 pt-5 pb-7 hover:scale-[101%] z-0 hover:z-10 transition-all delay-[30ms] ease-in-out m-1 bg-[#000000] bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] py-10'>
+            <div className='surface-card border-b-sky-600 border-b-4 rounded-2xl w-full p-6 pt-7 pb-7 z-0 hover:z-10 transition-all delay-[30ms] ease-in-out m-1 py-10 min-h-[26rem]'>
                 <div className='rounded'>
                     <p className='px-2'>
-                        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" className="text-sky-400 mb-6" height="38" width="38" xmlns="http://www.w3.org/2000/svg"><path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z">
+                        <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" className="text-sky-700 mb-6" height="38" width="38" xmlns="http://www.w3.org/2000/svg"><path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z">
                         </path>
                         </svg>
                     </p>
-                    <p className='text-justify m-2'>{data.message}</p>
+                    <p className='text-justify m-2 text-slate-600 leading-7'>{data.message}</p>
                 </div>
                 <div className='flex items-center lg:gap-5 md:gap-3 gap-2 mt-6 px-2'>
                     <div>
-                        <h2 className='text-base font-medium'><span className='text-sky-500 font-semibold text-lg'>{data.name}</span> ({data.batch})</h2>
-                        <p className='text-gray-500 text-sm font-medium leading-5 mt-1'>
+                        <h2 className='text-base font-medium text-slate-800'><span className='text-sky-800 font-semibold text-lg'>{data.name}</span> ({data.batch})</h2>
+                        <p className='text-slate-500 text-sm font-medium leading-5 mt-1'>
                             {data.designation}
                         </p>
                     </div>

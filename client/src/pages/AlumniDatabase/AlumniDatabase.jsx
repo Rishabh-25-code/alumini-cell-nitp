@@ -53,48 +53,52 @@ const AlumniDatabase = () => {
     return (
         <div className="min-h-screen relative">
             <Meta name="Alumni Database" />
-            <div className="flex relative bg-[url(https://firebasestorage.googleapis.com/v0/b/kaisen2023.appspot.com/o/static-images%2F007d2522-8220-4d3d-b506-8fef870eb1df.jpg?alt=media&token=46a7d8e5-aa90-4461-bd2e-15df0204e7d5)] bg-no-repeat  w-full flex-col gap-3 items-center bg-cover justify-center py-20 text-center text-white h-[55vh]">
-                <div className="absolute w-full inset-0 text-left pt-28  bg-gradient-to-t  from-[rgba(0,0,0,1)] via-[rgba(0,0,0,0.5)] to-transparent">
-                    <div className="lg:pl-24 md:pl-16 pl-6">
-                        <p className="lg:text-5xl md:text-4xl text-3xl font-bold pb-1">
+            <div className="relative">
+                <div className="relative flex min-h-[22rem] w-full flex-col justify-center overflow-hidden bg-gradient-to-br from-sky-950 via-sky-800 to-slate-900 px-6 pt-24 text-white md:px-16 lg:px-24">
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40" />
+                    <div className="absolute right-0 top-0 h-72 w-72 rounded-full bg-cyan-300/20 blur-3xl" />
+                    <div className="absolute bottom-0 left-1/3 h-56 w-56 rounded-full bg-rose-300/10 blur-3xl" />
+                    <div className="relative z-10 max-w-3xl">
+                        <p className="lg:text-6xl md:text-5xl text-4xl font-bold pb-2">
                             Alumni Database
                         </p>
-                        <h5 className="lg:text-2xl md:text-xl text-lg font-medium pb-2">
-                            <span className="text-sky-500">Searching</span> for NITP Alumnus?
+                        <h5 className="lg:text-2xl md:text-xl text-lg font-medium pb-3 text-slate-100">
+                            Search alumni by name, batch, company, designation, or department.
                         </h5>
-                        <h5 className="lg:text-2xl md:text-xl text-lg font-bold pb-2">
-                            Type: <span className="text-rose-500">{role.toUpperCase()}</span>
+                        <h5 className="w-fit rounded-full border border-white/25 bg-white/10 px-4 py-2 text-base font-semibold backdrop-blur">
+                            Type: <span className="text-rose-200">{role.toUpperCase()}</span>
                         </h5>
                     </div>
+                </div>
 
-                    <div className='lg:w-[80%] w-full md:px-6 px-3 mt-5  m-auto relative flex flex-col md:gap-3 gap-2 items-center'>
+                <div className="page-shell relative z-10 -mt-12">
+                    <div className='surface-card w-full md:px-6 px-4 relative flex flex-col md:gap-4 gap-3 items-center rounded-3xl py-6'>
                         <div className='flex-1 relative w-full'>
-                            <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by name, company, batch or designation." className="w-full pl-10 px-5 md:py-2.5 py-2 rounded-xl bg-gray-950 text-gray-200 font-normal" />
-                            <FiSearch className="absolute md:top-4 top-3 text-xl left-3.5 text-gray-400" />
+                            <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by name, company, batch or designation." className="w-full pl-11 px-5 md:py-3.5 py-3 rounded-2xl bg-white text-slate-900 font-normal" />
+                            <FiSearch className="absolute md:top-4 top-3.5 text-xl left-3.5 text-slate-400" />
                         </div>
 
-                        <div className="flex items-center gap-3">
+                        <div className="flex flex-col items-center gap-3 md:flex-row">
                             <p>
-                                <span className="text-lg font-medium text-sky-500">Search by:</span>
+                                <span className="text-lg font-medium text-sky-800">Search by:</span>
                             </p>
                             <select value={searchType} onChange={(e) => {
                                 setSearchType(e.target.value);
                                 changeParams('type', e.target.value);
-                            }} className='bg-transparent lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal border-l-0 border-r-0 border-t-0 md:w-[16rem] w-[12rem] text-gray-300 border-b'>
-                                <option className="bg-gray-900" value="name">Name</option>
-                                <option className="bg-gray-900" value="batchEnd">Batch</option>
-                                <option className="bg-gray-900" value="company">Company</option>
-                                <option className="bg-gray-900" value="designation">Designation</option>
+                            }} className='bg-white lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal md:w-[16rem] w-[12rem] text-slate-700 border border-slate-200 rounded-xl'>
+                                <option value="name">Name</option>
+                                <option value="batchEnd">Batch</option>
+                                <option value="company">Company</option>
+                                <option value="designation">Designation</option>
                             </select>
                         </div>
                     </div>
 
-                    <div className="lg:max-w-3xl md:max-w-2xl w-full md:px-6 px-4 m-auto py-10 pt-5">
-                        <div className="flex flex-wrap items-center gap-3 justify-center pt-6">
+                        <div className="flex flex-wrap items-center gap-3 justify-center pt-2">
                             <button onClick={() => {
                                 setBranch(null);
                                 changeParams("page", 1);
-                            }} className={`border-[#e9e1e1] border font-semibold text-[#e9e1e1] px-5 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${branch === null && 'bg-[#e9e1e1] text-gray-900'}`}>
+                            }} className={`border border-slate-200 font-semibold px-5 py-2 text-base rounded-full transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 ${branch === null ? 'bg-sky-700 !text-white border-sky-700' : 'text-slate-700 bg-white'}`}>
                                 All
                             </button>
                             {
@@ -102,7 +106,7 @@ const AlumniDatabase = () => {
                                     <button key={idx} onClick={() => {
                                         setBranch(dept.value);
                                         changeParams("page", 1);
-                                    }} className={`border-[#e9e1e1] border font-semibold text-[#e9e1e1] md:px-5 px-4 py-2 text-base rounded-xl hover:bg-[#e9e1e1] hover:text-gray-900 ${branch === dept.value && 'bg-[#e9e1e1] text-gray-900'}`}>
+                                    }} className={`border border-slate-200 font-semibold md:px-5 px-4 py-2 text-base rounded-full transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 ${branch === dept.value ? 'bg-sky-700 !text-white border-sky-700' : 'text-slate-700 bg-white'}`}>
                                         {dept.value}
                                     </button>
                                 ))
@@ -110,28 +114,27 @@ const AlumniDatabase = () => {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {isLoading ? <div className="pt-32 px-8 text-center text-base font-medium text-white">Loading...</div> :
-                isError ? <div className="pt-24 px-8 text-center text-base font-medium text-white">
+            {isLoading ? <div className="pt-32 px-8 text-center text-base font-medium text-slate-700">Loading...</div> :
+                isError ? <div className="pt-24 px-8 text-center text-base font-medium text-slate-700">
                     An error has occurred! Please try again later.
                 </div> :
 
                     alumni && alumni.documents.length === 0 ?
-                        <div className="pt-32 px-8 text-center text-base font-medium text-white">
+                        <div className="pt-32 px-8 text-center text-base font-medium text-slate-700">
                             No items.
                         </div>
                         :
                         <>
                             {currentPopup !== null && <AlumniCard person={alumni.documents[currentPopup]} close={() => setCurrentPopup(null)} />}
-                            <div className="mt-24 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
+                            <div className="mt-16 lg:px-10 md:p-8 p-6 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
                                 {alumni.documents.map((person, idx) => {
                                     return (
                                         <div
                                             onClick={() => setCurrentPopup(idx)}
                                             data-aos="fade-up"
                                             key={idx}
-                                            className="rounded-xl border hover:bg-[#101010] hover:border-gray-700 hover:border-l-sky-400  border-gray-900 cursor-pointer bg-[#000000] border-l-sky-500 border-l-4 shadow-lg w-full"
+                                            className="surface-card rounded-2xl border-l-sky-600 border-l-4 cursor-pointer w-full transition hover:-translate-y-1"
                                         >
                                             <div className="flex flex-col gap-5 hover:scale-95 transition p-4 py-6">
                                                 <div className="bg-cover flex items-center justify-center lg:h-32 md:h-24 h-20 lg:w-32 md:w-24 w-20 rounded-3xl overflow-hidden">
@@ -144,25 +147,25 @@ const AlumniDatabase = () => {
                                                 </div>
 
                                                 <div className="text-sm font-medium flex-1">
-                                                    <p className="text-xl font-bold text-sky-500">{person.title} {person.name}</p>
-                                                    <p className="font-medium text-base text-gray-300">
+                                                    <p className="text-xl font-bold text-sky-800">{person.title} {person.name}</p>
+                                                    <p className="font-medium text-base text-slate-700">
                                                         {person.branch} ({person.degree})
                                                     </p>
                                                     {person.batchEnd && (
                                                         <p>
-                                                            <span className="text-gray-400">Batch:</span>{" "}
+                                                            <span className="text-slate-500">Batch:</span>{" "}
                                                             {person.batchStart ? person.batchStart + "-" + person.batchEnd : person.batchEnd}
                                                         </p>
                                                     )}
                                                     {person.company && (
                                                         <p>
-                                                            <span className="text-gray-400">Company:</span>{" "}
+                                                            <span className="text-slate-500">Company:</span>{" "}
                                                             {person.company}
                                                         </p>
                                                     )}
                                                     {person.designation && (
                                                         <p>
-                                                            <span className="text-gray-400">Designation:</span>{" "}
+                                                            <span className="text-slate-500">Designation:</span>{" "}
                                                             {person.designation}
                                                         </p>
                                                     )}

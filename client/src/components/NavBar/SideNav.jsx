@@ -64,16 +64,16 @@ const SideNav = () => {
 
 
   return (
-    <div className={`border-r z-20 lg:sticky md:relative transition-all top-0 fixed bg-black border-b border-gray-800 px-3 py-5 lg:flex md:flex flex-col gap-2 items-start w-[16rem] h-screen pt-24 ${show ? null : "lg:left-0 md:left-0 lg:translate-x-0 md:translate-x-0 translate-x-[-100%]"}`}>
-      <button onClick={() => setShow(!show)} className="bg-gray-800 absolute lg:hidden md:hidden top-[9rem] animate-pulse -right-9 px-2 pl-4 py-2.5 rounded-xl border border-gray-700">
+    <div className={`border-r z-20 lg:sticky md:relative transition-all top-0 fixed bg-white/90 border-b border-slate-200 px-3 py-5 lg:flex md:flex flex-col gap-2 items-start w-[16rem] h-screen pt-24 shadow-xl shadow-slate-200/70 backdrop-blur ${show ? null : "lg:left-0 md:left-0 lg:translate-x-0 md:translate-x-0 translate-x-[-100%]"}`}>
+      <button onClick={() => setShow(!show)} className="bg-white absolute lg:hidden md:hidden top-[9rem] -right-9 px-2 pl-4 py-2.5 rounded-xl border border-slate-200 shadow-sm">
         {
           show ?
-            <IoIosArrowBack className="text-gray-300 text-2xl" />
+            <IoIosArrowBack className="text-slate-700 text-2xl" />
             :
-            <IoIosArrowForward className="text-gray-300 text-2xl" />
+            <IoIosArrowForward className="text-slate-700 text-2xl" />
         }
       </button>
-      <h2 className="font-bold text-sky-500 text-xl px-4 py-2">Welcome User!</h2>
+      <h2 className="font-bold text-sky-800 text-xl px-4 py-2">Welcome User!</h2>
       <div className="flex flex-col lg:gap-1 gap-3 sm:gap-4">
         {
           links.map((link, index) => (
@@ -83,7 +83,7 @@ const SideNav = () => {
               className="w-full rounded-xl"
             >
               {({ isActive }) => (
-                <button onClick={() => setShow(false)} className={`text-gray-300 w-full flex items-center gap-3 font-medium text-start px-4 py-2 rounded-xl ${isActive ? "bg-sky-500 text-gray-900 rounded-xl" : "hover:bg-gray-700"}`}>
+                <button onClick={() => setShow(false)} className={`text-slate-600 w-full flex items-center gap-3 font-medium text-start px-4 py-2 rounded-xl ${isActive ? "bg-sky-100 text-sky-900 rounded-xl" : "hover:bg-slate-100 hover:text-slate-950"}`}>
                   {link.icon} {link.name}
                 </button>
               )}

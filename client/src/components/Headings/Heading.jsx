@@ -18,8 +18,8 @@ const PageHeading = ({ heading, heading1 }) => {
     return (
         <div className='py-5'>
             <div className='flex gap-2'>
-                <h2 className='md:text-4xl text-3xl font-bold text-sky-500'>{heading}</h2>
-                <p className='md:text-4xl text-3xl font-bold text-white'>{heading1}</p>
+                <h2 className='md:text-4xl text-3xl font-bold text-sky-700'>{heading}</h2>
+                <p className='md:text-4xl text-3xl font-bold text-slate-950'>{heading1}</p>
             </div>
         </div>
     )
