@@ -1,4 +1,4 @@
-import React from "react";
+koimport React from "react";
 import 'react-slideshow-image/dist/styles.css'
 import { Fade } from 'react-slideshow-image'
 import { Link } from 'react-router-dom'
@@ -98,7 +98,7 @@ function ImageSlider() {
                                                 {cta.label}
                                             </button>
                                         </Link>
-                                        <Link to="/alumni-database">
+                                        <Link to="/alumni-database?role=ug">
                                             <button className="rounded-full border border-white/35 bg-white/10 px-6 py-3 text-base font-semibold text-white backdrop-blur transition hover:bg-white/20">
                                                 Explore alumni
                                             </button>
