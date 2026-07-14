@@ -47,7 +47,7 @@ const AlumniCard = ({ person, close }) => {
     <div className="fixed inset-0 z-[25000] bg-slate-950/30 backdrop-blur-sm flex items-center justify-center p-4">
       <div
         ref={popupRef}
-        className="surface-card lg:w-[32rem] md:w-[28rem] w-full max-w-lg h-[80vh] rounded-2xl flex flex-col shadow-xl relative"
+        className="surface-card lg:w-[32rem] md:w-[28rem] w-full max-w-lg max-h-[80vh] rounded-2xl flex flex-col shadow-xl relative"
       >
         {copied && (
           <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-sm px-4 py-2 rounded-lg shadow-lg">
