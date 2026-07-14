@@ -50,6 +50,35 @@ const AlumniDatabase = () => {
         return () => clearTimeout(debounceTimer);
     }, [searchText]);
 
+    const totalPages = alumni ? Math.ceil(alumni.total / itemsPerPage) : 0;
+
+    const getPageNumbers = () => {
+        const delta = 1; // pages shown on each side of current page
+        const range = [];
+        const rangeWithDots = [];
+        let l;
+    
+        for (let i = 1; i <= totalPages; i++) {
+            if (i === 1 || i === totalPages || (i >= page - delta && i <= page + delta)) {
+                range.push(i);
+            }
+        }
+    
+        for (const i of range) {
+            if (l) {
+                if (i - l === 2) {
+                    rangeWithDots.push(l + 1);
+                } else if (i - l > 2) {
+                    rangeWithDots.push('...');
+                }
+            }
+            rangeWithDots.push(i);
+            l = i;
+        }
+    
+        return rangeWithDots;
+    };
+
     return (
         <div className="min-h-screen relative">
             <Meta name="Alumni Database" />
@@ -184,13 +213,60 @@ const AlumniDatabase = () => {
                                     )}</span> results of <span className="text-sky-500">{alumni.total}</span></p>
                                 </div>
 
-                                <div data-aos="fade-up" className="flex items-center justify-center pt-5 gap-10 px-6">
-                                    <button disabled={page <= 1} onClick={() => {
-                                        changeParams('page', page - 1);
-                                    }} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Prev</button>
-                                    <button disabled={itemsPerPage > alumni.documents.length} onClick={() => {
-                                        changeParams('page', page + 1);
-                                    }} className="px-8 py-2.5 rounded-xl bg-white disabled:bg-gray-400 text-gray-900 text-lg font-semibold">Next</button>
+                                <div data-aos="fade-up" className="flex items-center justify-center pt-8 gap-1.5 px-6 flex-wrap">
+                                    <button
+                                        disabled={page <= 1}
+                                        onClick={() => changeParams('page', 1)}
+                                        className="h-10 w-10 flex items-center justify-center rounded-xl bg-white text-slate-600 font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-sky-50 hover:text-sky-800 transition"
+                                        aria-label="First page"
+                                    >
+                                        «
+                                    </button>
+                                    <button
+                                        disabled={page <= 1}
+                                        onClick={() => changeParams('page', page - 1)}
+                                        className="h-10 w-10 flex items-center justify-center rounded-xl bg-white text-slate-600 font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-sky-50 hover:text-sky-800 transition"
+                                        aria-label="Previous page"
+                                    >
+                                        ‹
+                                    </button>
+                                
+                                    {getPageNumbers().map((p, idx) =>
+                                        p === '...' ? (
+                                            <span key={`dots-${idx}`} className="h-10 w-10 flex items-center justify-center text-slate-400 select-none">
+                                                ⋯
+                                            </span>
+                                        ) : (
+                                            <button
+                                                key={p}
+                                                onClick={() => changeParams('page', p)}
+                                                className={`h-10 w-10 flex items-center justify-center rounded-xl font-semibold transition ${
+                                                    p === page
+                                                        ? 'bg-sky-700 text-white shadow-md shadow-sky-700/30'
+                                                        : 'bg-white text-slate-600 hover:bg-sky-50 hover:text-sky-800'
+                                                }`}
+                                            >
+                                                {p}
+                                            </button>
+                                        )
+                                    )}
+                                
+                                    <button
+                                        disabled={page >= totalPages}
+                                        onClick={() => changeParams('page', page + 1)}
+                                        className="h-10 w-10 flex items-center justify-center rounded-xl bg-white text-slate-600 font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-sky-50 hover:text-sky-800 transition"
+                                        aria-label="Next page"
+                                    >
+                                        ›
+                                    </button>
+                                    <button
+                                        disabled={page >= totalPages}
+                                        onClick={() => changeParams('page', totalPages)}
+                                        className="h-10 w-10 flex items-center justify-center rounded-xl bg-white text-slate-600 font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-sky-50 hover:text-sky-800 transition"
+                                        aria-label="Last page"
+                                    >
+                                        »
+                                    </button>
                                 </div>
                             </>
                         </>
