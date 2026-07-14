@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MalePlaceholder from "../../assets/man-placeholder.jpg";
 import {
   FaLinkedin,
@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 
 const AlumniCard = ({ person, close }) => {
   const popupRef = useRef(null);
+  const [copied, setCopied] = useState("");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -29,12 +30,31 @@ const AlumniCard = ({ person, close }) => {
     };
   }, [close]);
 
+  const copyToClipboard = async (text, label) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(`${label} copied to clipboard`);
+
+      setTimeout(() => {
+        setCopied("");
+      }, 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-[25000] bg-slate-950/30 backdrop-blur-sm flex items-center justify-center p-4">
       <div
         ref={popupRef}
-        className="surface-card lg:w-[32rem] md:w-[28rem] w-full max-w-lg h-[80vh] rounded-2xl flex flex-col shadow-xl"
+        className="surface-card lg:w-[32rem] md:w-[28rem] w-full max-w-lg h-[80vh] rounded-2xl flex flex-col shadow-xl relative"
       >
+        {copied && (
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white text-sm px-4 py-2 rounded-lg shadow-lg">
+            {copied}
+          </div>
+        )}
+
         {/* Header */}
         <div className="relative p-6 border-b border-slate-200 shrink-0">
           <button
@@ -69,7 +89,11 @@ const AlumniCard = ({ person, close }) => {
 
               <div className="flex flex-wrap gap-3 mt-3">
                 {person.linkedin && (
-                  <Link to={person.linkedin} target="_blank">
+                  <Link
+                    to={person.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaLinkedin
                       size={20}
                       className="hover:scale-105 transition hover:text-sky-700"
@@ -78,7 +102,11 @@ const AlumniCard = ({ person, close }) => {
                 )}
 
                 {person.facebook && (
-                  <Link to={person.facebook} target="_blank">
+                  <Link
+                    to={person.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaFacebook
                       size={20}
                       className="hover:scale-105 transition hover:text-sky-700"
@@ -87,7 +115,11 @@ const AlumniCard = ({ person, close }) => {
                 )}
 
                 {person.github && (
-                  <Link to={person.github} target="_blank">
+                  <Link
+                    to={person.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaGithub
                       size={20}
                       className="hover:scale-105 transition hover:text-sky-700"
@@ -96,7 +128,11 @@ const AlumniCard = ({ person, close }) => {
                 )}
 
                 {person.instagram && (
-                  <Link to={person.instagram} target="_blank">
+                  <Link
+                    to={person.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaInstagram
                       size={20}
                       className="hover:scale-105 transition hover:text-sky-700"
@@ -105,7 +141,11 @@ const AlumniCard = ({ person, close }) => {
                 )}
 
                 {person.twitter && (
-                  <Link to={person.twitter} target="_blank">
+                  <Link
+                    to={person.twitter}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaTwitter
                       size={20}
                       className="hover:scale-105 transition hover:text-sky-700"
@@ -114,7 +154,11 @@ const AlumniCard = ({ person, close }) => {
                 )}
 
                 {person.website && (
-                  <Link to={person.website} target="_blank">
+                  <Link
+                    to={person.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaGlobe
                       size={20}
                       className="hover:scale-105 transition hover:text-sky-700"
@@ -129,7 +173,7 @@ const AlumniCard = ({ person, close }) => {
         {/* Scrollable Content */}
         <div className="flex-1 overflow-y-auto p-6">
           <p className="font-medium text-sm text-slate-600 leading-6 mb-4">
-            {person.bio ? person.bio : person.work_info}
+            {person.bio || person.work_info}
           </p>
 
           <div className="space-y-3 text-sm">
@@ -158,27 +202,31 @@ const AlumniCard = ({ person, close }) => {
               </p>
             )}
 
-            {person.showPhone && (
+            {person.showPhone && person.phone && (
               <p>
                 <span className="font-medium text-slate-500">Phone:</span>{" "}
-                <a
-                  href={`tel:${person.phone}`}
-                  className="text-sky-700 hover:underline"
+                <button
+                  type="button"
+                  onClick={() =>
+                    copyToClipboard(person.phone, "Phone number")
+                  }
+                  className="text-sky-700 hover:underline cursor-pointer text-left"
                 >
                   {person.phone}
-                </a>
+                </button>
               </p>
             )}
 
-            {person.showEmail && (
+            {person.showEmail && person.email && (
               <p>
                 <span className="font-medium text-slate-500">Email:</span>{" "}
-                <a
-                  href={`mailto:${person.email}`}
-                  className="text-sky-700 hover:underline break-all"
+                <button
+                  type="button"
+                  onClick={() => copyToClipboard(person.email, "Email")}
+                  className="text-sky-700 hover:underline break-all cursor-pointer text-left"
                 >
                   {person.email}
-                </a>
+                </button>
               </p>
             )}
 
