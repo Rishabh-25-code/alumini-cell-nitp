@@ -31,7 +31,7 @@ const AlumniCard = ({ person, close }) => {
   }, [close]);
 
   return (
-    <div className="fixed z-[25] inset-0 bg-slate-950/30 backdrop-blur-sm w-full flex justify-center items-center">
+    <div className="fixed z-[25000] inset-0 bg-slate-950/30 backdrop-blur-sm w-full flex justify-center items-center">
       <div
         ref={popupRef} // Attach ref to the popup container
         className="surface-card flex lg:w-[32rem] md:w-[28rem] w-full mx-6 flex-col gap-3 p-6 py-6 max-w-lg rounded-2xl relative"
