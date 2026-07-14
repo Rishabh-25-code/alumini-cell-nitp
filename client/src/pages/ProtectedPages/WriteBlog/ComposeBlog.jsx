@@ -61,7 +61,7 @@ const ComposeBlog = ({ user }) => {
     }
 
     return (
-        <div className='bg-[#0a0b1d] relative lg:p-5 p-4 my-5 rounded-lg'>
+        <div className='bg-white relative lg:p-5 p-4 my-5 rounded-lg'>
             {
                 loading && <Loading message={"Creating Document..."} />
             }
