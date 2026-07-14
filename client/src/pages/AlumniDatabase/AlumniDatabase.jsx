@@ -71,7 +71,7 @@ const AlumniDatabase = () => {
                     </div>
                 </div>
 
-                <div className="page-shell relative z-10 -mt-5">
+                <div className="page-shell relative z-10 -mt-8">
                     <div className='surface-card w-full md:px-6 px-4 relative flex flex-col md:gap-4 gap-3 items-center rounded-3xl py-6'>
                         <div className='flex-1 relative w-full'>
                             <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by name, company, batch or designation." className="w-full pl-11 px-5 md:py-3.5 py-3 rounded-2xl bg-white text-slate-900 font-normal" />
