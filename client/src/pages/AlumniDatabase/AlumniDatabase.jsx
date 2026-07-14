@@ -95,7 +95,7 @@ const AlumniDatabase = () => {
                             Search alumni by name, batch, company, designation, or department.
                         </h5>
                         <h5 className="w-fit rounded-full border border-white/25 bg-white/10 px-4 py-2 text-base font-semibold backdrop-blur">
-                            Role: <span className="text-rose-200">{role.toUpperCase()}</span>
+                            Degree: <span className="text-rose-200">{role.toUpperCase()}</span>
                         </h5>
                     </div>
                 </div>
@@ -114,11 +114,26 @@ const AlumniDatabase = () => {
                             <select value={searchType} onChange={(e) => {
                                 setSearchType(e.target.value);
                                 changeParams('type', e.target.value);
-                            }} className='bg-white lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal md:w-[16rem] w-[12rem] text-slate-700 border border-slate-200 rounded-xl'>
+                            }} className='bg-white lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal md:w-[12rem] w-[9rem] text-slate-700 border border-slate-200 rounded-xl'>
                                 <option value="name">Name</option>
                                 <option value="batchEnd">Batch</option>
                                 <option value="company">Company</option>
                                 <option value="designation">Designation</option>
+                            </select>
+                        </div>
+                        <div className="flex flex-col items-center gap-3 md:flex-row">
+                            <p>
+                                <span className="text-lg font-medium text-sky-800">Degree:</span>
+                            </p>
+                            <select value={searchType} onChange={(e) => {
+                                setSearchType(e.target.value);
+                                changeParams('role', e.target.value);
+                            }} className='bg-white lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal md:w-[12rem] w-[9rem] text-slate-700 border border-slate-200 rounded-xl'>
+                                <option value="all">All</option>
+                                <option value="ug">UG</option>
+                                <option value="pg">PG</option>
+                                <option value="phd">Ph.D</option>
+                                <option value="faculty-staff">Faculty/Staff</option>
                             </select>
                         </div>
                     </div>
