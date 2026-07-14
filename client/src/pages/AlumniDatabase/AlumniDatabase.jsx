@@ -177,46 +177,63 @@ const AlumniDatabase = () => {
                                 {alumni.documents.map((person, idx) => {
                                     return (
                                         <div
-                                            onClick={() => setCurrentPopup(idx)}
-                                            data-aos="fade-up"
-                                            key={idx}
-                                            className="surface-card rounded-2xl border-l-sky-600 border-l-4 cursor-pointer w-full transition hover:-translate-y-1"
+                                          key={idx}
+                                          onClick={() => setCurrentPopup(idx)}
+                                          data-aos="fade-up"
+                                          className="group cursor-pointer rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
                                         >
-                                            <div className="flex flex-col gap-5 hover:scale-95 transition p-4 py-6">
-                                                <div className="bg-cover flex items-center justify-center lg:h-32 md:h-24 h-20 lg:w-32 md:w-24 w-20 rounded-3xl overflow-hidden">
-                                                    <img
-                                                        id={person.$id}
-                                                        className="w-full object-cover lg:h-32 md:h-24 h-20"
-                                                        src={person.image ? getImageURL(person.image) : MalePlaceholder}
-                                                        alt={person.name}
-                                                    />
-                                                </div>
-
-                                                <div className="text-sm font-medium flex-1">
-                                                    <p className="text-xl font-bold text-sky-800">{person.title} {person.name}</p>
-                                                    <p className="font-medium text-base text-slate-700">
-                                                        {person.branch} ({person.degree})
-                                                    </p>
-                                                    {person.batchEnd && (
-                                                        <p>
-                                                            <span className="text-slate-500">Batch:</span>{" "}
-                                                            {person.batchStart ? person.batchStart + "-" + person.batchEnd : person.batchEnd}
-                                                        </p>
-                                                    )}
-                                                    {person.company && (
-                                                        <p>
-                                                            <span className="text-slate-500">Company:</span>{" "}
-                                                            {person.company}
-                                                        </p>
-                                                    )}
-                                                    {person.designation && (
-                                                        <p>
-                                                            <span className="text-slate-500">Designation:</span>{" "}
-                                                            {person.designation}
-                                                        </p>
-                                                    )}
-                                                </div>
+                                          <div className="flex gap-4">
+                                            {/* Image */}
+                                            <div className="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-slate-100">
+                                              <img
+                                                id={person.$id}
+                                                src={person.image ? getImageURL(person.image) : MalePlaceholder}
+                                                alt={person.name}
+                                                className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                                              />
                                             </div>
+                                        
+                                            {/* Content */}
+                                            <div className="min-w-0 flex-1">
+                                              <h3 className="truncate text-xl font-bold text-sky-800">
+                                                {person.title} {person.name}
+                                              </h3>
+                                        
+                                              <p className="mt-1 text-sm font-medium text-slate-600">
+                                                {person.branch}
+                                                {person.degree ? ` (${person.degree})` : ""}
+                                              </p>
+                                        
+                                              {person.batchEnd && (
+                                                <div className="mt-3 flex items-center gap-2 text-sm text-slate-600">
+                                                  <span>🎓</span>
+                                                  <span>
+                                                    {person.batchStart
+                                                      ? `${person.batchStart}-${person.batchEnd}`
+                                                      : person.batchEnd}
+                                                  </span>
+                                                </div>
+                                              )}
+                                        
+                                              {person.company && (
+                                                <div className="mt-2 flex items-start gap-2 text-sm text-slate-600">
+                                                  <span className="mt-0.5">🏢</span>
+                                                  <span className="line-clamp-2">
+                                                    {person.company}
+                                                  </span>
+                                                </div>
+                                              )}
+                                        
+                                              {person.designation && (
+                                                <div className="mt-2 flex items-start gap-2 text-sm text-slate-600">
+                                                  <span className="mt-0.5">💼</span>
+                                                  <span className="line-clamp-2">
+                                                    {person.designation}
+                                                  </span>
+                                                </div>
+                                              )}
+                                            </div>
+                                          </div>
                                         </div>
                                     );
                                 })}
