@@ -21,7 +21,7 @@ const AlumniDatabase = () => {
     const page = parseInt(searchParams.get('page')) || 1;
     const search = searchParams.get('search') || "";
     const type = searchParams.get('type') || "jobTitle";
-    const [itemsPerPage] = useState(21);
+    const [itemsPerPage] = useState(24);
     const [branch, setBranch] = useState(null);
     const [currentPopup, setCurrentPopup] = useState(null); // [id, type]
     const [searchText, setSearchText] = useState(search);
