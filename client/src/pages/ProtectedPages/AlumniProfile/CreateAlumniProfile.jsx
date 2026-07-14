@@ -586,7 +586,7 @@ const CreateAlumniProfile = () => {
                                 </div>
                             </div>
 
-                            <div className='text-white self-end w-fit flex gap-3 pt-6 pb-4'>
+                            <div className='text-gray-800 self-end w-fit flex gap-3 pt-6 pb-4'>
                                 <button onClick={(e) => {
                                     e.preventDefault();
                                     resetForm();
@@ -612,15 +612,15 @@ const CreateAlumniProfile = () => {
                                 {
                                     alumni.status === 'reviewing' ? (
                                         <div className="flex justify-center items-center">
-                                            <div className="bg-yellow-600 text-white text-sm font-bold py-1.5 px-3 rounded-full">Profile Reviewing</div>
+                                            <div className="bg-yellow-600 text-gray-800 text-sm font-bold py-1.5 px-3 rounded-full">Profile Reviewing</div>
                                         </div>
                                     ) : alumni.status === 'approved' || alumni.status === null ? (
                                         <div className="flex justify-center items-center">
-                                            <div className="bg-green-500 text-white text-sm font-bold py-1.5 px-3 rounded-full">Profile Approved</div>
+                                            <div className="bg-green-500 text-gray-800 text-sm font-bold py-1.5 px-3 rounded-full">Profile Approved</div>
                                         </div>
                                     ) : (
                                         <div className="flex justify-center items-center">
-                                            <div className="bg-red-500 text-white text-sm font-bold py-1.5 px-3 rounded-full">Profile Rejected</div>
+                                            <div className="bg-red-500 text-gray-800 text-sm font-bold py-1.5 px-3 rounded-full">Profile Rejected</div>
                                         </div>
                                     )
                                 }
@@ -633,13 +633,13 @@ const CreateAlumniProfile = () => {
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
-                                <button onClick={() => navigate("/edit-alumni-profile")} className='text-green-500 hover:border-green-600 hover:bg-green-600 hover:text-white transition md:px-8 px-6 py-1.5 border border-green-500 rounded-full text-lg'>
+                                <button onClick={() => navigate("/edit-alumni-profile")} className='text-green-500 hover:border-green-600 hover:bg-green-600 hover:text-gray-800 transition md:px-8 px-6 py-1.5 border border-green-500 rounded-full text-lg'>
                                     <FaEdit className='inline-block mr-1' /> Edit
                                 </button>
                             </div>
                             <div className='py-5 text-lg'>
                                 <p className='font-medium text-sky-500'>
-                                    <span className='text-white'>{alumni.title} {alumni.name}</span>
+                                    <span className='text-gray-800'>{alumni.title} {alumni.name}</span>
                                 </p>
                                 <p className='text-sky-500 font-medium'>
                                     {alumni.designation && <span>{alumni.designation && alumni.designation} {alumni.company && " at " + alumni.company}</span>
@@ -690,43 +690,43 @@ const CreateAlumniProfile = () => {
                                     <span className='text-gray-300 font-normal text-base'>{alumni.bio}</span>
                                 </p>
                                 {alumni.gender && <p className='font-medium text-sky-500'>
-                                    Gender : <span className='text-white'>{alumni.gender}</span>
+                                    Gender : <span className='text-gray-800'>{alumni.gender}</span>
                                 </p>}
                                 {alumni.category && <p className='font-medium text-sky-500'>
-                                    Category : <span className='text-white'>{alumni.category}</span>
+                                    Category : <span className='text-gray-800'>{alumni.category}</span>
                                 </p>}
                                 {alumni.role && <p className='font-medium text-sky-500'>
-                                    Role : <span className='text-white'>{alumni.role.toUpperCase()}</span>
+                                    Role : <span className='text-gray-800'>{alumni.role.toUpperCase()}</span>
                                 </p>}
                                 <p className='font-medium text-sky-500'>
-                                    Batch : <span className='text-white'>{alumni.batchStart ? alumni.batchStart + "-" + alumni.batchEnd : alumni.batchEnd}</span>
+                                    Batch : <span className='text-gray-800'>{alumni.batchStart ? alumni.batchStart + "-" + alumni.batchEnd : alumni.batchEnd}</span>
                                 </p>
                                 <p className='font-medium text-sky-500'>
-                                    Branch : <span className='text-white'>{
+                                    Branch : <span className='text-gray-800'>{
                                         branches.find((branch) => branch.value === alumni.branch)?.name
                                     }</span>
                                 </p>
                                 <p className='font-medium text-sky-500'>
-                                    Email : <a target='_blank' href={`mailto:${alumni.email}`} className='text-white'>{alumni.email}</a> <span className="text-rose-500 text-sm">
+                                    Email : <a target='_blank' href={`mailto:${alumni.email}`} className='text-gray-800'>{alumni.email}</a> <span className="text-rose-500 text-sm">
                                         {alumni.showEmail ? "(public)" : "(hidden)"}
                                     </span>
                                 </p>
                                 <p className='font-medium text-sky-500'>
-                                    Phone : <span className='text-white'>{alumni.phone}</span> <span className="text-rose-500 text-sm">
+                                    Phone : <span className='text-gray-800'>{alumni.phone}</span> <span className="text-rose-500 text-sm">
                                         {alumni.showPhone ? "(public)" : "(hidden)"}
                                     </span>
                                 </p>
                                 {alumni.degree && <p className='font-medium text-sky-500'>
-                                    Degree: <span className='text-white'>{alumni.degree}</span>
+                                    Degree: <span className='text-gray-800'>{alumni.degree}</span>
                                 </p>}
                                 {alumni.interests && <p className='font-medium text-sky-500'>
-                                    Interests: <span className='text-white'>{alumni.interests}</span>
+                                    Interests: <span className='text-gray-800'>{alumni.interests}</span>
                                 </p>}
                                 {alumni.hobbies.length !== 0 && <p className='font-medium text-sky-500'>
-                                    Hobbies: <span className='text-white'>{alumni.hobbies.join(", ")}</span>
+                                    Hobbies: <span className='text-gray-800'>{alumni.hobbies.join(", ")}</span>
                                 </p>}
                                 {alumni.achievements.length !== 0 && <p className='font-medium text-sky-500 flex flex-col items-start gap-2'>
-                                    <span>Achievements:</span> <span className='text-white flex flex-col'>{
+                                    <span>Achievements:</span> <span className='text-gray-800 flex flex-col'>{
                                         alumni.achievements.map((ach, idx) => (
                                             <span className='text-base text-yellow-500' key={idx}>- {ach}</span>
                                         ))
