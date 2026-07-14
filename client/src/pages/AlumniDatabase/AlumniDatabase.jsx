@@ -152,7 +152,7 @@ const AlumniDatabase = () => {
                                     <button key={idx} onClick={() => {
                                         setBranch(dept.value);
                                         changeParams("page", 1);
-                                    }} className={`border border-slate-200 font-semibold md:px-5 px-4 py-2 text-base rounded-full transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 ${branch === dept.value ? 'bg-sky-700 !text-white border-sky-700' : 'text-slate-700 bg-white'}`}>
+                                    }} className={`border border-slate-200 font-semibold md:px-5 px-4 py-2 text-base rounded-full transition hover:border-sky-300 hover:bg-sky-50 hover:text-sky-900 ${branch === dept.value ? 'bg-sky-700 hover:bg-sky-600 text-white border-sky-700' : 'text-slate-700 bg-white'}`}>
                                         {dept.value}
                                     </button>
                                 ))
