@@ -28,7 +28,7 @@ const AlumniDatabase = () => {
     const [searchType, setSearchType] = useState(type);
 
     const { isLoading, isError, data: alumni } = useQuery({
-        queryKey: ["members", role, page, search, branch],
+        queryKey: ["members", role, page, search, branch, type],
         queryFn: () => getAlumniData(itemsPerPage, (page - 1) * itemsPerPage, role, search, type, branch),
         staleTime: Infinity
     });
@@ -66,12 +66,12 @@ const AlumniDatabase = () => {
                             Search alumni by name, batch, company, designation, or department.
                         </h5>
                         <h5 className="w-fit rounded-full border border-white/25 bg-white/10 px-4 py-2 text-base font-semibold backdrop-blur">
-                            Type: <span className="text-rose-200">{role.toUpperCase()}</span>
+                            Role: <span className="text-rose-200">{role.toUpperCase()}</span>
                         </h5>
                     </div>
                 </div>
 
-                <div className="page-shell relative z-10 -mt-12">
+                <div className="page-shell relative z-10 -mt-5">
                     <div className='surface-card w-full md:px-6 px-4 relative flex flex-col md:gap-4 gap-3 items-center rounded-3xl py-6'>
                         <div className='flex-1 relative w-full'>
                             <input value={searchText} onChange={(e) => setSearchText(e.target.value)} type="search" placeholder="Search by name, company, batch or designation." className="w-full pl-11 px-5 md:py-3.5 py-3 rounded-2xl bg-white text-slate-900 font-normal" />
