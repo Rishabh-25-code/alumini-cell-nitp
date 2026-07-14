@@ -107,14 +107,15 @@ const AlumniDatabase = () => {
                             <FiSearch className="absolute md:top-4 top-3.5 text-xl left-3.5 text-slate-400" />
                         </div>
 
-                        <div className="flex flex-col items-center gap-3 md:flex-row">
+                        <div className="flex justify-center items-center gap-5">
+                            <div className="flex flex-col items-center gap-3 md:flex-row">
                             <p>
                                 <span className="text-lg font-medium text-sky-800">Search by:</span>
                             </p>
                             <select value={searchType} onChange={(e) => {
                                 setSearchType(e.target.value);
                                 changeParams('type', e.target.value);
-                            }} className='bg-white lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal md:w-[12rem] w-[9rem] text-slate-700 border border-slate-200 rounded-xl'>
+                            }} className='bg-white lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal md:w-[10rem] w-[8rem] text-slate-700 border border-slate-200 rounded-xl'>
                                 <option value="name">Name</option>
                                 <option value="batchEnd">Batch</option>
                                 <option value="company">Company</option>
@@ -128,13 +129,14 @@ const AlumniDatabase = () => {
                             <select value={searchType} onChange={(e) => {
                                 setSearchType(e.target.value);
                                 changeParams('role', e.target.value);
-                            }} className='bg-white lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal md:w-[12rem] w-[9rem] text-slate-700 border border-slate-200 rounded-xl'>
+                            }} className='bg-white lg:px-4 md:px-4 px-2 md:py-2.5 py-2 font-normal md:w-[10rem] w-[8rem] text-slate-700 border border-slate-200 rounded-xl'>
                                 <option value="all">All</option>
                                 <option value="ug">UG</option>
                                 <option value="pg">PG</option>
                                 <option value="phd">Ph.D</option>
                                 <option value="faculty-staff">Faculty/Staff</option>
                             </select>
+                        </div>
                         </div>
                     </div>
 
